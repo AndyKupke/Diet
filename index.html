@@ -1023,12 +1023,10 @@ function toggleTheme() {
   setTheme(current === 'dark' ? 'light' : 'dark', true);
 }
 
-// Apply on load then recheck every minute
+// Applied after variable declarations below — see applyAutoTheme() call near TAB_LABELS
 function applyAutoTheme() {
   if (!themeOverride) setTheme(autoTheme(), false);
 }
-applyAutoTheme();
-setInterval(applyAutoTheme, 60_000);
 
 /* ══ Targets ════════════════════════════════════════════════════════════== */
 let TARGETS = { kcal:1750, protein:140, carbs:180, fat:60, water:2500, goalWeight:72 };
@@ -1060,6 +1058,10 @@ function closeSidebar() {
 
 /* ══ Tab switching ════════════════════════════════════════════════════════ */
 const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', history:'History', supplements:'Supplements', blood:'Check-up Blood', settings:'Settings' };
+
+// Now safe to apply auto theme — all let/const vars above are initialised
+applyAutoTheme();
+setInterval(applyAutoTheme, 60_000);
 function switchTab(name) {
   document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.toggle('active', el.dataset.tab===name));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id==='tab-'+name));
