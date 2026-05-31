@@ -692,6 +692,7 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:10px;">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
         Oura Ring — Today
+        <span id="oura-last-fetch" style="margin-left:6px;font-size:8px;opacity:0.5;"></span>
         <button class="btn btn-ghost btn-sm" onclick="refreshOura()" style="margin-left:auto;padding:3px 10px;font-size:8px;">Refresh</button>
       </div>
       <div class="grid-4" id="oura-kpi-tiles"></div>
@@ -1113,10 +1114,13 @@ function init() {
   loadCfg(); loadTargets(); loadHistory(); loadState(); loadSupplements(); loadBloodRecords(); renderAll();
   document.getElementById('blood-date').value = todayISO();
   window.addEventListener('load', () => {
-    if (document.getElementById('tab-dashboard').classList.contains('active')) {
-      drawCharts();
-      loadOuraIfNeeded().then(d => renderOuraDashboard(d));
-    }
+    // Always attempt Oura fetch on load (auto-decides if refresh needed)
+    loadOuraIfNeeded().then(data => {
+      if (!data) return;
+      renderOuraDashboard(data);
+      if (document.getElementById('tab-summary').classList.contains('active')) renderOuraSummary(data);
+    });
+    if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
   });
 }
 
@@ -1895,6 +1899,13 @@ function renderOuraDashboard(data) {
 
   strip.style.display  = 'block';
   prompt.style.display = 'none';
+  // Show last fetch time
+  const lastFetch = localStorage.getItem('dt_oura_last_fetch');
+  if (lastFetch) {
+    const t = new Date(lastFetch);
+    document.getElementById('oura-last-fetch').textContent =
+      `fetched ${t.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'})}`;
+  }
 
   const tiles = [
     {
@@ -2078,15 +2089,54 @@ function mapOuraActivity(activity = '') {
 
 // ── Test connection from Settings ──────────────────────────────────────────
 
-// ══ Oura auto-load on tab switch ═══════════════════════════════════════════
-async function loadOuraIfNeeded() {
-  if (!cfg.ouraToken) return;
-  // Show import button in Input tab
+// ══ Oura auto-fetch logic ══════════════════════════════════════════════════
+
+// Returns true if we should fetch fresh Oura data right now:
+// • never fetched today, OR
+// • it's past 08:00 local time and last fetch was before 08:00 today
+function shouldAutoFetch() {
+  const now      = new Date();
+  const today    = todayISO();
+  const hour     = now.getHours();
+  const lastRaw  = localStorage.getItem('dt_oura_last_fetch');
+
+  if (!lastRaw) return true;                          // never fetched
+
+  const last     = new Date(lastRaw);
+  const lastDate = last.toISOString().split('T')[0];
+
+  if (lastDate !== today) return true;                // new day — always fetch
+
+  // Same day: only auto-trigger once we cross 08:00
+  const fetchedBeforeEight = last.getHours() < 8;
+  if (hour >= 8 && fetchedBeforeEight) return true;  // crossed 08:00 since last fetch
+
+  return false;
+}
+
+async function loadOuraIfNeeded(force = false) {
+  if (!cfg.ouraToken) return null;
   const importBtn = document.getElementById('oura-import-btn');
   if (importBtn) importBtn.style.display = 'inline-flex';
-  const data = await fetchOura();
-  renderOuraDashboard(data);
+  const refresh = force || shouldAutoFetch();
+  const data = await fetchOura(refresh);
+  if (refresh) localStorage.setItem('dt_oura_last_fetch', new Date().toISOString());
+  return data;
 }
+
+// Called once a minute — triggers fetch exactly when clock crosses 08:00
+function ouraMinuteTick() {
+  if (shouldAutoFetch()) {
+    loadOuraIfNeeded(true).then(data => {
+      if (!data) return;
+      renderOuraDashboard(data);
+      // Also refresh summary if it's the active tab
+      if (document.getElementById('tab-summary').classList.contains('active')) renderOuraSummary(data);
+      toast('Oura data updated', 'success');
+    });
+  }
+}
+setInterval(ouraMinuteTick, 60_000);
 
 /* ══ Utils ════════════════════════════════════════════════════════════════ */
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
