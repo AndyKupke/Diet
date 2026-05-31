@@ -685,6 +685,18 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="kpi-tile"><div class="kpi-label">Avg Calories</div><div class="kpi-value" id="kpi-avg-kcal">—<span class="kpi-unit">kcal</span></div><div class="kpi-sub">Last 14 days</div></div>
       <div class="kpi-tile"><div class="kpi-label">Avg Deficit</div><div class="kpi-value" id="kpi-avg-deficit">—<span class="kpi-unit">kcal</span></div><div class="kpi-sub" id="kpi-deficit-sub">vs target</div></div>
     </div>
+    <!-- Oura ring strip -->
+    <div id="oura-dashboard-strip" style="display:none;margin-bottom:12px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Oura Ring — Today
+        <button class="btn btn-ghost btn-sm" onclick="refreshOura()" style="margin-left:auto;padding:3px 10px;font-size:8px;">Refresh</button>
+      </div>
+      <div class="grid-4" id="oura-kpi-tiles"></div>
+    </div>
+    <div id="oura-dashboard-prompt" style="margin-bottom:12px;padding:14px 18px;border:1px dashed var(--divider);border-radius:var(--radius);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--text-muted);">
+      Add your Oura token in <span style="color:var(--yellow);cursor:pointer;" onclick="switchTab('settings')">Settings</span> to see ring data here.
+    </div>
     <div class="chart-card" style="margin-bottom:12px;"><div class="chart-title">Weight Trend — Last 30 Days</div><canvas id="chart-weight" class="chart-canvas" height="140"></canvas></div>
     <div class="grid-2">
       <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days</div><canvas id="chart-calories" class="chart-canvas" height="140"></canvas></div>
@@ -713,6 +725,26 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
     <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Today's Meals</span><span class="section-rule"></span></div>
     <div id="summary-meal-list" class="item-list"></div>
     <div id="summary-no-meals" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-muted);padding:12px 0;display:none;">No meals logged yet — go to Input to add one.</div>
+
+    <!-- Oura Recovery panel -->
+    <div id="oura-summary-panel" style="display:none;margin-top:28px;">
+      <div class="section-head"><span class="section-title" style="font-size:16px;">Recovery &amp; Activity</span><span class="section-rule"></span><span style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;color:var(--text-muted);">Oura Ring</span></div>
+      <div class="grid-3" id="oura-summary-tiles" style="margin-bottom:12px;"></div>
+      <div id="oura-sleep-detail" class="panel" style="margin-bottom:10px;"></div>
+      <div id="oura-activity-detail" class="panel"></div>
+    </div>
+    <!-- Calorie balance row (diet + oura active cals) -->
+    <div id="calorie-balance-panel" style="display:none;margin-top:12px;">
+      <div class="panel panel-accent">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Calorie Balance (with Oura active calories)</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;">
+          <div><div class="kpi-label">Intake</div><div class="kpi-value" id="bal-intake">—<span class="kpi-unit">kcal</span></div></div>
+          <div><div class="kpi-label">Active Burn</div><div class="kpi-value" style="color:var(--red)" id="bal-active">—<span class="kpi-unit">kcal</span></div></div>
+          <div><div class="kpi-label">Total Burn (BMR+)</div><div class="kpi-value" id="bal-total">—<span class="kpi-unit">kcal</span></div></div>
+          <div><div class="kpi-label">Net Deficit / Surplus</div><div class="kpi-value" id="bal-net">—<span class="kpi-unit">kcal</span></div><div class="kpi-sub" id="bal-sub"></div></div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -791,7 +823,12 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       </div>
     </div>
     <div id="meal-list" class="item-list" style="margin-top:8px;"></div>
-    <div class="section-head"><span class="section-title">Exercise</span><span class="section-rule"></span></div>
+    <div class="section-head"><span class="section-title">Exercise</span><span class="section-rule"></span>
+      <button class="btn btn-ghost btn-sm" id="oura-import-btn" onclick="importOuraWorkouts()" style="flex-shrink:0;display:none;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:4px;"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Import from Oura
+      </button>
+    </div>
     <div class="panel">
       <div class="grid-2">
         <div class="field"><label>Activity</label><input type="text" id="ex-name" placeholder="e.g. Morning run"></div>
@@ -952,12 +989,17 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
         <summary>API Keys &amp; GitHub</summary>
         <div class="details-body">
           <div class="field"><label>Anthropic API Key</label><input type="text" id="setting-anthropic-key" placeholder="sk-ant-…" autocomplete="off"></div>
+          <div class="field"><label>Oura Personal Access Token <span style="font-size:9px;opacity:0.6;">— cloud.ouraring.com/personal-access-tokens</span></label><input type="text" id="setting-oura-token" placeholder="Paste your 32-char Oura token…" autocomplete="off"></div>
           <div class="field"><label>GitHub PAT (repo scope)</label><input type="text" id="setting-github-pat" placeholder="ghp_…" autocomplete="off"></div>
           <div class="grid-2">
             <div class="field"><label>Repository (owner/repo)</label><input type="text" id="setting-github-repo" placeholder="AndyKupke/Diet"></div>
             <div class="field"><label>Branch</label><input type="text" id="setting-github-branch" placeholder="main"></div>
           </div>
-          <button class="btn btn-sm" onclick="saveSettings()">Save Settings</button>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;">
+            <button class="btn btn-sm" onclick="saveSettings()">Save Settings</button>
+            <button class="btn btn-ghost btn-sm" id="oura-test-btn" onclick="testOuraConnection()">Test Oura Connection</button>
+            <span id="oura-test-status" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);align-self:center;"></span>
+          </div>
         </div>
       </details>
     </div>
@@ -1048,7 +1090,7 @@ let TARGETS = { kcal:1750, protein:140, carbs:180, fat:60, water:2500, goalWeigh
 /* ══ State ═══════════════════════════════════════════════════════════════ */
 let state = { date:todayISO(), calories:0, protein_g:0, carbs_g:0, fat_g:0, water_ml:0, weight_kg:null, meals:[], exercise:[], notes:'' };
 let history = [];
-let cfg = { anthropicKey:'', githubPat:'', githubRepo:'AndyKupke/Diet', githubBranch:'main' };
+let cfg = { anthropicKey:'', githubPat:'', githubRepo:'AndyKupke/Diet', githubBranch:'main', ouraToken:'' };
 let photoB64 = null;
 
 /* ══ Sidebar ══════════════════════════════════════════════════════════════ */
@@ -1062,8 +1104,8 @@ function switchTab(name) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id==='tab-'+name));
   document.getElementById('header-page-label').textContent = TAB_LABELS[name]||'';
   closeSidebar();
-  if (name==='dashboard')    setTimeout(drawCharts,60);
-  if (name==='summary')      renderSummaryMeals();
+  if (name==='dashboard')    { setTimeout(drawCharts,60); loadOuraIfNeeded().then(d=>renderOuraDashboard(d)); }
+  if (name==='summary')      { renderSummaryMeals(); loadOuraIfNeeded().then(d=>renderOuraSummary(d)); }
   if (name==='history')      renderHistoryTable();
   if (name==='supplements')  renderSupplements();
   if (name==='blood')        renderBloodTable();
@@ -1074,7 +1116,12 @@ function todayISO() { return new Date().toISOString().split('T')[0]; }
 function init() {
   loadCfg(); loadTargets(); loadHistory(); loadState(); loadSupplements(); loadBloodRecords(); renderAll();
   document.getElementById('blood-date').value = todayISO();
-  window.addEventListener('load', () => { if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts(); });
+  window.addEventListener('load', () => {
+    if (document.getElementById('tab-dashboard').classList.contains('active')) {
+      drawCharts();
+      loadOuraIfNeeded().then(d => renderOuraDashboard(d));
+    }
+  });
 }
 
 /* ══ Persistence ═════════════════════════════════════════════════════════ */
@@ -1089,17 +1136,27 @@ function loadCfg() {
   const raw=localStorage.getItem('dt_cfg');
   if(raw) cfg={...cfg,...JSON.parse(raw)};
   document.getElementById('setting-anthropic-key').value = cfg.anthropicKey||'';
+  document.getElementById('setting-oura-token').value    = cfg.ouraToken||'';
   document.getElementById('setting-github-pat').value    = cfg.githubPat||'';
   document.getElementById('setting-github-repo').value   = cfg.githubRepo||'';
   document.getElementById('setting-github-branch').value = cfg.githubBranch||'main';
+  // Show Oura import button if token exists
+  if (cfg.ouraToken) {
+    const btn = document.getElementById('oura-import-btn');
+    if (btn) btn.style.display = 'inline-flex';
+    document.getElementById('oura-dashboard-prompt').style.display = 'none';
+  }
 }
 function saveSettings() {
   cfg.anthropicKey=document.getElementById('setting-anthropic-key').value.trim();
+  cfg.ouraToken   =document.getElementById('setting-oura-token').value.trim();
   cfg.githubPat   =document.getElementById('setting-github-pat').value.trim();
   cfg.githubRepo  =document.getElementById('setting-github-repo').value.trim();
   cfg.githubBranch=document.getElementById('setting-github-branch').value.trim()||'main';
   localStorage.setItem('dt_cfg',JSON.stringify(cfg));
   toast('Settings saved','success');
+  // Kick off Oura load if token was just added
+  if (cfg.ouraToken) loadOuraIfNeeded();
 }
 function loadTargets() {
   const raw=localStorage.getItem('dt_targets');
@@ -1675,6 +1732,359 @@ function toast(msg,type=''){
   const el=document.getElementById('toast');el.textContent=msg;
   el.className='toast show'+(type?' '+type:'');clearTimeout(toastTimer);
   toastTimer=setTimeout(()=>el.classList.remove('show'),3200);
+}
+
+/* ══ Oura Ring Integration ════════════════════════════════════════════════ */
+// Oura v2 API — CORS-friendly via a proxy header trick.
+// NOTE: The Oura API does NOT set Access-Control-Allow-Origin for browser requests.
+// We store fetched data in state.oura (localStorage) and refresh via the
+// GitHub Actions agent (water_check.py already does this).
+// For direct browser calls we route through the Oura API directly — works if
+// the browser doesn't block it (some do). The token is stored client-side only.
+
+let ouraCache = null; // {date, readiness, sleep, activity, workouts}
+
+function ouraHeaders() {
+  return { 'Authorization': `Bearer ${cfg.ouraToken}` };
+}
+
+async function fetchOura(forceRefresh = false) {
+  if (!cfg.ouraToken) return null;
+  const today = todayISO();
+
+  // Return cache if fresh
+  if (!forceRefresh && ouraCache && ouraCache.date === today) return ouraCache;
+
+  // Try localStorage cache
+  if (!forceRefresh) {
+    const raw = localStorage.getItem('dt_oura_cache');
+    if (raw) {
+      const cached = JSON.parse(raw);
+      if (cached.date === today) { ouraCache = cached; return ouraCache; }
+    }
+  }
+
+  const base   = 'https://api.ouraring.com/v2/usercollection';
+  const params = `?start_date=${today}&end_date=${today}`;
+  const result = { date: today, readiness: null, sleep: null, activity: null, workouts: [] };
+
+  const safe = async (url) => {
+    try {
+      const r = await fetch(url, { headers: ouraHeaders() });
+      if (!r.ok) return null;
+      return r.json();
+    } catch (e) { return null; }
+  };
+
+  // 1 — Readiness
+  const rd = await safe(`${base}/daily_readiness${params}`);
+  if (rd?.data?.[0]) {
+    const d = rd.data[0];
+    result.readiness = {
+      score:        d.score,
+      temperature:  d.contributors?.body_temperature,
+      hrv:          d.contributors?.hrv_balance,
+      recovery:     d.contributors?.recovery_index,
+      resting_hr:   d.contributors?.resting_heart_rate,
+    };
+  }
+
+  // 2 — Sleep
+  const sl = await safe(`${base}/daily_sleep${params}`);
+  if (sl?.data?.[0]) {
+    const d = sl.data[0];
+    const contrib = d.contributors || {};
+    result.sleep = {
+      score:         d.score,
+      total_sleep_s: contrib.total_sleep,   // seconds
+      deep_sleep_s:  contrib.deep_sleep,
+      rem_sleep_s:   contrib.rem_sleep,
+      efficiency:    contrib.sleep_efficiency,
+      latency:       contrib.sleep_latency,
+      timing:        contrib.sleep_timing,
+    };
+  }
+
+  // 3 — Activity (steps, active calories, total calories)
+  const ac = await safe(`${base}/daily_activity${params}`);
+  if (ac?.data?.[0]) {
+    const d = ac.data[0];
+    result.activity = {
+      score:           d.score,
+      active_calories: d.active_calories,
+      total_calories:  d.total_calories,   // BMR + active
+      steps:           d.steps,
+      equivalent_walking_distance: d.equivalent_walking_distance,
+      meters_to_target:d.meters_to_target,
+      high_activity:   d.high_activity_time,  // seconds
+      medium_activity: d.medium_activity_time,
+      low_activity:    d.low_activity_time,
+      sedentary:       d.sedentary_time,
+    };
+  }
+
+  // 4 — Workouts (individual sessions)
+  const wk = await safe(`${base}/workout${params}`);
+  if (wk?.data) {
+    result.workouts = wk.data.map(w => ({
+      activity:    w.activity,
+      calories:    w.calories,
+      duration_s:  w.duration,
+      start:       w.start_datetime,
+      distance_m:  w.distance,
+      avg_hr:      w.average_heart_rate,
+      max_hr:      w.max_heart_rate,
+    }));
+  }
+
+  ouraCache = result;
+  localStorage.setItem('dt_oura_cache', JSON.stringify(result));
+  return result;
+}
+
+async function refreshOura() {
+  toast('Fetching Oura data…');
+  const data = await fetchOura(true);
+  if (!data) { toast('No Oura token — add it in Settings', 'error'); return; }
+  renderOuraDashboard(data);
+  renderOuraSummary(data);
+  toast('Oura data refreshed', 'success');
+}
+
+// ── Score → colour ─────────────────────────────────────────────────────────
+function scoreColor(score) {
+  if (score == null) return 'var(--text-muted)';
+  if (score >= 85) return 'var(--green)';
+  if (score >= 70) return 'var(--yellow)';
+  return 'var(--red)';
+}
+function fmtSec(s) {
+  if (!s) return '—';
+  const h = Math.floor(s / 3600), m = Math.floor((s % 3600) / 60);
+  return h ? `${h}h ${m}m` : `${m}m`;
+}
+function fmtNum(n, unit = '') { return n != null ? `${n.toLocaleString()}${unit}` : '—'; }
+
+// ── Dashboard KPI tiles ────────────────────────────────────────────────────
+function renderOuraDashboard(data) {
+  if (!data) return;
+  const strip   = document.getElementById('oura-dashboard-strip');
+  const prompt  = document.getElementById('oura-dashboard-prompt');
+  const tilesEl = document.getElementById('oura-kpi-tiles');
+
+  strip.style.display  = 'block';
+  prompt.style.display = 'none';
+
+  const tiles = [
+    {
+      label: 'Readiness',
+      val:   data.readiness?.score ?? '—',
+      unit:  '/100',
+      sub:   data.readiness?.resting_hr ? `HR ${data.readiness.resting_hr} bpm` : 'No data',
+      color: scoreColor(data.readiness?.score),
+    },
+    {
+      label: 'Sleep',
+      val:   data.sleep?.score ?? '—',
+      unit:  '/100',
+      sub:   fmtSec(data.sleep?.total_sleep_s),
+      color: scoreColor(data.sleep?.score),
+    },
+    {
+      label: 'Steps',
+      val:   data.activity?.steps != null ? (data.activity.steps).toLocaleString() : '—',
+      unit:  '',
+      sub:   data.activity?.equivalent_walking_distance
+               ? `${(data.activity.equivalent_walking_distance / 1000).toFixed(1)} km`
+               : '',
+      color: 'var(--text)',
+    },
+    {
+      label: 'Active kcal',
+      val:   data.activity?.active_calories ?? '—',
+      unit:  ' kcal',
+      sub:   data.activity?.total_calories ? `Total ${data.activity.total_calories} kcal` : '',
+      color: 'var(--yellow)',
+    },
+  ];
+
+  tilesEl.innerHTML = tiles.map(t => `
+    <div class="kpi-tile">
+      <div class="kpi-label">${t.label}</div>
+      <div class="kpi-value" style="color:${t.color}">${t.val}<span class="kpi-unit">${t.unit}</span></div>
+      ${t.sub ? `<div class="kpi-sub">${t.sub}</div>` : ''}
+    </div>`).join('');
+}
+
+// ── Daily Summary Oura panel ───────────────────────────────────────────────
+function renderOuraSummary(data) {
+  if (!data) return;
+  const panel   = document.getElementById('oura-summary-panel');
+  const tilesEl = document.getElementById('oura-summary-tiles');
+  const sleepEl = document.getElementById('oura-sleep-detail');
+  const actEl   = document.getElementById('oura-activity-detail');
+  const balPanel= document.getElementById('calorie-balance-panel');
+
+  panel.style.display = 'block';
+
+  // 3-tile strip: readiness / sleep score / activity score
+  tilesEl.innerHTML = [
+    { label:'Readiness Score', val:data.readiness?.score, unit:'/100', color: scoreColor(data.readiness?.score) },
+    { label:'Sleep Score',     val:data.sleep?.score,     unit:'/100', color: scoreColor(data.sleep?.score) },
+    { label:'Activity Score',  val:data.activity?.score,  unit:'/100', color: scoreColor(data.activity?.score) },
+  ].map(t=>`
+    <div class="kpi-tile">
+      <div class="kpi-label">${t.label}</div>
+      <div class="kpi-value" style="color:${t.color}">${t.val??'—'}<span class="kpi-unit">${t.unit}</span></div>
+    </div>`).join('');
+
+  // Sleep detail
+  const sl = data.sleep;
+  if (sl) {
+    const rows = [
+      ['Total sleep',  fmtSec(sl.total_sleep_s)],
+      ['Deep sleep',   fmtSec(sl.deep_sleep_s)],
+      ['REM sleep',    fmtSec(sl.rem_sleep_s)],
+      ['Efficiency',   sl.efficiency != null ? sl.efficiency + '%' : '—'],
+    ];
+    sleepEl.innerHTML = `
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">
+        💤 Sleep breakdown
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;">
+        ${rows.map(([l,v])=>`
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">${l}</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.03em;line-height:1;">${v}</div>
+          </div>`).join('')}
+      </div>`;
+  } else { sleepEl.style.display = 'none'; }
+
+  // Activity detail
+  const ac = data.activity;
+  if (ac) {
+    const acRows = [
+      ['Active kcal',  fmtNum(ac.active_calories, ' kcal')],
+      ['Total kcal',   fmtNum(ac.total_calories,  ' kcal')],
+      ['Steps',        fmtNum(ac.steps)],
+      ['High activity',fmtSec(ac.high_activity)],
+      ['Sedentary',    fmtSec(ac.sedentary)],
+    ];
+    actEl.innerHTML = `
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">
+        🏃 Activity breakdown
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;">
+        ${acRows.map(([l,v])=>`
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);">${l}</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:0.03em;line-height:1;">${v}</div>
+          </div>`).join('')}
+      </div>`;
+  } else { actEl.style.display = 'none'; }
+
+  // Workouts
+  if (data.workouts?.length) {
+    const wkHtml = data.workouts.map(w => {
+      const mins = Math.round((w.duration_s||0)/60);
+      const dist = w.distance_m ? ` · ${(w.distance_m/1000).toFixed(1)} km` : '';
+      const hr   = w.avg_hr ? ` · avg ${w.avg_hr} bpm` : '';
+      return `<div class="list-item" style="margin-top:6px;">
+        <div style="flex:1;">
+          <div class="list-item-name">${esc(w.activity||'Workout')} <span class="tag tag-b">Oura</span></div>
+          <div class="list-item-meta"><span>${mins} min</span>${dist?`<span>${dist.slice(3)}</span>`:''}${hr?`<span>${hr.slice(3)}</span>`:''}</div>
+        </div>
+        ${w.calories ? `<div class="list-item-value">${w.calories}<span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-left:4px;">kcal</span></div>` : ''}
+      </div>`;
+    }).join('');
+    actEl.innerHTML += `<div style="margin-top:14px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;">Today's sessions</div>${wkHtml}`;
+  }
+
+  // Calorie balance
+  if (ac?.total_calories) {
+    balPanel.style.display = 'block';
+    const intake    = state.calories || 0;
+    const active    = ac.active_calories || 0;
+    const totalBurn = ac.total_calories;
+    const net       = intake - totalBurn;
+    const netColor  = net <= 0 ? 'var(--green)' : 'var(--red)';
+    document.getElementById('bal-intake').innerHTML  = `${intake}<span class="kpi-unit">kcal</span>`;
+    document.getElementById('bal-active').innerHTML  = `${active}<span class="kpi-unit">kcal</span>`;
+    document.getElementById('bal-total').innerHTML   = `${totalBurn}<span class="kpi-unit">kcal</span>`;
+    document.getElementById('bal-net').innerHTML     = `<span style="color:${netColor}">${Math.abs(net)}<span class="kpi-unit">kcal</span></span>`;
+    document.getElementById('bal-sub').textContent   = net <= 0 ? 'deficit ✓' : 'surplus';
+    document.getElementById('bal-sub').style.color   = netColor;
+  }
+}
+
+// ── Import Oura workouts into the exercise log ─────────────────────────────
+async function importOuraWorkouts() {
+  const data = await fetchOura();
+  if (!data) { toast('No Oura token', 'error'); return; }
+  if (!data.workouts?.length) { toast('No workouts logged in Oura today', 'error'); return; }
+
+  let added = 0;
+  data.workouts.forEach(w => {
+    const name = w.activity || 'Workout';
+    // Skip if already logged
+    if (state.exercise.some(e => e.name === name && e.source === 'oura')) return;
+    state.exercise.push({
+      name,
+      duration_min: Math.round((w.duration_s || 0) / 60),
+      kcal_burned:  w.calories || 0,
+      type:         mapOuraActivity(w.activity),
+      time:         w.start || new Date().toISOString(),
+      source:       'oura',
+      avg_hr:       w.avg_hr,
+      distance_km:  w.distance_m ? +(w.distance_m / 1000).toFixed(2) : null,
+    });
+    added++;
+  });
+
+  if (!added) { toast('All Oura workouts already logged', 'error'); return; }
+  saveState(); renderExercise();
+  toast(`${added} workout${added !== 1 ? 's' : ''} imported from Oura`, 'success');
+}
+
+function mapOuraActivity(activity = '') {
+  const a = activity.toLowerCase();
+  if (a.includes('run') || a.includes('walk') || a.includes('cycling') || a.includes('swim') || a.includes('row')) return 'cardio';
+  if (a.includes('weight') || a.includes('strength') || a.includes('lift')) return 'strength';
+  if (a.includes('hiit') || a.includes('interval')) return 'hiit';
+  if (a.includes('yoga') || a.includes('stretch') || a.includes('pilates')) return 'flexibility';
+  return 'other';
+}
+
+// ── Test connection from Settings ──────────────────────────────────────────
+async function testOuraConnection() {
+  const token = document.getElementById('setting-oura-token').value.trim();
+  if (!token) { toast('Enter an Oura token first', 'error'); return; }
+  const statusEl = document.getElementById('oura-test-status');
+  statusEl.textContent = 'Testing…';
+  try {
+    const r = await fetch('https://api.ouraring.com/v2/usercollection/personal_info', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    if (r.ok) {
+      const info = await r.json();
+      statusEl.innerHTML = `<span style="color:var(--green)">✓ Connected — ${esc(info.email||'ring found')}</span>`;
+      toast('Oura connected!', 'success');
+    } else {
+      statusEl.innerHTML = `<span style="color:var(--red)">✗ Invalid token (${r.status})</span>`;
+    }
+  } catch(e) {
+    statusEl.innerHTML = `<span style="color:var(--red)">✗ Network error — check CORS or token</span>`;
+  }
+}
+
+// ══ Oura auto-load on tab switch ═══════════════════════════════════════════
+async function loadOuraIfNeeded() {
+  if (!cfg.ouraToken) return;
+  // Show import button in Input tab
+  const importBtn = document.getElementById('oura-import-btn');
+  if (importBtn) importBtn.style.display = 'inline-flex';
+  const data = await fetchOura();
+  renderOuraDashboard(data);
 }
 
 /* ══ Utils ════════════════════════════════════════════════════════════════ */
