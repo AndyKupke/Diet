@@ -718,9 +718,10 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="card"><div class="card-label">Protein</div><div class="card-value" id="total-protein">0<span class="unit">g</span></div><div class="card-target">target ≥ 140 g</div><div class="progress-bar"><div class="progress-fill" id="protein-bar" style="width:0%"></div></div></div>
       <div class="card"><div class="card-label">Water</div><div class="card-value" id="total-water">0<span class="unit">ml</span></div><div class="card-target">of 2500 ml</div><div class="progress-bar"><div class="progress-fill" id="water-bar" style="width:0%"></div></div></div>
     </div>
-    <div class="grid-2">
+    <div class="grid-3">
       <div class="card"><div class="card-label">Carbohydrates</div><div class="card-value" id="total-carbs">0<span class="unit">g</span></div><div class="card-target">target ≤ 180 g</div><div class="progress-bar"><div class="progress-fill" id="carbs-bar" style="width:0%"></div></div></div>
       <div class="card"><div class="card-label">Fat</div><div class="card-value" id="total-fat">0<span class="unit">g</span></div><div class="card-target">target ≤ 60 g</div><div class="progress-bar"><div class="progress-fill" id="fat-bar" style="width:0%"></div></div></div>
+      <div class="card"><div class="card-label">Weight</div><div class="card-value" id="summary-weight">—<span class="unit">kg</span></div><div class="card-target" id="summary-weight-diff">goal 72 kg</div></div>
     </div>
     <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Today's Meals</span><span class="section-rule"></span></div>
     <div id="summary-meal-list" class="item-list"></div>
@@ -1106,6 +1107,7 @@ function switchTab(name) {
   closeSidebar();
   if (name==='dashboard')    { setTimeout(drawCharts,60); loadOuraIfNeeded().then(d=>renderOuraDashboard(d)); }
   if (name==='summary')      { renderSummaryMeals(); loadOuraIfNeeded().then(d=>renderOuraSummary(d)); }
+  if (name==='input')        renderWeight();
   if (name==='history')      renderHistoryTable();
   if (name==='supplements')  renderSupplements();
   if (name==='blood')        renderBloodTable();
@@ -1127,8 +1129,21 @@ function init() {
 /* ══ Persistence ═════════════════════════════════════════════════════════ */
 function loadState() {
   const raw = localStorage.getItem('dt_state');
-  if (raw) { const p=JSON.parse(raw); if(p.date===todayISO()){state=p;return;} }
-  state.date=todayISO(); saveState();
+  if (raw) {
+    const p = JSON.parse(raw);
+    if (p.date === todayISO()) { state = p; return; }
+    // Date changed → auto-archive yesterday before resetting
+    if (p.date && (p.calories > 0 || p.water_ml > 0 || p.weight_kg)) {
+      loadHistory(); // make sure history array is current
+      const snap = { date:p.date, calories:p.calories, protein_g:p.protein_g,
+                     carbs_g:p.carbs_g, fat_g:p.fat_g, water_ml:p.water_ml, weight_kg:p.weight_kg };
+      history = history.filter(h => h.date !== snap.date);
+      history.push(snap);
+      history.sort((a,b) => a.date.localeCompare(b.date));
+      saveHistory();
+    }
+  }
+  state.date = todayISO(); saveState();
 }
 function saveState() { localStorage.setItem('dt_state', JSON.stringify(state)); }
 
@@ -1181,7 +1196,7 @@ function saveHistory() { localStorage.setItem('dt_history',JSON.stringify(histor
 function renderAll() { renderSummary(); renderMeals(); renderExercise(); renderWeight(); document.getElementById('notes-input').value=state.notes||''; }
 
 function renderSummary() {
-  const {calories,protein_g,carbs_g,fat_g,water_ml}=state;
+  const {calories,protein_g,carbs_g,fat_g,water_ml,weight_kg}=state;
   setHTML('total-kcal',   `${calories}<span class="unit">kcal</span>`);
   setHTML('total-protein',`${protein_g.toFixed(1)}<span class="unit">g</span>`);
   setHTML('total-carbs',  `${carbs_g.toFixed(1)}<span class="unit">g</span>`);
@@ -1191,6 +1206,17 @@ function renderSummary() {
   document.getElementById('kcal-remain').textContent = rem>0?`${rem} kcal remaining`:`${calories-TARGETS.kcal} kcal over target`;
   bar('kcal-bar',calories,TARGETS.kcal,true); bar('protein-bar',protein_g,TARGETS.protein,false);
   bar('carbs-bar',carbs_g,TARGETS.carbs,true); bar('fat-bar',fat_g,TARGETS.fat,true); bar('water-bar',water_ml,TARGETS.water,false);
+  // Weight card in summary
+  if (weight_kg) {
+    const diff = +(weight_kg - TARGETS.goalWeight).toFixed(1);
+    const col  = diff > 0 ? 'var(--red)' : 'var(--green)';
+    setHTML('summary-weight', `${weight_kg}<span class="unit">kg</span>`);
+    document.getElementById('summary-weight-diff').innerHTML =
+      `<span style="color:${col}">${diff>0?'+':''}${diff} kg</span> vs goal ${TARGETS.goalWeight} kg`;
+  } else {
+    setHTML('summary-weight', `—<span class="unit">kg</span>`);
+    document.getElementById('summary-weight-diff').textContent = `goal ${TARGETS.goalWeight} kg — not logged today`;
+  }
 }
 function renderSummaryMeals() {
   const list=document.getElementById('summary-meal-list'), empty=document.getElementById('summary-no-meals');
