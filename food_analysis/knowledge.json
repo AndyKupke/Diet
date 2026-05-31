@@ -1,0 +1,38 @@
+{
+  "_meta": {
+    "version": 1,
+    "description": "Food analysis knowledge base — grows with every analysed meal",
+    "last_updated": "",
+    "total_analyses": 0
+  },
+  "calibrations": {
+    "description": "User-confirmed corrections to past estimates. Used to fine-tune future prompts.",
+    "entries": []
+  },
+  "known_items": {
+    "description": "Foods seen before with confirmed or estimated nutritional data",
+    "entries": []
+  },
+  "portion_anchors": {
+    "description": "Reference objects seen in past photos that help estimate portion sizes",
+    "examples": [
+      { "object": "standard dinner plate (26cm)", "area_cm2": 531 },
+      { "object": "dessert spoon", "volume_ml": 10 },
+      { "object": "tablespoon", "volume_ml": 15 },
+      { "object": "wine glass (standard pour)", "volume_ml": 150 },
+      { "object": "espresso cup", "volume_ml": 60 },
+      { "object": "regular coffee mug", "volume_ml": 240 },
+      { "object": "adult hand (palm)", "area_cm2": 80, "note": "~1 serving of protein" },
+      { "object": "adult fist", "volume_ml": 240, "note": "~1 cup" },
+      { "object": "thumb tip", "volume_ml": 5, "note": "~1 tsp fat/oil" }
+    ]
+  },
+  "meal_patterns": {
+    "description": "Repeated meals detected across analyses",
+    "entries": []
+  },
+  "analyses": {
+    "description": "Log of all past analyses (last 100 kept for context injection)",
+    "entries": []
+  }
+}

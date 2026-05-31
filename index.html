@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<script src="food_analysis/prompt_builder.js"></script>
 <style>
 /* ══════════════════════════════════════════════════════════════════════════
    THEME TOKENS
@@ -748,9 +749,35 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="photo-zone" id="photo-zone">
         <input type="file" id="photo-input" accept="image/*" onchange="handlePhoto(event)">
         <div class="photo-zone-icon">📷</div>
-        <p>Drop a food photo or tap to analyse with Claude Vision</p>
+        <p>Drop a food photo / barcode or tap to analyse with Claude Vision</p>
       </div>
-      <button class="btn btn-sm" id="analyse-btn" onclick="analysePhoto()" style="margin-bottom:14px;display:none;">Analyse with Claude Vision</button>
+      <!-- Voice / text note for context -->
+      <div id="photo-context-row" style="display:none;margin-bottom:12px;">
+        <div class="field" style="margin-bottom:8px;">
+          <label>Add context note (optional)</label>
+          <input type="text" id="photo-note" placeholder='e.g. "two slices of sourdough, skipped the butter" or barcode hints'>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <button class="btn" id="analyse-btn" onclick="analysePhoto()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Analyse with Claude Vision
+          </button>
+          <button class="btn btn-ghost btn-sm" onclick="startVoiceNote()" id="voice-btn" title="Record a voice note">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+            Voice note
+          </button>
+          <span id="voice-status" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
+        </div>
+      </div>
+      <!-- Confidence & detail row (shown after analysis) -->
+      <div id="analysis-detail" style="display:none;background:rgba(255,204,0,0.04);border:1px solid var(--divider-y);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;">Analysis breakdown</div>
+        <div id="analysis-items"></div>
+        <div style="display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;">
+          <span id="analysis-confidence" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
+          <span id="analysis-tip" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--text-muted);font-style:italic;"></span>
+        </div>
+      </div>
       <div class="field"><label>Meal Name</label><input type="text" id="meal-name" placeholder="e.g. Chicken & Rice Bowl"></div>
       <div class="macro-row">
         <div class="field"><label>kcal</label><input type="number" id="meal-kcal" placeholder="0" min="0"></div>
@@ -1194,9 +1221,12 @@ function addMeal() {
 }
 function removeMeal(i){state.meals.splice(i,1);recalc();saveState();renderAll();}
 function clearMealForm(){
-  ['meal-name','meal-kcal','meal-protein','meal-carbs','meal-fat'].forEach(id=>document.getElementById(id).value='');
-  photoB64=null;document.getElementById('photo-preview').style.display='none';
-  document.getElementById('photo-zone').style.display='block';document.getElementById('analyse-btn').style.display='none';
+  ['meal-name','meal-kcal','meal-protein','meal-carbs','meal-fat','photo-note'].forEach(id=>document.getElementById(id).value='');
+  photoB64=null; photoMimeType='image/jpeg';
+  document.getElementById('photo-preview').style.display='none';
+  document.getElementById('photo-zone').style.display='block';
+  document.getElementById('photo-context-row').style.display='none';
+  document.getElementById('analysis-detail').style.display='none';
 }
 function recalc(){
   state.calories =Math.round(state.meals.reduce((s,m)=>s+m.kcal,0));
@@ -1226,26 +1256,256 @@ function logWeight(){
 /* ══ Notes ════════════════════════════════════════════════════════════════ */
 function saveNotes(){state.notes=document.getElementById('notes-input').value;saveState();toast('Notes saved','success');}
 
-/* ══ Photo + Vision ══════════════════════════════════════════════════════ */
+/* ══ Photo + Vision (skill-powered) ══════════════════════════════════════ */
+let photoMimeType = 'image/jpeg';
+
 function handlePhoto(event){
-  const file=event.target.files[0];if(!file)return;
+  const file=event.target.files[0]; if(!file) return;
+  photoMimeType = file.type || 'image/jpeg';
   const reader=new FileReader();
-  reader.onload=e=>{const url=e.target.result;photoB64=url.split(',')[1];const prev=document.getElementById('photo-preview');prev.src=url;prev.style.display='block';document.getElementById('photo-zone').style.display='none';document.getElementById('analyse-btn').style.display='inline-flex';};
+  reader.onload=e=>{
+    const url=e.target.result;
+    photoB64=url.split(',')[1];
+    const prev=document.getElementById('photo-preview');
+    prev.src=url; prev.style.display='block';
+    document.getElementById('photo-zone').style.display='none';
+    document.getElementById('photo-context-row').style.display='block';
+    document.getElementById('analysis-detail').style.display='none';
+  };
   reader.readAsDataURL(file);
 }
-async function analysePhoto(){
-  if(!photoB64)return;
-  if(!cfg.anthropicKey){toast('Add your Anthropic API key in Settings','error');return;}
+
+// ── Voice note via Web Speech API ─────────────────────────────────────────
+let speechRec = null;
+function startVoiceNote() {
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) { toast('Voice input not supported in this browser','error'); return; }
+  if (speechRec) { speechRec.stop(); return; }
+  speechRec = new SpeechRecognition();
+  speechRec.lang = 'en-US'; speechRec.interimResults = false; speechRec.maxAlternatives = 1;
+  const statusEl = document.getElementById('voice-status');
+  const btn = document.getElementById('voice-btn');
+  btn.style.borderColor = 'var(--red)'; btn.style.color = 'var(--red)';
+  statusEl.textContent = '● Recording…';
+  speechRec.onresult = e => {
+    const transcript = e.results[0][0].transcript;
+    const noteEl = document.getElementById('photo-note');
+    noteEl.value = noteEl.value ? noteEl.value + ' ' + transcript : transcript;
+    statusEl.textContent = '✓ Note added';
+  };
+  speechRec.onerror = () => { statusEl.textContent = 'Voice error'; };
+  speechRec.onend = () => {
+    speechRec = null;
+    btn.style.borderColor = ''; btn.style.color = '';
+    setTimeout(() => { statusEl.textContent = ''; }, 3000);
+  };
+  speechRec.start();
+}
+
+// ── Load knowledge base from GitHub or localStorage ───────────────────────
+async function loadKnowledgeBase() {
+  // Try localStorage cache first (fast path)
+  const cached = localStorage.getItem('dt_knowledge');
+  if (cached) {
+    try { return JSON.parse(cached); } catch(e) {}
+  }
+  // Try fetching from GitHub repo
+  if (cfg.githubPat && cfg.githubRepo) {
+    try {
+      const resp = await fetch(`https://api.github.com/repos/${cfg.githubRepo}/contents/food_analysis/knowledge.json?ref=${cfg.githubBranch||'main'}`,
+        { headers: { 'Authorization': `Bearer ${cfg.githubPat}`, 'Accept': 'application/vnd.github.v3+json' }});
+      if (resp.ok) {
+        const data = await resp.json();
+        const kb = JSON.parse(atob(data.content.replace(/\n/g,'')));
+        localStorage.setItem('dt_knowledge', JSON.stringify(kb));
+        return kb;
+      }
+    } catch(e) { console.warn('Knowledge base fetch failed', e); }
+  }
+  return null;
+}
+
+// ── Save knowledge base update back to GitHub ─────────────────────────────
+async function saveKnowledgeBase(kb) {
+  localStorage.setItem('dt_knowledge', JSON.stringify(kb));
+  if (!cfg.githubPat || !cfg.githubRepo) return;
+  try {
+    const apiUrl = `https://api.github.com/repos/${cfg.githubRepo}/contents/food_analysis/knowledge.json`;
+    const headers = { 'Authorization': `Bearer ${cfg.githubPat}`, 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' };
+    let sha = null;
+    const get = await fetch(`${apiUrl}?ref=${cfg.githubBranch||'main'}`, { headers });
+    if (get.ok) sha = (await get.json()).sha;
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(kb, null, 2))));
+    const body = { message: `tracker: update food knowledge base ${kb._meta?.last_updated||''}`, content, branch: cfg.githubBranch||'main' };
+    if (sha) body.sha = sha;
+    await fetch(apiUrl, { method: 'PUT', headers, body: JSON.stringify(body) });
+  } catch(e) { console.warn('Knowledge base save failed', e); }
+}
+
+// ── Update knowledge base with a new analysis result ─────────────────────
+function updateKnowledgeBase(kb, analysisResult, userNote) {
+  if (!kb) return;
+  if (!window.FoodPrompt) return;
+
+  const { buildKnowledgeEntry } = window.FoodPrompt;
+  const entry = buildKnowledgeEntry({
+    items:      analysisResult.items || [],
+    totals:     analysisResult.totals || {},
+    mealType:   analysisResult.meal_type,
+    confidence: analysisResult.overall_confidence,
+    userNote,
+  });
+
+  // Append to analyses log, keep last 100
+  if (!kb.analyses) kb.analyses = { entries: [] };
+  kb.analyses.entries.push(entry);
+  if (kb.analyses.entries.length > 100) kb.analyses.entries = kb.analyses.entries.slice(-100);
+
+  // Upsert each food item into known_items (by name, case-insensitive)
+  if (!kb.known_items) kb.known_items = { entries: [] };
+  (analysisResult.items || []).forEach(item => {
+    const key = item.name.toLowerCase().trim();
+    const existing = kb.known_items.entries.findIndex(e => e.name.toLowerCase() === key);
+    const record = {
+      name: item.name,
+      serving: item.quantity_desc,
+      weight_g: item.weight_g,
+      kcal: item.kcal,
+      protein_g: item.protein_g,
+      carbs_g: item.carbs_g,
+      fat_g: item.fat_g,
+      confidence: item.confidence,
+      last_seen: entry.date,
+      seen_count: 1,
+    };
+    if (existing >= 0) {
+      record.seen_count = (kb.known_items.entries[existing].seen_count || 1) + 1;
+      // Smooth update: average with existing values if confidence is high
+      if (item.confidence > 0.75) {
+        const prev = kb.known_items.entries[existing];
+        record.kcal      = Math.round((prev.kcal + item.kcal) / 2);
+        record.protein_g = +((prev.protein_g + item.protein_g) / 2).toFixed(1);
+        record.carbs_g   = +((prev.carbs_g + item.carbs_g) / 2).toFixed(1);
+        record.fat_g     = +((prev.fat_g + item.fat_g) / 2).toFixed(1);
+      }
+      kb.known_items.entries[existing] = record;
+    } else {
+      kb.known_items.entries.push(record);
+    }
+  });
+
+  // Update meta
+  if (!kb._meta) kb._meta = {};
+  kb._meta.last_updated    = new Date().toISOString();
+  kb._meta.total_analyses  = (kb._meta.total_analyses || 0) + 1;
+
+  return kb;
+}
+
+// ── Main analysis function ─────────────────────────────────────────────────
+async function analysePhoto() {
+  if (!photoB64) return;
+  if (!cfg.anthropicKey) { toast('Add your Anthropic API key in Settings','error'); return; }
+
   document.getElementById('overlay').classList.add('active');
-  try{
-    const resp=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json','x-api-key':cfg.anthropicKey,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-calls':'true'},body:JSON.stringify({model:'claude-opus-4-7',max_tokens:512,messages:[{role:'user',content:[{type:'image',source:{type:'base64',media_type:'image/jpeg',data:photoB64}},{type:'text',text:'Analyse this food photo and estimate nutritional content.\nReturn ONLY a JSON object (no markdown):\n{"name":"meal name","kcal":number,"protein_g":number,"carbs_g":number,"fat_g":number}\nBe conservative. All numbers must be integers.'}]}]})});
-    if(!resp.ok){const e=await resp.json();throw new Error(e.error?.message||`API ${resp.status}`);}
-    const p=JSON.parse((await resp.json()).content[0].text.trim().replace(/```json\n?|\n?```/g,'').trim());
-    document.getElementById('meal-name').value=p.name||'';document.getElementById('meal-kcal').value=p.kcal||0;
-    document.getElementById('meal-protein').value=p.protein_g||0;document.getElementById('meal-carbs').value=p.carbs_g||0;document.getElementById('meal-fat').value=p.fat_g||0;
-    toast('Photo analysed — review & confirm','success');
-  }catch(err){toast('Analysis failed: '+err.message,'error');}
-  finally{document.getElementById('overlay').classList.remove('active');}
+  document.getElementById('analysis-detail').style.display = 'none';
+
+  try {
+    const userNote = document.getElementById('photo-note').value.trim();
+    const hour = new Date().getHours();
+
+    // Load knowledge base for calibration context
+    const knowledge = await loadKnowledgeBase();
+
+    // Build structured prompt using the skill's prompt builder
+    let systemPrompt, userPrompt;
+    if (window.FoodPrompt) {
+      ({ systemPrompt, userPrompt } = window.FoodPrompt.buildFoodPrompt({ userNote, knowledge, hour }));
+    } else {
+      // Fallback if script didn't load
+      systemPrompt = 'You are a precise nutritionist. Analyse food images and return JSON with nutritional data.';
+      userPrompt = `Analyse this food image. Return ONLY JSON: {"meal_type":"","items":[{"name":"","quantity_desc":"","weight_g":0,"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"confidence":0.8,"estimation_basis":""}],"totals":{"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0},"overall_confidence":0.8,"estimation_notes":"","improvement_hint":""}${userNote ? '\nUser note: "'+userNote+'"' : ''}`;
+    }
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': cfg.anthropicKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-calls': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 1500,
+        system: systemPrompt,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: photoMimeType, data: photoB64 } },
+            { type: 'text', text: userPrompt },
+          ],
+        }],
+      }),
+    });
+
+    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API ${resp.status}`); }
+
+    const raw = (await resp.json()).content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
+    const parsed = JSON.parse(raw);
+
+    // ── Fill in the form fields from totals ───────────────────────────────
+    const tot = parsed.totals || {};
+    const firstItem = (parsed.items || [])[0] || {};
+    const mealName = parsed.items?.length > 1
+      ? parsed.items.map(i=>i.name).join(', ')
+      : (firstItem.name || parsed.meal_type || 'Meal');
+
+    document.getElementById('meal-name').value    = mealName;
+    document.getElementById('meal-kcal').value    = tot.kcal    || firstItem.kcal    || 0;
+    document.getElementById('meal-protein').value = tot.protein_g || firstItem.protein_g || 0;
+    document.getElementById('meal-carbs').value   = tot.carbs_g  || firstItem.carbs_g  || 0;
+    document.getElementById('meal-fat').value     = tot.fat_g    || firstItem.fat_g    || 0;
+
+    // ── Show detailed breakdown ───────────────────────────────────────────
+    const detailEl = document.getElementById('analysis-detail');
+    const itemsEl  = document.getElementById('analysis-items');
+    itemsEl.innerHTML = (parsed.items || []).map(item => `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--divider);gap:8px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:120px;">
+          <span style="font-size:13px;font-weight:400;">${esc(item.name)}</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-left:8px;">${esc(item.quantity_desc||'')}</span>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;display:flex;gap:10px;white-space:nowrap;">
+          <span style="color:var(--yellow);">${item.kcal} kcal</span>
+          <span>P ${item.protein_g}g</span>
+          <span>C ${item.carbs_g}g</span>
+          <span>F ${item.fat_g}g</span>
+          <span style="color:var(--text-muted);font-size:8px;">${Math.round((item.confidence||0)*100)}%</span>
+        </div>
+      </div>`).join('');
+
+    const conf = Math.round((parsed.overall_confidence || 0.8) * 100);
+    const confColor = conf >= 80 ? 'var(--green)' : conf >= 60 ? 'var(--yellow)' : 'var(--red)';
+    document.getElementById('analysis-confidence').innerHTML =
+      `Confidence: <strong style="color:${confColor}">${conf}%</strong> · ${esc(parsed.estimation_notes||'')}`;
+    document.getElementById('analysis-tip').textContent = parsed.improvement_hint || '';
+    detailEl.style.display = 'block';
+
+    // ── Learn: update knowledge base asynchronously ───────────────────────
+    if (knowledge && window.FoodPrompt) {
+      const updatedKb = updateKnowledgeBase(knowledge, parsed, userNote);
+      saveKnowledgeBase(updatedKb).catch(() => {});
+    }
+
+    toast(`${parsed.items?.length||1} item${parsed.items?.length!==1?'s':''} analysed — review & confirm`,'success');
+
+  } catch(err) {
+    toast('Analysis failed: ' + err.message, 'error');
+    console.error(err);
+  } finally {
+    document.getElementById('overlay').classList.remove('active');
+  }
 }
 
 /* ══ GitHub Sync ══════════════════════════════════════════════════════════ */
