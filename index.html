@@ -1058,10 +1058,7 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-copy">Diet Tracking &copy; 2026</div>
-      <div class="footer-actions">
-        <button class="btn btn-sm" onclick="switchTab('input')">+ Log Meal</button>
-        <button class="btn btn-ghost btn-sm" onclick="syncToGitHub()">Sync</button>
-      </div>
+      <div class="footer-actions"></div>
     </div>
   </div>
 </footer>
@@ -1853,7 +1850,7 @@ async function analysePhoto() {
         'Content-Type': 'application/json',
         'x-api-key': cfg.anthropicKey,
         'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-calls': 'true',
+        'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
         model: 'claude-opus-4-5',
@@ -3123,7 +3120,7 @@ Rules:
         'x-api-key':         apiKey,
         'anthropic-version': '2023-06-01',
         'content-type':      'application/json',
-        'anthropic-dangerous-request-proxy': 'true',
+        'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
         model:      'claude-opus-4-5',
