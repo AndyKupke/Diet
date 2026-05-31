@@ -630,6 +630,14 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       History
     </div></li>
+    <li><div class="sidebar-nav-item" data-tab="supplements" onclick="switchTab('supplements')">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.5 20H4a2 2 0 01-2-2V6a2 2 0 012-2h16a2 2 0 012 2v7"/><circle cx="17" cy="17" r="4"/><path d="M17 15v4M15 17h4"/></svg>
+      Supplements
+    </div></li>
+    <li><div class="sidebar-nav-item" data-tab="blood" onclick="switchTab('blood')">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8 7 5 10.5 5 14a7 7 0 0014 0c0-3.5-3-7-7-12z"/></svg>
+      Check-up Blood
+    </div></li>
     <li><div class="sidebar-nav-divider"></div></li>
     <li><div class="sidebar-nav-item" data-tab="settings" onclick="switchTab('settings')">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
@@ -796,6 +804,118 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
   </div>
 </div>
 
+<!-- SUPPLEMENTS -->
+<div class="tab-panel" id="tab-supplements">
+  <div class="wrap">
+    <div class="section-head"><span class="section-title">Supplements</span><span class="section-rule"></span></div>
+
+    <!-- Daily checklist -->
+    <div class="panel panel-accent" style="margin-bottom:16px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Today's checklist</div>
+      <div id="supp-checklist" class="item-list"></div>
+      <div id="supp-checklist-empty" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-muted);padding:8px 0;display:none;">No supplements added yet — add one below.</div>
+    </div>
+
+    <!-- Add supplement -->
+    <div class="section-head"><span class="section-title" style="font-size:16px;">Add Supplement</span><span class="section-rule"></span></div>
+    <div class="panel">
+      <div class="grid-3">
+        <div class="field"><label>Name</label><input type="text" id="supp-name" placeholder="e.g. Vitamin D3"></div>
+        <div class="field"><label>Dose</label><input type="text" id="supp-dose" placeholder="e.g. 2000 IU"></div>
+        <div class="field"><label>Timing</label>
+          <select id="supp-timing">
+            <option value="morning">Morning</option>
+            <option value="midday">Midday</option>
+            <option value="evening">Evening</option>
+            <option value="with meal">With meal</option>
+            <option value="bedtime">Bedtime</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Notes (optional)</label><input type="text" id="supp-notes" placeholder="e.g. take with fatty food"></div>
+      <button class="btn" onclick="addSupplement()">Add Supplement</button>
+    </div>
+
+    <!-- Supplement library -->
+    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">My Supplements</span><span class="section-rule"></span></div>
+    <div id="supp-library" class="item-list"></div>
+    <div id="supp-library-empty" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-muted);padding:12px 0;display:none;">No supplements saved.</div>
+  </div>
+</div>
+
+<!-- BLOOD CHECK-UP -->
+<div class="tab-panel" id="tab-blood">
+  <div class="wrap">
+    <div class="section-head"><span class="section-title">Check-up Blood</span><span class="section-rule"></span></div>
+
+    <!-- Latest values KPI strip -->
+    <div id="blood-kpi-strip" class="grid-4" style="margin-bottom:14px;"></div>
+
+    <!-- Log new result -->
+    <div class="section-head"><span class="section-title" style="font-size:16px;">Log Result</span><span class="section-rule"></span></div>
+    <div class="panel">
+      <div class="grid-2">
+        <div class="field"><label>Date</label><input type="date" id="blood-date"></div>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin:8px 0 12px;">Metabolic</div>
+      <div class="grid-3">
+        <div class="field"><label>Glucose (mg/dL)</label><input type="number" id="blood-glucose" placeholder="85" step="0.1" min="0"></div>
+        <div class="field"><label>HbA1c (%)</label><input type="number" id="blood-hba1c" placeholder="5.4" step="0.1" min="0"></div>
+        <div class="field"><label>Insulin (µU/mL)</label><input type="number" id="blood-insulin" placeholder="8" step="0.1" min="0"></div>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin:16px 0 12px;">Lipids</div>
+      <div class="grid-3">
+        <div class="field"><label>Total Cholesterol (mg/dL)</label><input type="number" id="blood-chol-total" placeholder="180" step="0.1" min="0"></div>
+        <div class="field"><label>LDL (mg/dL)</label><input type="number" id="blood-chol-ldl" placeholder="100" step="0.1" min="0"></div>
+        <div class="field"><label>HDL (mg/dL)</label><input type="number" id="blood-chol-hdl" placeholder="55" step="0.1" min="0"></div>
+        <div class="field"><label>Triglycerides (mg/dL)</label><input type="number" id="blood-triglycerides" placeholder="90" step="0.1" min="0"></div>
+      </div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin:16px 0 12px;">Micronutrients &amp; Hormones</div>
+      <div class="grid-3">
+        <div class="field"><label>Ferritin (µg/L)</label><input type="number" id="blood-ferritin" placeholder="80" step="0.1" min="0"></div>
+        <div class="field"><label>Vitamin D (ng/mL)</label><input type="number" id="blood-vitd" placeholder="40" step="0.1" min="0"></div>
+        <div class="field"><label>TSH (mU/L)</label><input type="number" id="blood-tsh" placeholder="1.8" step="0.01" min="0"></div>
+        <div class="field"><label>Testosterone (ng/dL)</label><input type="number" id="blood-testo" placeholder="550" step="1" min="0"></div>
+        <div class="field"><label>CRP (mg/L)</label><input type="number" id="blood-crp" placeholder="0.5" step="0.1" min="0"></div>
+        <div class="field"><label>Vitamin B12 (pg/mL)</label><input type="number" id="blood-b12" placeholder="400" step="1" min="0"></div>
+      </div>
+      <div class="field"><label>Notes</label><input type="text" id="blood-notes" placeholder="Fasted 12h, morning draw…"></div>
+      <button class="btn" onclick="addBloodRecord()">Save Result</button>
+    </div>
+
+    <!-- Reference ranges -->
+    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Reference Ranges</span><span class="section-rule"></span></div>
+    <div class="panel">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:6px 20px;font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.08em;color:var(--text-muted);">
+        <div>Glucose: <strong style="color:var(--green)">70–99 mg/dL</strong></div>
+        <div>HbA1c: <strong style="color:var(--green)">&lt;5.7 %</strong></div>
+        <div>Insulin: <strong style="color:var(--green)">2–20 µU/mL</strong></div>
+        <div>Total Cholesterol: <strong style="color:var(--green)">&lt;200 mg/dL</strong></div>
+        <div>LDL: <strong style="color:var(--green)">&lt;100 mg/dL</strong></div>
+        <div>HDL: <strong style="color:var(--green)">&gt;40 mg/dL</strong></div>
+        <div>Triglycerides: <strong style="color:var(--green)">&lt;150 mg/dL</strong></div>
+        <div>Ferritin: <strong style="color:var(--green)">30–300 µg/L</strong></div>
+        <div>Vitamin D: <strong style="color:var(--green)">30–80 ng/mL</strong></div>
+        <div>TSH: <strong style="color:var(--green)">0.4–4.0 mU/L</strong></div>
+        <div>Testosterone: <strong style="color:var(--green)">300–900 ng/dL</strong></div>
+        <div>CRP: <strong style="color:var(--green)">&lt;1.0 mg/L</strong></div>
+        <div>Vitamin B12: <strong style="color:var(--green)">200–900 pg/mL</strong></div>
+      </div>
+    </div>
+
+    <!-- History table -->
+    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">History</span><span class="section-rule"></span></div>
+    <div class="history-table-wrap">
+      <table class="history-table" id="blood-history-table">
+        <thead><tr>
+          <th>Date</th><th>Glucose</th><th>HbA1c</th><th>LDL</th><th>HDL</th><th>Trig</th><th>Vit D</th><th>CRP</th><th>Notes</th><th></th>
+        </tr></thead>
+        <tbody id="blood-history-tbody"><tr><td colspan="10" class="history-empty">No blood results logged yet.</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
 <!-- SETTINGS -->
 <div class="tab-panel" id="tab-settings">
   <div class="wrap">
@@ -909,21 +1029,24 @@ function openSidebar()  { document.getElementById('sidebar').classList.add('open
 function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-backdrop').classList.remove('open'); document.body.style.overflow=''; }
 
 /* ══ Tab switching ════════════════════════════════════════════════════════ */
-const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', history:'History', settings:'Settings' };
+const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', history:'History', supplements:'Supplements', blood:'Check-up Blood', settings:'Settings' };
 function switchTab(name) {
   document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.toggle('active', el.dataset.tab===name));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id==='tab-'+name));
   document.getElementById('header-page-label').textContent = TAB_LABELS[name]||'';
   closeSidebar();
-  if (name==='dashboard') setTimeout(drawCharts,60);
-  if (name==='summary')   renderSummaryMeals();
-  if (name==='history')   renderHistoryTable();
+  if (name==='dashboard')    setTimeout(drawCharts,60);
+  if (name==='summary')      renderSummaryMeals();
+  if (name==='history')      renderHistoryTable();
+  if (name==='supplements')  renderSupplements();
+  if (name==='blood')        renderBloodTable();
 }
 
 /* ══ Boot ════════════════════════════════════════════════════════════════ */
 function todayISO() { return new Date().toISOString().split('T')[0]; }
 function init() {
-  loadCfg(); loadTargets(); loadHistory(); loadState(); renderAll();
+  loadCfg(); loadTargets(); loadHistory(); loadState(); loadSupplements(); loadBloodRecords(); renderAll();
+  document.getElementById('blood-date').value = todayISO();
   window.addEventListener('load', () => { if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts(); });
 }
 
@@ -1296,6 +1419,233 @@ function toast(msg,type=''){
 
 /* ══ Utils ════════════════════════════════════════════════════════════════ */
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+/* ══ Supplements ══════════════════════════════════════════════════════════ */
+let suppItems = [];   // [{id, name, dose, timing, notes}]
+let suppLog   = {};   // {date: [id, id, ...]}
+
+function loadSupplements() {
+  const si = localStorage.getItem('dt_supps');
+  const sl = localStorage.getItem('dt_supp_log');
+  if (si) suppItems = JSON.parse(si);
+  if (sl) suppLog   = JSON.parse(sl);
+}
+function saveSupplements() {
+  localStorage.setItem('dt_supps',     JSON.stringify(suppItems));
+  localStorage.setItem('dt_supp_log',  JSON.stringify(suppLog));
+}
+
+function addSupplement() {
+  const name = document.getElementById('supp-name').value.trim();
+  if (!name) { toast('Enter a supplement name','error'); return; }
+  const item = {
+    id:     Date.now(),
+    name,
+    dose:   document.getElementById('supp-dose').value.trim(),
+    timing: document.getElementById('supp-timing').value,
+    notes:  document.getElementById('supp-notes').value.trim(),
+  };
+  suppItems.push(item);
+  saveSupplements();
+  ['supp-name','supp-dose','supp-notes'].forEach(id=>document.getElementById(id).value='');
+  renderSupplements();
+  toast(`${name} added`,'success');
+}
+
+function removeSupplement(id) {
+  suppItems = suppItems.filter(s=>s.id!==id);
+  // remove from today's log too
+  const td = todayISO();
+  if (suppLog[td]) suppLog[td] = suppLog[td].filter(i=>i!==id);
+  saveSupplements();
+  renderSupplements();
+}
+
+function toggleSuppTaken(id) {
+  const td = todayISO();
+  if (!suppLog[td]) suppLog[td] = [];
+  const idx = suppLog[td].indexOf(id);
+  if (idx >= 0) suppLog[td].splice(idx,1);
+  else suppLog[td].push(id);
+  saveSupplements();
+  renderSupplements();
+}
+
+function isTaken(id) {
+  const td = todayISO();
+  return suppLog[td] ? suppLog[td].includes(id) : false;
+}
+
+const TIMING_ORDER = ['morning','midday','with meal','evening','bedtime'];
+
+function renderSupplements() {
+  // checklist
+  const cl  = document.getElementById('supp-checklist');
+  const cle = document.getElementById('supp-checklist-empty');
+  const lib = document.getElementById('supp-library');
+  const libe= document.getElementById('supp-library-empty');
+
+  const sorted = [...suppItems].sort((a,b)=>TIMING_ORDER.indexOf(a.timing)-TIMING_ORDER.indexOf(b.timing));
+
+  if (!sorted.length) {
+    cl.innerHTML=''; cle.style.display='block';
+  } else {
+    cle.style.display='none';
+    const takenCount = sorted.filter(s=>isTaken(s.id)).length;
+    cl.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <span style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-muted);">${takenCount}/${sorted.length} taken</span>
+        <div class="progress-bar" style="flex:1;margin:0 16px 0 12px;height:3px;"><div class="progress-fill ${takenCount===sorted.length&&sorted.length>0?'good':''}" style="width:${sorted.length?Math.round(takenCount/sorted.length*100):0}%"></div></div>
+      </div>
+      ${sorted.map(s=>{
+        const taken = isTaken(s.id);
+        return `<div class="list-item" style="cursor:pointer;${taken?'opacity:0.55;':''}border-left:2px solid ${taken?'var(--green)':'var(--divider)'};" onclick="toggleSuppTaken(${s.id})">
+          <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:0;">
+            <div style="width:18px;height:18px;border-radius:50%;border:1.5px solid ${taken?'var(--green)':'var(--divider)'};background:${taken?'rgba(76,202,138,0.18)':'transparent'};display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              ${taken?'<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>':''}
+            </div>
+            <div>
+              <div class="list-item-name">${esc(s.name)}</div>
+              <div class="list-item-meta"><span>${esc(s.dose||'—')}</span><span class="tag tag-b" style="padding:1px 6px;">${s.timing}</span>${s.notes?`<span>${esc(s.notes)}</span>`:''}</div>
+            </div>
+          </div>
+        </div>`;
+      }).join('')}`;
+  }
+
+  // library
+  if (!suppItems.length) {
+    lib.innerHTML=''; libe.style.display='block';
+  } else {
+    libe.style.display='none';
+    lib.innerHTML = suppItems.map(s=>`
+      <div class="list-item">
+        <div style="flex:1;min-width:0;">
+          <div class="list-item-name">${esc(s.name)}</div>
+          <div class="list-item-meta"><span>${esc(s.dose||'—')}</span><span class="tag tag-b" style="padding:1px 6px;">${s.timing}</span>${s.notes?`<span>${esc(s.notes)}</span>`:''}</div>
+        </div>
+        <button class="btn btn-danger btn-sm" onclick="removeSupplement(${s.id})">Remove</button>
+      </div>`).join('');
+  }
+}
+
+/* ══ Blood Check-up ═══════════════════════════════════════════════════════ */
+let bloodRecords = [];   // [{date, glucose, hba1c, insulin, chol_total, chol_ldl, chol_hdl, triglycerides, ferritin, vitd, tsh, testo, crp, b12, notes}]
+
+function loadBloodRecords() {
+  const raw = localStorage.getItem('dt_blood');
+  if (raw) bloodRecords = JSON.parse(raw);
+}
+function saveBloodRecords() { localStorage.setItem('dt_blood', JSON.stringify(bloodRecords)); }
+
+function addBloodRecord() {
+  const dateEl = document.getElementById('blood-date');
+  const date = dateEl.value || todayISO();
+  const g = id => { const v = parseFloat(document.getElementById(id).value); return isNaN(v) ? null : v; };
+  const rec = {
+    date,
+    glucose:      g('blood-glucose'),
+    hba1c:        g('blood-hba1c'),
+    insulin:      g('blood-insulin'),
+    chol_total:   g('blood-chol-total'),
+    chol_ldl:     g('blood-chol-ldl'),
+    chol_hdl:     g('blood-chol-hdl'),
+    triglycerides:g('blood-triglycerides'),
+    ferritin:     g('blood-ferritin'),
+    vitd:         g('blood-vitd'),
+    tsh:          g('blood-tsh'),
+    testo:        g('blood-testo'),
+    crp:          g('blood-crp'),
+    b12:          g('blood-b12'),
+    notes:        document.getElementById('blood-notes').value.trim(),
+  };
+  // replace if same date, else push
+  const idx = bloodRecords.findIndex(r=>r.date===date);
+  if (idx >= 0) bloodRecords[idx] = rec; else bloodRecords.push(rec);
+  bloodRecords.sort((a,b)=>b.date.localeCompare(a.date));
+  saveBloodRecords();
+  // clear form
+  ['blood-glucose','blood-hba1c','blood-insulin','blood-chol-total','blood-chol-ldl','blood-chol-hdl','blood-triglycerides','blood-ferritin','blood-vitd','blood-tsh','blood-testo','blood-crp','blood-b12','blood-notes'].forEach(id=>document.getElementById(id).value='');
+  renderBloodTable();
+  toast(`Blood result for ${date} saved`,'success');
+}
+
+function removeBloodRecord(date) {
+  bloodRecords = bloodRecords.filter(r=>r.date!==date);
+  saveBloodRecords();
+  renderBloodTable();
+  toast('Record deleted','success');
+}
+
+// Check value against simple range thresholds; returns 'good','warn','bad',''
+const BLOOD_RANGES = {
+  glucose:      {lo:70, hi:99},
+  hba1c:        {lo:0,  hi:5.6},
+  chol_total:   {lo:0,  hi:199},
+  chol_ldl:     {lo:0,  hi:99},
+  chol_hdl:     {lo:40, hi:9999},
+  triglycerides:{lo:0,  hi:149},
+  vitd:         {lo:30, hi:80},
+  crp:          {lo:0,  hi:0.99},
+};
+function bloodColor(key, val) {
+  if (val == null) return '';
+  const r = BLOOD_RANGES[key]; if (!r) return '';
+  if (val >= r.lo && val <= r.hi) return 'var(--green)';
+  const dist = val < r.lo ? (r.lo-val)/r.lo : (val-r.hi)/r.hi;
+  return dist > 0.2 ? 'var(--red)' : 'var(--yellow)';
+}
+function fv(val, key) {
+  if (val == null) return '<span style="color:var(--text-muted)">—</span>';
+  const c = bloodColor(key, val);
+  return `<span style="${c?`color:${c}`:''}">${val}</span>`;
+}
+
+function renderBloodTable() {
+  // KPI strip — latest values
+  const strip = document.getElementById('blood-kpi-strip');
+  const latest = bloodRecords[0];
+  if (latest) {
+    const kpis = [
+      {label:'Glucose', val:latest.glucose, unit:'mg/dL', key:'glucose'},
+      {label:'HbA1c',   val:latest.hba1c,   unit:'%',     key:'hba1c'},
+      {label:'LDL',     val:latest.chol_ldl,unit:'mg/dL', key:'chol_ldl'},
+      {label:'Vit D',   val:latest.vitd,    unit:'ng/mL', key:'vitd'},
+    ];
+    strip.innerHTML = kpis.map(k=>`
+      <div class="kpi-tile">
+        <div class="kpi-label">${k.label} <span style="font-size:8px;opacity:0.6;">(latest)</span></div>
+        <div class="kpi-value" style="${bloodColor(k.key,k.val)?`color:${bloodColor(k.key,k.val)}`:''}">${k.val??'—'}<span class="kpi-unit">${k.unit}</span></div>
+        <div class="kpi-sub">${latest.date}</div>
+      </div>`).join('');
+  } else {
+    strip.innerHTML = '';
+  }
+
+  // History table
+  const tbody = document.getElementById('blood-history-tbody');
+  if (!bloodRecords.length) {
+    tbody.innerHTML = '<tr><td colspan="10" class="history-empty">No blood results logged yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = bloodRecords.map(r=>`
+    <tr>
+      <td style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;">${r.date}</td>
+      <td>${fv(r.glucose,'glucose')}</td>
+      <td>${fv(r.hba1c,'hba1c')}</td>
+      <td>${fv(r.chol_ldl,'chol_ldl')}</td>
+      <td>${fv(r.chol_hdl,'chol_hdl')}</td>
+      <td>${fv(r.triglycerides,'triglycerides')}</td>
+      <td>${fv(r.vitd,'vitd')}</td>
+      <td>${fv(r.crp,'crp')}</td>
+      <td style="max-width:160px;white-space:normal;font-size:12px;color:var(--text-muted);">${esc(r.notes||'')}</td>
+      <td><button class="btn-icon" onclick="removeBloodRecord('${r.date}')" title="Delete">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:14px;height:14px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+      </button></td>
+    </tr>`).join('');
+}
+
+/* ══ Utils ════════════════════════════════════════════════════════════════ */
 
 init();
 </script>
