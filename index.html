@@ -1074,11 +1074,9 @@ let TARGETS = { kcal:1750, protein:140, carbs:180, fat:60, water:2500, goalWeigh
 /* ══ State ═══════════════════════════════════════════════════════════════ */
 let state = { date:todayISO(), calories:0, protein_g:0, carbs_g:0, fat_g:0, water_ml:0, weight_kg:null, meals:[], exercise:[], notes:'' };
 let history = [];
-// Keys base64-encoded to avoid repo secret scanning — decoded at runtime
-const _k = atob('c2stYW50LWFwaTAzLVhiSUlMMjJTZVFQUl9GNHRSbU5nTXBKU01lVlN0Q2tLRUxFZW1vdXpwVms2a2xNWXk4bkhrdmdXYVBvVmhwWEljV1AwY2IxalljM2QzWnZic1k4aWVRLXdrYzk4d0FB');
 const _o = atob('UTRHUEE3UVRMSzdJSEc1N01SWlNaS1U0RUM0UUJETDM=');
 let cfg = {
-  anthropicKey: _k,
+  anthropicKey: localStorage.getItem('dt_anthropic_key') || '',
   githubPat:    '',
   githubRepo:   'AndyKupke/Diet',
   githubBranch: 'main',
@@ -1144,7 +1142,7 @@ function loadState() {
 function saveState() { localStorage.setItem('dt_state', JSON.stringify(state)); }
 
 function loadCfg() {
-  // All API keys are hardcoded — just show Oura import button
+  cfg.anthropicKey = localStorage.getItem('dt_anthropic_key') || '';
   const btn = document.getElementById('oura-import-btn');
   if (btn) btn.style.display = 'inline-flex';
   document.getElementById('oura-dashboard-prompt').style.display = 'none';
@@ -1470,7 +1468,12 @@ function updateKnowledgeBase(kb, analysisResult, userNote) {
 // ── Main analysis function ─────────────────────────────────────────────────
 async function analysePhoto() {
   if (!photoB64) return;
-  if (!cfg.anthropicKey) { toast('Add your Anthropic API key in Settings','error'); return; }
+  if (!cfg.anthropicKey) {
+    const k = prompt('Enter your Anthropic API key (stored locally, never uploaded):');
+    if (!k) return;
+    cfg.anthropicKey = k.trim();
+    localStorage.setItem('dt_anthropic_key', cfg.anthropicKey);
+  }
 
   document.getElementById('overlay').classList.add('active');
   document.getElementById('analysis-detail').style.display = 'none';
