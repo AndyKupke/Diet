@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diet Tracking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+<style>
+/* ── Tokens ─────────────────────────────────────────────────────────────── */
+:root {
+  --night:       #050A1E;
+  --surface:     #060E25;
+  --blue:        #003399;
+  --yellow:      #FFCC00;
+  --white:       #FFFFFF;
+  --slate:       #6B7599;
+  --divider:     rgba(255,255,255,0.08);
+  --divider-y:   rgba(255,204,0,0.25);
+  --border-hover:rgba(255,255,255,0.15);
+  --green:       #4cca8a;
+  --red:         #e05a6a;
+  --radius:      6px;
+}
+
+/* ── Reset ──────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--night);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* ── Layout ─────────────────────────────────────────────────────────────── */
+.wrap {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+@media (max-width: 640px) { .wrap { padding: 0 20px; } }
+
+/* ── Typography helpers ─────────────────────────────────────────────────── */
+.display {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.mono {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.mono-sm {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ── Section heading row ────────────────────────────────────────────────── */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 40px 0 18px;
+}
+
+.section-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--yellow);
+  flex-shrink: 0;
+  line-height: 1;
+  padding-top: 3px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--divider);
+}
+
+/* ── Dividers ───────────────────────────────────────────────────────────── */
+.hr { height: 1px; background: var(--divider); }
+.hr-y { height: 1px; background: var(--divider-y); }
+
+/* ── Logo mark ──────────────────────────────────────────────────────────── */
+.logo-mark {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.logo-mark-lg {
+  width: 52px;
+  height: 52px;
+}
+
+/* ── Wordmark ───────────────────────────────────────────────────────────── */
+.wordmark {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.03em;
+  line-height: 0.88;
+  text-transform: uppercase;
+}
+
+.wordmark .sterling { color: var(--white); }
+.wordmark .concorde { color: var(--yellow); }
+
+/* ── Header ─────────────────────────────────────────────────────────────── */
+#site-header {
+  border-bottom: 1px solid var(--divider);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5,10,30,0.96);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-date {
+  text-align: right;
+}
+
+.header-date .day {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.03em;
+  line-height: 0.88;
+  color: var(--yellow);
+}
+
+.header-date .weekday {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* ── Hero banner ────────────────────────────────────────────────────────── */
+#hero {
+  padding: 52px 0 36px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-bottom: 14px;
+}
+
+.hero-heading {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(52px, 8vw, 88px);
+  letter-spacing: 0.03em;
+  line-height: 0.88;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.hero-heading .sterling { color: var(--white); }
+.hero-heading .concorde { color: var(--yellow); }
+
+.hero-sub {
+  font-size: 13px;
+  color: var(--slate);
+  font-weight: 300;
+  max-width: 480px;
+  line-height: 1.7;
+}
+
+/* ── Cards ──────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover { border-color: var(--border-hover); }
+
+.card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 10px;
+}
+
+.card-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 38px;
+  letter-spacing: 0.03em;
+  line-height: 0.88;
+  color: var(--white);
+}
+
+.card-value .unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  color: var(--slate);
+  margin-left: 6px;
+}
+
+.card-target {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-top: 8px;
+}
+
+/* ── Progress bar ───────────────────────────────────────────────────────── */
+.progress-bar {
+  height: 2px;
+  background: var(--divider);
+  border-radius: 1px;
+  margin-top: 12px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--yellow);
+  border-radius: 1px;
+  transition: width 0.4s ease;
+}
+
+.progress-fill.over  { background: var(--red); }
+.progress-fill.good  { background: var(--green); }
+
+/* ── Grids ──────────────────────────────────────────────────────────────── */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .grid-3 { grid-template-columns: 1fr 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+}
+
+/* ── Buttons ────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: transparent;
+  border: 1px solid var(--yellow);
+  color: var(--yellow);
+  padding: 9px 18px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn:hover {
+  background: var(--yellow);
+  color: var(--night);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.btn-blue {
+  border-color: var(--blue);
+  color: var(--white);
+  background: var(--blue);
+}
+
+.btn-blue:hover {
+  background: #0044cc;
+  border-color: #0044cc;
+  color: var(--white);
+}
+
+.btn-ghost {
+  border-color: var(--divider);
+  color: var(--slate);
+}
+
+.btn-ghost:hover {
+  border-color: var(--border-hover);
+  background: transparent;
+  color: var(--white);
+}
+
+.btn-danger {
+  border-color: rgba(224,90,106,0.4);
+  color: var(--red);
+}
+
+.btn-danger:hover {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.btn-sm { padding: 5px 12px; font-size: 9px; }
+
+/* ── Form elements ──────────────────────────────────────────────────────── */
+.field { margin-bottom: 14px; }
+
+.field label {
+  display: block;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  width: 100%;
+  background: var(--night);
+  border: 1px solid var(--divider);
+  color: var(--white);
+  padding: 9px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  border-radius: var(--radius);
+  outline: none;
+  transition: border-color 0.2s ease;
+  appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  border-color: var(--divider-y);
+}
+
+textarea { resize: vertical; min-height: 72px; }
+
+select option { background: var(--surface); }
+
+/* ── Meal form panel ────────────────────────────────────────────────────── */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 10px;
+  transition: border-color 0.2s ease;
+}
+
+.panel:hover { border-color: var(--border-hover); }
+
+/* Yellow left-accent panel */
+.panel-accent {
+  border-left: 2px solid var(--yellow);
+}
+
+.macro-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 560px) {
+  .macro-row { grid-template-columns: 1fr 1fr; }
+}
+
+/* ── Photo drop zone ────────────────────────────────────────────────────── */
+.photo-zone {
+  border: 1px dashed var(--divider-y);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 14px;
+  position: relative;
+  background: rgba(255,204,0,0.02);
+}
+
+.photo-zone:hover {
+  border-color: rgba(255,204,0,0.5);
+  background: rgba(255,204,0,0.04);
+}
+
+.photo-zone input[type="file"] {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-zone-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+  line-height: 1;
+}
+
+.photo-zone p {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+#photo-preview {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: var(--radius);
+  margin-bottom: 14px;
+  display: none;
+  border: 1px solid var(--divider);
+}
+
+/* ── List items ─────────────────────────────────────────────────────────── */
+.item-list { display: flex; flex-direction: column; gap: 8px; }
+
+.list-item {
+  background: var(--surface);
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  padding: 13px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.2s ease;
+}
+
+.list-item:hover { border-color: var(--border-hover); }
+
+.list-item-name {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+
+.list-item-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--slate);
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.list-item-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 0.03em;
+  color: var(--yellow);
+  white-space: nowrap;
+}
+
+/* ── Water controls ─────────────────────────────────────────────────────── */
+.water-grid {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.water-btn {
+  background: var(--night);
+  border: 1px solid var(--divider);
+  color: var(--slate);
+  padding: 8px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+
+.water-btn:hover {
+  border-color: var(--yellow);
+  color: var(--yellow);
+}
+
+/* ── Weight card ────────────────────────────────────────────────────────── */
+.weight-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.weight-row input {
+  width: 110px;
+}
+
+/* ── Tag pill ───────────────────────────────────────────────────────────── */
+.tag {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.tag-y  { background: rgba(255,204,0,0.12);  color: var(--yellow); }
+.tag-g  { background: rgba(76,202,138,0.12); color: var(--green); }
+.tag-r  { background: rgba(224,90,106,0.12); color: var(--red); }
+.tag-b  { background: rgba(0,51,153,0.4);    color: #7aabff; }
+
+/* ── Settings panel ─────────────────────────────────────────────────────── */
+details summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+details summary:hover { color: var(--white); }
+
+details summary::before {
+  content: '▶';
+  font-size: 7px;
+  transition: transform 0.2s ease;
+  color: var(--yellow);
+}
+
+details[open] summary::before { transform: rotate(90deg); }
+
+details .details-body {
+  margin-top: 18px;
+}
+
+/* ── Notification toast ─────────────────────────────────────────────────── */
+.toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: var(--surface);
+  border: 1px solid var(--divider-y);
+  color: var(--white);
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  max-width: 300px;
+  z-index: 9999;
+  transform: translateY(-8px);
+  opacity: 0;
+  transition: all 0.22s ease;
+  pointer-events: none;
+}
+
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast.error   { border-color: rgba(224,90,106,0.5); }
+.toast.success { border-color: rgba(76,202,138,0.4); }
+
+/* ── Analysing overlay ──────────────────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,10,30,0.88);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  backdrop-filter: blur(4px);
+}
+
+.overlay.active { display: flex; }
+
+.overlay-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--yellow);
+  margin-top: 20px;
+}
+
+/* ── Spinner ────────────────────────────────────────────────────────────── */
+.spinner {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--divider);
+  border-top-color: var(--yellow);
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Sync footer ────────────────────────────────────────────────────────── */
+#site-footer {
+  border-top: 1px solid var(--divider);
+  margin-top: 56px;
+  padding: 24px 0 32px;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+.footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sync-status {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: var(--slate);
+}
+
+/* ── Inline stat row ────────────────────────────────────────────────────── */
+.stat-row {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.stat-cell {
+  flex: 1;
+  padding: 14px 16px;
+  border-right: 1px solid var(--divider);
+  transition: background 0.2s ease;
+}
+
+.stat-cell:last-child { border-right: none; }
+.stat-cell:hover { background: rgba(255,255,255,0.02); }
+
+.stat-cell-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin-bottom: 6px;
+}
+
+.stat-cell-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.stat-cell-unit {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--slate);
+  margin-left: 4px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .stat-row { flex-wrap: wrap; }
+  .stat-cell { flex: 1 1 40%; border-bottom: 1px solid var(--divider); }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+}
+</style>
+</head>
+<body>
+
+<!-- Analysing overlay -->
+<div class="overlay" id="overlay">
+  <div class="spinner"></div>
+  <div class="overlay-label">Analysing photo</div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<!-- ── Header ─────────────────────────────────────────────────────────── -->
+<header id="site-header">
+  <div class="wrap">
+    <div class="header-inner">
+      <div class="header-brand">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:0.03em;line-height:0.92;color:var(--white);">
+          DIET<br><span style="color:var(--yellow);">TRACKING</span>
+        </div>
+      </div>
+      <div class="header-date">
+        <div class="day" id="header-day"></div>
+        <div class="weekday" id="header-weekday"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<div class="wrap">
+
+<!-- ── 01 Daily Summary ────────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">01</span>
+  <span class="section-title">Daily Summary</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="grid-3" style="margin-bottom:10px;">
+  <div class="card">
+    <div class="card-label">Calories</div>
+    <div class="card-value" id="total-kcal">0 <span class="unit">kcal</span></div>
+    <div class="card-target" id="kcal-remain">1750 remaining</div>
+    <div class="progress-bar"><div class="progress-fill" id="kcal-bar" style="width:0%"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Protein</div>
+    <div class="card-value" id="total-protein">0 <span class="unit">g</span></div>
+    <div class="card-target">target ≥ 140 g</div>
+    <div class="progress-bar"><div class="progress-fill" id="protein-bar" style="width:0%"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Water</div>
+    <div class="card-value" id="total-water">0 <span class="unit">ml</span></div>
+    <div class="card-target">of 2500 ml</div>
+    <div class="progress-bar"><div class="progress-fill" id="water-bar" style="width:0%"></div></div>
+  </div>
+</div>
+
+<div class="grid-2">
+  <div class="card">
+    <div class="card-label">Carbohydrates</div>
+    <div class="card-value" id="total-carbs">0 <span class="unit">g</span></div>
+    <div class="card-target">target ≤ 180 g</div>
+    <div class="progress-bar"><div class="progress-fill" id="carbs-bar" style="width:0%"></div></div>
+  </div>
+  <div class="card">
+    <div class="card-label">Fat</div>
+    <div class="card-value" id="total-fat">0 <span class="unit">g</span></div>
+    <div class="card-target">target ≤ 60 g</div>
+    <div class="progress-bar"><div class="progress-fill" id="fat-bar" style="width:0%"></div></div>
+  </div>
+</div>
+
+<!-- ── 02 Body Weight ──────────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">02</span>
+  <span class="section-title">Body Weight</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="card">
+  <div class="weight-row">
+    <input type="number" id="weight-input" placeholder="75.0" step="0.1" min="40" max="200" style="width:120px;">
+    <span style="color:var(--slate);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;">KG</span>
+    <button class="btn btn-sm" onclick="logWeight()">Log</button>
+    <div style="margin-left:auto;">
+      <div id="weight-display" style="font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:0.03em;line-height:0.88;">— kg</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);margin-top:6px;">goal 72 kg · 178 cm</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── 03 Hydration ────────────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">03</span>
+  <span class="section-title">Hydration</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="card">
+  <div class="card-label">Quick add</div>
+  <div class="water-grid">
+    <button class="water-btn" onclick="addWater(150)">+150 ml</button>
+    <button class="water-btn" onclick="addWater(250)">+250 ml</button>
+    <button class="water-btn" onclick="addWater(330)">+330 ml</button>
+    <button class="water-btn" onclick="addWater(500)">+500 ml</button>
+    <button class="water-btn" onclick="addWater(750)">+750 ml</button>
+    <button class="water-btn btn-danger btn-sm" onclick="resetWater()" style="margin-left:auto;">Reset</button>
+  </div>
+</div>
+
+<!-- ── 04 Log Meal ─────────────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">04</span>
+  <span class="section-title">Log Meal</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="panel panel-accent">
+  <img id="photo-preview" alt="Food photo">
+
+  <div class="photo-zone" id="photo-zone">
+    <input type="file" id="photo-input" accept="image/*" onchange="handlePhoto(event)">
+    <div class="photo-zone-icon">📷</div>
+    <p>Drop a food photo or tap to analyse with Claude Vision</p>
+  </div>
+
+  <button class="btn btn-sm" id="analyse-btn" onclick="analysePhoto()" style="margin-bottom:14px;display:none;">
+    Analyse with Claude Vision
+  </button>
+
+  <div class="field">
+    <label>Meal Name</label>
+    <input type="text" id="meal-name" placeholder="e.g. Chicken & Rice Bowl">
+  </div>
+
+  <div class="macro-row">
+    <div class="field">
+      <label>kcal</label>
+      <input type="number" id="meal-kcal" placeholder="0" min="0">
+    </div>
+    <div class="field">
+      <label>Protein g</label>
+      <input type="number" id="meal-protein" placeholder="0" min="0" step="0.1">
+    </div>
+    <div class="field">
+      <label>Carbs g</label>
+      <input type="number" id="meal-carbs" placeholder="0" min="0" step="0.1">
+    </div>
+    <div class="field">
+      <label>Fat g</label>
+      <input type="number" id="meal-fat" placeholder="0" min="0" step="0.1">
+    </div>
+  </div>
+
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <button class="btn" onclick="addMeal()">Add Meal</button>
+    <button class="btn btn-ghost btn-sm" onclick="clearMealForm()">Clear</button>
+  </div>
+</div>
+
+<div id="meal-list" class="item-list" style="margin-top:8px;"></div>
+
+<!-- ── 05 Exercise ─────────────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">05</span>
+  <span class="section-title">Exercise</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="panel">
+  <div class="grid-2">
+    <div class="field">
+      <label>Activity</label>
+      <input type="text" id="ex-name" placeholder="e.g. Morning run">
+    </div>
+    <div class="field">
+      <label>Duration (min)</label>
+      <input type="number" id="ex-duration" placeholder="30" min="1">
+    </div>
+  </div>
+  <div class="grid-2">
+    <div class="field">
+      <label>kcal burned (est.)</label>
+      <input type="number" id="ex-kcal" placeholder="0" min="0">
+    </div>
+    <div class="field">
+      <label>Type</label>
+      <select id="ex-type">
+        <option value="cardio">Cardio</option>
+        <option value="strength">Strength</option>
+        <option value="hiit">HIIT</option>
+        <option value="flexibility">Flexibility</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+  </div>
+  <button class="btn" onclick="addExercise()">Log Exercise</button>
+</div>
+
+<div id="exercise-list" class="item-list" style="margin-top:8px;"></div>
+
+<!-- ── 06 Notes ────────────────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">06</span>
+  <span class="section-title">Notes</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="panel">
+  <textarea id="notes-input" placeholder="How are you feeling today? Any observations about energy, sleep, appetite…"></textarea>
+  <button class="btn btn-sm" style="margin-top:12px;" onclick="saveNotes()">Save Notes</button>
+</div>
+
+<!-- ── 07 Settings & Sync ──────────────────────────────────────────────── -->
+<div class="section-head">
+  <span class="section-num">07</span>
+  <span class="section-title">Settings &amp; Sync</span>
+  <span class="section-rule"></span>
+</div>
+
+<div class="panel">
+  <details>
+    <summary>API Keys &amp; GitHub Configuration</summary>
+    <div class="details-body">
+      <div class="field">
+        <label>Anthropic API Key</label>
+        <input type="text" id="setting-anthropic-key" placeholder="sk-ant-…" autocomplete="off">
+      </div>
+      <div class="field">
+        <label>GitHub PAT (repo scope)</label>
+        <input type="text" id="setting-github-pat" placeholder="ghp_…" autocomplete="off">
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Repository (owner/repo)</label>
+          <input type="text" id="setting-github-repo" placeholder="AndyKupke/Diet">
+        </div>
+        <div class="field">
+          <label>Branch</label>
+          <input type="text" id="setting-github-branch" placeholder="main">
+        </div>
+      </div>
+      <button class="btn btn-sm" onclick="saveSettings()">Save Settings</button>
+    </div>
+  </details>
+</div>
+
+</div><!-- /wrap -->
+
+<!-- ── Footer ─────────────────────────────────────────────────────────── -->
+<footer id="site-footer">
+  <div class="wrap">
+    <div class="footer-inner">
+      <div class="footer-copy">Diet Tracking &copy; 2026</div>
+      <div class="footer-actions">
+        <span class="sync-status" id="sync-status"></span>
+        <button class="btn" id="sync-btn" onclick="syncToGitHub()">Sync to GitHub</button>
+        <button class="btn btn-ghost btn-sm" onclick="exportJSON()">Export JSON</button>
+        <button class="btn btn-ghost btn-sm" onclick="resetDay()">New Day</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+/* ── Constants ────────────────────────────────────────────────────────── */
+const TARGETS = { kcal: 1750, protein: 140, carbs: 180, fat: 60, water: 2500 };
+
+/* ── State ────────────────────────────────────────────────────────────── */
+let state = {
+  date: todayISO(),
+  calories: 0, protein_g: 0, carbs_g: 0, fat_g: 0, water_ml: 0,
+  weight_kg: null, meals: [], exercise: [], notes: ''
+};
+
+let cfg = { anthropicKey: '', githubPat: '', githubRepo: '', githubBranch: 'main' };
+let photoB64 = null;
+
+/* ── Boot ─────────────────────────────────────────────────────────────── */
+function todayISO() { return new Date().toISOString().split('T')[0]; }
+
+function init() {
+  loadCfg();
+  loadState();
+  renderDate();
+  renderAll();
+}
+
+function renderDate() {
+  const d = new Date();
+  document.getElementById('header-day').textContent =
+    d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }).toUpperCase();
+  document.getElementById('header-weekday').textContent =
+    d.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric' });
+}
+
+/* ── Persistence ──────────────────────────────────────────────────────── */
+function loadState() {
+  const raw = localStorage.getItem('sc2_state');
+  if (raw) {
+    const p = JSON.parse(raw);
+    if (p.date === todayISO()) { state = p; return; }
+  }
+  state.date = todayISO();
+  saveState();
+}
+
+function saveState() { localStorage.setItem('sc2_state', JSON.stringify(state)); }
+
+function loadCfg() {
+  const raw = localStorage.getItem('sc2_cfg');
+  if (raw) cfg = { ...cfg, ...JSON.parse(raw) };
+  document.getElementById('setting-anthropic-key').value = cfg.anthropicKey || '';
+  document.getElementById('setting-github-pat').value    = cfg.githubPat    || '';
+  document.getElementById('setting-github-repo').value   = cfg.githubRepo   || '';
+  document.getElementById('setting-github-branch').value = cfg.githubBranch || 'main';
+}
+
+function saveSettings() {
+  cfg.anthropicKey  = document.getElementById('setting-anthropic-key').value.trim();
+  cfg.githubPat     = document.getElementById('setting-github-pat').value.trim();
+  cfg.githubRepo    = document.getElementById('setting-github-repo').value.trim();
+  cfg.githubBranch  = document.getElementById('setting-github-branch').value.trim() || 'main';
+  localStorage.setItem('sc2_cfg', JSON.stringify(cfg));
+  toast('Settings saved', 'success');
+}
+
+/* ── Render ───────────────────────────────────────────────────────────── */
+function renderAll() {
+  renderSummary();
+  renderMeals();
+  renderExercise();
+  renderWeight();
+  document.getElementById('notes-input').value = state.notes || '';
+}
+
+function renderSummary() {
+  const { calories, protein_g, carbs_g, fat_g, water_ml } = state;
+
+  setHTML('total-kcal',    `${calories}<span class="unit">kcal</span>`);
+  setHTML('total-protein', `${protein_g.toFixed(1)}<span class="unit">g</span>`);
+  setHTML('total-carbs',   `${carbs_g.toFixed(1)}<span class="unit">g</span>`);
+  setHTML('total-fat',     `${fat_g.toFixed(1)}<span class="unit">g</span>`);
+  setHTML('total-water',   `${water_ml}<span class="unit">ml</span>`);
+
+  const rem = Math.max(0, TARGETS.kcal - calories);
+  document.getElementById('kcal-remain').textContent =
+    rem > 0 ? `${rem} kcal remaining` : `${calories - TARGETS.kcal} kcal over target`;
+
+  bar('kcal-bar',    calories,   TARGETS.kcal,    true);
+  bar('protein-bar', protein_g,  TARGETS.protein, false);
+  bar('carbs-bar',   carbs_g,    TARGETS.carbs,   true);
+  bar('fat-bar',     fat_g,      TARGETS.fat,     true);
+  bar('water-bar',   water_ml,   TARGETS.water,   false);
+}
+
+function bar(id, val, target, overIsBad) {
+  const el = document.getElementById(id);
+  const pct = Math.min(100, (val / target) * 100);
+  el.style.width = pct + '%';
+  el.className = 'progress-fill' +
+    (pct >= 100 ? (overIsBad ? ' over' : ' good') : '');
+}
+
+function setHTML(id, html) { document.getElementById(id).innerHTML = html; }
+
+function renderMeals() {
+  const c = document.getElementById('meal-list');
+  c.innerHTML = state.meals.map((m, i) => `
+    <div class="list-item">
+      <div style="flex:1;min-width:0;">
+        <div class="list-item-name">${esc(m.name)}</div>
+        <div class="list-item-meta">
+          <span>P ${m.protein_g}g</span>
+          <span>C ${m.carbs_g}g</span>
+          <span>F ${m.fat_g}g</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <div class="list-item-value">${m.kcal} <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--slate);letter-spacing:0.1em;">KCAL</span></div>
+        <button class="btn btn-danger btn-sm" onclick="removeMeal(${i})">×</button>
+      </div>
+    </div>`).join('');
+}
+
+function renderExercise() {
+  const c = document.getElementById('exercise-list');
+  c.innerHTML = state.exercise.map((e, i) => `
+    <div class="list-item">
+      <div style="flex:1;">
+        <div class="list-item-name">${esc(e.name)} <span class="tag tag-b">${e.type}</span></div>
+        <div class="list-item-meta">
+          <span>${e.duration_min} min</span>
+          ${e.kcal_burned ? `<span style="color:var(--green);">−${e.kcal_burned} kcal</span>` : ''}
+        </div>
+      </div>
+      <button class="btn btn-danger btn-sm" onclick="removeExercise(${i})">×</button>
+    </div>`).join('');
+}
+
+function renderWeight() {
+  const el = document.getElementById('weight-display');
+  if (state.weight_kg) {
+    const diff = +(state.weight_kg - 72).toFixed(1);
+    const cls = diff > 0 ? 'tag-r' : 'tag-g';
+    el.innerHTML = `${state.weight_kg} <span style="font-size:16px;color:var(--slate);">kg</span>
+      <span class="tag ${cls}" style="font-size:10px;margin-left:8px;">${diff > 0 ? '+' : ''}${diff}</span>`;
+  } else {
+    el.textContent = '— kg';
+  }
+}
+
+/* ── Meals ────────────────────────────────────────────────────────────── */
+function addMeal() {
+  const name    = document.getElementById('meal-name').value.trim();
+  const kcal    = parseFloat(document.getElementById('meal-kcal').value)    || 0;
+  const protein = parseFloat(document.getElementById('meal-protein').value) || 0;
+  const carbs   = parseFloat(document.getElementById('meal-carbs').value)   || 0;
+  const fat     = parseFloat(document.getElementById('meal-fat').value)     || 0;
+  if (!name) { toast('Enter a meal name', 'error'); return; }
+  state.meals.push({ name, kcal, protein_g: protein, carbs_g: carbs, fat_g: fat, time: new Date().toISOString() });
+  recalc(); saveState(); renderAll(); clearMealForm();
+  toast(`${name} logged`, 'success');
+}
+
+function removeMeal(i) { state.meals.splice(i, 1); recalc(); saveState(); renderAll(); }
+
+function clearMealForm() {
+  ['meal-name','meal-kcal','meal-protein','meal-carbs','meal-fat'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
+  photoB64 = null;
+  document.getElementById('photo-preview').style.display = 'none';
+  document.getElementById('photo-zone').style.display = 'block';
+  document.getElementById('analyse-btn').style.display = 'none';
+}
+
+function recalc() {
+  state.calories  = Math.round(state.meals.reduce((s, m) => s + m.kcal, 0));
+  state.protein_g = +state.meals.reduce((s, m) => s + m.protein_g, 0).toFixed(1);
+  state.carbs_g   = +state.meals.reduce((s, m) => s + m.carbs_g, 0).toFixed(1);
+  state.fat_g     = +state.meals.reduce((s, m) => s + m.fat_g, 0).toFixed(1);
+}
+
+/* ── Exercise ─────────────────────────────────────────────────────────── */
+function addExercise() {
+  const name     = document.getElementById('ex-name').value.trim();
+  const duration = parseInt(document.getElementById('ex-duration').value) || 0;
+  const kcal     = parseInt(document.getElementById('ex-kcal').value)     || 0;
+  const type     = document.getElementById('ex-type').value;
+  if (!name || !duration) { toast('Enter activity name and duration', 'error'); return; }
+  state.exercise.push({ name, duration_min: duration, kcal_burned: kcal, type, time: new Date().toISOString() });
+  saveState(); renderExercise();
+  ['ex-name','ex-duration','ex-kcal'].forEach(id => document.getElementById(id).value = '');
+  toast(`${name} logged`, 'success');
+}
+
+function removeExercise(i) { state.exercise.splice(i, 1); saveState(); renderExercise(); }
+
+/* ── Water ────────────────────────────────────────────────────────────── */
+function addWater(ml) { state.water_ml = Math.min(5000, state.water_ml + ml); saveState(); renderSummary(); }
+function resetWater() { state.water_ml = 0; saveState(); renderSummary(); }
+
+/* ── Weight ───────────────────────────────────────────────────────────── */
+function logWeight() {
+  const v = parseFloat(document.getElementById('weight-input').value);
+  if (!v || v < 40 || v > 200) { toast('Enter a valid weight', 'error'); return; }
+  state.weight_kg = v; saveState(); renderWeight();
+  toast(`Weight ${v} kg logged`, 'success');
+}
+
+/* ── Notes ────────────────────────────────────────────────────────────── */
+function saveNotes() { state.notes = document.getElementById('notes-input').value; saveState(); toast('Notes saved', 'success'); }
+
+/* ── Photo + Vision ───────────────────────────────────────────────────── */
+function handlePhoto(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const url = e.target.result;
+    photoB64 = url.split(',')[1];
+    const prev = document.getElementById('photo-preview');
+    prev.src = url; prev.style.display = 'block';
+    document.getElementById('photo-zone').style.display = 'none';
+    document.getElementById('analyse-btn').style.display = 'inline-flex';
+  };
+  reader.readAsDataURL(file);
+}
+
+async function analysePhoto() {
+  if (!photoB64) return;
+  if (!cfg.anthropicKey) { toast('Add your Anthropic API key in Settings', 'error'); return; }
+  document.getElementById('overlay').classList.add('active');
+  try {
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': cfg.anthropicKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-calls': 'true'
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-7',
+        max_tokens: 512,
+        messages: [{
+          role: 'user',
+          content: [
+            { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: photoB64 } },
+            { type: 'text', text: `Analyse this food photo and estimate nutritional content.\nReturn ONLY a JSON object (no markdown, no explanation):\n{"name":"descriptive meal name","kcal":number,"protein_g":number,"carbs_g":number,"fat_g":number}\nBe conservative. All numbers must be integers.` }
+          ]
+        }]
+      })
+    });
+    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API ${resp.status}`); }
+    const data = await resp.json();
+    const text = data.content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
+    const p = JSON.parse(text);
+    document.getElementById('meal-name').value    = p.name      || '';
+    document.getElementById('meal-kcal').value    = p.kcal      || 0;
+    document.getElementById('meal-protein').value = p.protein_g || 0;
+    document.getElementById('meal-carbs').value   = p.carbs_g   || 0;
+    document.getElementById('meal-fat').value     = p.fat_g     || 0;
+    toast('Photo analysed — review & confirm', 'success');
+  } catch (err) {
+    toast('Analysis failed: ' + err.message, 'error');
+  } finally {
+    document.getElementById('overlay').classList.remove('active');
+  }
+}
+
+/* ── GitHub Sync ──────────────────────────────────────────────────────── */
+async function syncToGitHub() {
+  const { githubPat, githubRepo, githubBranch } = cfg;
+  if (!githubPat || !githubRepo) { toast('Configure GitHub PAT and repo in Settings', 'error'); return; }
+  const btn = document.getElementById('sync-btn');
+  const statusEl = document.getElementById('sync-status');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner" style="width:12px;height:12px;border-width:2px;"></span> Syncing…';
+  statusEl.textContent = '';
+  const branch = githubBranch || 'main';
+  const apiUrl = `https://api.github.com/repos/${githubRepo}/contents/data.json`;
+  const headers = {
+    'Authorization': `Bearer ${githubPat}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'Content-Type': 'application/json'
+  };
+  try {
+    let sha = null;
+    const get = await fetch(`${apiUrl}?ref=${branch}`, { headers });
+    if (get.ok) { sha = (await get.json()).sha; }
+    else if (get.status !== 404) throw new Error(`GitHub ${get.status}`);
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(state, null, 2))));
+    const body = { message: `tracker: update data.json for ${state.date}`, content, branch };
+    if (sha) body.sha = sha;
+    const put = await fetch(apiUrl, { method: 'PUT', headers, body: JSON.stringify(body) });
+    if (!put.ok) { const e = await put.json(); throw new Error(e.message || `PUT ${put.status}`); }
+    const now = new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
+    statusEl.textContent = `synced ${now}`;
+    toast('Synced to GitHub', 'success');
+  } catch (err) {
+    toast('Sync failed: ' + err.message, 'error');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sync to GitHub';
+  }
+}
+
+/* ── Export / Reset ───────────────────────────────────────────────────── */
+function exportJSON() {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' }));
+  a.download = `diet-tracking-${state.date}.json`;
+  a.click();
+}
+
+function resetDay() {
+  if (!confirm('Start a new day? Current data will be cleared.')) return;
+  state = { date: todayISO(), calories: 0, protein_g: 0, carbs_g: 0, fat_g: 0, water_ml: 0, weight_kg: null, meals: [], exercise: [], notes: '' };
+  saveState(); renderAll();
+  toast('New day started', 'success');
+}
+
+/* ── Toast ────────────────────────────────────────────────────────────── */
+let toastTimer;
+function toast(msg, type = '') {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast show' + (type ? ' ' + type : '');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+}
+
+/* ── Utils ────────────────────────────────────────────────────────────── */
+function esc(s) {
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+init();
+</script>
+</body>
+</html>
