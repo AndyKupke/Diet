@@ -697,6 +697,23 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       </div>
       <div class="grid-4" id="oura-kpi-tiles"></div>
     </div>
+    <!-- Oura 14-day history charts -->
+    <div id="oura-history-strip" style="display:none;margin-bottom:12px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:10px;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+        Oura Ring — Last 14 Days
+        <span id="oura-history-fetch-label" style="font-size:8px;opacity:0.5;"></span>
+        <button class="btn btn-ghost btn-sm" onclick="fetchAndSaveOuraHistory()" style="margin-left:auto;padding:3px 10px;font-size:8px;">Refresh 14d</button>
+      </div>
+      <div class="grid-2">
+        <div class="chart-card"><div class="chart-title">Readiness Score — 14 Days</div><canvas id="chart-oura-readiness" class="chart-canvas" height="120"></canvas></div>
+        <div class="chart-card"><div class="chart-title">Sleep Score — 14 Days</div><canvas id="chart-oura-sleep" class="chart-canvas" height="120"></canvas></div>
+      </div>
+      <div class="grid-2" style="margin-top:12px;">
+        <div class="chart-card"><div class="chart-title">Steps — 14 Days</div><canvas id="chart-oura-steps" class="chart-canvas" height="120"></canvas></div>
+        <div class="chart-card"><div class="chart-title">Active kcal — 14 Days</div><canvas id="chart-oura-kcal" class="chart-canvas" height="120"></canvas></div>
+      </div>
+    </div>
     <div class="chart-card" style="margin-bottom:12px;"><div class="chart-title">Weight Trend — Last 30 Days</div><canvas id="chart-weight" class="chart-canvas" height="140"></canvas></div>
     <div class="grid-2">
       <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days</div><canvas id="chart-calories" class="chart-canvas" height="140"></canvas></div>
@@ -1093,7 +1110,7 @@ function switchTab(name) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id==='tab-'+name));
   document.getElementById('header-page-label').textContent = TAB_LABELS[name]||'';
   closeSidebar();
-  if (name==='dashboard')    { setTimeout(drawCharts,60); loadOuraIfNeeded().then(d=>renderOuraDashboard(d)); }
+  if (name==='dashboard')    { setTimeout(drawCharts,60); loadOuraIfNeeded().then(d=>renderOuraDashboard(d)); renderOuraHistory(); if (!ouraHistory || ouraHistory.fetched !== todayISO()) fetchAndSaveOuraHistory(true); }
   if (name==='summary')      { renderSummaryMeals(); loadOuraIfNeeded().then(d=>renderOuraSummary(d)); }
   if (name==='input')        renderWeight();
   if (name==='history')      renderHistoryTable();
@@ -1104,7 +1121,7 @@ function switchTab(name) {
 /* ══ Boot ════════════════════════════════════════════════════════════════ */
 function todayISO() { return new Date().toISOString().split('T')[0]; }
 function init() {
-  loadCfg(); loadTargets(); loadHistory(); loadEvents(); loadState(); loadSupplements(); loadBloodTests(); renderAll();
+  loadCfg(); loadTargets(); loadHistory(); loadEvents(); loadState(); loadSupplements(); loadBloodTests(); loadOuraHistory(); renderAll();
   toggleHistAddFields();
   window.addEventListener('load', () => {
     // Always attempt Oura fetch on load (auto-decides if refresh needed)
@@ -1113,6 +1130,9 @@ function init() {
       renderOuraDashboard(data);
       if (document.getElementById('tab-summary').classList.contains('active')) renderOuraSummary(data);
     });
+    // Render any cached oura history immediately; fetch fresh copy in background if stale
+    renderOuraHistory();
+    if (!ouraHistory || ouraHistory.fetched !== todayISO()) fetchAndSaveOuraHistory(true);
     if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
   });
 }
@@ -2063,6 +2083,164 @@ async function refreshOura() {
   renderOuraDashboard(data);
   renderOuraSummary(data);
   toast('Oura data refreshed', 'success');
+}
+
+/* ── Oura 14-day history fetch & save ─────────────────────────────────── */
+let ouraHistory = null; // {fetched, days:[{date, readiness, sleep, activity}]}
+
+function loadOuraHistory() {
+  const raw = localStorage.getItem('dt_oura_history');
+  if (raw) ouraHistory = JSON.parse(raw);
+}
+
+async function fetchAndSaveOuraHistory(silent = false) {
+  if (!cfg.ouraToken) return;
+  if (!silent) toast('Fetching 14-day Oura history…');
+
+  const end   = new Date();
+  const start = new Date(); start.setDate(start.getDate() - 13);
+  const fmt   = d => d.toISOString().split('T')[0];
+  const startDate = fmt(start), endDate = fmt(end);
+  const base  = 'https://api.ouraring.com/v2/usercollection';
+  const qp    = `?start_date=${startDate}&end_date=${endDate}`;
+
+  const safe = async url => {
+    try { const r = await fetch(url, {headers: ouraHeaders()}); if (!r.ok) return null; return r.json(); }
+    catch { return null; }
+  };
+
+  const [rdRes, slRes, acRes] = await Promise.all([
+    safe(`${base}/daily_readiness${qp}`),
+    safe(`${base}/daily_sleep${qp}`),
+    safe(`${base}/daily_activity${qp}`),
+  ]);
+
+  // Index by date
+  const byDate = {};
+  const ensure = d => { if (!byDate[d]) byDate[d] = {date:d}; };
+
+  (rdRes?.data || []).forEach(d => {
+    ensure(d.day);
+    byDate[d.day].readiness = {score: d.score, resting_hr: d.contributors?.resting_heart_rate, hrv: d.contributors?.hrv_balance};
+  });
+  (slRes?.data || []).forEach(d => {
+    ensure(d.day);
+    byDate[d.day].sleep = {score: d.score, total_s: d.contributors?.total_sleep, deep_s: d.contributors?.deep_sleep, rem_s: d.contributors?.rem_sleep};
+  });
+  (acRes?.data || []).forEach(d => {
+    ensure(d.day);
+    byDate[d.day].activity = {score: d.score, steps: d.steps, active_cal: d.active_calories, total_cal: d.total_calories};
+  });
+
+  const days = Object.values(byDate).sort((a,b) => a.date.localeCompare(b.date));
+  ouraHistory = {fetched: todayISO(), days};
+  localStorage.setItem('dt_oura_history', JSON.stringify(ouraHistory));
+
+  // Push to GitHub
+  const {githubPat, githubRepo, githubBranch} = cfg;
+  if (githubPat && githubRepo) {
+    const branch = githubBranch||'main';
+    const apiUrl = `https://api.github.com/repos/${githubRepo}/contents/oura_history.json`;
+    const headers = {'Authorization':`Bearer ${githubPat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
+    try {
+      let sha = null;
+      const get = await fetch(`${apiUrl}?ref=${branch}`, {headers});
+      if (get.ok) sha = (await get.json()).sha;
+      const content = btoa(unescape(encodeURIComponent(JSON.stringify(ouraHistory, null, 2))));
+      const body = {message: `oura: save 14-day history ${todayISO()}`, content, branch};
+      if (sha) body.sha = sha;
+      await fetch(apiUrl, {method:'PUT', headers, body: JSON.stringify(body)});
+    } catch(e) { console.warn('oura history GitHub push failed', e); }
+  }
+
+  renderOuraHistory();
+  if (!silent) toast('Oura 14-day history saved', 'success');
+}
+
+function renderOuraHistory() {
+  const h = ouraHistory;
+  const strip = document.getElementById('oura-history-strip');
+  if (!h || !h.days?.length || !strip) return;
+
+  strip.style.display = 'block';
+  const lbl = document.getElementById('oura-history-fetch-label');
+  if (lbl) lbl.textContent = `fetched ${h.fetched}`;
+
+  const days  = h.days;
+  const dates = days.map(d => d.date.slice(5)); // MM-DD labels
+
+  const barColor = (vals, target) => vals.map(v =>
+    v == null ? 'rgba(107,117,153,0.3)' :
+    v >= (target * 0.85) ? 'var(--green)' :
+    v >= (target * 0.65) ? 'var(--yellow)' : 'var(--red)'
+  );
+
+  const readiness = days.map(d => d.readiness?.score ?? null);
+  const sleep     = days.map(d => d.sleep?.score    ?? null);
+  const steps     = days.map(d => d.activity?.steps ?? null);
+  const activeCal = days.map(d => d.activity?.active_cal ?? null);
+
+  const drawOuraBar = (canvasId, vals, labels, targetLine) => {
+    const canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const W = canvas.offsetWidth || 300, H = canvas.offsetHeight || 120;
+    canvas.width = W; canvas.height = H;
+    const {grid, axis, bg} = getThemeColors();
+    ctx.clearRect(0, 0, W, H);
+    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
+
+    const padL=28, padR=8, padT=10, padB=22;
+    const chartW = W-padL-padR, chartH = H-padT-padB;
+    const n = vals.length;
+    if (!n) return;
+
+    const maxVal = Math.max(...vals.filter(v=>v!=null), targetLine||0, 1);
+    const toY = v => padT + chartH - (v / maxVal) * chartH;
+
+    // Grid lines
+    ctx.strokeStyle = grid; ctx.lineWidth = 1;
+    [0.25,0.5,0.75,1].forEach(f => {
+      const y = padT + chartH*(1-f);
+      ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
+      ctx.fillStyle = axis; ctx.font = '8px DM Mono,monospace';
+      ctx.textAlign = 'right'; ctx.fillText(Math.round(maxVal*f), padL-3, y+3);
+    });
+
+    // Target line
+    if (targetLine) {
+      const ty = toY(targetLine);
+      ctx.strokeStyle = 'rgba(255,204,0,0.3)'; ctx.lineWidth=1; ctx.setLineDash([4,3]);
+      ctx.beginPath(); ctx.moveTo(padL,ty); ctx.lineTo(W-padR,ty); ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Bars
+    const gap=3, barW = Math.max(4, (chartW - gap*(n-1)) / n);
+    const colors = barColor(vals, targetLine||maxVal);
+    vals.forEach((v, i) => {
+      const x = padL + i*(barW+gap);
+      const bH = v != null ? (v/maxVal)*chartH : 2;
+      const y  = padT + chartH - bH;
+      ctx.fillStyle = colors[i];
+      ctx.beginPath();
+      if (ctx.roundRect) ctx.roundRect(x, y, barW, bH, [2,2,0,0]);
+      else { ctx.rect(x, y, barW, bH); }
+      ctx.fill();
+
+      // Date label (every other on narrow screens)
+      if (i % 2 === 0 || barW > 20) {
+        ctx.fillStyle = axis; ctx.font = '7px DM Mono,monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText(labels[i], x + barW/2, H-5);
+      }
+    });
+  };
+
+  drawOuraBar('chart-oura-readiness', readiness, dates, 85);
+  drawOuraBar('chart-oura-sleep',     sleep,     dates, 85);
+  drawOuraBar('chart-oura-steps',     steps,     dates, 8000);
+  drawOuraBar('chart-oura-kcal',      activeCal, dates, 500);
 }
 
 // ── Score → colour ─────────────────────────────────────────────────────────
