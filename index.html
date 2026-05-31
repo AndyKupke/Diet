@@ -1090,7 +1090,13 @@ let photoB64 = null;
 
 /* ══ Sidebar ══════════════════════════════════════════════════════════════ */
 function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-backdrop').classList.add('open'); document.body.style.overflow='hidden'; }
-function closeSidebar() { document.getElementById('sidebar').classList.remove('open'); document.getElementById('sidebar-backdrop').classList.remove('open'); document.body.style.overflow=''; }
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  const bd = document.getElementById('sidebar-backdrop');
+  bd.classList.remove('open');
+  bd.style.pointerEvents = 'none';  // kill clicks immediately, don't wait for fade-out
+  document.body.style.overflow = '';
+}
 
 /* ══ Tab switching ════════════════════════════════════════════════════════ */
 const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', history:'History', supplements:'Supplements', blood:'Check-up Blood', settings:'Settings' };
