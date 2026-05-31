@@ -171,14 +171,14 @@ body {
 
 /* Backdrop */
 #sidebar-backdrop {
+  display: none;
   position: fixed; inset: 0;
   background: var(--backdrop-bg);
-  z-index: 499; opacity: 0; pointer-events: none;
+  z-index: 499;
   backdrop-filter: blur(2px);
 }
 #sidebar-backdrop.open {
-  opacity: 1; pointer-events: all;
-  transition: opacity 0.22s ease;
+  display: block;
 }
 
 /* ══════════════════════════════════════════════════════════════════════════
@@ -1086,7 +1086,11 @@ let cfg = {
 let photoB64 = null;
 
 /* ══ Sidebar ══════════════════════════════════════════════════════════════ */
-function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-backdrop').classList.add('open'); document.body.style.overflow='hidden'; }
+function openSidebar()  {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebar-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 function closeSidebar() {
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebar-backdrop').classList.remove('open');
@@ -1174,23 +1178,30 @@ function saveHistory() { localStorage.setItem('dt_history',JSON.stringify(histor
 function renderAll() { renderSummary(); renderMeals(); renderExercise(); renderWeight(); document.getElementById('notes-input').value=state.notes||''; }
 
 function renderSummary() {
-  const {calories,protein_g,carbs_g,fat_g,water_ml,weight_kg}=state;
-  setHTML('total-kcal',   `${calories}<span class="unit">kcal</span>`);
-  setHTML('total-protein',`${protein_g.toFixed(1)}<span class="unit">g</span>`);
-  setHTML('total-carbs',  `${carbs_g.toFixed(1)}<span class="unit">g</span>`);
-  setHTML('total-fat',    `${fat_g.toFixed(1)}<span class="unit">g</span>`);
-  setHTML('total-water',  `${water_ml}<span class="unit">ml</span>`);
-  const rem=Math.max(0,TARGETS.kcal-calories);
-  document.getElementById('kcal-remain').textContent = rem>0?`${rem} kcal remaining`:`${calories-TARGETS.kcal} kcal over target`;
-  bar('kcal-bar',calories,TARGETS.kcal,true); bar('protein-bar',protein_g,TARGETS.protein,false);
-  bar('carbs-bar',carbs_g,TARGETS.carbs,true); bar('fat-bar',fat_g,TARGETS.fat,true); bar('water-bar',water_ml,TARGETS.water,false);
-  // Weight card in summary
-  if (weight_kg) {
-    const diff = +(weight_kg - TARGETS.goalWeight).toFixed(1);
+  const cal   = state.calories   || 0;
+  const prot  = state.protein_g  || 0;
+  const carbs = state.carbs_g    || 0;
+  const fat   = state.fat_g      || 0;
+  const water = state.water_ml   || 0;
+  const wkg   = state.weight_kg  || null;
+  setHTML('total-kcal',   `${cal}<span class="unit">kcal</span>`);
+  setHTML('total-protein',`${prot.toFixed(1)}<span class="unit">g</span>`);
+  setHTML('total-carbs',  `${carbs.toFixed(1)}<span class="unit">g</span>`);
+  setHTML('total-fat',    `${fat.toFixed(1)}<span class="unit">g</span>`);
+  setHTML('total-water',  `${water}<span class="unit">ml</span>`);
+  const rem = Math.max(0, TARGETS.kcal - cal);
+  document.getElementById('kcal-remain').textContent = rem > 0 ? `${rem} kcal remaining` : `${cal - TARGETS.kcal} kcal over target`;
+  bar('kcal-bar', cal, TARGETS.kcal, true);
+  bar('protein-bar', prot, TARGETS.protein, false);
+  bar('carbs-bar', carbs, TARGETS.carbs, true);
+  bar('fat-bar', fat, TARGETS.fat, true);
+  bar('water-bar', water, TARGETS.water, false);
+  if (wkg) {
+    const diff = +(wkg - TARGETS.goalWeight).toFixed(1);
     const col  = diff > 0 ? 'var(--red)' : 'var(--green)';
-    setHTML('summary-weight', `${weight_kg}<span class="unit">kg</span>`);
+    setHTML('summary-weight', `${wkg}<span class="unit">kg</span>`);
     document.getElementById('summary-weight-diff').innerHTML =
-      `<span style="color:${col}">${diff>0?'+':''}${diff} kg</span> vs goal ${TARGETS.goalWeight} kg`;
+      `<span style="color:${col}">${diff > 0 ? '+' : ''}${diff} kg</span> vs goal ${TARGETS.goalWeight} kg`;
   } else {
     setHTML('summary-weight', `—<span class="unit">kg</span>`);
     document.getElementById('summary-weight-diff').textContent = `goal ${TARGETS.goalWeight} kg — not logged today`;
@@ -1309,15 +1320,15 @@ function removeExercise(i){state.exercise.splice(i,1);saveState();renderExercise
 function addWater(ml){state.water_ml=Math.min(5000,state.water_ml+ml);saveState();renderSummary();}
 function resetWater(){state.water_ml=0;saveState();renderSummary();}
 function logWeight(){
-  const v=parseFloat(document.getElementById('weight-input').value);
-  if(isNaN(v)||v<30||v>300){toast('Enter a valid weight (30–300 kg)','error');return;}
-  state.weight_kg=v;
+  const raw = document.getElementById('weight-input').value;
+  const v = parseFloat(raw);
+  if(!raw || isNaN(v) || v < 30 || v > 300){ toast('Enter a valid weight (30–300 kg)','error'); return; }
+  state.weight_kg = v;
   saveState();
-  renderWeight();
-  renderSummary();
-  // Refresh dashboard KPIs + chart if it's visible
-  if(document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
-  toast(`Weight ${v} kg saved`,'success');
+  toast(`Weight ${v} kg saved`, 'success');   // toast immediately after save
+  try { renderWeight(); } catch(e) { console.error('renderWeight', e); }
+  try { renderSummary(); } catch(e) { console.error('renderSummary', e); }
+  try { if(document.getElementById('tab-dashboard').classList.contains('active')) drawCharts(); } catch(e) {}
 }
 
 /* ══ Notes ════════════════════════════════════════════════════════════════ */
