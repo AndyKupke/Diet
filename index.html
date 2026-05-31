@@ -1848,8 +1848,8 @@ function drawCharts(){
   updateKPIs();
   const all=allRows(),last30=all.slice(0,30).reverse(),last14=all.slice(0,14).reverse();
   drawLineChart('chart-weight',  last30,d=>d.weight_kg,            '#FFCC00',TARGETS.goalWeight);
-  drawBarChart ('chart-calories',last14,d=>d.calories||0,          '#FFCC00',TARGETS.kcal);
-  drawBarChart ('chart-deficit', last14,d=>TARGETS.kcal-(d.calories||0),'#4cca8a',0);
+  drawBarChart ('chart-calories',last14,d=>d.calories||0,          '#FFCC00',TARGETS.kcal, 3000,500);
+  drawBarChart ('chart-deficit', last14,d=>TARGETS.kcal-(d.calories||0),'#4cca8a',0,       3000,500);
   drawBarChart ('chart-water',   last14,d=>d.water_ml||0,          '#7aabff',TARGETS.water);
   drawBarChart ('chart-protein', last14,d=>d.protein_g||0,         '#FFCC00',TARGETS.protein);
 }
@@ -1915,15 +1915,19 @@ function drawLineChart(id,data,accessor,color,targetVal){
   xLabels(ctx,data,PAD,cW,H,i=>xS(i),tc.axis);
 }
 
-function drawBarChart(id,data,accessor,color,targetVal){
+function drawBarChart(id,data,accessor,color,targetVal,fixedMax,gridStep){
   const{ctx,W,H}=setupCanvas(id);
   const PAD={t:12,r:8,b:28,l:42},cW=W-PAD.l-PAD.r,cH=H-PAD.t-PAD.b;
   const tc=getThemeColors();
   ctx.clearRect(0,0,W,H);
   if(!data.length){noData(ctx,W,H,tc.axis);return;}
   const vals=data.map(d=>accessor(d));
-  let maxV=Math.max(...vals,targetVal||0,1)*1.12;
-  drawGrid(ctx,PAD,cW,cH,W,0,maxV,false,tc);
+  let maxV=fixedMax||Math.max(...vals,targetVal||0,1)*1.12;
+  if(fixedMax&&gridStep){
+    drawGridFixed(ctx,PAD,cW,cH,W,fixedMax,gridStep,tc);
+  } else {
+    drawGrid(ctx,PAD,cW,cH,W,0,maxV,false,tc);
+  }
   if(targetVal){
     const ty=PAD.t+cH-(targetVal/maxV)*cH;
     ctx.strokeStyle=tc.target;ctx.lineWidth=1;ctx.setLineDash([4,4]);
@@ -1946,6 +1950,15 @@ function drawGrid(ctx,PAD,cW,cH,W,minV,maxV,decimals,tc){
     const y=PAD.t+(g/4)*cH;
     ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();
     ctx.fillText(decimals?(maxV-(g/4)*(maxV-minV)).toFixed(1):Math.round(maxV-(g/4)*(maxV-minV)),PAD.l-6,y+3);
+  }
+}
+// Fixed-scale grid with explicit step size (e.g. 0,500,1000…3000)
+function drawGridFixed(ctx,PAD,cW,cH,W,maxV,step,tc){
+  ctx.strokeStyle=tc.grid;ctx.lineWidth=1;ctx.font='9px "DM Mono",monospace';ctx.fillStyle=tc.axis;ctx.textAlign='right';
+  for(let v=0;v<=maxV;v+=step){
+    const y=PAD.t+cH-(v/maxV)*cH;
+    ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();
+    ctx.fillText(v,PAD.l-6,y+3);
   }
 }
 function xLabels(ctx,data,PAD,cW,H,xFn,axisColor){
