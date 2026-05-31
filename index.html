@@ -2024,10 +2024,9 @@ function ouraHeaders() {
 }
 
 async function fetchOura(forceRefresh = false) {
-  if (!cfg.ouraToken) return null;
   const today = todayISO();
 
-  // Return cache if fresh
+  // Return in-memory cache if fresh
   if (!forceRefresh && ouraCache && ouraCache.date === today) return ouraCache;
 
   // Try localStorage cache
@@ -2039,88 +2038,50 @@ async function fetchOura(forceRefresh = false) {
     }
   }
 
-  const base   = 'https://api.ouraring.com/v2/usercollection';
-  const params = `?start_date=${today}&end_date=${today}`;
-  const result = { date: today, readiness: null, sleep: null, activity: null, workouts: [] };
+  // Read oura_data.json written hourly by GitHub Actions
+  const repo = cfg.githubRepo || 'AndyKupke/Diet';
+  const url  = `https://raw.githubusercontent.com/${repo}/main/oura_data.json?_=${Date.now()}`;
+  try {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    const file = await r.json();
 
-  const safe = async (url) => {
-    try {
-      const r = await fetch(url, { headers: ouraHeaders() });
-      if (!r.ok) return null;
-      return r.json();
-    } catch (e) { return null; }
-  };
-
-  // 1 — Readiness
-  const rd = await safe(`${base}/daily_readiness${params}`);
-  if (rd?.data?.[0]) {
-    const d = rd.data[0];
-    result.readiness = {
-      score:        d.score,
-      temperature:  d.contributors?.body_temperature,
-      hrv:          d.contributors?.hrv_balance,
-      recovery:     d.contributors?.recovery_index,
-      resting_hr:   d.contributors?.resting_heart_rate,
+    // file.today has the shape written by water_check.py
+    const t = file.today || {};
+    const result = {
+      date:      t.date || today,
+      readiness: t.readiness || null,
+      sleep:     t.sleep     || null,
+      activity:  t.activity  || null,
+      workouts:  t.workouts  || [],
     };
-  }
 
-  // 2 — Sleep
-  const sl = await safe(`${base}/daily_sleep${params}`);
-  if (sl?.data?.[0]) {
-    const d = sl.data[0];
-    const contrib = d.contributors || {};
-    result.sleep = {
-      score:         d.score,
-      total_sleep_s: contrib.total_sleep,   // seconds
-      deep_sleep_s:  contrib.deep_sleep,
-      rem_sleep_s:   contrib.rem_sleep,
-      efficiency:    contrib.sleep_efficiency,
-      latency:       contrib.sleep_latency,
-      timing:        contrib.sleep_timing,
-    };
-  }
+    ouraCache = result;
+    localStorage.setItem('dt_oura_cache', JSON.stringify(result));
 
-  // 3 — Activity (steps, active calories, total calories)
-  const ac = await safe(`${base}/daily_activity${params}`);
-  if (ac?.data?.[0]) {
-    const d = ac.data[0];
-    result.activity = {
-      score:           d.score,
-      active_calories: d.active_calories,
-      total_calories:  d.total_calories,   // BMR + active
-      steps:           d.steps,
-      equivalent_walking_distance: d.equivalent_walking_distance,
-      meters_to_target:d.meters_to_target,
-      high_activity:   d.high_activity_time,  // seconds
-      medium_activity: d.medium_activity_time,
-      low_activity:    d.low_activity_time,
-      sedentary:       d.sedentary_time,
-    };
-  }
+    // Also update 14-day history from the same file
+    if (file.history?.length) {
+      const days = file.history.map(d => ({
+        date:      d.date,
+        readiness: d.readiness ? {score: d.readiness.score, resting_hr: d.readiness.resting_hr, hrv: d.readiness.hrv} : null,
+        sleep:     d.sleep     ? {score: d.sleep.score,     total_s: d.sleep.total_sleep_s,     deep_s: d.sleep.deep_sleep_s, rem_s: d.sleep.rem_sleep_s} : null,
+        activity:  d.activity  ? {score: d.activity.score,  steps: d.activity.steps, active_cal: d.activity.active_calories, total_cal: d.activity.total_calories} : null,
+      }));
+      ouraHistory = {fetched: today, days};
+      localStorage.setItem('dt_oura_history', JSON.stringify(ouraHistory));
+    }
 
-  // 4 — Workouts (individual sessions)
-  const wk = await safe(`${base}/workout${params}`);
-  if (wk?.data) {
-    result.workouts = wk.data.map(w => ({
-      activity:    w.activity,
-      calories:    w.calories,
-      duration_s:  w.duration,
-      start:       w.start_datetime,
-      distance_m:  w.distance,
-      avg_hr:      w.average_heart_rate,
-      max_hr:      w.max_heart_rate,
-    }));
+    return result;
+  } catch (e) {
+    console.warn('[oura] Could not fetch oura_data.json:', e);
+    return null;
   }
-
-  ouraCache = result;
-  localStorage.setItem('dt_oura_cache', JSON.stringify(result));
-  return result;
 }
 
 async function refreshOura() {
   toast('Fetching Oura data…');
   const data = await fetchOura(true);
-  if (!data) { toast('No Oura token — add it in Settings', 'error'); return; }
+  if (!data) { toast('Could not load oura_data.json — check GitHub Actions ran', 'error'); return; }
   renderOuraDashboard(data);
   renderOuraSummary(data);
   toast('Oura data refreshed', 'success');
@@ -2135,67 +2096,12 @@ function loadOuraHistory() {
 }
 
 async function fetchAndSaveOuraHistory(silent = false) {
-  if (!cfg.ouraToken) return;
-  if (!silent) toast('Fetching 14-day Oura history…');
-
-  const end   = new Date();
-  const start = new Date(); start.setDate(start.getDate() - 13);
-  const fmt   = d => d.toISOString().split('T')[0];
-  const startDate = fmt(start), endDate = fmt(end);
-  const base  = 'https://api.ouraring.com/v2/usercollection';
-  const qp    = `?start_date=${startDate}&end_date=${endDate}`;
-
-  const safe = async url => {
-    try { const r = await fetch(url, {headers: ouraHeaders()}); if (!r.ok) return null; return r.json(); }
-    catch { return null; }
-  };
-
-  const [rdRes, slRes, acRes] = await Promise.all([
-    safe(`${base}/daily_readiness${qp}`),
-    safe(`${base}/daily_sleep${qp}`),
-    safe(`${base}/daily_activity${qp}`),
-  ]);
-
-  // Index by date
-  const byDate = {};
-  const ensure = d => { if (!byDate[d]) byDate[d] = {date:d}; };
-
-  (rdRes?.data || []).forEach(d => {
-    ensure(d.day);
-    byDate[d.day].readiness = {score: d.score, resting_hr: d.contributors?.resting_heart_rate, hrv: d.contributors?.hrv_balance};
-  });
-  (slRes?.data || []).forEach(d => {
-    ensure(d.day);
-    byDate[d.day].sleep = {score: d.score, total_s: d.contributors?.total_sleep, deep_s: d.contributors?.deep_sleep, rem_s: d.contributors?.rem_sleep};
-  });
-  (acRes?.data || []).forEach(d => {
-    ensure(d.day);
-    byDate[d.day].activity = {score: d.score, steps: d.steps, active_cal: d.active_calories, total_cal: d.total_calories};
-  });
-
-  const days = Object.values(byDate).sort((a,b) => a.date.localeCompare(b.date));
-  ouraHistory = {fetched: todayISO(), days};
-  localStorage.setItem('dt_oura_history', JSON.stringify(ouraHistory));
-
-  // Push to GitHub
-  const {githubPat, githubRepo, githubBranch} = cfg;
-  if (githubPat && githubRepo) {
-    const branch = githubBranch||'main';
-    const apiUrl = `https://api.github.com/repos/${githubRepo}/contents/oura_history.json`;
-    const headers = {'Authorization':`Bearer ${githubPat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
-    try {
-      let sha = null;
-      const get = await fetch(`${apiUrl}?ref=${branch}`, {headers});
-      if (get.ok) sha = (await get.json()).sha;
-      const content = btoa(unescape(encodeURIComponent(JSON.stringify(ouraHistory, null, 2))));
-      const body = {message: `oura: save 14-day history ${todayISO()}`, content, branch};
-      if (sha) body.sha = sha;
-      await fetch(apiUrl, {method:'PUT', headers, body: JSON.stringify(body)});
-    } catch(e) { console.warn('oura history GitHub push failed', e); }
-  }
-
+  if (!silent) toast('Loading Oura history…');
+  // History is now embedded in oura_data.json written by GitHub Actions.
+  // fetchOura() already populates ouraHistory when it parses the file.
+  const data = await fetchOura(true);
   renderOuraHistory();
-  if (!silent) toast('Oura 14-day history saved', 'success');
+  if (!silent) toast(data ? 'Oura data refreshed' : 'Could not load oura_data.json — check GitHub Actions', data ? 'success' : 'error');
 }
 
 function renderOuraHistory() {
@@ -2521,7 +2427,6 @@ function shouldAutoFetch() {
 }
 
 async function loadOuraIfNeeded(force = false) {
-  if (!cfg.ouraToken) return null;
   const importBtn = document.getElementById('oura-import-btn');
   if (importBtn) importBtn.style.display = 'inline-flex';
   const refresh = force || shouldAutoFetch();
