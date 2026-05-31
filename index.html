@@ -1324,8 +1324,14 @@ function addWater(ml){state.water_ml=Math.min(5000,state.water_ml+ml);saveState(
 function resetWater(){state.water_ml=0;saveState();renderSummary();}
 function logWeight(){
   const v=parseFloat(document.getElementById('weight-input').value);
-  if(!v||v<40||v>200){toast('Enter a valid weight','error');return;}
-  state.weight_kg=v;saveState();renderWeight();toast(`Weight ${v} kg logged`,'success');
+  if(isNaN(v)||v<30||v>300){toast('Enter a valid weight (30–300 kg)','error');return;}
+  state.weight_kg=v;
+  saveState();
+  renderWeight();
+  renderSummary();
+  // Refresh dashboard KPIs + chart if it's visible
+  if(document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
+  toast(`Weight ${v} kg saved`,'success');
 }
 
 /* ══ Notes ════════════════════════════════════════════════════════════════ */
@@ -1675,7 +1681,17 @@ function drawLineChart(id,data,accessor,color,targetVal){
   const tc=getThemeColors();
   ctx.clearRect(0,0,W,H);
   const pts=data.map((d,i)=>({i,v:accessor(d),date:d.date})).filter(p=>p.v!=null);
-  if(pts.length<2){noData(ctx,W,H,tc.axis);return;}
+  if(!pts.length){noData(ctx,W,H,tc.axis);return;}
+  // Single point: draw a labelled dot and return
+  if(pts.length===1){
+    const p=pts[0];
+    ctx.clearRect(0,0,W,H);
+    ctx.beginPath();ctx.arc(W/2,H/2,6,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();
+    ctx.font='11px "DM Mono",monospace';ctx.fillStyle=tc.axis;ctx.textAlign='center';
+    ctx.fillText(`${p.v} kg`,W/2,H/2-14);
+    ctx.fillText(p.date.slice(5),W/2,H/2+20);
+    return;
+  }
   let minV=Math.min(...pts.map(p=>p.v)),maxV=Math.max(...pts.map(p=>p.v));
   if(targetVal!=null){minV=Math.min(minV,targetVal);maxV=Math.max(maxV,targetVal);}
   const rng=maxV-minV||1,pad=rng*0.12;minV-=pad;maxV+=pad;
