@@ -885,10 +885,11 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
         <div class="field"><label>Date</label><input type="date" id="hist-add-date"></div>
         <div class="field"><label>Type</label>
           <select id="hist-add-type" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;width:100%;" onchange="toggleHistAddFields()">
-            <option value="meal">Meal</option>
-            <option value="weight">Weight</option>
-            <option value="water">Water</option>
-            <option value="exercise">Exercise</option>
+            <option value="meal">🍽 Meal</option>
+            <option value="weight">⚖️ Body Weight</option>
+            <option value="water">💧 Hydration</option>
+            <option value="exercise">🏃 Exercise</option>
+            <option value="note">📝 Note</option>
           </select>
         </div>
         <div class="field" id="hist-add-name-wrap"><label>Name / Description</label><input type="text" id="hist-add-name" placeholder="e.g. Chicken salad"></div>
@@ -908,7 +909,18 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div id="hist-add-exercise-fields" style="display:none;" class="grid-3">
         <div class="field"><label>Duration (min)</label><input type="number" id="hist-add-duration" placeholder="30" min="0"></div>
         <div class="field"><label>kcal burned</label><input type="number" id="hist-add-exkcal" placeholder="0" min="0"></div>
-        <div class="field"><label>Type</label><input type="text" id="hist-add-extype" placeholder="run, gym…"></div>
+        <div class="field"><label>Type</label>
+          <select id="hist-add-extype" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;width:100%;">
+            <option value="cardio">Cardio</option>
+            <option value="strength">Strength</option>
+            <option value="hiit">HIIT</option>
+            <option value="flexibility">Flexibility</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <div id="hist-add-note-fields" style="display:none;">
+        <div class="field"><label>Note</label><textarea id="hist-add-note-text" placeholder="How did you feel? Energy, sleep, appetite…" style="min-height:72px;resize:vertical;width:100%;font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;"></textarea></div>
       </div>
       <button class="btn btn-sm" style="margin-top:12px;" onclick="addHistoryEntry()">Add Entry</button>
     </div>
@@ -1374,6 +1386,7 @@ const TYPE_ICON = {
   weight:   '⚖️',
   water:    '💧',
   exercise: '🏃',
+  note:     '📝',
 };
 
 function renderHistoryTable() {
@@ -1428,7 +1441,8 @@ function renderHistoryTable() {
     if (e.type==='meal')     return `<strong>${esc(e.name)}</strong> &nbsp;${e.kcal||0} kcal &nbsp;·&nbsp; P ${(e.protein_g||0).toFixed(1)}g &nbsp;·&nbsp; C ${(e.carbs_g||0).toFixed(1)}g &nbsp;·&nbsp; F ${(e.fat_g||0).toFixed(1)}g`;
     if (e.type==='weight')   return `<strong>${e.weight_kg} kg</strong>`;
     if (e.type==='water')    return e._aggregate ? `<strong>${e.water_ml} ml</strong> total today` : `<strong>${e.water_ml} ml</strong>`;
-    if (e.type==='exercise') return `<strong>${esc(e.name)}</strong> &nbsp;${e.duration_min} min${e.kcal_burned?` &nbsp;·&nbsp; ${e.kcal_burned} kcal burned`:''}`;
+    if (e.type==='exercise') return `<strong>${esc(e.name)}</strong>${e.ex_type?` <span style="color:var(--text-muted);font-size:11px;">${esc(e.ex_type)}</span>`:''} &nbsp;${e.duration_min} min${e.kcal_burned?` &nbsp;·&nbsp; ${e.kcal_burned} kcal burned`:''}`;
+    if (e.type==='note')     return `<span style="color:var(--text-muted)">${esc(e.text||'')}</span>`;
     return '';
   };
 
@@ -1459,6 +1473,7 @@ function toggleHistAddFields() {
   document.getElementById('hist-add-weight-fields').style.display   = type==='weight'   ? '' : 'none';
   document.getElementById('hist-add-water-fields').style.display    = type==='water'    ? '' : 'none';
   document.getElementById('hist-add-exercise-fields').style.display = type==='exercise' ? '' : 'none';
+  document.getElementById('hist-add-note-fields').style.display     = type==='note'     ? '' : 'none';
   document.getElementById('hist-add-name-wrap').style.display       = (type==='meal'||type==='exercise') ? '' : 'none';
 }
 
@@ -1483,6 +1498,9 @@ function addHistoryEntry() {
   } else if (type==='exercise') {
     evt.name=s('hist-add-name')||'Exercise'; evt.duration_min=g('hist-add-duration'); evt.kcal_burned=g('hist-add-exkcal'); evt.ex_type=s('hist-add-extype');
     if (!evt.name||!evt.duration_min){ toast('Enter name and duration','error'); return; }
+  } else if (type==='note') {
+    evt.text = document.getElementById('hist-add-note-text')?.value.trim()||'';
+    if (!evt.text){ toast('Enter a note','error'); return; }
   }
 
   pushEvent(evt);
@@ -1490,7 +1508,7 @@ function addHistoryEntry() {
   toast(`${type} entry added for ${date}`,'success');
   // Clear form fields
   ['hist-add-name','hist-add-kcal','hist-add-prot','hist-add-carb','hist-add-fat',
-   'hist-add-weight','hist-add-water-ml','hist-add-duration','hist-add-exkcal','hist-add-extype'].forEach(id=>{
+   'hist-add-weight','hist-add-water-ml','hist-add-duration','hist-add-exkcal','hist-add-note-text'].forEach(id=>{
     const el=document.getElementById(id); if(el) el.value='';
   });
 }
