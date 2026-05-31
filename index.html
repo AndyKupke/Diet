@@ -368,6 +368,7 @@ body {
 .btn:disabled { opacity: 0.35; cursor: not-allowed; }
 .btn-ghost { border-color: var(--divider); color: var(--text-muted); }
 .btn-ghost:hover { border-color: var(--border-hover); background: transparent; color: var(--text); }
+.btn-ghost.active { border-color: var(--yellow); color: var(--yellow); }
 .btn-danger { border-color: rgba(224,90,106,0.4); color: var(--red); }
 .btn-danger:hover { background: var(--red); border-color: var(--red); color: #fff; }
 .btn-sm { padding: 5px 12px; font-size: 9px; }
@@ -770,8 +771,17 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
 <!-- INPUT -->
 <div class="tab-panel" id="tab-input">
   <div class="wrap">
+
+    <!-- ── Date picker ──────────────────────────────────────────────────── -->
+    <div style="display:flex;align-items:center;gap:12px;padding:12px 0 18px;border-bottom:1px solid var(--divider);margin-bottom:20px;flex-wrap:wrap;">
+      <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);white-space:nowrap;">Logging for</span>
+      <input type="date" id="input-date" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:6px 10px;" onchange="updateInputDateUI()">
+      <button class="btn btn-ghost btn-sm" id="input-date-today-btn" onclick="resetInputDate()" style="display:none;">↩ Today</button>
+      <span id="input-date-banner" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--yellow);display:none;">● Logging for past date</span>
+    </div>
+
     <div class="section-head"><span class="section-title">Body Weight</span><span class="section-rule"></span></div>
-    <div class="card">
+    <div class="card" id="weight-input-card">
       <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
         <input type="number" id="weight-input" placeholder="75.0" step="0.1" min="40" max="200" style="width:120px;">
         <span style="color:var(--text-muted);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;">KG</span>
@@ -879,55 +889,29 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <span id="sync-status-inline" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
     </div>
 
-    <!-- Add entry for a prior date -->
-    <div class="panel" style="margin-bottom:16px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Add entry for a prior date</div>
-      <div class="grid-3" style="align-items:end;">
-        <div class="field"><label>Date</label><input type="date" id="hist-add-date"></div>
-        <div class="field"><label>Type</label>
-          <select id="hist-add-type" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;width:100%;" onchange="toggleHistAddFields()">
-            <option value="meal">🍽 Meal</option>
-            <option value="weight">⚖️ Body Weight</option>
-            <option value="water">💧 Hydration</option>
-            <option value="exercise">🏃 Exercise</option>
-            <option value="note">📝 Note</option>
-          </select>
-        </div>
-        <div class="field" id="hist-add-name-wrap"><label>Name / Description</label><input type="text" id="hist-add-name" placeholder="e.g. Chicken salad"></div>
-      </div>
-      <div id="hist-add-meal-fields" class="grid-4">
-        <div class="field"><label>kcal</label><input type="number" id="hist-add-kcal" placeholder="0" min="0"></div>
-        <div class="field"><label>Protein g</label><input type="number" id="hist-add-prot" placeholder="0" step="0.1" min="0"></div>
-        <div class="field"><label>Carbs g</label><input type="number" id="hist-add-carb" placeholder="0" step="0.1" min="0"></div>
-        <div class="field"><label>Fat g</label><input type="number" id="hist-add-fat" placeholder="0" step="0.1" min="0"></div>
-      </div>
-      <div id="hist-add-weight-fields" style="display:none;">
-        <div class="field" style="max-width:180px;"><label>Weight (kg)</label><input type="number" id="hist-add-weight" placeholder="75.0" step="0.1" min="30" max="300"></div>
-      </div>
-      <div id="hist-add-water-fields" style="display:none;">
-        <div class="field" style="max-width:180px;"><label>Water (ml)</label><input type="number" id="hist-add-water-ml" placeholder="500" min="0"></div>
-      </div>
-      <div id="hist-add-exercise-fields" style="display:none;" class="grid-3">
-        <div class="field"><label>Duration (min)</label><input type="number" id="hist-add-duration" placeholder="30" min="0"></div>
-        <div class="field"><label>kcal burned</label><input type="number" id="hist-add-exkcal" placeholder="0" min="0"></div>
-        <div class="field"><label>Type</label>
-          <select id="hist-add-extype" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;width:100%;">
-            <option value="cardio">Cardio</option>
-            <option value="strength">Strength</option>
-            <option value="hiit">HIIT</option>
-            <option value="flexibility">Flexibility</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-      </div>
-      <div id="hist-add-note-fields" style="display:none;">
-        <div class="field"><label>Note</label><textarea id="hist-add-note-text" placeholder="How did you feel? Energy, sleep, appetite…" style="min-height:72px;resize:vertical;width:100%;font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;"></textarea></div>
-      </div>
-      <button class="btn btn-sm" style="margin-top:12px;" onclick="addHistoryEntry()">Add Entry</button>
+    <!-- Date range filter -->
+    <div style="display:flex;gap:6px;margin-bottom:24px;flex-wrap:wrap;">
+      <button class="btn btn-ghost btn-sm hist-range-btn" data-range="7"  onclick="setHistRange(7)">7 days</button>
+      <button class="btn btn-ghost btn-sm hist-range-btn" data-range="30" onclick="setHistRange(30)">30 days</button>
+      <button class="btn btn-ghost btn-sm hist-range-btn" data-range="90" onclick="setHistRange(90)">90 days</button>
+      <button class="btn btn-ghost btn-sm hist-range-btn" data-range="0"  onclick="setHistRange(0)">All</button>
     </div>
 
-    <!-- Events list -->
-    <div id="history-events-list"></div>
+    <!-- ⚖️ Weight -->
+    <div class="section-head"><span class="section-title" style="font-size:16px;">⚖️ Body Weight</span><span class="section-rule"></span></div>
+    <div id="hist-weight-table" class="panel" style="padding:0;overflow:hidden;margin-bottom:28px;"></div>
+
+    <!-- 💧 Hydration -->
+    <div class="section-head"><span class="section-title" style="font-size:16px;">💧 Hydration</span><span class="section-rule"></span></div>
+    <div id="hist-water-table" class="panel" style="padding:0;overflow:hidden;margin-bottom:28px;"></div>
+
+    <!-- 🍽 Diet -->
+    <div class="section-head"><span class="section-title" style="font-size:16px;">🍽 Diet</span><span class="section-rule"></span></div>
+    <div id="hist-meal-table" class="panel" style="padding:0;overflow:hidden;margin-bottom:28px;"></div>
+
+    <!-- 🏃 Exercise -->
+    <div class="section-head"><span class="section-title" style="font-size:16px;">🏃 Exercise</span><span class="section-rule"></span></div>
+    <div id="hist-exercise-table" class="panel" style="padding:0;overflow:hidden;margin-bottom:28px;"></div>
   </div>
 </div>
 
@@ -1163,7 +1147,12 @@ function switchTab(name) {
 function todayISO() { return new Date().toISOString().split('T')[0]; }
 function init() {
   loadCfg(); loadTargets(); loadHistory(); loadEvents(); loadState(); loadSupplements(); loadBloodTests(); loadOuraHistory(); renderAll();
-  toggleHistAddFields();
+  // Initialise date picker to today
+  const inputDateEl = document.getElementById('input-date');
+  if (inputDateEl) inputDateEl.value = todayISO();
+  updateInputDateUI();
+  renderHistoryTable();
+  setHistRange(30); // default range
   window.addEventListener('load', () => {
     // Always attempt Oura fetch on load (auto-decides if refresh needed)
     loadOuraIfNeeded().then(data => {
@@ -1382,136 +1371,193 @@ function allRows() {
   return Object.values(byDate).sort((a,b)=>b.date.localeCompare(a.date));
 }
 
-const TYPE_ICON = {
-  meal:     '🍽',
-  weight:   '⚖️',
-  water:    '💧',
-  exercise: '🏃',
-  note:     '📝',
-};
+/* ══ History tables ═══════════════════════════════════════════════════════ */
+let histRange = 30;
+
+function setHistRange(n) {
+  histRange = n;
+  document.querySelectorAll('.hist-range-btn').forEach(b =>
+    b.classList.toggle('active', +b.dataset.range === n));
+  renderHistoryTable();
+}
+
+/** Merge events array with today's state (for items logged before events system). */
+function collectHistEvents() {
+  const all = events.map(e => ({...e}));
+  const inEvts = id => id && events.some(e => e.id === id);
+  // Today's meals not yet in events
+  (state.meals||[]).forEach(m => {
+    if (!inEvts(m._evtId))
+      all.push({id:m._evtId||null, date:todayISO(), type:'meal', name:m.name, kcal:m.kcal, protein_g:m.protein_g, carbs_g:m.carbs_g, fat_g:m.fat_g, ts:m.time});
+  });
+  // Today's weight
+  if (state.weight_kg && !events.some(e=>e.type==='weight'&&e.date===todayISO()))
+    all.push({id:null, date:todayISO(), type:'weight', weight_kg:state.weight_kg});
+  // Today's water
+  if (state.water_ml > 0 && !events.some(e=>e.type==='water'&&e.date===todayISO()))
+    all.push({id:null, date:todayISO(), type:'water', water_ml:state.water_ml, _aggregate:true});
+  // Today's exercise
+  (state.exercise||[]).forEach(x => {
+    if (!inEvts(x._evtId))
+      all.push({id:x._evtId||null, date:todayISO(), type:'exercise', name:x.name, duration_min:x.duration_min, kcal_burned:x.kcal_burned, ex_type:x.type});
+  });
+  return all;
+}
 
 function renderHistoryTable() {
-  const el = document.getElementById('history-events-list');
-  if (!el) return;
+  const cutoff = histRange > 0
+    ? new Date(Date.now() - histRange * 86400000).toISOString().split('T')[0]
+    : '0000-00-00';
+  const all = collectHistEvents().filter(e => (e.date||'') >= cutoff);
 
-  // Collect all events (today from state, past from events array)
-  const allEvts = [];
+  // ── shared SVG icons ──────────────────────────────────────────────────────
+  const pencilSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;pointer-events:none;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
+  const trashSVG  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;pointer-events:none;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`;
 
-  // Today's items from state
-  (state.meals||[]).forEach(m => allEvts.push({
-    id: m._evtId||null, date:todayISO(), type:'meal',
-    name:m.name, kcal:m.kcal, protein_g:m.protein_g, carbs_g:m.carbs_g, fat_g:m.fat_g,
-    ts: m.time, _today:true
-  }));
-  if (state.weight_kg) allEvts.push({id:null, date:todayISO(), type:'weight', weight_kg:state.weight_kg, ts:state.date+'T00:00:00Z', _today:true});
-  if (state.water_ml)  allEvts.push({id:null, date:todayISO(), type:'water',  water_ml:state.water_ml,  ts:state.date+'T00:00:00Z', _today:true, _aggregate:true});
-  (state.exercise||[]).forEach(x => allEvts.push({
-    id: x._evtId||null, date:todayISO(), type:'exercise',
-    name:x.name, duration_min:x.duration_min, kcal_burned:x.kcal_burned,
-    ts: x.time, _today:true
-  }));
+  const actTd = e => `<td style="padding:5px 8px;border-bottom:1px solid var(--divider);white-space:nowrap;">
+    <div style="display:flex;gap:3px;align-items:center;">
+      <button class="btn-icon" onclick="startHistEdit('${e.id||''}','${e.type}',this)" title="Edit" style="padding:4px;">${pencilSVG}</button>
+      ${e.id ? `<button class="btn-icon" onclick="deleteEvent('${e.id}');renderHistoryTable();" title="Delete" style="padding:4px;">${trashSVG}</button>` : ''}
+    </div>
+  </td>`;
 
-  // Past events
-  events.filter(e=>e.date!==todayISO()).forEach(e=>allEvts.push({...e}));
+  const th = (t,w='') => `<th style="padding:6px 12px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:2px solid var(--divider);white-space:nowrap;${w?'width:'+w+';':''}">${t}</th>`;
+  const td = (v,mono) => `<td style="padding:7px 12px;border-bottom:1px solid var(--divider);font-size:12px;${mono?'font-family:\'DM Mono\',monospace;font-size:11px;color:var(--text-muted);':''}">${v}</td>`;
+  const empty = cols => `<tr><td colspan="${cols}" style="padding:14px 12px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">No data in this range.</td></tr>`;
+  const tbl = (head, body) => `<table style="width:100%;border-collapse:collapse;"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
 
-  // Sort newest first
-  allEvts.sort((a,b) => {
-    const d = b.date.localeCompare(a.date); if (d!==0) return d;
-    return (b.ts||'').localeCompare(a.ts||'');
-  });
+  const byDate = d => `<span style="font-family:'DM Mono',monospace;font-size:10px;color:${d===todayISO()?'var(--yellow)':'var(--text-muted)'};">${d===todayISO()?'Today':d}</span>`;
 
-  if (!allEvts.length) {
-    el.innerHTML = `<div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);padding:20px 0;">No entries yet — start logging meals, weight and water.</div>`;
-    return;
-  }
+  // ── ⚖️ Weight ─────────────────────────────────────────────────────────────
+  const wts = all.filter(e=>e.type==='weight').sort((a,b)=>b.date.localeCompare(a.date));
+  document.getElementById('hist-weight-table').innerHTML = tbl(
+    th('Date')+th('Weight')+th('',80),
+    wts.length ? wts.map(e=>`<tr data-hid="${e.id||''}">
+      ${td(byDate(e.date))}
+      ${td(`<strong>${e.weight_kg} kg</strong>`)}
+      ${actTd(e)}
+    </tr>`).join('') : empty(3)
+  );
 
-  // Group by date
-  const grouped = {};
-  allEvts.forEach(e => { if (!grouped[e.date]) grouped[e.date]=[]; grouped[e.date].push(e); });
-  const dates = Object.keys(grouped).sort((a,b)=>b.localeCompare(a));
+  // ── 💧 Hydration ──────────────────────────────────────────────────────────
+  const waters = all.filter(e=>e.type==='water').sort((a,b)=>b.date.localeCompare(a.date)||(b.ts||'').localeCompare(a.ts||''));
+  document.getElementById('hist-water-table').innerHTML = tbl(
+    th('Date')+th('Amount')+th('',80),
+    waters.length ? waters.map(e=>`<tr data-hid="${e.id||''}">
+      ${td(byDate(e.date))}
+      ${td(`<strong>${e.water_ml} ml</strong>${e._aggregate?' <span style="font-size:10px;color:var(--text-muted);">(daily total)</span>':''}`)}
+      ${actTd(e)}
+    </tr>`).join('') : empty(3)
+  );
 
-  const delBtn = (id, today) => {
-    if (today) return ''; // today's items deleted via main UI
-    if (!id)   return '';
-    return `<button class="btn-icon" onclick="deleteEvent('${id}')" title="Delete" style="margin-left:auto;flex-shrink:0;">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
-    </button>`;
-  };
+  // ── 🍽 Diet ───────────────────────────────────────────────────────────────
+  const meals = all.filter(e=>e.type==='meal').sort((a,b)=>b.date.localeCompare(a.date)||(b.ts||'').localeCompare(a.ts||''));
+  document.getElementById('hist-meal-table').innerHTML = tbl(
+    th('Date')+th('Meal')+th('kcal')+th('Prot')+th('Carbs')+th('Fat')+th('',80),
+    meals.length ? meals.map(e=>`<tr data-hid="${e.id||''}">
+      ${td(byDate(e.date))}
+      ${td(`<strong>${esc(e.name||'')}</strong>`)}
+      ${td(e.kcal||0)}
+      ${td(`${(e.protein_g||0).toFixed(1)}g`)}
+      ${td(`${(e.carbs_g||0).toFixed(1)}g`)}
+      ${td(`${(e.fat_g||0).toFixed(1)}g`)}
+      ${actTd(e)}
+    </tr>`).join('') : empty(7)
+  );
 
-  const describeEvt = e => {
-    if (e.type==='meal')     return `<strong>${esc(e.name)}</strong> &nbsp;${e.kcal||0} kcal &nbsp;·&nbsp; P ${(e.protein_g||0).toFixed(1)}g &nbsp;·&nbsp; C ${(e.carbs_g||0).toFixed(1)}g &nbsp;·&nbsp; F ${(e.fat_g||0).toFixed(1)}g`;
-    if (e.type==='weight')   return `<strong>${e.weight_kg} kg</strong>`;
-    if (e.type==='water')    return e._aggregate ? `<strong>${e.water_ml} ml</strong> total today` : `<strong>${e.water_ml} ml</strong>`;
-    if (e.type==='exercise') return `<strong>${esc(e.name)}</strong>${e.ex_type?` <span style="color:var(--text-muted);font-size:11px;">${esc(e.ex_type)}</span>`:''} &nbsp;${e.duration_min} min${e.kcal_burned?` &nbsp;·&nbsp; ${e.kcal_burned} kcal burned`:''}`;
-    if (e.type==='note')     return `<span style="color:var(--text-muted)">${esc(e.text||'')}</span>`;
-    return '';
-  };
+  // ── 🏃 Exercise ───────────────────────────────────────────────────────────
+  const exs = all.filter(e=>e.type==='exercise').sort((a,b)=>b.date.localeCompare(a.date)||(b.ts||'').localeCompare(a.ts||''));
+  document.getElementById('hist-exercise-table').innerHTML = tbl(
+    th('Date')+th('Activity')+th('Type')+th('Duration')+th('kcal burned')+th('',80),
+    exs.length ? exs.map(e=>`<tr data-hid="${e.id||''}">
+      ${td(byDate(e.date))}
+      ${td(`<strong>${esc(e.name||'')}</strong>`)}
+      ${td(e.ex_type||'—',true)}
+      ${td(`${e.duration_min||0} min`)}
+      ${td(e.kcal_burned||0)}
+      ${actTd(e)}
+    </tr>`).join('') : empty(6)
+  );
 
-  el.innerHTML = dates.map(date => {
-    const evts = grouped[date];
-    const isToday = date === todayISO();
-    const rows = evts.map(e => `
-      <div style="display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--divider);flex-wrap:wrap;">
-        <span style="font-size:14px;width:20px;flex-shrink:0;">${TYPE_ICON[e.type]||'·'}</span>
-        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);width:60px;flex-shrink:0;">${e.type}</span>
-        <span style="flex:1;font-size:13px;">${describeEvt(e)}</span>
-        ${delBtn(e.id, e._today)}
-      </div>`).join('');
-    return `
-      <div style="margin-bottom:20px;">
-        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:${isToday?'var(--yellow)':'var(--text-muted)'};padding:4px 0 6px;border-bottom:1px solid var(--divider-y);">
-          ${isToday?'▸ Today — ':''} ${date}
-        </div>
-        ${rows}
-      </div>`;
-  }).join('');
+  // Sync range button active state
+  document.querySelectorAll('.hist-range-btn').forEach(b =>
+    b.classList.toggle('active', +b.dataset.range === histRange));
 }
 
-// Toggle type-specific fields in the "Add prior date entry" form
-function toggleHistAddFields() {
-  const type = document.getElementById('hist-add-type')?.value;
-  document.getElementById('hist-add-meal-fields').style.display     = type==='meal'     ? '' : 'none';
-  document.getElementById('hist-add-weight-fields').style.display   = type==='weight'   ? '' : 'none';
-  document.getElementById('hist-add-water-fields').style.display    = type==='water'    ? '' : 'none';
-  document.getElementById('hist-add-exercise-fields').style.display = type==='exercise' ? '' : 'none';
-  document.getElementById('hist-add-note-fields').style.display     = type==='note'     ? '' : 'none';
-  document.getElementById('hist-add-name-wrap').style.display       = (type==='meal'||type==='exercise') ? '' : 'none';
-}
+/* ── History inline edit ──────────────────────────────────────────────────── */
+function startHistEdit(id, type, btn) {
+  const tr = btn.closest('tr');
+  if (!tr) return;
 
-function addHistoryEntry() {
-  const date = document.getElementById('hist-add-date').value;
-  if (!date) { toast('Select a date','error'); return; }
-  if (date === todayISO()) { toast('Use the main input forms for today','error'); return; }
-  const type = document.getElementById('hist-add-type').value;
-  const g = id => { const v=parseFloat(document.getElementById(id)?.value); return isNaN(v)?0:v; };
-  const s = id => document.getElementById(id)?.value.trim()||'';
-
-  let evt = {id:newEvtId(), date, type, ts: date+'T12:00:00Z'};
-  if (type==='meal') {
-    evt.name=s('hist-add-name')||'Meal'; evt.kcal=g('hist-add-kcal'); evt.protein_g=g('hist-add-prot'); evt.carbs_g=g('hist-add-carb'); evt.fat_g=g('hist-add-fat');
-    if (!evt.name){ toast('Enter a meal name','error'); return; }
-  } else if (type==='weight') {
-    evt.weight_kg=g('hist-add-weight');
-    if (!evt.weight_kg){ toast('Enter weight','error'); return; }
-  } else if (type==='water') {
-    evt.water_ml=g('hist-add-water-ml');
-    if (!evt.water_ml){ toast('Enter water amount','error'); return; }
-  } else if (type==='exercise') {
-    evt.name=s('hist-add-name')||'Exercise'; evt.duration_min=g('hist-add-duration'); evt.kcal_burned=g('hist-add-exkcal'); evt.ex_type=s('hist-add-extype');
-    if (!evt.name||!evt.duration_min){ toast('Enter name and duration','error'); return; }
-  } else if (type==='note') {
-    evt.text = document.getElementById('hist-add-note-text')?.value.trim()||'';
-    if (!evt.text){ toast('Enter a note','error'); return; }
+  let e = id ? events.find(ev=>ev.id===id) : null;
+  // Fallbacks for today's state items without event id
+  if (!e) {
+    if (type==='weight')   e = {id:null, type:'weight',   date:todayISO(), weight_kg:state.weight_kg||0};
+    else if (type==='water') e = {id:null, type:'water',  date:todayISO(), water_ml:state.water_ml||0};
+    else return;
   }
 
-  pushEvent(evt);
+  const numInp = (eid, val, w='80px') =>
+    `<input type="number" id="${eid}" value="${val||0}" step="0.1" min="0" style="width:${w};font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1.5px solid var(--yellow);border-radius:4px;padding:3px 6px;">`;
+  const txtInp = (eid, val, w='100%') =>
+    `<input type="text" id="${eid}" value="${esc(val||'')}" style="width:${w};font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1.5px solid var(--yellow);border-radius:4px;padding:3px 6px;">`;
+  const saveSVG   = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width:12px;height:12px;pointer-events:none;"><polyline points="20 6 9 17 4 12"/></svg>`;
+  const cancelSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px;pointer-events:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>`;
+  const actionCell = `<td style="padding:5px 8px;border-bottom:1px solid var(--divider);white-space:nowrap;">
+    <div style="display:flex;gap:3px;">
+      <button class="btn-icon" onclick="saveHistEdit('${id}','${type}',this)" style="padding:4px;color:var(--green);" title="Save">${saveSVG}</button>
+      <button class="btn-icon" onclick="renderHistoryTable()" style="padding:4px;" title="Cancel">${cancelSVG}</button>
+    </div></td>`;
+  const dateTd = `<td style="padding:5px 12px;border-bottom:1px solid var(--divider);font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">${e.date}</td>`;
+  const cellWrap = v => `<td style="padding:5px 8px;border-bottom:1px solid var(--divider);">${v}</td>`;
+
+  let html = '';
+  if (type === 'weight') {
+    html = `${dateTd}${cellWrap(numInp('hedit-v',e.weight_kg,'100px')+' kg')}${actionCell}`;
+  } else if (type === 'water') {
+    html = `${dateTd}${cellWrap(numInp('hedit-v',e.water_ml,'100px')+' ml')}${actionCell}`;
+  } else if (type === 'meal') {
+    html = `${dateTd}${cellWrap(txtInp('hedit-name',e.name))}${cellWrap(numInp('hedit-kcal',e.kcal))}${cellWrap(numInp('hedit-prot',e.protein_g))}${cellWrap(numInp('hedit-carb',e.carbs_g))}${cellWrap(numInp('hedit-fat',e.fat_g))}${actionCell}`;
+  } else if (type === 'exercise') {
+    const opts = ['cardio','strength','hiit','flexibility','other'].map(t=>`<option value="${t}"${t===e.ex_type?' selected':''}>${t}</option>`).join('');
+    const sel = `<select id="hedit-extype" style="font-family:'DM Mono',monospace;font-size:10px;background:var(--input-bg);color:var(--text);border:1.5px solid var(--yellow);border-radius:4px;padding:3px 6px;">${opts}</select>`;
+    html = `${dateTd}${cellWrap(txtInp('hedit-name',e.name))}${cellWrap(sel)}${cellWrap(numInp('hedit-dur',e.duration_min))}${cellWrap(numInp('hedit-exkcal',e.kcal_burned))}${actionCell}`;
+  }
+  tr.innerHTML = html;
+  tr.querySelector('input, select')?.focus();
+}
+
+function saveHistEdit(id, type, btn) {
+  const g = eid => parseFloat(document.getElementById(eid)?.value)||0;
+  const s = eid => document.getElementById(eid)?.value?.trim()||'';
+
+  let patch = {};
+  if      (type==='weight')   patch = {weight_kg: g('hedit-v')};
+  else if (type==='water')    patch = {water_ml:  g('hedit-v')};
+  else if (type==='meal')     patch = {name:s('hedit-name'), kcal:g('hedit-kcal'), protein_g:g('hedit-prot'), carbs_g:g('hedit-carb'), fat_g:g('hedit-fat')};
+  else if (type==='exercise') patch = {name:s('hedit-name'), ex_type:s('hedit-extype'), duration_min:g('hedit-dur'), kcal_burned:g('hedit-exkcal')};
+
+  if (id) {
+    const idx = events.findIndex(e=>e.id===id);
+    if (idx>=0) { events[idx] = {...events[idx], ...patch}; saveEvents(); }
+    // Also sync today's state cache
+    if (type==='meal') {
+      const m = state.meals?.find(m=>m._evtId===id);
+      if (m) { Object.assign(m, {name:patch.name, kcal:patch.kcal, protein_g:patch.protein_g, carbs_g:patch.carbs_g, fat_g:patch.fat_g}); recalc(); saveState(); }
+    }
+    if (type==='exercise') {
+      const x = state.exercise?.find(x=>x._evtId===id);
+      if (x) { Object.assign(x, {name:patch.name, duration_min:patch.duration_min, kcal_burned:patch.kcal_burned, type:patch.ex_type}); saveState(); }
+    }
+  } else {
+    // Today's state-only items
+    if (type==='weight') { state.weight_kg=patch.weight_kg; saveState(); pushEvent({type:'weight',date:todayISO(),weight_kg:patch.weight_kg}); }
+    if (type==='water')  { state.water_ml=patch.water_ml;   saveState(); }
+  }
+
+  autoSyncToGitHub();
   renderHistoryTable();
-  toast(`${type} entry added for ${date}`,'success');
-  // Clear form fields
-  ['hist-add-name','hist-add-kcal','hist-add-prot','hist-add-carb','hist-add-fat',
-   'hist-add-weight','hist-add-water-ml','hist-add-duration','hist-add-exkcal','hist-add-note-text'].forEach(id=>{
-    const el=document.getElementById(id); if(el) el.value='';
-  });
+  toast('Saved','success');
 }
 
 /* ══ Meals ════════════════════════════════════════════════════════════════ */
@@ -1519,11 +1565,18 @@ function addMeal() {
   const name=document.getElementById('meal-name').value.trim();
   if(!name){toast('Enter a meal name','error');return;}
   const meal={name,kcal:parseFloat(document.getElementById('meal-kcal').value)||0,protein_g:parseFloat(document.getElementById('meal-protein').value)||0,carbs_g:parseFloat(document.getElementById('meal-carbs').value)||0,fat_g:parseFloat(document.getElementById('meal-fat').value)||0,time:new Date().toISOString()};
-  meal._evtId = newEvtId();
-  state.meals.push(meal);
-  recalc(); saveState();
-  pushEvent({id:meal._evtId, type:'meal', date:todayISO(), name:meal.name, kcal:meal.kcal, protein_g:meal.protein_g, carbs_g:meal.carbs_g, fat_g:meal.fat_g});
-  renderAll(); clearMealForm(); toast(`${name} logged`,'success');
+  const logDate = getInputDate();
+  if (logDate === todayISO()) {
+    meal._evtId = newEvtId();
+    state.meals.push(meal);
+    recalc(); saveState();
+    pushEvent({id:meal._evtId, type:'meal', date:todayISO(), name:meal.name, kcal:meal.kcal, protein_g:meal.protein_g, carbs_g:meal.carbs_g, fat_g:meal.fat_g});
+    renderAll();
+  } else {
+    pushEvent({id:newEvtId(), type:'meal', date:logDate, name:meal.name, kcal:meal.kcal, protein_g:meal.protein_g, carbs_g:meal.carbs_g, fat_g:meal.fat_g, ts:logDate+'T12:00:00Z'});
+    renderHistoryTable();
+  }
+  clearMealForm(); toast(`${name} logged${logDate!==todayISO()?' for '+logDate:''}`, 'success');
 }
 function removeMeal(i){
   const meal = state.meals[i];
@@ -1550,17 +1603,32 @@ function addExercise(){
   const name=document.getElementById('ex-name').value.trim(),duration=parseInt(document.getElementById('ex-duration').value)||0;
   if(!name||!duration){toast('Enter activity name and duration','error');return;}
   const ex={name,duration_min:duration,kcal_burned:parseInt(document.getElementById('ex-kcal').value)||0,type:document.getElementById('ex-type').value,time:new Date().toISOString()};
-  ex._evtId = newEvtId();
-  state.exercise.push(ex); saveState();
-  pushEvent({id:ex._evtId, type:'exercise', date:todayISO(), name:ex.name, duration_min:ex.duration_min, kcal_burned:ex.kcal_burned, ex_type:ex.type});
-  renderExercise();['ex-name','ex-duration','ex-kcal'].forEach(id=>document.getElementById(id).value='');toast(`${name} logged`,'success');
+  const logDate = getInputDate();
+  if (logDate === todayISO()) {
+    ex._evtId = newEvtId();
+    state.exercise.push(ex); saveState();
+    pushEvent({id:ex._evtId, type:'exercise', date:todayISO(), name:ex.name, duration_min:ex.duration_min, kcal_burned:ex.kcal_burned, ex_type:ex.type});
+    renderExercise();
+  } else {
+    pushEvent({id:newEvtId(), type:'exercise', date:logDate, name:ex.name, duration_min:ex.duration_min, kcal_burned:ex.kcal_burned, ex_type:ex.type, ts:logDate+'T12:00:00Z'});
+    renderHistoryTable();
+  }
+  ['ex-name','ex-duration','ex-kcal'].forEach(id=>document.getElementById(id).value='');
+  toast(`${name} logged${logDate!==todayISO()?' for '+logDate:''}`, 'success');
 }
 function removeExercise(i){state.exercise.splice(i,1);saveState();renderExercise();}
 
 /* ══ Water & Weight ══════════════════════════════════════════════════════ */
 function addWater(ml){
-  state.water_ml=Math.min(5000,state.water_ml+ml); saveState(); renderSummary();
-  pushEvent({type:'water', date:todayISO(), water_ml:ml});
+  const logDate = getInputDate();
+  if (logDate === todayISO()) {
+    state.water_ml=Math.min(5000,state.water_ml+ml); saveState(); renderSummary();
+    pushEvent({type:'water', date:todayISO(), water_ml:ml});
+  } else {
+    pushEvent({id:newEvtId(), type:'water', date:logDate, water_ml:ml, ts:logDate+'T12:00:00Z'});
+    renderHistoryTable();
+    toast(`+${ml} ml logged for ${logDate}`, 'success');
+  }
 }
 function resetWater(){state.water_ml=0;saveState();renderSummary();}
 function logWeight(){
@@ -1578,6 +1646,30 @@ function logWeight(){
 
 /* ══ Notes ════════════════════════════════════════════════════════════════ */
 function saveNotes(){state.notes=document.getElementById('notes-input').value;saveState();toast('Notes saved','success');}
+
+/* ══ Input date picker ════════════════════════════════════════════════════ */
+function getInputDate() {
+  return document.getElementById('input-date')?.value || todayISO();
+}
+function resetInputDate() {
+  const el = document.getElementById('input-date');
+  if (el) el.value = todayISO();
+  updateInputDateUI();
+}
+function updateInputDateUI() {
+  const isPast = getInputDate() !== todayISO();
+  const banner  = document.getElementById('input-date-banner');
+  const todayBtn = document.getElementById('input-date-today-btn');
+  const wCard   = document.getElementById('weight-input-card');
+  if (banner)   banner.style.display   = isPast ? 'inline' : 'none';
+  if (todayBtn) todayBtn.style.display = isPast ? 'inline-flex' : 'none';
+  if (wCard) {
+    wCard.style.opacity       = isPast ? '0.3' : '';
+    wCard.style.pointerEvents = isPast ? 'none' : '';
+    wCard.style.filter        = isPast ? 'blur(1.5px)' : '';
+    wCard.style.transition    = 'opacity .2s, filter .2s';
+  }
+}
 
 /* ══ Photo + Vision (skill-powered) ══════════════════════════════════════ */
 let photoMimeType = 'image/jpeg';
