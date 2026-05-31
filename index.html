@@ -984,27 +984,15 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
 <!-- SETTINGS -->
 <div class="tab-panel" id="tab-settings">
   <div class="wrap">
-    <div class="section-head"><span class="section-title">Settings &amp; Sync</span><span class="section-rule"></span></div>
-    <div class="panel">
-      <details open>
-        <summary>API Keys &amp; GitHub</summary>
-        <div class="details-body">
-          <div class="field"><label>Anthropic API Key</label><input type="text" id="setting-anthropic-key" placeholder="sk-ant-…" autocomplete="off"></div>
-          <div class="field"><label>Oura Personal Access Token <span style="font-size:9px;opacity:0.6;">— cloud.ouraring.com/personal-access-tokens</span></label><input type="text" id="setting-oura-token" placeholder="Paste your 32-char Oura token…" autocomplete="off"></div>
-          <div class="field"><label>GitHub PAT (repo scope)</label><input type="text" id="setting-github-pat" placeholder="ghp_…" autocomplete="off"></div>
-          <div class="grid-2">
-            <div class="field"><label>Repository (owner/repo)</label><input type="text" id="setting-github-repo" placeholder="AndyKupke/Diet"></div>
-            <div class="field"><label>Branch</label><input type="text" id="setting-github-branch" placeholder="main"></div>
-          </div>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;">
-            <button class="btn btn-sm" onclick="saveSettings()">Save Settings</button>
-            <button class="btn btn-ghost btn-sm" id="oura-test-btn" onclick="testOuraConnection()">Test Oura Connection</button>
-            <span id="oura-test-status" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);align-self:center;"></span>
-          </div>
-        </div>
-      </details>
+    <div class="section-head"><span class="section-title">Settings</span><span class="section-rule"></span></div>
+    <div class="panel" style="margin-bottom:20px;">
+      <div class="field" style="margin-bottom:10px;">
+        <label>Anthropic API Key <span style="font-size:9px;opacity:0.6;">— for food photo analysis</span></label>
+        <input type="password" id="setting-anthropic-key" placeholder="sk-ant-…" autocomplete="off">
+      </div>
+      <button class="btn btn-sm" onclick="saveAnthropicKey()">Save</button>
     </div>
-    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Targets</span><span class="section-rule"></span></div>
+    <div class="section-head" style="margin-top:0;"><span class="section-title" style="font-size:16px;">Targets</span><span class="section-rule"></span></div>
     <div class="panel">
       <div class="grid-2">
         <div class="field"><label>Calorie target (kcal/day)</label><input type="number" id="setting-kcal" placeholder="1750"></div>
@@ -1091,7 +1079,13 @@ let TARGETS = { kcal:1750, protein:140, carbs:180, fat:60, water:2500, goalWeigh
 /* ══ State ═══════════════════════════════════════════════════════════════ */
 let state = { date:todayISO(), calories:0, protein_g:0, carbs_g:0, fat_g:0, water_ml:0, weight_kg:null, meals:[], exercise:[], notes:'' };
 let history = [];
-let cfg = { anthropicKey:'', githubPat:'', githubRepo:'AndyKupke/Diet', githubBranch:'main', ouraToken:'' };
+let cfg = {
+  anthropicKey: '',
+  githubPat:    '',
+  githubRepo:   'AndyKupke/Diet',
+  githubBranch: 'main',
+  ouraToken:    'Q4GPA7QTLK7IHG57MRZSZKU4EC4QBDL3',
+};
 let photoB64 = null;
 
 /* ══ Sidebar ══════════════════════════════════════════════════════════════ */
@@ -1148,30 +1142,22 @@ function loadState() {
 function saveState() { localStorage.setItem('dt_state', JSON.stringify(state)); }
 
 function loadCfg() {
-  const raw=localStorage.getItem('dt_cfg');
-  if(raw) cfg={...cfg,...JSON.parse(raw)};
-  document.getElementById('setting-anthropic-key').value = cfg.anthropicKey||'';
-  document.getElementById('setting-oura-token').value    = cfg.ouraToken||'';
-  document.getElementById('setting-github-pat').value    = cfg.githubPat||'';
-  document.getElementById('setting-github-repo').value   = cfg.githubRepo||'';
-  document.getElementById('setting-github-branch').value = cfg.githubBranch||'main';
-  // Show Oura import button if token exists
-  if (cfg.ouraToken) {
-    const btn = document.getElementById('oura-import-btn');
-    if (btn) btn.style.display = 'inline-flex';
-    document.getElementById('oura-dashboard-prompt').style.display = 'none';
+  const raw = localStorage.getItem('dt_cfg');
+  if (raw) {
+    const saved = JSON.parse(raw);
+    if (saved.anthropicKey) cfg.anthropicKey = saved.anthropicKey;
   }
+  const keyEl = document.getElementById('setting-anthropic-key');
+  if (keyEl) keyEl.value = cfg.anthropicKey || '';
+  // Oura token is hardcoded — always show import button
+  const btn = document.getElementById('oura-import-btn');
+  if (btn) btn.style.display = 'inline-flex';
+  document.getElementById('oura-dashboard-prompt').style.display = 'none';
 }
-function saveSettings() {
-  cfg.anthropicKey=document.getElementById('setting-anthropic-key').value.trim();
-  cfg.ouraToken   =document.getElementById('setting-oura-token').value.trim();
-  cfg.githubPat   =document.getElementById('setting-github-pat').value.trim();
-  cfg.githubRepo  =document.getElementById('setting-github-repo').value.trim();
-  cfg.githubBranch=document.getElementById('setting-github-branch').value.trim()||'main';
-  localStorage.setItem('dt_cfg',JSON.stringify(cfg));
-  toast('Settings saved','success');
-  // Kick off Oura load if token was just added
-  if (cfg.ouraToken) loadOuraIfNeeded();
+function saveAnthropicKey() {
+  cfg.anthropicKey = document.getElementById('setting-anthropic-key').value.trim();
+  localStorage.setItem('dt_cfg', JSON.stringify({ anthropicKey: cfg.anthropicKey }));
+  toast('API key saved', 'success');
 }
 function loadTargets() {
   const raw=localStorage.getItem('dt_targets');
@@ -2082,26 +2068,6 @@ function mapOuraActivity(activity = '') {
 }
 
 // ── Test connection from Settings ──────────────────────────────────────────
-async function testOuraConnection() {
-  const token = document.getElementById('setting-oura-token').value.trim();
-  if (!token) { toast('Enter an Oura token first', 'error'); return; }
-  const statusEl = document.getElementById('oura-test-status');
-  statusEl.textContent = 'Testing…';
-  try {
-    const r = await fetch('https://api.ouraring.com/v2/usercollection/personal_info', {
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    if (r.ok) {
-      const info = await r.json();
-      statusEl.innerHTML = `<span style="color:var(--green)">✓ Connected — ${esc(info.email||'ring found')}</span>`;
-      toast('Oura connected!', 'success');
-    } else {
-      statusEl.innerHTML = `<span style="color:var(--red)">✗ Invalid token (${r.status})</span>`;
-    }
-  } catch(e) {
-    statusEl.innerHTML = `<span style="color:var(--red)">✗ Network error — check CORS or token</span>`;
-  }
-}
 
 // ══ Oura auto-load on tab switch ═══════════════════════════════════════════
 async function loadOuraIfNeeded() {
