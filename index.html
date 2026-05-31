@@ -697,9 +697,6 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       </div>
       <div class="grid-4" id="oura-kpi-tiles"></div>
     </div>
-    <div id="oura-dashboard-prompt" style="margin-bottom:12px;padding:14px 18px;border:1px dashed var(--divider);border-radius:var(--radius);font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.1em;color:var(--text-muted);">
-      Add your Oura token in <span style="color:var(--yellow);cursor:pointer;" onclick="switchTab('settings')">Settings</span> to see ring data here.
-    </div>
     <div class="chart-card" style="margin-bottom:12px;"><div class="chart-title">Weight Trend — Last 30 Days</div><canvas id="chart-weight" class="chart-canvas" height="140"></canvas></div>
     <div class="grid-2">
       <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days</div><canvas id="chart-calories" class="chart-canvas" height="140"></canvas></div>
@@ -861,14 +858,46 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
     <div class="section-head">
       <span class="section-title">History</span>
       <span class="section-rule"></span>
-      <button class="btn btn-ghost btn-sm" onclick="resetDay()" style="flex-shrink:0;">Save Today &amp; Advance</button>
+      <span id="sync-status-inline" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
     </div>
-    <div class="history-table-wrap">
-      <table class="history-table" id="history-table">
-        <thead><tr><th>Date</th><th>kcal</th><th>Protein g</th><th>Carbs g</th><th>Fat g</th><th>Water ml</th><th>Weight kg</th><th></th></tr></thead>
-        <tbody id="history-tbody"><tr><td colspan="8" class="history-empty">No history yet — log entries and click "Save Today &amp; Advance" to record a day.</td></tr></tbody>
-      </table>
+
+    <!-- Add entry for a prior date -->
+    <div class="panel" style="margin-bottom:16px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:12px;">Add entry for a prior date</div>
+      <div class="grid-3" style="align-items:end;">
+        <div class="field"><label>Date</label><input type="date" id="hist-add-date"></div>
+        <div class="field"><label>Type</label>
+          <select id="hist-add-type" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;width:100%;" onchange="toggleHistAddFields()">
+            <option value="meal">Meal</option>
+            <option value="weight">Weight</option>
+            <option value="water">Water</option>
+            <option value="exercise">Exercise</option>
+          </select>
+        </div>
+        <div class="field" id="hist-add-name-wrap"><label>Name / Description</label><input type="text" id="hist-add-name" placeholder="e.g. Chicken salad"></div>
+      </div>
+      <div id="hist-add-meal-fields" class="grid-4">
+        <div class="field"><label>kcal</label><input type="number" id="hist-add-kcal" placeholder="0" min="0"></div>
+        <div class="field"><label>Protein g</label><input type="number" id="hist-add-prot" placeholder="0" step="0.1" min="0"></div>
+        <div class="field"><label>Carbs g</label><input type="number" id="hist-add-carb" placeholder="0" step="0.1" min="0"></div>
+        <div class="field"><label>Fat g</label><input type="number" id="hist-add-fat" placeholder="0" step="0.1" min="0"></div>
+      </div>
+      <div id="hist-add-weight-fields" style="display:none;">
+        <div class="field" style="max-width:180px;"><label>Weight (kg)</label><input type="number" id="hist-add-weight" placeholder="75.0" step="0.1" min="30" max="300"></div>
+      </div>
+      <div id="hist-add-water-fields" style="display:none;">
+        <div class="field" style="max-width:180px;"><label>Water (ml)</label><input type="number" id="hist-add-water-ml" placeholder="500" min="0"></div>
+      </div>
+      <div id="hist-add-exercise-fields" style="display:none;" class="grid-3">
+        <div class="field"><label>Duration (min)</label><input type="number" id="hist-add-duration" placeholder="30" min="0"></div>
+        <div class="field"><label>kcal burned</label><input type="number" id="hist-add-exkcal" placeholder="0" min="0"></div>
+        <div class="field"><label>Type</label><input type="text" id="hist-add-extype" placeholder="run, gym…"></div>
+      </div>
+      <button class="btn btn-sm" style="margin-top:12px;" onclick="addHistoryEntry()">Add Entry</button>
     </div>
+
+    <!-- Events list -->
+    <div id="history-events-list"></div>
   </div>
 </div>
 
@@ -975,7 +1004,6 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <button class="btn" id="sync-btn" onclick="syncToGitHub()">Sync to GitHub</button>
         <button class="btn btn-ghost btn-sm" onclick="exportJSON()">Export JSON</button>
-        <button class="btn btn-ghost btn-sm" onclick="resetDay()">Save Today &amp; Advance</button>
         <span class="sync-status" id="sync-status"></span>
       </div>
     </div>
@@ -1078,7 +1106,8 @@ function switchTab(name) {
 /* ══ Boot ════════════════════════════════════════════════════════════════ */
 function todayISO() { return new Date().toISOString().split('T')[0]; }
 function init() {
-  loadCfg(); loadTargets(); loadHistory(); loadState(); loadSupplements(); loadBloodTests(); renderAll();
+  loadCfg(); loadTargets(); loadHistory(); loadEvents(); loadState(); loadSupplements(); loadBloodTests(); renderAll();
+  toggleHistAddFields();
   window.addEventListener('load', () => {
     // Always attempt Oura fetch on load (auto-decides if refresh needed)
     loadOuraIfNeeded().then(data => {
@@ -1115,7 +1144,7 @@ function loadCfg() {
   cfg.anthropicKey = localStorage.getItem('dt_anthropic_key') || '';
   const btn = document.getElementById('oura-import-btn');
   if (btn) btn.style.display = 'inline-flex';
-  document.getElementById('oura-dashboard-prompt').style.display = 'none';
+  const op = document.getElementById('oura-dashboard-prompt'); if (op) op.style.display = 'none';
 }
 function loadTargets() {
   const raw=localStorage.getItem('dt_targets');
@@ -1135,6 +1164,72 @@ function saveTargets() {
 }
 function loadHistory() { const raw=localStorage.getItem('dt_history'); if(raw) history=JSON.parse(raw); }
 function saveHistory() { localStorage.setItem('dt_history',JSON.stringify(history)); }
+
+/* ══ Events (per-item history) ═══════════════════════════════════════════ */
+let events = []; // {id, date, type:'meal'|'weight'|'water'|'exercise', ts, ...fields}
+
+function loadEvents() {
+  const raw = localStorage.getItem('dt_events');
+  if (raw) events = JSON.parse(raw);
+}
+function saveEvents() { localStorage.setItem('dt_events', JSON.stringify(events)); }
+
+function newEvtId() { return 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2,7); }
+
+function pushEvent(evt) {
+  evt.id  = evt.id  || newEvtId();
+  evt.ts  = evt.ts  || new Date().toISOString();
+  evt.date= evt.date|| todayISO();
+  // Replace if same id, otherwise push
+  const idx = events.findIndex(e=>e.id===evt.id);
+  if (idx>=0) events[idx]=evt; else events.push(evt);
+  saveEvents();
+  autoSyncToGitHub();
+}
+
+function deleteEvent(id) {
+  events = events.filter(e=>e.id!==id);
+  saveEvents();
+  autoSyncToGitHub();
+  renderHistoryTable();
+  toast('Entry deleted','success');
+}
+
+/* ══ Auto-sync to GitHub (debounced) ════════════════════════════════════ */
+let _syncTimer = null;
+function autoSyncToGitHub() {
+  clearTimeout(_syncTimer);
+  _syncTimer = setTimeout(_doAutoSync, 3000);
+  const el = document.getElementById('sync-status-inline');
+  if (el) el.textContent = '…saving';
+}
+async function _doAutoSync() {
+  const {githubPat, githubRepo, githubBranch} = cfg;
+  if (!githubPat || !githubRepo) return;
+  const el = document.getElementById('sync-status-inline');
+  if (el) el.textContent = '↑ syncing…';
+  const branch = githubBranch||'main';
+  const apiUrl = `https://api.github.com/repos/${githubRepo}/contents/data.json`;
+  const headers = {'Authorization':`Bearer ${githubPat}`,'Accept':'application/vnd.github.v3+json','Content-Type':'application/json'};
+  try {
+    let sha=null;
+    const get = await fetch(`${apiUrl}?ref=${branch}`,{headers});
+    if (get.ok) sha=(await get.json()).sha; else if(get.status!==404) throw new Error(`${get.status}`);
+    const payload = {today:state, history:history.slice(-90), events:events.slice(-500)};
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload,null,2))));
+    const body = {message:`tracker: auto-save ${todayISO()}`, content, branch};
+    if (sha) body.sha=sha;
+    const put = await fetch(apiUrl,{method:'PUT',headers,body:JSON.stringify(body)});
+    if (!put.ok) { const e=await put.json(); throw new Error(e.message||put.status); }
+    const t = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    if (el) el.textContent = `✓ saved ${t}`;
+    const ss = document.getElementById('sync-status');
+    if (ss) ss.textContent = `synced ${t}`;
+  } catch(err) {
+    if (el) el.textContent = '⚠ sync failed';
+    console.warn('auto-sync failed', err.message);
+  }
+}
 
 /* ══ Render ══════════════════════════════════════════════════════════════ */
 function renderAll() { renderSummary(); renderMeals(); renderExercise(); renderWeight(); document.getElementById('notes-input').value=state.notes||''; }
@@ -1198,62 +1293,178 @@ function renderWeight() {
   else el.textContent='— kg';
 }
 
-/* ══ History table ════════════════════════════════════════════════════════ */
+/* ══ History — events-based ═══════════════════════════════════════════════ */
+
+// Build daily summary rows for charts (combines events + legacy history)
 function allRows() {
-  const rows=history.filter(h=>h.date!==todayISO());
-  rows.push({date:state.date,calories:state.calories,protein_g:state.protein_g,carbs_g:state.carbs_g,fat_g:state.fat_g,water_ml:state.water_ml,weight_kg:state.weight_kg});
-  return rows.sort((a,b)=>b.date.localeCompare(a.date));
+  // Aggregate events by date
+  const byDate = {};
+  const add = (date, patch) => {
+    if (!byDate[date]) byDate[date] = {date, calories:0, protein_g:0, carbs_g:0, fat_g:0, water_ml:0, weight_kg:null};
+    const d = byDate[date];
+    if (patch.kcal)      { d.calories  += patch.kcal;      d.protein_g += patch.protein_g||0; d.carbs_g += patch.carbs_g||0; d.fat_g += patch.fat_g||0; }
+    if (patch.water_ml)  { d.water_ml  += patch.water_ml; }
+    if (patch.weight_kg) { d.weight_kg  = patch.weight_kg; }
+  };
+  // Legacy history entries (daily snapshots from old system)
+  history.forEach(h => {
+    if (h.date === todayISO()) return;
+    if (!byDate[h.date]) byDate[h.date] = {...h};
+  });
+  // Events (per-item log)
+  events.forEach(e => {
+    if (e.date === todayISO()) return;
+    if (e.type==='meal')    add(e.date, {kcal:e.kcal||0, protein_g:e.protein_g||0, carbs_g:e.carbs_g||0, fat_g:e.fat_g||0});
+    if (e.type==='water')   add(e.date, {water_ml:e.water_ml||0});
+    if (e.type==='weight')  add(e.date, {weight_kg:e.weight_kg});
+  });
+  // Today (from state)
+  byDate[todayISO()] = {date:todayISO(), calories:state.calories, protein_g:state.protein_g, carbs_g:state.carbs_g, fat_g:state.fat_g, water_ml:state.water_ml, weight_kg:state.weight_kg};
+  return Object.values(byDate).sort((a,b)=>b.date.localeCompare(a.date));
 }
+
+const TYPE_ICON = {
+  meal:     '🍽',
+  weight:   '⚖️',
+  water:    '💧',
+  exercise: '🏃',
+};
+
 function renderHistoryTable() {
-  const tbody=document.getElementById('history-tbody'), rows=allRows();
-  if(!rows.length){tbody.innerHTML=`<tr><td colspan="8" class="history-empty">No history yet.</td></tr>`;return;}
-  tbody.innerHTML=rows.map((row,idx)=>`
-    <tr id="hrow-${idx}" class="${row.date===todayISO()?'today-row':''}">
-      <td style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;">${row.date}</td>
-      <td>${row.calories??'—'}</td><td>${row.protein_g??'—'}</td><td>${row.carbs_g??'—'}</td>
-      <td>${row.fat_g??'—'}</td><td>${row.water_ml??'—'}</td><td>${row.weight_kg??'—'}</td>
-      <td><button class="btn-icon" onclick="startEdit(${idx})" title="Edit">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-      </button></td>
-    </tr>`).join('');
-}
-function startEdit(idx) {
-  const row=allRows()[idx], tr=document.getElementById(`hrow-${idx}`);
-  tr.classList.add('editing-row');
-  const f=(val,id)=>`<input class="edit-input" id="ef-${id}-${idx}" type="number" value="${val??''}" placeholder="—">`;
-  tr.innerHTML=`<td style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;">${row.date}</td>
-    ${f(row.calories,'kcal')}${f(row.protein_g,'prot')}${f(row.carbs_g,'carb')}${f(row.fat_g,'fat')}${f(row.water_ml,'water')}${f(row.weight_kg,'weight')}
-    <td style="display:flex;gap:6px;align-items:center;padding:8px 14px;">
-      <button class="btn btn-sm" onclick="saveEdit(${idx},'${row.date}')">Save</button>
-      <button class="btn btn-ghost btn-sm" onclick="renderHistoryTable()">✕</button>
-    </td>`;
-  // wrap numeric fields in <td>
-  const cells = tr.querySelectorAll('input.edit-input');
-  cells.forEach(input => { const td=document.createElement('td'); input.parentNode.insertBefore(td,input); td.appendChild(input); });
-}
-function saveEdit(idx,date) {
-  const g=id=>{const v=parseFloat(document.getElementById(`ef-${id}-${idx}`)?.value);return isNaN(v)?null:v;};
-  const updated={date,calories:Math.round(g('kcal'))??0,protein_g:g('prot')??0,carbs_g:g('carb')??0,fat_g:g('fat')??0,water_ml:Math.round(g('water'))??0,weight_kg:g('weight')};
-  if(date===todayISO()){
-    state.calories=updated.calories;state.protein_g=updated.protein_g;state.carbs_g=updated.carbs_g;
-    state.fat_g=updated.fat_g;state.water_ml=updated.water_ml;state.weight_kg=updated.weight_kg;
-    saveState();renderAll();
-  } else {
-    const i=history.findIndex(h=>h.date===date);
-    if(i>=0) history[i]=updated; else history.push(updated);
-    history.sort((a,b)=>a.date.localeCompare(b.date)); saveHistory();
+  const el = document.getElementById('history-events-list');
+  if (!el) return;
+
+  // Collect all events (today from state, past from events array)
+  const allEvts = [];
+
+  // Today's items from state
+  (state.meals||[]).forEach(m => allEvts.push({
+    id: m._evtId||null, date:todayISO(), type:'meal',
+    name:m.name, kcal:m.kcal, protein_g:m.protein_g, carbs_g:m.carbs_g, fat_g:m.fat_g,
+    ts: m.time, _today:true
+  }));
+  if (state.weight_kg) allEvts.push({id:null, date:todayISO(), type:'weight', weight_kg:state.weight_kg, ts:state.date+'T00:00:00Z', _today:true});
+  if (state.water_ml)  allEvts.push({id:null, date:todayISO(), type:'water',  water_ml:state.water_ml,  ts:state.date+'T00:00:00Z', _today:true, _aggregate:true});
+  (state.exercise||[]).forEach(x => allEvts.push({
+    id: x._evtId||null, date:todayISO(), type:'exercise',
+    name:x.name, duration_min:x.duration_min, kcal_burned:x.kcal_burned,
+    ts: x.time, _today:true
+  }));
+
+  // Past events
+  events.filter(e=>e.date!==todayISO()).forEach(e=>allEvts.push({...e}));
+
+  // Sort newest first
+  allEvts.sort((a,b) => {
+    const d = b.date.localeCompare(a.date); if (d!==0) return d;
+    return (b.ts||'').localeCompare(a.ts||'');
+  });
+
+  if (!allEvts.length) {
+    el.innerHTML = `<div style="font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);padding:20px 0;">No entries yet — start logging meals, weight and water.</div>`;
+    return;
   }
-  renderHistoryTable(); toast(`${date} updated`,'success');
+
+  // Group by date
+  const grouped = {};
+  allEvts.forEach(e => { if (!grouped[e.date]) grouped[e.date]=[]; grouped[e.date].push(e); });
+  const dates = Object.keys(grouped).sort((a,b)=>b.localeCompare(a));
+
+  const delBtn = (id, today) => {
+    if (today) return ''; // today's items deleted via main UI
+    if (!id)   return '';
+    return `<button class="btn-icon" onclick="deleteEvent('${id}')" title="Delete" style="margin-left:auto;flex-shrink:0;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+    </button>`;
+  };
+
+  const describeEvt = e => {
+    if (e.type==='meal')     return `<strong>${esc(e.name)}</strong> &nbsp;${e.kcal||0} kcal &nbsp;·&nbsp; P ${(e.protein_g||0).toFixed(1)}g &nbsp;·&nbsp; C ${(e.carbs_g||0).toFixed(1)}g &nbsp;·&nbsp; F ${(e.fat_g||0).toFixed(1)}g`;
+    if (e.type==='weight')   return `<strong>${e.weight_kg} kg</strong>`;
+    if (e.type==='water')    return e._aggregate ? `<strong>${e.water_ml} ml</strong> total today` : `<strong>${e.water_ml} ml</strong>`;
+    if (e.type==='exercise') return `<strong>${esc(e.name)}</strong> &nbsp;${e.duration_min} min${e.kcal_burned?` &nbsp;·&nbsp; ${e.kcal_burned} kcal burned`:''}`;
+    return '';
+  };
+
+  el.innerHTML = dates.map(date => {
+    const evts = grouped[date];
+    const isToday = date === todayISO();
+    const rows = evts.map(e => `
+      <div style="display:flex;align-items:baseline;gap:10px;padding:7px 0;border-bottom:1px solid var(--divider);flex-wrap:wrap;">
+        <span style="font-size:14px;width:20px;flex-shrink:0;">${TYPE_ICON[e.type]||'·'}</span>
+        <span style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-muted);width:60px;flex-shrink:0;">${e.type}</span>
+        <span style="flex:1;font-size:13px;">${describeEvt(e)}</span>
+        ${delBtn(e.id, e._today)}
+      </div>`).join('');
+    return `
+      <div style="margin-bottom:20px;">
+        <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:${isToday?'var(--yellow)':'var(--text-muted)'};padding:4px 0 6px;border-bottom:1px solid var(--divider-y);">
+          ${isToday?'▸ Today — ':''} ${date}
+        </div>
+        ${rows}
+      </div>`;
+  }).join('');
+}
+
+// Toggle type-specific fields in the "Add prior date entry" form
+function toggleHistAddFields() {
+  const type = document.getElementById('hist-add-type')?.value;
+  document.getElementById('hist-add-meal-fields').style.display     = type==='meal'     ? '' : 'none';
+  document.getElementById('hist-add-weight-fields').style.display   = type==='weight'   ? '' : 'none';
+  document.getElementById('hist-add-water-fields').style.display    = type==='water'    ? '' : 'none';
+  document.getElementById('hist-add-exercise-fields').style.display = type==='exercise' ? '' : 'none';
+  document.getElementById('hist-add-name-wrap').style.display       = (type==='meal'||type==='exercise') ? '' : 'none';
+}
+
+function addHistoryEntry() {
+  const date = document.getElementById('hist-add-date').value;
+  if (!date) { toast('Select a date','error'); return; }
+  if (date === todayISO()) { toast('Use the main input forms for today','error'); return; }
+  const type = document.getElementById('hist-add-type').value;
+  const g = id => { const v=parseFloat(document.getElementById(id)?.value); return isNaN(v)?0:v; };
+  const s = id => document.getElementById(id)?.value.trim()||'';
+
+  let evt = {id:newEvtId(), date, type, ts: date+'T12:00:00Z'};
+  if (type==='meal') {
+    evt.name=s('hist-add-name')||'Meal'; evt.kcal=g('hist-add-kcal'); evt.protein_g=g('hist-add-prot'); evt.carbs_g=g('hist-add-carb'); evt.fat_g=g('hist-add-fat');
+    if (!evt.name){ toast('Enter a meal name','error'); return; }
+  } else if (type==='weight') {
+    evt.weight_kg=g('hist-add-weight');
+    if (!evt.weight_kg){ toast('Enter weight','error'); return; }
+  } else if (type==='water') {
+    evt.water_ml=g('hist-add-water-ml');
+    if (!evt.water_ml){ toast('Enter water amount','error'); return; }
+  } else if (type==='exercise') {
+    evt.name=s('hist-add-name')||'Exercise'; evt.duration_min=g('hist-add-duration'); evt.kcal_burned=g('hist-add-exkcal'); evt.ex_type=s('hist-add-extype');
+    if (!evt.name||!evt.duration_min){ toast('Enter name and duration','error'); return; }
+  }
+
+  pushEvent(evt);
+  renderHistoryTable();
+  toast(`${type} entry added for ${date}`,'success');
+  // Clear form fields
+  ['hist-add-name','hist-add-kcal','hist-add-prot','hist-add-carb','hist-add-fat',
+   'hist-add-weight','hist-add-water-ml','hist-add-duration','hist-add-exkcal','hist-add-extype'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.value='';
+  });
 }
 
 /* ══ Meals ════════════════════════════════════════════════════════════════ */
 function addMeal() {
   const name=document.getElementById('meal-name').value.trim();
   if(!name){toast('Enter a meal name','error');return;}
-  state.meals.push({name,kcal:parseFloat(document.getElementById('meal-kcal').value)||0,protein_g:parseFloat(document.getElementById('meal-protein').value)||0,carbs_g:parseFloat(document.getElementById('meal-carbs').value)||0,fat_g:parseFloat(document.getElementById('meal-fat').value)||0,time:new Date().toISOString()});
-  recalc();saveState();renderAll();clearMealForm();toast(`${name} logged`,'success');
+  const meal={name,kcal:parseFloat(document.getElementById('meal-kcal').value)||0,protein_g:parseFloat(document.getElementById('meal-protein').value)||0,carbs_g:parseFloat(document.getElementById('meal-carbs').value)||0,fat_g:parseFloat(document.getElementById('meal-fat').value)||0,time:new Date().toISOString()};
+  meal._evtId = newEvtId();
+  state.meals.push(meal);
+  recalc(); saveState();
+  pushEvent({id:meal._evtId, type:'meal', date:todayISO(), name:meal.name, kcal:meal.kcal, protein_g:meal.protein_g, carbs_g:meal.carbs_g, fat_g:meal.fat_g});
+  renderAll(); clearMealForm(); toast(`${name} logged`,'success');
 }
-function removeMeal(i){state.meals.splice(i,1);recalc();saveState();renderAll();}
+function removeMeal(i){
+  const meal = state.meals[i];
+  if (meal?._evtId) deleteEvent(meal._evtId);
+  state.meals.splice(i,1); recalc(); saveState(); renderAll();
+}
 function clearMealForm(){
   ['meal-name','meal-kcal','meal-protein','meal-carbs','meal-fat','photo-note'].forEach(id=>document.getElementById(id).value='');
   photoB64=null; photoMimeType='image/jpeg';
@@ -1273,13 +1484,19 @@ function recalc(){
 function addExercise(){
   const name=document.getElementById('ex-name').value.trim(),duration=parseInt(document.getElementById('ex-duration').value)||0;
   if(!name||!duration){toast('Enter activity name and duration','error');return;}
-  state.exercise.push({name,duration_min:duration,kcal_burned:parseInt(document.getElementById('ex-kcal').value)||0,type:document.getElementById('ex-type').value,time:new Date().toISOString()});
-  saveState();renderExercise();['ex-name','ex-duration','ex-kcal'].forEach(id=>document.getElementById(id).value='');toast(`${name} logged`,'success');
+  const ex={name,duration_min:duration,kcal_burned:parseInt(document.getElementById('ex-kcal').value)||0,type:document.getElementById('ex-type').value,time:new Date().toISOString()};
+  ex._evtId = newEvtId();
+  state.exercise.push(ex); saveState();
+  pushEvent({id:ex._evtId, type:'exercise', date:todayISO(), name:ex.name, duration_min:ex.duration_min, kcal_burned:ex.kcal_burned, ex_type:ex.type});
+  renderExercise();['ex-name','ex-duration','ex-kcal'].forEach(id=>document.getElementById(id).value='');toast(`${name} logged`,'success');
 }
 function removeExercise(i){state.exercise.splice(i,1);saveState();renderExercise();}
 
 /* ══ Water & Weight ══════════════════════════════════════════════════════ */
-function addWater(ml){state.water_ml=Math.min(5000,state.water_ml+ml);saveState();renderSummary();}
+function addWater(ml){
+  state.water_ml=Math.min(5000,state.water_ml+ml); saveState(); renderSummary();
+  pushEvent({type:'water', date:todayISO(), water_ml:ml});
+}
 function resetWater(){state.water_ml=0;saveState();renderSummary();}
 function logWeight(){
   const raw = document.getElementById('weight-input').value;
@@ -1287,7 +1504,8 @@ function logWeight(){
   if(!raw || isNaN(v) || v < 30 || v > 300){ toast('Enter a valid weight (30–300 kg)','error'); return; }
   state.weight_kg = v;
   saveState();
-  toast(`Weight ${v} kg saved`, 'success');   // toast immediately after save
+  pushEvent({type:'weight', date:todayISO(), weight_kg:v});
+  toast(`Weight ${v} kg saved`, 'success');
   try { renderWeight(); } catch(e) { console.error('renderWeight', e); }
   try { renderSummary(); } catch(e) { console.error('renderSummary', e); }
   try { if(document.getElementById('tab-dashboard').classList.contains('active')) drawCharts(); } catch(e) {}
@@ -1564,7 +1782,7 @@ async function syncToGitHub(){
   try{
     let sha=null;const get=await fetch(`${apiUrl}?ref=${branch}`,{headers});
     if(get.ok)sha=(await get.json()).sha;else if(get.status!==404)throw new Error(`GitHub ${get.status}`);
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify({today:state,history:history.slice(-90)},null,2))));
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify({today:state,history:history.slice(-90),events:events.slice(-500)},null,2))));
     const body={message:`tracker: update data.json for ${state.date}`,content,branch};if(sha)body.sha=sha;
     const put=await fetch(apiUrl,{method:'PUT',headers,body:JSON.stringify(body)});
     if(!put.ok){const e=await put.json();throw new Error(e.message||`PUT ${put.status}`);}
@@ -1867,11 +2085,9 @@ function fmtNum(n, unit = '') { return n != null ? `${n.toLocaleString()}${unit}
 function renderOuraDashboard(data) {
   if (!data) return;
   const strip   = document.getElementById('oura-dashboard-strip');
-  const prompt  = document.getElementById('oura-dashboard-prompt');
   const tilesEl = document.getElementById('oura-kpi-tiles');
 
   strip.style.display  = 'block';
-  prompt.style.display = 'none';
   // Show last fetch time
   const lastFetch = localStorage.getItem('dt_oura_last_fetch');
   if (lastFetch) {
