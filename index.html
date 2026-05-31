@@ -12,6 +12,7 @@
 :root {
   --night:        #050A1E;
   --surface:      #060E25;
+  --sidebar-bg:   #030817;
   --blue:         #003399;
   --yellow:       #FFCC00;
   --white:        #FFFFFF;
@@ -22,6 +23,7 @@
   --green:        #4cca8a;
   --red:          #e05a6a;
   --radius:       6px;
+  --sidebar-w:    260px;
 }
 
 /* ── Reset ──────────────────────────────────────────────────────────────── */
@@ -36,13 +38,148 @@ body {
   font-size: 15px;
   line-height: 1.8;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ── Layout ─────────────────────────────────────────────────────────────── */
 .wrap { max-width: 960px; margin: 0 auto; padding: 0 40px; }
 @media (max-width: 640px) { .wrap { padding: 0 20px; } }
 
-/* ── Header ─────────────────────────────────────────────────────────────── */
+/* ══════════════════════════════════════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════════════════════════════════════ */
+#sidebar {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-w);
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--divider);
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+  will-change: transform;
+}
+
+#sidebar.open { transform: translateX(0); }
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 24px 20px;
+  border-bottom: 1px solid var(--divider);
+  flex-shrink: 0;
+}
+
+.sidebar-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: var(--white);
+}
+.sidebar-brand span { color: var(--yellow); }
+
+.sidebar-close {
+  background: none;
+  border: none;
+  color: var(--slate);
+  cursor: pointer;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+  line-height: 1;
+}
+.sidebar-close:hover { color: var(--white); }
+.sidebar-close svg { width: 18px; height: 18px; }
+
+/* Nav list */
+.sidebar-nav {
+  flex: 1;
+  padding: 12px 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.sidebar-nav li {
+  position: relative;
+}
+
+.sidebar-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--slate);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease;
+  user-select: none;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-nav-item:hover {
+  color: var(--white);
+  background: rgba(255,255,255,0.03);
+}
+
+.sidebar-nav-item.active {
+  color: var(--white);
+  border-left-color: var(--yellow);
+  background: rgba(255,204,0,0.05);
+}
+
+.sidebar-nav-item .nav-icon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s ease;
+}
+.sidebar-nav-item:hover .nav-icon,
+.sidebar-nav-item.active .nav-icon { opacity: 1; }
+
+.sidebar-nav-divider {
+  height: 1px;
+  background: var(--divider);
+  margin: 8px 24px;
+}
+
+/* Sidebar footer */
+.sidebar-foot {
+  padding: 16px 24px;
+  border-top: 1px solid var(--divider);
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  flex-shrink: 0;
+}
+
+/* Backdrop */
+#sidebar-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,10,30,0.7);
+  z-index: 499;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.28s ease;
+  backdrop-filter: blur(2px);
+}
+#sidebar-backdrop.open { opacity: 1; pointer-events: all; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   HEADER (topbar)
+══════════════════════════════════════════════════════════════════════════ */
 #site-header {
   position: sticky;
   top: 0;
@@ -51,97 +188,68 @@ body {
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--divider);
-}
-
-.header-top {
+  height: 58px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 18px 0 0;
 }
 
-.header-brand {
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 0 28px;
+}
+
+/* Hamburger / menu button */
+.menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+.menu-btn:hover { opacity: 0.7; }
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--white);
+  transition: all 0.22s ease;
+  transform-origin: left center;
+}
+
+.header-title {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   letter-spacing: 0.06em;
-  line-height: 1;
-  text-transform: uppercase;
   color: var(--white);
-}
-.header-brand span { color: var(--yellow); }
-
-.header-date { text-align: right; }
-.header-date .hd-day {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 26px;
-  letter-spacing: 0.03em;
   line-height: 1;
-  color: var(--yellow);
 }
-.header-date .hd-week {
+.header-title span { color: var(--yellow); }
+
+/* Active page label */
+.header-page {
+  margin-left: auto;
   font-family: 'DM Mono', monospace;
   font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--slate);
-}
-
-/* ── Navigation tabs ────────────────────────────────────────────────────── */
-.nav-tabs {
-  display: flex;
-  gap: 0;
-  margin-top: 14px;
-  list-style: none;
-}
-
-.nav-tab {
-  position: relative;
-  padding: 10px 22px 12px;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--slate);
-  cursor: pointer;
-  transition: color 0.2s ease;
-  user-select: none;
-  white-space: nowrap;
 }
 
-.nav-tab::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: var(--yellow);
-  transform: scaleX(0);
-  transition: transform 0.2s ease;
-  transform-origin: left;
+/* ══════════════════════════════════════════════════════════════════════════
+   PAGE CONTENT
+══════════════════════════════════════════════════════════════════════════ */
+#page-content {
+  min-height: calc(100vh - 58px);
 }
 
-.nav-tab:hover { color: var(--white); }
-
-.nav-tab.active {
-  color: var(--white);
-}
-.nav-tab.active::after { transform: scaleX(1); }
-
-.nav-tab-num {
-  color: var(--yellow);
-  margin-right: 7px;
-  font-size: 9px;
-  opacity: 0.7;
-}
-.nav-tab.active .nav-tab-num { opacity: 1; }
-
-@media (max-width: 560px) {
-  .nav-tab { padding: 10px 13px 12px; font-size: 9px; letter-spacing: 0.1em; }
-  .nav-tab-num { display: none; }
-}
-
-/* ── Tab panels ─────────────────────────────────────────────────────────── */
-.tab-panel { display: none; padding-top: 32px; padding-bottom: 60px; }
+.tab-panel { display: none; padding: 36px 0 64px; }
 .tab-panel.active { display: block; }
 
 /* ── Section heading ────────────────────────────────────────────────────── */
@@ -152,7 +260,6 @@ body {
   margin: 36px 0 16px;
 }
 .section-head:first-child { margin-top: 0; }
-
 .section-num {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -181,7 +288,6 @@ body {
   transition: border-color 0.2s ease;
 }
 .card:hover { border-color: var(--border-hover); }
-
 .card-label {
   font-family: 'DM Mono', monospace;
   font-size: 9px;
@@ -234,13 +340,8 @@ body {
 .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
-
 @media (max-width: 700px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) {
-  .grid-3 { grid-template-columns: 1fr 1fr; }
-  .grid-2 { grid-template-columns: 1fr; }
-}
-@media (max-width: 420px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
 
 /* ── Chart card ─────────────────────────────────────────────────────────── */
 .chart-card {
@@ -298,6 +399,7 @@ body {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin-top: 5px;
+  color: var(--slate);
 }
 
 /* ── Buttons ────────────────────────────────────────────────────────────── */
@@ -325,6 +427,14 @@ body {
 .btn-danger { border-color: rgba(224,90,106,0.4); color: var(--red); }
 .btn-danger:hover { background: var(--red); border-color: var(--red); color: var(--white); }
 .btn-sm { padding: 5px 12px; font-size: 9px; }
+.btn-icon {
+  background: none; border: none; cursor: pointer;
+  color: var(--slate); padding: 4px;
+  transition: color 0.2s ease; line-height: 1;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.btn-icon:hover { color: var(--yellow); }
+.btn-icon svg { width: 14px; height: 14px; }
 
 /* ── Forms ──────────────────────────────────────────────────────────────── */
 .field { margin-bottom: 14px; }
@@ -367,7 +477,6 @@ select option { background: var(--surface); }
 }
 .panel:hover { border-color: var(--border-hover); }
 .panel-accent { border-left: 2px solid var(--yellow); }
-
 .macro-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; }
 @media (max-width: 560px) { .macro-row { grid-template-columns: 1fr 1fr; } }
 
@@ -389,11 +498,8 @@ select option { background: var(--surface); }
 }
 .photo-zone-icon { font-size: 28px; margin-bottom: 8px; line-height: 1; }
 .photo-zone p {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--slate);
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--slate);
 }
 #photo-preview {
   max-width: 100%; max-height: 220px; border-radius: var(--radius);
@@ -416,33 +522,22 @@ select option { background: var(--surface); }
 .list-item:hover { border-color: var(--border-hover); }
 .list-item-name { font-size: 14px; font-weight: 400; margin-bottom: 3px; }
 .list-item-meta {
-  font-family: 'DM Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--slate);
+  font-family: 'DM Mono', monospace; font-size: 9px;
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--slate);
   display: flex; gap: 12px; flex-wrap: wrap;
 }
 .list-item-value {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px;
-  letter-spacing: 0.03em;
-  color: var(--yellow);
-  white-space: nowrap;
+  font-family: 'Bebas Neue', sans-serif; font-size: 22px;
+  letter-spacing: 0.03em; color: var(--yellow); white-space: nowrap;
 }
 
 /* ── Water ──────────────────────────────────────────────────────────────── */
 .water-grid { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
 .water-btn {
-  background: var(--night);
-  border: 1px solid var(--divider);
-  color: var(--slate);
-  padding: 8px 14px;
-  font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  border-radius: var(--radius);
+  background: var(--night); border: 1px solid var(--divider);
+  color: var(--slate); padding: 8px 14px;
+  font-family: 'DM Mono', monospace; font-size: 10px;
+  letter-spacing: 0.1em; cursor: pointer; border-radius: var(--radius);
   transition: all 0.2s ease;
 }
 .water-btn:hover { border-color: var(--yellow); color: var(--yellow); }
@@ -453,10 +548,10 @@ select option { background: var(--surface); }
   font-family: 'DM Mono', monospace; font-size: 9px;
   letter-spacing: 0.1em; text-transform: uppercase;
 }
-.tag-y { background: rgba(255,204,0,0.12);   color: var(--yellow); }
-.tag-g { background: rgba(76,202,138,0.12);  color: var(--green); }
-.tag-r { background: rgba(224,90,106,0.12);  color: var(--red); }
-.tag-b { background: rgba(0,51,153,0.4);     color: #7aabff; }
+.tag-y { background: rgba(255,204,0,0.12);  color: var(--yellow); }
+.tag-g { background: rgba(76,202,138,0.12); color: var(--green); }
+.tag-r { background: rgba(224,90,106,0.12); color: var(--red); }
+.tag-b { background: rgba(0,51,153,0.4);    color: #7aabff; }
 
 /* ── Settings details ───────────────────────────────────────────────────── */
 details summary {
@@ -471,6 +566,92 @@ details summary::before { content: '▶'; font-size: 7px; transition: transform 
 details[open] summary::before { transform: rotate(90deg); }
 details .details-body { margin-top: 18px; }
 
+/* ══════════════════════════════════════════════════════════════════════════
+   HISTORY TABLE
+══════════════════════════════════════════════════════════════════════════ */
+.history-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--divider);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+table.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.history-table thead tr {
+  border-bottom: 1px solid var(--divider);
+}
+
+table.history-table th {
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--slate);
+  padding: 12px 14px;
+  text-align: left;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+table.history-table td {
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--white);
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
+table.history-table tbody tr:last-child td { border-bottom: none; }
+
+table.history-table tbody tr {
+  transition: background 0.15s ease;
+}
+table.history-table tbody tr:hover { background: rgba(255,255,255,0.025); }
+
+/* "Today" row highlight */
+table.history-table tbody tr.today-row td { color: var(--yellow); }
+table.history-table tbody tr.today-row td:first-child::after {
+  content: ' TODAY';
+  font-family: 'DM Mono', monospace;
+  font-size: 7px;
+  letter-spacing: 0.12em;
+  color: var(--yellow);
+  opacity: 0.6;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* Editing row */
+table.history-table tbody tr.editing-row td { background: rgba(255,204,0,0.04); }
+
+table.history-table .edit-input {
+  background: var(--night);
+  border: 1px solid var(--divider-y);
+  color: var(--white);
+  padding: 5px 8px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  border-radius: 4px;
+  width: 72px;
+  outline: none;
+}
+table.history-table .edit-input:focus { border-color: var(--yellow); }
+
+.history-empty {
+  text-align: center;
+  padding: 40px 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
 /* ── Toast ──────────────────────────────────────────────────────────────── */
 .toast {
   position: fixed; top: 24px; right: 24px;
@@ -478,8 +659,8 @@ details .details-body { margin-top: 18px; }
   color: var(--white); padding: 12px 18px; border-radius: var(--radius);
   font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.12em;
   max-width: 300px; z-index: 9999;
-  transform: translateY(-8px); opacity: 0; transition: all 0.22s ease;
-  pointer-events: none;
+  transform: translateY(-8px); opacity: 0;
+  transition: all 0.22s ease; pointer-events: none;
 }
 .toast.show  { transform: translateY(0); opacity: 1; }
 .toast.error   { border-color: rgba(224,90,106,0.5); }
@@ -489,7 +670,7 @@ details .details-body { margin-top: 18px; }
 .overlay {
   position: fixed; inset: 0; background: rgba(5,10,30,0.88);
   display: none; flex-direction: column; align-items: center;
-  justify-content: center; z-index: 500; backdrop-filter: blur(4px);
+  justify-content: center; z-index: 600; backdrop-filter: blur(4px);
 }
 .overlay.active { display: flex; }
 .overlay-label {
@@ -510,7 +691,7 @@ details .details-body { margin-top: 18px; }
 /* ── Footer ─────────────────────────────────────────────────────────────── */
 #site-footer {
   border-top: 1px solid var(--divider);
-  padding: 22px 0 28px;
+  padding: 20px 0 26px;
 }
 .footer-inner {
   display: flex; align-items: center;
@@ -525,15 +706,12 @@ details .details-body { margin-top: 18px; }
   font-family: 'DM Mono', monospace; font-size: 9px;
   letter-spacing: 0.12em; color: var(--slate);
 }
-
-@media (max-width: 480px) {
-  .footer-inner { flex-direction: column; align-items: flex-start; }
-}
+@media (max-width: 480px) { .footer-inner { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
 <body>
 
-<!-- Overlay -->
+<!-- Photo analyse overlay -->
 <div class="overlay" id="overlay">
   <div class="spinner spinner-lg"></div>
   <div class="overlay-label">Analysing photo</div>
@@ -542,69 +720,112 @@ details .details-body { margin-top: 18px; }
 <!-- Toast -->
 <div class="toast" id="toast"></div>
 
-<!-- ══ HEADER + NAV ═══════════════════════════════════════════════════════ -->
-<header id="site-header">
-  <div class="wrap">
-    <div class="header-top">
-      <div class="header-brand">Diet <span>Tracking</span></div>
-      <div class="header-date">
-        <div class="hd-day" id="header-day"></div>
-        <div class="hd-week" id="header-weekday"></div>
-      </div>
-    </div>
+<!-- Sidebar backdrop -->
+<div id="sidebar-backdrop" onclick="closeSidebar()"></div>
 
-    <ul class="nav-tabs" role="tablist">
-      <li class="nav-tab active" data-tab="dashboard" onclick="switchTab('dashboard')">
-        <span class="nav-tab-num">00</span>Dashboard
-      </li>
-      <li class="nav-tab" data-tab="summary" onclick="switchTab('summary')">
-        <span class="nav-tab-num">01</span>Daily Summary
-      </li>
-      <li class="nav-tab" data-tab="input" onclick="switchTab('input')">
-        <span class="nav-tab-num">02–06</span>Input
-      </li>
-      <li class="nav-tab" data-tab="settings" onclick="switchTab('settings')">
-        <span class="nav-tab-num">07</span>Settings
-      </li>
-    </ul>
+<!-- ══ SIDEBAR ════════════════════════════════════════════════════════════ -->
+<nav id="sidebar" role="navigation" aria-label="Main navigation">
+  <div class="sidebar-head">
+    <div class="sidebar-brand">Diet <span>Tracking</span></div>
+    <button class="sidebar-close" onclick="closeSidebar()" aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+
+  <ul class="sidebar-nav">
+    <li>
+      <div class="sidebar-nav-item active" data-tab="dashboard" onclick="switchTab('dashboard')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/>
+          <rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+        </svg>
+        Dashboard
+      </div>
+    </li>
+    <li>
+      <div class="sidebar-nav-item" data-tab="summary" onclick="switchTab('summary')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>
+        </svg>
+        Daily Summary
+      </div>
+    </li>
+    <li>
+      <div class="sidebar-nav-item" data-tab="input" onclick="switchTab('input')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        Input
+      </div>
+    </li>
+    <li>
+      <div class="sidebar-nav-item" data-tab="history" onclick="switchTab('history')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        History
+      </div>
+    </li>
+    <li><div class="sidebar-nav-divider"></div></li>
+    <li>
+      <div class="sidebar-nav-item" data-tab="settings" onclick="switchTab('settings')">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/>
+        </svg>
+        Settings
+      </div>
+    </li>
+  </ul>
+
+  <div class="sidebar-foot">Diet Tracking &copy; 2026</div>
+</nav>
+
+<!-- ══ TOPBAR ══════════════════════════════════════════════════════════════ -->
+<header id="site-header">
+  <div class="header-inner">
+    <button class="menu-btn" onclick="openSidebar()" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="header-title">Diet <span>Tracking</span></div>
+    <div class="header-page" id="header-page-label">Dashboard</div>
   </div>
 </header>
 
-<!-- ══ TAB: DASHBOARD ═════════════════════════════════════════════════════ -->
+<!-- ══ PAGE CONTENT ════════════════════════════════════════════════════════ -->
+<div id="page-content">
+
+<!-- ── DASHBOARD ─────────────────────────────────────────────────────────── -->
 <div class="tab-panel active" id="tab-dashboard">
   <div class="wrap">
-
-    <!-- KPI row -->
     <div class="grid-4" style="margin-bottom:12px;">
       <div class="kpi-tile">
         <div class="kpi-label">Avg Weight</div>
         <div class="kpi-value" id="kpi-avg-weight">—<span class="kpi-unit">kg</span></div>
-        <div class="kpi-sub" style="color:var(--slate);">Last 30 days</div>
+        <div class="kpi-sub">Last 30 days</div>
       </div>
       <div class="kpi-tile">
         <div class="kpi-label">Days Tracked</div>
         <div class="kpi-value" id="kpi-days">0</div>
-        <div class="kpi-sub" style="color:var(--slate);">Total logged</div>
+        <div class="kpi-sub">Total logged</div>
       </div>
       <div class="kpi-tile">
         <div class="kpi-label">Avg Calories</div>
         <div class="kpi-value" id="kpi-avg-kcal">—<span class="kpi-unit">kcal</span></div>
-        <div class="kpi-sub" style="color:var(--slate);">Last 14 days</div>
+        <div class="kpi-sub">Last 14 days</div>
       </div>
       <div class="kpi-tile">
         <div class="kpi-label">Avg Deficit</div>
         <div class="kpi-value" id="kpi-avg-deficit">—<span class="kpi-unit">kcal</span></div>
-        <div class="kpi-sub" id="kpi-deficit-sub" style="color:var(--slate);">vs 1750 target</div>
+        <div class="kpi-sub" id="kpi-deficit-sub">vs 1750 target</div>
       </div>
     </div>
-
-    <!-- Weight trend chart -->
     <div class="chart-card" style="margin-bottom:12px;">
       <div class="chart-title">Weight Trend — Last 30 Days</div>
       <canvas id="chart-weight" class="chart-canvas" height="140"></canvas>
     </div>
-
-    <!-- Two column: calorie intake + deficit -->
     <div class="grid-2">
       <div class="chart-card">
         <div class="chart-title">Calorie Intake — Last 14 Days</div>
@@ -615,8 +836,6 @@ details .details-body { margin-top: 18px; }
         <canvas id="chart-deficit" class="chart-canvas" height="140"></canvas>
       </div>
     </div>
-
-    <!-- Water + protein trend -->
     <div class="grid-2" style="margin-top:12px;">
       <div class="chart-card">
         <div class="chart-title">Water Intake — Last 14 Days</div>
@@ -627,23 +846,16 @@ details .details-body { margin-top: 18px; }
         <canvas id="chart-protein" class="chart-canvas" height="140"></canvas>
       </div>
     </div>
-
-    <div style="margin-top:8px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--slate);text-align:right;">
-      Charts update when you log data and click "New Day" to advance.
-    </div>
   </div>
 </div>
 
-<!-- ══ TAB: DAILY SUMMARY ═════════════════════════════════════════════════ -->
+<!-- ── DAILY SUMMARY ─────────────────────────────────────────────────────── -->
 <div class="tab-panel" id="tab-summary">
   <div class="wrap">
-
     <div class="section-head">
-      <span class="section-num">01</span>
       <span class="section-title">Daily Summary</span>
       <span class="section-rule"></span>
     </div>
-
     <div class="grid-3" style="margin-bottom:10px;">
       <div class="card">
         <div class="card-label">Calories</div>
@@ -664,7 +876,6 @@ details .details-body { margin-top: 18px; }
         <div class="progress-bar"><div class="progress-fill" id="water-bar" style="width:0%"></div></div>
       </div>
     </div>
-
     <div class="grid-2">
       <div class="card">
         <div class="card-label">Carbohydrates</div>
@@ -679,28 +890,22 @@ details .details-body { margin-top: 18px; }
         <div class="progress-bar"><div class="progress-fill" id="fat-bar" style="width:0%"></div></div>
       </div>
     </div>
-
-    <!-- Today's meals summary -->
     <div class="section-head" style="margin-top:28px;">
-      <span class="section-num">↳</span>
-      <span class="section-title">Today's Meals</span>
+      <span class="section-title" style="font-size:16px;">Today's Meals</span>
       <span class="section-rule"></span>
     </div>
     <div id="summary-meal-list" class="item-list"></div>
     <div id="summary-no-meals" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--slate);padding:12px 0;display:none;">
       No meals logged yet — go to Input to add one.
     </div>
-
   </div>
 </div>
 
-<!-- ══ TAB: INPUT ═════════════════════════════════════════════════════════ -->
+<!-- ── INPUT ──────────────────────────────────────────────────────────────── -->
 <div class="tab-panel" id="tab-input">
   <div class="wrap">
 
-    <!-- 02 Body Weight -->
     <div class="section-head">
-      <span class="section-num">02</span>
       <span class="section-title">Body Weight</span>
       <span class="section-rule"></span>
     </div>
@@ -716,9 +921,7 @@ details .details-body { margin-top: 18px; }
       </div>
     </div>
 
-    <!-- 03 Hydration -->
     <div class="section-head">
-      <span class="section-num">03</span>
       <span class="section-title">Hydration</span>
       <span class="section-rule"></span>
     </div>
@@ -734,13 +937,10 @@ details .details-body { margin-top: 18px; }
       </div>
     </div>
 
-    <!-- 04 Log Meal -->
     <div class="section-head">
-      <span class="section-num">04</span>
       <span class="section-title">Log Meal</span>
       <span class="section-rule"></span>
     </div>
-
     <div class="panel panel-accent">
       <img id="photo-preview" alt="Food photo">
       <div class="photo-zone" id="photo-zone">
@@ -768,9 +968,7 @@ details .details-body { margin-top: 18px; }
     </div>
     <div id="meal-list" class="item-list" style="margin-top:8px;"></div>
 
-    <!-- 05 Exercise -->
     <div class="section-head">
-      <span class="section-num">05</span>
       <span class="section-title">Exercise</span>
       <span class="section-rule"></span>
     </div>
@@ -796,9 +994,7 @@ details .details-body { margin-top: 18px; }
     </div>
     <div id="exercise-list" class="item-list" style="margin-top:8px;"></div>
 
-    <!-- 06 Notes -->
     <div class="section-head">
-      <span class="section-num">06</span>
       <span class="section-title">Notes</span>
       <span class="section-rule"></span>
     </div>
@@ -810,19 +1006,48 @@ details .details-body { margin-top: 18px; }
   </div>
 </div>
 
-<!-- ══ TAB: SETTINGS ══════════════════════════════════════════════════════ -->
+<!-- ── HISTORY ────────────────────────────────────────────────────────────── -->
+<div class="tab-panel" id="tab-history">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-title">History</span>
+      <span class="section-rule"></span>
+      <button class="btn btn-ghost btn-sm" onclick="resetDay()" style="flex-shrink:0;">Save Today &amp; Advance</button>
+    </div>
+
+    <div class="history-table-wrap">
+      <table class="history-table" id="history-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>kcal</th>
+            <th>Protein g</th>
+            <th>Carbs g</th>
+            <th>Fat g</th>
+            <th>Water ml</th>
+            <th>Weight kg</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="history-tbody">
+          <tr><td colspan="8" class="history-empty">No history yet — log entries and click "Save Today &amp; Advance" to record a day.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ── SETTINGS ───────────────────────────────────────────────────────────── -->
 <div class="tab-panel" id="tab-settings">
   <div class="wrap">
 
     <div class="section-head">
-      <span class="section-num">07</span>
       <span class="section-title">Settings &amp; Sync</span>
       <span class="section-rule"></span>
     </div>
-
     <div class="panel">
       <details open>
-        <summary>API Keys &amp; GitHub Configuration</summary>
+        <summary>API Keys &amp; GitHub</summary>
         <div class="details-body">
           <div class="field">
             <label>Anthropic API Key</label>
@@ -848,67 +1073,55 @@ details .details-body { margin-top: 18px; }
     </div>
 
     <div class="section-head" style="margin-top:28px;">
-      <span class="section-num">↳</span>
-      <span class="section-title">Targets</span>
+      <span class="section-title" style="font-size:16px;">Targets</span>
       <span class="section-rule"></span>
     </div>
     <div class="panel">
       <div class="grid-2">
-        <div class="field">
-          <label>Calorie target (kcal/day)</label>
-          <input type="number" id="setting-kcal" placeholder="1750" min="800" max="5000">
-        </div>
-        <div class="field">
-          <label>Protein target (g/day)</label>
-          <input type="number" id="setting-protein" placeholder="140" min="0">
-        </div>
-        <div class="field">
-          <label>Water target (ml/day)</label>
-          <input type="number" id="setting-water" placeholder="2500" min="500">
-        </div>
-        <div class="field">
-          <label>Goal weight (kg)</label>
-          <input type="number" id="setting-goal-weight" placeholder="72" step="0.1" min="40">
-        </div>
+        <div class="field"><label>Calorie target (kcal/day)</label><input type="number" id="setting-kcal" placeholder="1750"></div>
+        <div class="field"><label>Protein target (g/day)</label><input type="number" id="setting-protein" placeholder="140"></div>
+        <div class="field"><label>Water target (ml/day)</label><input type="number" id="setting-water" placeholder="2500"></div>
+        <div class="field"><label>Goal weight (kg)</label><input type="number" id="setting-goal-weight" placeholder="72" step="0.1"></div>
       </div>
       <button class="btn btn-sm" onclick="saveTargets()">Save Targets</button>
     </div>
 
     <div class="section-head" style="margin-top:28px;">
-      <span class="section-num">↳</span>
-      <span class="section-title">Data Management</span>
+      <span class="section-title" style="font-size:16px;">Data</span>
       <span class="section-rule"></span>
     </div>
     <div class="panel">
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <button class="btn" id="sync-btn" onclick="syncToGitHub()">Sync to GitHub</button>
         <button class="btn btn-ghost btn-sm" onclick="exportJSON()">Export JSON</button>
-        <button class="btn btn-ghost btn-sm" onclick="resetDay()">New Day</button>
+        <button class="btn btn-ghost btn-sm" onclick="resetDay()">Save Today &amp; Advance</button>
         <span class="sync-status" id="sync-status"></span>
       </div>
-      <div style="margin-top:12px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--slate);line-height:1.8;">
-        "New Day" saves today's data to history and resets daily inputs.
+      <div style="margin-top:10px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;color:var(--slate);">
+        "Save Today &amp; Advance" archives today's data to History and resets daily inputs.
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- ══ FOOTER ═════════════════════════════════════════════════════════════ -->
+</div><!-- /page-content -->
+
+<!-- Footer -->
 <footer id="site-footer">
   <div class="wrap">
     <div class="footer-inner">
       <div class="footer-copy">Diet Tracking &copy; 2026</div>
       <div class="footer-actions">
         <button class="btn btn-sm" onclick="switchTab('input')">+ Log Meal</button>
-        <button class="btn btn-ghost btn-sm" onclick="switchTab('settings')">Settings</button>
+        <button class="btn btn-ghost btn-sm" onclick="syncToGitHub()">Sync</button>
       </div>
     </div>
   </div>
 </footer>
 
 <script>
-/* ══ Constants ══════════════════════════════════════════════════════════════ */
+/* ══ Targets ════════════════════════════════════════════════════════════════ */
 let TARGETS = { kcal: 1750, protein: 140, carbs: 180, fat: 60, water: 2500, goalWeight: 72 };
 
 /* ══ State ══════════════════════════════════════════════════════════════════ */
@@ -917,41 +1130,49 @@ let state = {
   calories: 0, protein_g: 0, carbs_g: 0, fat_g: 0, water_ml: 0,
   weight_kg: null, meals: [], exercise: [], notes: ''
 };
-
-// history: array of daily snapshots { date, calories, protein_g, carbs_g, fat_g, water_ml, weight_kg }
 let history = [];
-
 let cfg = { anthropicKey: '', githubPat: '', githubRepo: 'AndyKupke/Diet', githubBranch: 'main' };
 let photoB64 = null;
 
+/* ══ Sidebar ════════════════════════════════════════════════════════════════ */
+function openSidebar() {
+  document.getElementById('sidebar').classList.add('open');
+  document.getElementById('sidebar-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 /* ══ Tab switching ══════════════════════════════════════════════════════════ */
+const TAB_LABELS = {
+  dashboard: 'Dashboard', summary: 'Daily Summary',
+  input: 'Input', history: 'History', settings: 'Settings'
+};
+
 function switchTab(name) {
-  document.querySelectorAll('.nav-tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + name));
-  if (name === 'dashboard') drawCharts();
-  if (name === 'summary') renderSummaryMeals();
+  document.querySelectorAll('.sidebar-nav-item').forEach(el =>
+    el.classList.toggle('active', el.dataset.tab === name));
+  document.querySelectorAll('.tab-panel').forEach(p =>
+    p.classList.toggle('active', p.id === 'tab-' + name));
+  document.getElementById('header-page-label').textContent = TAB_LABELS[name] || '';
+  closeSidebar();
+  if (name === 'dashboard') setTimeout(drawCharts, 60);
+  if (name === 'summary')   renderSummaryMeals();
+  if (name === 'history')   renderHistoryTable();
 }
 
 /* ══ Boot ════════════════════════════════════════════════════════════════════ */
 function todayISO() { return new Date().toISOString().split('T')[0]; }
 
 function init() {
-  loadCfg();
-  loadTargets();
-  loadHistory();
-  loadState();
-  renderDate();
+  loadCfg(); loadTargets(); loadHistory(); loadState();
   renderAll();
-  // Render charts after fonts load
-  window.addEventListener('load', () => { if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts(); });
-}
-
-function renderDate() {
-  const d = new Date();
-  document.getElementById('header-day').textContent =
-    d.toLocaleDateString('en-GB', { day: '2-digit', month: 'short' }).toUpperCase();
-  document.getElementById('header-weekday').textContent =
-    d.toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric' });
+  window.addEventListener('load', () => {
+    if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
+  });
 }
 
 /* ══ Persistence ════════════════════════════════════════════════════════════ */
@@ -961,8 +1182,7 @@ function loadState() {
     const p = JSON.parse(raw);
     if (p.date === todayISO()) { state = p; return; }
   }
-  state.date = todayISO();
-  saveState();
+  state.date = todayISO(); saveState();
 }
 function saveState() { localStorage.setItem('dt_state', JSON.stringify(state)); }
 
@@ -986,19 +1206,18 @@ function saveSettings() {
 function loadTargets() {
   const raw = localStorage.getItem('dt_targets');
   if (raw) TARGETS = { ...TARGETS, ...JSON.parse(raw) };
-  document.getElementById('setting-kcal').value         = TARGETS.kcal;
-  document.getElementById('setting-protein').value      = TARGETS.protein;
-  document.getElementById('setting-water').value        = TARGETS.water;
-  document.getElementById('setting-goal-weight').value  = TARGETS.goalWeight;
+  document.getElementById('setting-kcal').value        = TARGETS.kcal;
+  document.getElementById('setting-protein').value     = TARGETS.protein;
+  document.getElementById('setting-water').value       = TARGETS.water;
+  document.getElementById('setting-goal-weight').value = TARGETS.goalWeight;
 }
 function saveTargets() {
-  TARGETS.kcal        = parseInt(document.getElementById('setting-kcal').value)        || 1750;
-  TARGETS.protein     = parseInt(document.getElementById('setting-protein').value)     || 140;
-  TARGETS.water       = parseInt(document.getElementById('setting-water').value)       || 2500;
+  TARGETS.kcal        = parseInt(document.getElementById('setting-kcal').value)         || 1750;
+  TARGETS.protein     = parseInt(document.getElementById('setting-protein').value)      || 140;
+  TARGETS.water       = parseInt(document.getElementById('setting-water').value)        || 2500;
   TARGETS.goalWeight  = parseFloat(document.getElementById('setting-goal-weight').value) || 72;
   localStorage.setItem('dt_targets', JSON.stringify(TARGETS));
-  renderAll();
-  toast('Targets saved', 'success');
+  renderAll(); toast('Targets saved', 'success');
 }
 
 function loadHistory() {
@@ -1007,12 +1226,9 @@ function loadHistory() {
 }
 function saveHistory() { localStorage.setItem('dt_history', JSON.stringify(history)); }
 
-/* ══ Render all ══════════════════════════════════════════════════════════════ */
+/* ══ Render ══════════════════════════════════════════════════════════════════ */
 function renderAll() {
-  renderSummary();
-  renderMeals();
-  renderExercise();
-  renderWeight();
+  renderSummary(); renderMeals(); renderExercise(); renderWeight();
   document.getElementById('notes-input').value = state.notes || '';
 }
 
@@ -1026,15 +1242,15 @@ function renderSummary() {
   const rem = Math.max(0, TARGETS.kcal - calories);
   document.getElementById('kcal-remain').textContent =
     rem > 0 ? `${rem} kcal remaining` : `${calories - TARGETS.kcal} kcal over target`;
-  bar('kcal-bar',    calories,   TARGETS.kcal,    true);
-  bar('protein-bar', protein_g,  TARGETS.protein, false);
-  bar('carbs-bar',   carbs_g,    TARGETS.carbs,   true);
-  bar('fat-bar',     fat_g,      TARGETS.fat,     true);
-  bar('water-bar',   water_ml,   TARGETS.water,   false);
+  bar('kcal-bar',    calories,  TARGETS.kcal,    true);
+  bar('protein-bar', protein_g, TARGETS.protein, false);
+  bar('carbs-bar',   carbs_g,   TARGETS.carbs,   true);
+  bar('fat-bar',     fat_g,     TARGETS.fat,     true);
+  bar('water-bar',   water_ml,  TARGETS.water,   false);
 }
 
 function renderSummaryMeals() {
-  const list = document.getElementById('summary-meal-list');
+  const list  = document.getElementById('summary-meal-list');
   const empty = document.getElementById('summary-no-meals');
   if (!state.meals.length) { list.innerHTML = ''; empty.style.display = 'block'; return; }
   empty.style.display = 'none';
@@ -1044,7 +1260,7 @@ function renderSummaryMeals() {
         <div class="list-item-name">${esc(m.name)}</div>
         <div class="list-item-meta"><span>P ${m.protein_g}g</span><span>C ${m.carbs_g}g</span><span>F ${m.fat_g}g</span></div>
       </div>
-      <div class="list-item-value">${m.kcal}<span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--slate);letter-spacing:0.1em;margin-left:4px;">kcal</span></div>
+      <div class="list-item-value">${m.kcal}<span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--slate);margin-left:4px;">kcal</span></div>
     </div>`).join('');
 }
 
@@ -1054,34 +1270,28 @@ function bar(id, val, target, overIsBad) {
   el.style.width = pct + '%';
   el.className = 'progress-fill' + (pct >= 100 ? (overIsBad ? ' over' : ' good') : '');
 }
-
 function setHTML(id, html) { document.getElementById(id).innerHTML = html; }
 
 function renderMeals() {
-  const c = document.getElementById('meal-list');
-  c.innerHTML = state.meals.map((m, i) => `
+  document.getElementById('meal-list').innerHTML = state.meals.map((m, i) => `
     <div class="list-item">
       <div style="flex:1;min-width:0;">
         <div class="list-item-name">${esc(m.name)}</div>
         <div class="list-item-meta"><span>P ${m.protein_g}g</span><span>C ${m.carbs_g}g</span><span>F ${m.fat_g}g</span></div>
       </div>
       <div style="display:flex;align-items:center;gap:12px;">
-        <div class="list-item-value">${m.kcal}<span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--slate);letter-spacing:0.1em;margin-left:4px;">kcal</span></div>
+        <div class="list-item-value">${m.kcal}<span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--slate);margin-left:4px;">kcal</span></div>
         <button class="btn btn-danger btn-sm" onclick="removeMeal(${i})">×</button>
       </div>
     </div>`).join('');
 }
 
 function renderExercise() {
-  const c = document.getElementById('exercise-list');
-  c.innerHTML = state.exercise.map((e, i) => `
+  document.getElementById('exercise-list').innerHTML = state.exercise.map((e, i) => `
     <div class="list-item">
       <div style="flex:1;">
         <div class="list-item-name">${esc(e.name)} <span class="tag tag-b">${e.type}</span></div>
-        <div class="list-item-meta">
-          <span>${e.duration_min} min</span>
-          ${e.kcal_burned ? `<span style="color:var(--green);">−${e.kcal_burned} kcal</span>` : ''}
-        </div>
+        <div class="list-item-meta"><span>${e.duration_min} min</span>${e.kcal_burned ? `<span style="color:var(--green)">−${e.kcal_burned} kcal</span>` : ''}</div>
       </div>
       <button class="btn btn-danger btn-sm" onclick="removeExercise(${i})">×</button>
     </div>`).join('');
@@ -1092,9 +1302,117 @@ function renderWeight() {
   if (state.weight_kg) {
     const diff = +(state.weight_kg - TARGETS.goalWeight).toFixed(1);
     const cls = diff > 0 ? 'tag-r' : 'tag-g';
-    el.innerHTML = `${state.weight_kg} <span style="font-size:16px;color:var(--slate);">kg</span>
-      <span class="tag ${cls}" style="font-size:10px;margin-left:8px;">${diff > 0 ? '+' : ''}${diff}</span>`;
+    el.innerHTML = `${state.weight_kg}<span style="font-size:16px;color:var(--slate);margin-left:4px;">kg</span>
+      <span class="tag ${cls}" style="margin-left:8px;">${diff > 0 ? '+' : ''}${diff}</span>`;
   } else { el.textContent = '— kg'; }
+}
+
+/* ══ History table ══════════════════════════════════════════════════════════ */
+function allRows() {
+  // Merge saved history + today's live state (today always last)
+  const rows = history.filter(h => h.date !== todayISO());
+  const todaySnap = {
+    date: state.date,
+    calories: state.calories, protein_g: state.protein_g,
+    carbs_g: state.carbs_g, fat_g: state.fat_g,
+    water_ml: state.water_ml, weight_kg: state.weight_kg
+  };
+  rows.push(todaySnap);
+  return rows.sort((a, b) => b.date.localeCompare(a.date)); // newest first
+}
+
+function renderHistoryTable() {
+  const tbody = document.getElementById('history-tbody');
+  const rows  = allRows();
+
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="8" class="history-empty">No history yet.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = rows.map((row, idx) => {
+    const isToday = row.date === todayISO();
+    return `<tr id="hrow-${idx}" class="${isToday ? 'today-row' : ''}">
+      <td style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;">${row.date}</td>
+      <td>${row.calories ?? '—'}</td>
+      <td>${row.protein_g ?? '—'}</td>
+      <td>${row.carbs_g ?? '—'}</td>
+      <td>${row.fat_g ?? '—'}</td>
+      <td>${row.water_ml ?? '—'}</td>
+      <td>${row.weight_kg ?? '—'}</td>
+      <td>
+        <button class="btn-icon" onclick="startEdit(${idx})" title="Edit row" id="edit-btn-${idx}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/>
+            <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/>
+          </svg>
+        </button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+function startEdit(idx) {
+  const rows = allRows();
+  const row  = rows[idx];
+  const tr   = document.getElementById(`hrow-${idx}`);
+  tr.classList.add('editing-row');
+
+  const f = (val, id) =>
+    `<input class="edit-input" id="ef-${id}-${idx}" type="number" value="${val ?? ''}" placeholder="—">`;
+
+  tr.innerHTML = `
+    <td style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.08em;">${row.date}</td>
+    <td>${f(row.calories,   'kcal')}</td>
+    <td>${f(row.protein_g,  'prot')}</td>
+    <td>${f(row.carbs_g,    'carb')}</td>
+    <td>${f(row.fat_g,      'fat')}</td>
+    <td>${f(row.water_ml,   'water')}</td>
+    <td>${f(row.weight_kg,  'weight')}</td>
+    <td style="display:flex;gap:6px;align-items:center;">
+      <button class="btn btn-sm" onclick="saveEdit(${idx}, '${row.date}')">Save</button>
+      <button class="btn btn-ghost btn-sm" onclick="renderHistoryTable()">✕</button>
+    </td>`;
+}
+
+function saveEdit(idx, date) {
+  const g = (id) => {
+    const val = parseFloat(document.getElementById(`ef-${id}-${idx}`)?.value);
+    return isNaN(val) ? null : val;
+  };
+
+  const updated = {
+    date,
+    calories:  Math.round(g('kcal'))   ?? 0,
+    protein_g: g('prot')               ?? 0,
+    carbs_g:   g('carb')               ?? 0,
+    fat_g:     g('fat')                ?? 0,
+    water_ml:  Math.round(g('water'))  ?? 0,
+    weight_kg: g('weight')
+  };
+
+  const isToday = date === todayISO();
+
+  if (isToday) {
+    // Write directly into live state
+    state.calories   = updated.calories;
+    state.protein_g  = updated.protein_g;
+    state.carbs_g    = updated.carbs_g;
+    state.fat_g      = updated.fat_g;
+    state.water_ml   = updated.water_ml;
+    state.weight_kg  = updated.weight_kg;
+    saveState();
+    renderAll();
+  } else {
+    const i = history.findIndex(h => h.date === date);
+    if (i >= 0) history[i] = updated;
+    else history.push(updated);
+    history.sort((a, b) => a.date.localeCompare(b.date));
+    saveHistory();
+  }
+
+  renderHistoryTable();
+  toast(`${date} updated`, 'success');
 }
 
 /* ══ Meals ═══════════════════════════════════════════════════════════════════ */
@@ -1140,7 +1458,7 @@ function removeExercise(i) { state.exercise.splice(i, 1); saveState(); renderExe
 
 /* ══ Water & Weight ══════════════════════════════════════════════════════════ */
 function addWater(ml) { state.water_ml = Math.min(5000, state.water_ml + ml); saveState(); renderSummary(); }
-function resetWater() { state.water_ml = 0; saveState(); renderSummary(); }
+function resetWater()  { state.water_ml = 0; saveState(); renderSummary(); }
 function logWeight() {
   const v = parseFloat(document.getElementById('weight-input').value);
   if (!v || v < 40 || v > 200) { toast('Enter a valid weight', 'error'); return; }
@@ -1165,7 +1483,6 @@ function handlePhoto(event) {
   };
   reader.readAsDataURL(file);
 }
-
 async function analysePhoto() {
   if (!photoB64) return;
   if (!cfg.anthropicKey) { toast('Add your Anthropic API key in Settings', 'error'); return; }
@@ -1180,18 +1497,16 @@ async function analysePhoto() {
         'anthropic-dangerous-direct-browser-calls': 'true'
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-7',
-        max_tokens: 512,
+        model: 'claude-opus-4-7', max_tokens: 512,
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: 'image/jpeg', data: photoB64 } },
-          { type: 'text', text: 'Analyse this food photo and estimate nutritional content.\nReturn ONLY a JSON object (no markdown, no explanation):\n{"name":"descriptive meal name","kcal":number,"protein_g":number,"carbs_g":number,"fat_g":number}\nBe conservative. All numbers must be integers.' }
+          { type: 'text', text: 'Analyse this food photo and estimate nutritional content.\nReturn ONLY a JSON object (no markdown):\n{"name":"meal name","kcal":number,"protein_g":number,"carbs_g":number,"fat_g":number}\nBe conservative. All numbers must be integers.' }
         ]}]
       })
     });
     if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API ${resp.status}`); }
     const data = await resp.json();
-    const text = data.content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
-    const p = JSON.parse(text);
+    const p = JSON.parse(data.content[0].text.trim().replace(/```json\n?|\n?```/g,'').trim());
     document.getElementById('meal-name').value    = p.name      || '';
     document.getElementById('meal-kcal').value    = p.kcal      || 0;
     document.getElementById('meal-protein').value = p.protein_g || 0;
@@ -1219,7 +1534,7 @@ async function syncToGitHub() {
     const get = await fetch(`${apiUrl}?ref=${branch}`, { headers });
     if (get.ok) { sha = (await get.json()).sha; }
     else if (get.status !== 404) throw new Error(`GitHub ${get.status}`);
-    const payload = { today: state, history: history.slice(-30) };
+    const payload = { today: state, history: history.slice(-90) };
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(payload, null, 2))));
     const body = { message: `tracker: update data.json for ${state.date}`, content, branch };
     if (sha) body.sha = sha;
@@ -1232,17 +1547,15 @@ async function syncToGitHub() {
   } finally { btn.disabled = false; btn.textContent = 'Sync to GitHub'; }
 }
 
-/* ══ Export / New Day ════════════════════════════════════════════════════════ */
+/* ══ Export / Save & Advance ══════════════════════════════════════════════════ */
 function exportJSON() {
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([JSON.stringify({ today: state, history }, null, 2)], { type: 'application/json' }));
   a.download = `diet-tracking-${state.date}.json`;
   a.click();
 }
-
 function resetDay() {
-  if (!confirm('Advance to new day? Today\'s data will be saved to history.')) return;
-  // Archive today
+  if (!confirm('Save today\'s data to History and start a new day?')) return;
   if (state.calories > 0 || state.water_ml > 0 || state.weight_kg) {
     const snap = { date: state.date, calories: state.calories, protein_g: state.protein_g,
       carbs_g: state.carbs_g, fat_g: state.fat_g, water_ml: state.water_ml, weight_kg: state.weight_kg };
@@ -1254,245 +1567,160 @@ function resetDay() {
   state = { date: todayISO(), calories: 0, protein_g: 0, carbs_g: 0, fat_g: 0,
     water_ml: 0, weight_kg: null, meals: [], exercise: [], notes: '' };
   saveState(); renderAll();
-  toast('New day started — history saved', 'success');
+  toast('Saved to history — new day started', 'success');
 }
 
 /* ══ Dashboard KPIs ══════════════════════════════════════════════════════════ */
 function updateKPIs() {
-  const last30 = history.slice(-30);
-  const last14 = history.slice(-14);
+  const all  = allRows();
+  const last30 = all.slice(0, 30);
+  const last14 = all.slice(0, 14);
 
-  // Avg weight
-  const withWeight = last30.filter(d => d.weight_kg);
-  if (withWeight.length) {
-    const avg = (withWeight.reduce((s, d) => s + d.weight_kg, 0) / withWeight.length).toFixed(1);
-    document.getElementById('kpi-avg-weight').innerHTML = `${avg}<span class="kpi-unit">kg</span>`;
+  const withW = last30.filter(d => d.weight_kg);
+  if (withW.length) {
+    const avg = (withW.reduce((s,d) => s + d.weight_kg, 0) / withW.length).toFixed(1);
+    setHTML('kpi-avg-weight', `${avg}<span class="kpi-unit">kg</span>`);
   }
+  document.getElementById('kpi-days').textContent = all.length;
 
-  // Days tracked
-  document.getElementById('kpi-days').textContent = history.length;
-
-  // Avg calories (last 14)
   if (last14.length) {
-    const avg = Math.round(last14.reduce((s, d) => s + d.calories, 0) / last14.length);
-    document.getElementById('kpi-avg-kcal').innerHTML = `${avg}<span class="kpi-unit">kcal</span>`;
-  }
-
-  // Avg deficit (last 14)
-  if (last14.length) {
-    const avg = Math.round(last14.reduce((s, d) => s + (TARGETS.kcal - d.calories), 0) / last14.length);
-    const el = document.getElementById('kpi-avg-deficit');
+    const avgKcal = Math.round(last14.reduce((s,d) => s + (d.calories||0), 0) / last14.length);
+    setHTML('kpi-avg-kcal', `${avgKcal}<span class="kpi-unit">kcal</span>`);
+    const avgDef = Math.round(last14.reduce((s,d) => s + (TARGETS.kcal - (d.calories||0)), 0) / last14.length);
+    setHTML('kpi-avg-deficit', `${Math.abs(avgDef)}<span class="kpi-unit">kcal</span>`);
     const sub = document.getElementById('kpi-deficit-sub');
-    el.innerHTML = `${Math.abs(avg)}<span class="kpi-unit">kcal</span>`;
-    if (avg >= 0) { sub.textContent = 'avg deficit'; sub.style.color = 'var(--green)'; }
-    else          { sub.textContent = 'avg surplus'; sub.style.color = 'var(--red)'; }
+    sub.textContent = avgDef >= 0 ? 'avg deficit' : 'avg surplus';
+    sub.style.color = avgDef >= 0 ? 'var(--green)' : 'var(--red)';
   }
 }
 
 /* ══ Charts ══════════════════════════════════════════════════════════════════ */
 function drawCharts() {
   updateKPIs();
-  const last30 = history.slice(-30);
-  const last14 = history.slice(-14);
-
-  drawLineChart('chart-weight',   last30, d => d.weight_kg, '#FFCC00', TARGETS.goalWeight, 'kg');
-  drawBarChart ('chart-calories', last14, d => d.calories,  '#FFCC00', TARGETS.kcal);
-  drawBarChart ('chart-deficit',  last14, d => TARGETS.kcal - d.calories, '#4cca8a', 0);
-  drawBarChart ('chart-water',    last14, d => d.water_ml,  '#7aabff', TARGETS.water);
-  drawBarChart ('chart-protein',  last14, d => d.protein_g, '#FFCC00', TARGETS.protein);
+  const all    = allRows();
+  const last30 = all.slice(0, 30).reverse();
+  const last14 = all.slice(0, 14).reverse();
+  drawLineChart('chart-weight',   last30, d => d.weight_kg,                     '#FFCC00', TARGETS.goalWeight);
+  drawBarChart ('chart-calories', last14, d => d.calories  || 0,                '#FFCC00', TARGETS.kcal);
+  drawBarChart ('chart-deficit',  last14, d => TARGETS.kcal - (d.calories || 0),'#4cca8a', 0);
+  drawBarChart ('chart-water',    last14, d => d.water_ml  || 0,                '#7aabff', TARGETS.water);
+  drawBarChart ('chart-protein',  last14, d => d.protein_g || 0,                '#FFCC00', TARGETS.protein);
 }
-
-function getDevicePixelRatio() { return window.devicePixelRatio || 1; }
 
 function setupCanvas(id) {
   const canvas = document.getElementById(id);
-  const dpr = getDevicePixelRatio();
-  const cssW = canvas.parentElement.clientWidth - 44; // account for padding
+  const dpr  = window.devicePixelRatio || 1;
+  const cssW = canvas.parentElement.clientWidth - 44;
   const cssH = parseInt(canvas.getAttribute('height'));
-  canvas.width  = cssW * dpr;
-  canvas.height = cssH * dpr;
-  canvas.style.width  = cssW + 'px';
-  canvas.style.height = cssH + 'px';
+  canvas.width  = cssW * dpr; canvas.height = cssH * dpr;
+  canvas.style.width = cssW + 'px'; canvas.style.height = cssH + 'px';
   const ctx = canvas.getContext('2d');
   ctx.scale(dpr, dpr);
   return { ctx, W: cssW, H: cssH };
 }
 
-function drawLineChart(id, data, accessor, color, targetVal, unit) {
+function drawLineChart(id, data, accessor, color, targetVal) {
   const { ctx, W, H } = setupCanvas(id);
-  const PAD = { t: 12, r: 8, b: 28, l: 42 };
-  const chartW = W - PAD.l - PAD.r;
-  const chartH = H - PAD.t - PAD.b;
-
+  const PAD = { t:12, r:8, b:28, l:42 };
+  const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b;
   ctx.clearRect(0, 0, W, H);
-
-  // Filter valid points
-  const pts = data.map((d, i) => ({ i, v: accessor(d), date: d.date })).filter(p => p.v != null);
-
-  if (pts.length < 2) {
-    ctx.font = '10px "DM Mono", monospace';
-    ctx.fillStyle = '#6B7599';
-    ctx.textAlign = 'center';
-    ctx.fillText('No data yet — log entries to see trend', W / 2, H / 2);
-    return;
-  }
-
-  const vals = pts.map(p => p.v);
-  let minV = Math.min(...vals);
-  let maxV = Math.max(...vals);
+  const pts = data.map((d,i) => ({ i, v: accessor(d), date: d.date })).filter(p => p.v != null);
+  if (pts.length < 2) { noData(ctx, W, H); return; }
+  let minV = Math.min(...pts.map(p=>p.v)), maxV = Math.max(...pts.map(p=>p.v));
   if (targetVal != null) { minV = Math.min(minV, targetVal); maxV = Math.max(maxV, targetVal); }
-  const range = maxV - minV || 1;
-  const pad = range * 0.12;
+  const rng = maxV - minV || 1, pad = rng * 0.12;
   minV -= pad; maxV += pad;
-
-  const xScale = i => PAD.l + (i / (data.length - 1 || 1)) * chartW;
-  const yScale = v => PAD.t + chartH - ((v - minV) / (maxV - minV)) * chartH;
-
-  // Grid lines
-  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
-  ctx.lineWidth = 1;
-  for (let g = 0; g <= 4; g++) {
-    const y = PAD.t + (g / 4) * chartH;
-    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(W - PAD.r, y); ctx.stroke();
-    const val = maxV - (g / 4) * (maxV - minV);
-    ctx.font = '9px "DM Mono", monospace';
-    ctx.fillStyle = '#6B7599';
-    ctx.textAlign = 'right';
-    ctx.fillText(val.toFixed(unit === 'kg' ? 1 : 0), PAD.l - 6, y + 3);
-  }
-
-  // Target line
+  const xS = i => PAD.l + (i / (data.length-1||1)) * cW;
+  const yS = v => PAD.t + cH - ((v-minV)/(maxV-minV)) * cH;
+  grid(ctx, PAD, cW, cH, W, minV, maxV, true);
   if (targetVal != null) {
-    const ty = yScale(targetVal);
-    ctx.strokeStyle = 'rgba(255,204,0,0.25)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(PAD.l, ty); ctx.lineTo(W - PAD.r, ty); ctx.stroke();
+    ctx.strokeStyle='rgba(255,204,0,0.25)'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(PAD.l, yS(targetVal)); ctx.lineTo(W-PAD.r, yS(targetVal)); ctx.stroke();
     ctx.setLineDash([]);
   }
-
-  // Area fill
-  const grad = ctx.createLinearGradient(0, PAD.t, 0, PAD.t + chartH);
-  grad.addColorStop(0, color + '28');
-  grad.addColorStop(1, color + '00');
-  ctx.fillStyle = grad;
-  ctx.beginPath();
-  ctx.moveTo(xScale(pts[0].i), yScale(pts[0].v));
-  pts.forEach(p => ctx.lineTo(xScale(p.i), yScale(p.v)));
-  ctx.lineTo(xScale(pts[pts.length-1].i), PAD.t + chartH);
-  ctx.lineTo(xScale(pts[0].i), PAD.t + chartH);
+  const grad = ctx.createLinearGradient(0, PAD.t, 0, PAD.t+cH);
+  grad.addColorStop(0, color+'28'); grad.addColorStop(1, color+'00');
+  ctx.fillStyle = grad; ctx.beginPath();
+  ctx.moveTo(xS(pts[0].i), yS(pts[0].v));
+  pts.forEach(p => ctx.lineTo(xS(p.i), yS(p.v)));
+  ctx.lineTo(xS(pts[pts.length-1].i), PAD.t+cH); ctx.lineTo(xS(pts[0].i), PAD.t+cH);
   ctx.closePath(); ctx.fill();
-
-  // Line
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 2;
-  ctx.lineJoin = 'round';
-  ctx.beginPath();
-  pts.forEach((p, idx) => idx === 0 ? ctx.moveTo(xScale(p.i), yScale(p.v)) : ctx.lineTo(xScale(p.i), yScale(p.v)));
+  ctx.strokeStyle=color; ctx.lineWidth=2; ctx.lineJoin='round'; ctx.beginPath();
+  pts.forEach((p,i) => i===0 ? ctx.moveTo(xS(p.i),yS(p.v)) : ctx.lineTo(xS(p.i),yS(p.v)));
   ctx.stroke();
-
-  // Dots
   pts.forEach(p => {
-    ctx.beginPath();
-    ctx.arc(xScale(p.i), yScale(p.v), 3, 0, Math.PI * 2);
-    ctx.fillStyle = color;
-    ctx.fill();
-    ctx.strokeStyle = '#050A1E';
-    ctx.lineWidth = 1.5;
-    ctx.stroke();
+    ctx.beginPath(); ctx.arc(xS(p.i), yS(p.v), 3, 0, Math.PI*2);
+    ctx.fillStyle=color; ctx.fill(); ctx.strokeStyle='#050A1E'; ctx.lineWidth=1.5; ctx.stroke();
   });
-
-  // X labels (every ~4 entries)
-  ctx.font = '8px "DM Mono", monospace';
-  ctx.fillStyle = '#6B7599';
-  ctx.textAlign = 'center';
-  data.forEach((d, i) => {
-    if (i % Math.max(1, Math.floor(data.length / 5)) === 0) {
-      const lbl = d.date ? d.date.slice(5) : '';
-      ctx.fillText(lbl, xScale(i), H - 6);
-    }
-  });
+  xLabels(ctx, data, PAD, cW, H, xS);
 }
 
 function drawBarChart(id, data, accessor, color, targetVal) {
   const { ctx, W, H } = setupCanvas(id);
-  const PAD = { t: 12, r: 8, b: 28, l: 42 };
-  const chartW = W - PAD.l - PAD.r;
-  const chartH = H - PAD.t - PAD.b;
-
+  const PAD = { t:12, r:8, b:28, l:42 };
+  const cW = W - PAD.l - PAD.r, cH = H - PAD.t - PAD.b;
   ctx.clearRect(0, 0, W, H);
-
-  if (!data.length) {
-    ctx.font = '10px "DM Mono", monospace';
-    ctx.fillStyle = '#6B7599';
-    ctx.textAlign = 'center';
-    ctx.fillText('No data yet', W / 2, H / 2);
-    return;
-  }
-
+  if (!data.length) { noData(ctx, W, H); return; }
   const vals = data.map(d => accessor(d));
-  let maxV = Math.max(...vals, targetVal || 0, 1);
-  maxV *= 1.12;
-
-  const barW = (chartW / data.length) * 0.65;
-  const gap  = (chartW / data.length) * 0.35 / 2;
-
-  // Grid lines + y labels
-  ctx.strokeStyle = 'rgba(255,255,255,0.05)';
-  ctx.lineWidth = 1;
-  for (let g = 0; g <= 4; g++) {
-    const y = PAD.t + (g / 4) * chartH;
-    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(W - PAD.r, y); ctx.stroke();
-    const val = maxV - (g / 4) * maxV;
-    ctx.font = '9px "DM Mono", monospace';
-    ctx.fillStyle = '#6B7599';
-    ctx.textAlign = 'right';
-    ctx.fillText(Math.round(val), PAD.l - 6, y + 3);
-  }
-
-  // Target line
+  let maxV = Math.max(...vals, targetVal||0, 1) * 1.12;
+  grid(ctx, PAD, cW, cH, W, 0, maxV, false);
   if (targetVal) {
-    const ty = PAD.t + chartH - (targetVal / maxV) * chartH;
-    ctx.strokeStyle = 'rgba(255,204,0,0.3)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(PAD.l, ty); ctx.lineTo(W - PAD.r, ty); ctx.stroke();
+    const ty = PAD.t + cH - (targetVal/maxV)*cH;
+    ctx.strokeStyle='rgba(255,204,0,0.3)'; ctx.lineWidth=1; ctx.setLineDash([4,4]);
+    ctx.beginPath(); ctx.moveTo(PAD.l, ty); ctx.lineTo(W-PAD.r, ty); ctx.stroke();
     ctx.setLineDash([]);
   }
-
-  // Bars
+  const bW = (cW/data.length)*0.65, gap = (cW/data.length)*0.175;
   data.forEach((d, i) => {
-    const v = accessor(d);
-    const bH = Math.max(2, (v / maxV) * chartH);
-    const x  = PAD.l + i * (chartW / data.length) + gap;
-    const y  = PAD.t + chartH - bH;
-
-    // Bar fill — yellow if at/above target, dimmer if below
-    const pct = targetVal ? v / targetVal : 1;
-    ctx.fillStyle = pct >= 1 ? color : color + '70';
+    const v  = accessor(d);
+    const bH = Math.max(2, (v/maxV)*cH);
+    const x  = PAD.l + i*(cW/data.length) + gap;
+    const y  = PAD.t + cH - bH;
+    ctx.fillStyle = (targetVal ? v/targetVal : 1) >= 1 ? color : color+'60';
     ctx.beginPath();
-    ctx.roundRect ? ctx.roundRect(x, y, barW, bH, [2, 2, 0, 0]) : ctx.rect(x, y, barW, bH);
+    if (ctx.roundRect) ctx.roundRect(x, y, bW, bH, [2,2,0,0]); else ctx.rect(x, y, bW, bH);
     ctx.fill();
+  });
+  xLabels(ctx, data, PAD, cW, H, (i) => PAD.l + i*(cW/data.length) + (cW/data.length)*0.5);
+}
 
-    // X label
-    const lbl = d.date ? d.date.slice(5) : '';
-    ctx.font = '8px "DM Mono", monospace';
-    ctx.fillStyle = '#6B7599';
-    ctx.textAlign = 'center';
-    if (i % Math.max(1, Math.floor(data.length / 5)) === 0) {
-      ctx.fillText(lbl, x + barW / 2, H - 6);
-    }
+function grid(ctx, PAD, cW, cH, W, minV, maxV, decimals) {
+  ctx.strokeStyle='rgba(255,255,255,0.05)'; ctx.lineWidth=1;
+  ctx.font='9px "DM Mono",monospace'; ctx.fillStyle='#6B7599'; ctx.textAlign='right';
+  for (let g=0; g<=4; g++) {
+    const y = PAD.t + (g/4)*cH;
+    ctx.beginPath(); ctx.moveTo(PAD.l, y); ctx.lineTo(W-PAD.r, y); ctx.stroke();
+    const v = maxV - (g/4)*(maxV-minV);
+    ctx.fillText(decimals ? v.toFixed(1) : Math.round(v), PAD.l-6, y+3);
+  }
+}
+
+function xLabels(ctx, data, PAD, cW, H, xFn) {
+  ctx.font='8px "DM Mono",monospace'; ctx.fillStyle='#6B7599'; ctx.textAlign='center';
+  const step = Math.max(1, Math.floor(data.length/5));
+  data.forEach((d, i) => {
+    if (i % step === 0)
+      ctx.fillText(d.date ? d.date.slice(5) : '', xFn(i), H-6);
   });
 }
 
+function noData(ctx, W, H) {
+  ctx.font='10px "DM Mono",monospace'; ctx.fillStyle='#6B7599'; ctx.textAlign='center';
+  ctx.fillText('No data yet', W/2, H/2);
+}
+
+window.addEventListener('resize', () => {
+  if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
+});
+
 /* ══ Toast ════════════════════════════════════════════════════════════════════ */
 let toastTimer;
-function toast(msg, type = '') {
+function toast(msg, type='') {
   const el = document.getElementById('toast');
   el.textContent = msg;
-  el.className = 'toast show' + (type ? ' ' + type : '');
+  el.className = 'toast show' + (type ? ' '+type : '');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => el.classList.remove('show'), 3000);
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3200);
 }
 
 /* ══ Utils ════════════════════════════════════════════════════════════════════ */
@@ -1500,11 +1728,6 @@ function esc(s) {
   return String(s).replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
-
-// Redraw charts on resize
-window.addEventListener('resize', () => {
-  if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
-});
 
 init();
 </script>
