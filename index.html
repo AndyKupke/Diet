@@ -174,10 +174,12 @@ body {
   position: fixed; inset: 0;
   background: var(--backdrop-bg);
   z-index: 499; opacity: 0; pointer-events: none;
-  transition: opacity 0.28s ease;
   backdrop-filter: blur(2px);
 }
-#sidebar-backdrop.open { opacity: 1; pointer-events: all; }
+#sidebar-backdrop.open {
+  opacity: 1; pointer-events: all;
+  transition: opacity 0.22s ease;
+}
 
 /* ══════════════════════════════════════════════════════════════════════════
    HEADER
@@ -1092,9 +1094,7 @@ let photoB64 = null;
 function openSidebar()  { document.getElementById('sidebar').classList.add('open'); document.getElementById('sidebar-backdrop').classList.add('open'); document.body.style.overflow='hidden'; }
 function closeSidebar() {
   document.getElementById('sidebar').classList.remove('open');
-  const bd = document.getElementById('sidebar-backdrop');
-  bd.classList.remove('open');
-  bd.style.pointerEvents = 'none';  // kill clicks immediately, don't wait for fade-out
+  document.getElementById('sidebar-backdrop').classList.remove('open');
   document.body.style.overflow = '';
 }
 
