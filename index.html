@@ -1087,9 +1087,7 @@ function closeSidebar() {
 /* ══ Tab switching ════════════════════════════════════════════════════════ */
 const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', history:'History', supplements:'Supplements', blood:'Check-up Blood', settings:'Settings' };
 
-// Now safe to apply auto theme — all let/const vars above are initialised
-applyAutoTheme();
-setInterval(applyAutoTheme, 60_000);
+// applyAutoTheme() is called further below, after ALL let/const declarations
 function switchTab(name) {
   document.querySelectorAll('.sidebar-nav-item').forEach(el => el.classList.toggle('active', el.dataset.tab===name));
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id==='tab-'+name));
@@ -2582,6 +2580,12 @@ const BLOOD_SEED_TESTS = [
 ];
 
 let bloodTests = [];
+
+// ── ALL top-level let/const declarations are above this line ──────────────
+// Safe to fire applyAutoTheme now: history, state, events, ouraCache,
+// bloodTests are all initialised and out of the temporal dead zone.
+applyAutoTheme();
+setInterval(applyAutoTheme, 60_000);
 
 function loadBloodTests() {
   const raw = localStorage.getItem('dt_blood_v2');
