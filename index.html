@@ -964,7 +964,35 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
     <div style="display:flex;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:18px;">
       <div class="section-head" style="margin:0;flex:1 1 200px;"><span class="section-title">Check-up Blood</span><span class="section-rule"></span></div>
       <select id="blood-test-select" style="font-family:'DM Mono',monospace;font-size:11px;background:var(--surface);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:6px 10px;min-width:200px;" onchange="renderBloodTab()"></select>
-      <button class="btn btn-sm" onclick="toggleBloodAddForm()">+ Add Test</button>
+      <button class="btn btn-sm" onclick="document.getElementById('blood-file-input').click()">📄 Upload PDF / Image</button>
+      <button class="btn btn-ghost btn-sm" onclick="toggleBloodAddForm()">✏️ Add Manually</button>
+      <input type="file" id="blood-file-input" accept=".pdf,image/*" style="display:none;" onchange="handleBloodUpload(this)">
+    </div>
+
+    <!-- Upload / extraction status panel -->
+    <div id="blood-upload-panel" style="display:none;margin-bottom:16px;">
+      <div class="panel">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">
+          Extracting blood test data…
+        </div>
+        <div id="blood-upload-status" style="font-size:13px;color:var(--text-muted);"></div>
+      </div>
+    </div>
+
+    <!-- Extraction review panel (shown after successful extract) -->
+    <div id="blood-review-panel" style="display:none;margin-bottom:16px;">
+      <div class="section-head" style="margin-top:0;"><span class="section-title" style="font-size:16px;">Review Extracted Values</span><span class="section-rule"></span></div>
+      <div class="panel">
+        <div class="grid-2" style="margin-bottom:14px;">
+          <div class="field"><label>Test Date</label><input type="date" id="br-date"></div>
+          <div class="field"><label>Label</label><input type="text" id="br-label" placeholder="e.g. IMD Berlin — Jun 2025"></div>
+        </div>
+        <div id="br-values-table" style="overflow-x:auto;margin-bottom:14px;"></div>
+        <div style="display:flex;gap:10px;">
+          <button class="btn" onclick="confirmBloodExtract()">Save as New Test</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('blood-review-panel').style.display='none'">Discard</button>
+        </div>
+      </div>
     </div>
 
     <!-- Out-of-range flags strip -->
@@ -975,7 +1003,7 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
 
     <!-- Add new test form (hidden by default) -->
     <div id="blood-add-form" style="display:none;">
-      <div class="section-head" style="margin-top:24px;"><span class="section-title" style="font-size:16px;">Add New Test</span><span class="section-rule"></span></div>
+      <div class="section-head" style="margin-top:24px;"><span class="section-title" style="font-size:16px;">Add Manually</span><span class="section-rule"></span></div>
       <div class="panel">
         <div class="grid-2">
           <div class="field"><label>Test Date</label><input type="date" id="ba-date"></div>
@@ -2897,13 +2925,16 @@ function renderBloodTab() {
       <th style="text-align:left;padding:6px 8px;font-weight:400;">Unit</th>
       <th style="text-align:left;padding:6px 8px;font-weight:400;">Ref range</th>
       <th style="text-align:right;padding:6px 8px;font-weight:400;">${selTest.date}</th>
+      <th style="padding:6px 4px;font-weight:400;width:20px;"></th>
       <th style="text-align:center;padding:6px 8px;font-weight:400;">Trend</th>
     </tr></thead><tbody>`;
+
+  const pencilSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="width:12px;height:12px;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
 
   Object.entries(groups).forEach(([grpName, params])=>{
     const hasData = params.some(p=>allTests.some(t=>t.values[p.k]!=null));
     if (!hasData) return;
-    html += `<tr><td colspan="5" style="padding:14px 0 4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);border-bottom:1px solid var(--divider-y);">${grpName}</td></tr>`;
+    html += `<tr><td colspan="6" style="padding:14px 0 4px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);border-bottom:1px solid var(--divider-y);">${grpName}</td></tr>`;
     params.forEach(p=>{
       if (!allTests.some(t=>t.values[p.k]!=null)) return;
       const val = selTest.values[p.k];
@@ -2911,11 +2942,16 @@ function renderBloodTab() {
       const dispVal = val!=null
         ? `<span style="color:${col||'var(--text)'};font-family:'DM Mono',monospace;font-weight:500;">${val}</span>`
         : `<span style="color:var(--text-muted);opacity:0.4;">—</span>`;
-      html += `<tr style="border-bottom:1px solid var(--divider);">
+      html += `<tr id="brow-${p.k}" style="border-bottom:1px solid var(--divider);">
         <td style="padding:7px 8px 7px 0;color:var(--text);">${p.l}</td>
         <td style="padding:7px 8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);">${p.u}</td>
         <td style="padding:7px 8px;font-family:'DM Mono',monospace;font-size:11px;color:var(--text-muted);">${bloodRefStr(p)}</td>
-        <td style="padding:7px 8px;text-align:right;">${dispVal}</td>
+        <td id="bval-${p.k}" style="padding:7px 8px;text-align:right;">${dispVal}</td>
+        <td style="padding:7px 4px;text-align:center;white-space:nowrap;">
+          <button class="btn-icon" onclick="startBloodParamEdit('${selId}','${p.k}')" title="Edit value" style="opacity:0.4;padding:2px;">
+            ${pencilSVG}
+          </button>
+        </td>
         <td style="padding:7px 8px;text-align:center;">${bloodSparklineSVG(p.k, allTests)}</td>
       </tr>`;
     });
@@ -2923,7 +2959,8 @@ function renderBloodTab() {
 
   html += '</tbody></table></div>';
 
-  // Manage tests row
+  // Manage / delete tests
+
   html += `<div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:8px;">
     ${bloodTests.slice().sort((a,b)=>b.date.localeCompare(a.date)).map(t=>`
       <div style="display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius);padding:6px 12px;">
@@ -2998,6 +3035,240 @@ function deleteBloodTest(id) {
 // Legacy stubs
 function loadBloodRecords() { loadBloodTests(); }
 function renderBloodTable() { renderBloodTab(); }
+
+/* ══ Blood — PDF / Image upload & Claude extraction ═══════════════════════ */
+
+// Pending extracted data for the review panel
+let _bloodExtractPending = null;
+
+async function handleBloodUpload(input) {
+  const file = input.files?.[0];
+  if (!file) return;
+  input.value = ''; // reset so same file can be re-selected
+
+  const uploadPanel  = document.getElementById('blood-upload-panel');
+  const statusEl     = document.getElementById('blood-upload-status');
+  const reviewPanel  = document.getElementById('blood-review-panel');
+  reviewPanel.style.display  = 'none';
+  uploadPanel.style.display  = 'block';
+  statusEl.textContent = `Reading "${file.name}"…`;
+
+  const apiKey = cfg.anthropicKey || localStorage.getItem('dt_anthropic_key');
+  if (!apiKey) {
+    statusEl.textContent = '⚠ Anthropic API key not set. Add it in Settings → Data.';
+    return;
+  }
+
+  // Read file as base64
+  const b64 = await new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(',')[1]);
+    r.onerror = rej;
+    r.readAsDataURL(file);
+  });
+
+  const isPDF   = file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf');
+  const mime    = isPDF ? 'application/pdf' : (file.type || 'image/jpeg');
+
+  statusEl.textContent = 'Sending to Claude for extraction…';
+
+  const keyList = BLOOD_PARAMS.map(p=>`${p.k} (${p.l}, ${p.u})`).join(', ');
+  const systemPrompt = `You are a medical data extraction assistant. Extract blood test results from lab reports (PDF or image). Return ONLY valid JSON — no markdown, no explanation.`;
+  const userPrompt = `Extract all blood test values from this lab report.
+
+Return a JSON object with exactly this structure:
+{
+  "date": "YYYY-MM-DD",
+  "label": "Lab name and month/year, e.g. IMD Berlin — Jun 2025",
+  "values": {
+    "key": numericValue
+  }
+}
+
+Only include keys where you found a value. Use null for missing values.
+Available parameter keys (use ONLY these exact keys):
+${keyList}
+
+Rules:
+- date: use the report/collection date, not today
+- All values must be numeric (float or int), never strings
+- If a value shows "<X" (below detection), use null
+- Convert percentages to decimal if unit says "%" — keep as the number shown (e.g. 5.2 not 0.052)
+- Use the units as shown in the lab report; do not convert units`;
+
+  try {
+    const contentBlock = isPDF
+      ? { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: b64 } }
+      : { type: 'image',    source: { type: 'base64', media_type: mime,               data: b64 } };
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'x-api-key':         apiKey,
+        'anthropic-version': '2023-06-01',
+        'content-type':      'application/json',
+        'anthropic-dangerous-request-proxy': 'true',
+      },
+      body: JSON.stringify({
+        model:      'claude-opus-4-5',
+        max_tokens: 2048,
+        system:     systemPrompt,
+        messages: [{ role: 'user', content: [contentBlock, { type: 'text', text: userPrompt }] }],
+      }),
+    });
+
+    if (!resp.ok) {
+      const err = await resp.json().catch(()=>({error:{message:resp.statusText}}));
+      throw new Error(err.error?.message || `API ${resp.status}`);
+    }
+
+    const msg    = await resp.json();
+    const rawTxt = msg.content?.[0]?.text || '';
+    // Strip possible markdown fences
+    const jsonStr = rawTxt.replace(/^```(?:json)?\n?/,'').replace(/\n?```$/,'').trim();
+    const parsed  = JSON.parse(jsonStr);
+
+    if (!parsed.values || typeof parsed.values !== 'object') throw new Error('Unexpected response format');
+
+    _bloodExtractPending = parsed;
+    uploadPanel.style.display = 'none';
+    showBloodReview(parsed);
+
+  } catch(err) {
+    statusEl.innerHTML = `⚠ Extraction failed: ${esc(err.message)}<br><small style="opacity:0.6;">Check browser console for details.</small>`;
+    console.error('Blood extraction error', err);
+  }
+}
+
+function showBloodReview(parsed) {
+  const panel  = document.getElementById('blood-review-panel');
+  const dateEl = document.getElementById('br-date');
+  const lblEl  = document.getElementById('br-label');
+  const tblEl  = document.getElementById('br-values-table');
+
+  dateEl.value = parsed.date || todayISO();
+  lblEl.value  = parsed.label || '';
+
+  // Build an editable table of extracted values grouped by category
+  const groups = {};
+  BLOOD_PARAMS.forEach(p=>{ if(!groups[p.g]) groups[p.g]=[]; groups[p.g].push(p); });
+
+  const extractedKeys = Object.keys(parsed.values).filter(k => parsed.values[k] != null);
+  if (!extractedKeys.length) {
+    tblEl.innerHTML = '<div style="color:var(--text-muted);font-size:13px;">No values could be extracted. Try a clearer scan or use Add Manually.</div>';
+    panel.style.display = 'block';
+    return;
+  }
+
+  let html = `<table style="width:100%;border-collapse:collapse;font-size:12px;">
+    <thead><tr style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);">
+      <th style="text-align:left;padding:4px 8px 4px 0;font-weight:400;">Parameter</th>
+      <th style="text-align:left;padding:4px 8px;font-weight:400;">Unit</th>
+      <th style="text-align:left;padding:4px 8px;font-weight:400;">Ref</th>
+      <th style="text-align:right;padding:4px 8px;font-weight:400;">Extracted value</th>
+    </tr></thead><tbody>`;
+
+  let shown = 0;
+  Object.entries(groups).forEach(([grpName, params]) => {
+    const grpParams = params.filter(p => parsed.values[p.k] != null);
+    if (!grpParams.length) return;
+    html += `<tr><td colspan="4" style="padding:10px 0 3px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.16em;text-transform:uppercase;color:var(--yellow);border-bottom:1px solid var(--divider-y);">${grpName}</td></tr>`;
+    grpParams.forEach(p => {
+      const v   = parsed.values[p.k];
+      const col = bloodParamColor(p.k, v);
+      html += `<tr style="border-bottom:1px solid var(--divider);">
+        <td style="padding:5px 8px 5px 0;">${p.l}</td>
+        <td style="padding:5px 8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">${p.u}</td>
+        <td style="padding:5px 8px;font-family:'DM Mono',monospace;font-size:10px;color:var(--text-muted);">${bloodRefStr(p)}</td>
+        <td style="padding:5px 8px;text-align:right;">
+          <input type="number" id="br-v-${p.k}" value="${v}" step="any"
+            style="width:80px;text-align:right;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;
+                   color:${col||'var(--text)'};background:var(--input-bg);border:1px solid var(--divider);
+                   border-radius:3px;padding:2px 6px;">
+        </td>
+      </tr>`;
+      shown++;
+    });
+  });
+
+  html += `</tbody></table><div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-top:8px;">${shown} values extracted — edit any before saving.</div>`;
+  tblEl.innerHTML = html;
+  panel.style.display = 'block';
+  panel.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+function confirmBloodExtract() {
+  const date  = document.getElementById('br-date').value;
+  const label = document.getElementById('br-label').value.trim();
+  if (!date) { toast('Please enter a test date','error'); return; }
+
+  const values = {};
+  BLOOD_PARAMS.forEach(p => {
+    const el = document.getElementById(`br-v-${p.k}`);
+    if (el) { const v = parseFloat(el.value); if (!isNaN(v)) values[p.k] = v; }
+  });
+
+  if (!Object.keys(values).length) { toast('No values to save','error'); return; }
+
+  const id = `test_${date.replace(/-/g,'')}`;
+  const existing = bloodTests.findIndex(t=>t.id===id);
+  const entry = { id, date, label: label||`Test — ${date}`, values };
+  if (existing >= 0) bloodTests[existing] = entry; else bloodTests.push(entry);
+  saveBloodTests();
+
+  document.getElementById('blood-review-panel').style.display = 'none';
+  _bloodExtractPending = null;
+
+  // Select the new test in the dropdown
+  const sel = document.getElementById('blood-test-select');
+  renderBloodTab();
+  if (sel) sel.value = id;
+  renderBloodTab(); // re-render with new selection
+
+  toast(`Blood test "${entry.label}" saved from upload`, 'success');
+  autoSyncToGitHub();
+}
+
+/* ══ Blood — inline parameter edit ════════════════════════════════════════ */
+
+function startBloodParamEdit(testId, key) {
+  const test = bloodTests.find(t=>t.id===testId);
+  if (!test) return;
+  const p    = BLOOD_PARAMS.find(x=>x.k===key);
+  const cell = document.getElementById(`bval-${key}`);
+  if (!cell) return;
+
+  const current = test.values[key] ?? '';
+  cell.innerHTML = `
+    <input id="bedit-${key}" type="number" step="any" value="${current}"
+      style="width:70px;text-align:right;font-family:'DM Mono',monospace;font-size:12px;font-weight:500;
+             background:var(--input-bg);border:1px solid var(--yellow);border-radius:3px;padding:2px 6px;color:var(--text);"
+      onkeydown="if(event.key==='Enter')saveBloodParamEdit('${testId}','${key}');if(event.key==='Escape')renderBloodTab();"
+      onblur="saveBloodParamEdit('${testId}','${key}')"
+    >`;
+  document.getElementById(`bedit-${key}`)?.focus();
+}
+
+function saveBloodParamEdit(testId, key) {
+  const el   = document.getElementById(`bedit-${key}`);
+  if (!el) return; // already saved (blur fires after enter)
+  const v    = parseFloat(el.value);
+  const test = bloodTests.find(t=>t.id===testId);
+  if (!test) return;
+
+  if (isNaN(v) || el.value.trim() === '') {
+    delete test.values[key];
+  } else {
+    test.values[key] = v;
+  }
+  saveBloodTests();
+  autoSyncToGitHub();
+  renderBloodTab();
+  // Re-select the same test
+  const sel = document.getElementById('blood-test-select');
+  if (sel) sel.value = testId;
+  renderBloodTab();
+}
 
 /* ══ Utils ════════════════════════════════════════════════════════════════ */
 
