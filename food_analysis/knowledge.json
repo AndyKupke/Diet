@@ -1,9 +1,9 @@
 {
   "_meta": {
     "version": 1,
-    "description": "Food analysis knowledge base — grows with every analysed meal",
-    "last_updated": "",
-    "total_analyses": 0
+    "description": "Food analysis knowledge base â grows with every analysed meal",
+    "last_updated": "2026-06-01T08:59:09.436Z",
+    "total_analyses": 1
   },
   "calibrations": {
     "description": "User-confirmed corrections to past estimates. Used to fine-tune future prompts.",
@@ -11,20 +11,63 @@
   },
   "known_items": {
     "description": "Foods seen before with confirmed or estimated nutritional data",
-    "entries": []
+    "entries": [
+      {
+        "name": "Fresh strawberries",
+        "serving": "2.5 medium strawberries (approx 45g total)",
+        "weight_g": 45,
+        "kcal": 14,
+        "protein_g": 0.3,
+        "carbs_g": 3.5,
+        "fat_g": 0.1,
+        "confidence": 0.75,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      }
+    ]
   },
   "portion_anchors": {
     "description": "Reference objects seen in past photos that help estimate portion sizes",
     "examples": [
-      { "object": "standard dinner plate (26cm)", "area_cm2": 531 },
-      { "object": "dessert spoon", "volume_ml": 10 },
-      { "object": "tablespoon", "volume_ml": 15 },
-      { "object": "wine glass (standard pour)", "volume_ml": 150 },
-      { "object": "espresso cup", "volume_ml": 60 },
-      { "object": "regular coffee mug", "volume_ml": 240 },
-      { "object": "adult hand (palm)", "area_cm2": 80, "note": "~1 serving of protein" },
-      { "object": "adult fist", "volume_ml": 240, "note": "~1 cup" },
-      { "object": "thumb tip", "volume_ml": 5, "note": "~1 tsp fat/oil" }
+      {
+        "object": "standard dinner plate (26cm)",
+        "area_cm2": 531
+      },
+      {
+        "object": "dessert spoon",
+        "volume_ml": 10
+      },
+      {
+        "object": "tablespoon",
+        "volume_ml": 15
+      },
+      {
+        "object": "wine glass (standard pour)",
+        "volume_ml": 150
+      },
+      {
+        "object": "espresso cup",
+        "volume_ml": 60
+      },
+      {
+        "object": "regular coffee mug",
+        "volume_ml": 240
+      },
+      {
+        "object": "adult hand (palm)",
+        "area_cm2": 80,
+        "note": "~1 serving of protein"
+      },
+      {
+        "object": "adult fist",
+        "volume_ml": 240,
+        "note": "~1 cup"
+      },
+      {
+        "object": "thumb tip",
+        "volume_ml": 5,
+        "note": "~1 tsp fat/oil"
+      }
     ]
   },
   "meal_patterns": {
@@ -33,6 +76,34 @@
   },
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
-    "entries": []
+    "entries": [
+      {
+        "id": 1780304349436,
+        "date": "2026-06-01",
+        "meal_type": "brunch",
+        "user_note": "two and a half strawberries please make sure that you understand correctly the size of the strawberries",
+        "totals": {
+          "kcal": 14,
+          "protein_g": 0.3,
+          "carbs_g": 3.5,
+          "fat_g": 0.1,
+          "fiber_g": 0.9,
+          "sugar_g": 2.2
+        },
+        "items": [
+          {
+            "name": "Fresh strawberries",
+            "weight_g": 45,
+            "serving": "2.5 medium strawberries (approx 45g total)",
+            "kcal": 14,
+            "protein_g": 0.3,
+            "carbs_g": 3.5,
+            "fat_g": 0.1,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.75
+      }
+    ]
   }
 }
