@@ -116,17 +116,6 @@
       "carbs_g": 1.4,
       "fat_g": 1.4,
       "ts": "2026-06-01T05:14:43.166Z"
-    },
-    {
-      "id": "evt_1780304460197_cbyoc",
-      "type": "meal",
-      "date": "2026-06-01",
-      "name": "Fresh strawberries",
-      "kcal": 14,
-      "protein_g": 0.3,
-      "carbs_g": 3.5,
-      "fat_g": 0.1,
-      "ts": "2026-06-01T09:01:00.197Z"
     }
   ]
 }
