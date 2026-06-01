@@ -1,0 +1,66 @@
+{
+  "today": {
+    "date": "2026-06-01",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
+    "water_ml": 0,
+    "weight_kg": null,
+    "meals": [],
+    "exercise": [],
+    "notes": ""
+  },
+  "history": [
+    {
+      "date": "2026-05-31",
+      "calories": 43,
+      "protein_g": 2,
+      "carbs_g": 9.1,
+      "fat_g": 0.4,
+      "water_ml": 910,
+      "weight_kg": 75.3
+    }
+  ],
+  "events": [
+    {
+      "type": "weight",
+      "date": "2026-05-31",
+      "weight_kg": 75.3,
+      "id": "evt_1780245274739_mzt64",
+      "ts": "2026-05-31T16:34:34.739Z"
+    },
+    {
+      "type": "water",
+      "date": "2026-05-31",
+      "water_ml": 330,
+      "id": "evt_1780245589107_t6svg",
+      "ts": "2026-05-31T16:39:49.107Z"
+    },
+    {
+      "type": "water",
+      "date": "2026-05-31",
+      "water_ml": 250,
+      "id": "evt_1780245591372_vc9y5",
+      "ts": "2026-05-31T16:39:51.372Z"
+    },
+    {
+      "type": "water",
+      "date": "2026-05-31",
+      "water_ml": 330,
+      "id": "evt_1780245598489_c9no8",
+      "ts": "2026-05-31T16:39:58.489Z"
+    },
+    {
+      "id": "evt_1780260284917_xnaqu",
+      "type": "meal",
+      "date": "2026-05-31",
+      "name": "Cucumber slices (fresh), Tomato slices (fresh)",
+      "kcal": 43,
+      "protein_g": 2,
+      "carbs_g": 9.1,
+      "fat_g": 0.4,
+      "ts": "2026-05-31T20:44:44.917Z"
+    }
+  ]
+}
