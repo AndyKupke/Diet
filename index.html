@@ -1058,6 +1058,24 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       </div>
     </div>
 
+    <!-- Oura -->
+    <div class="panel" style="margin-bottom:16px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Oura Ring — readiness, sleep &amp; activity data</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">
+        Used by the hourly GitHub Actions agent to fetch your ring data.<br>
+        Get your token at <a href="https://cloud.ouraring.com/personal-access-tokens" target="_blank" style="color:var(--yellow);">cloud.ouraring.com/personal-access-tokens</a>.
+      </div>
+      <div class="field" style="max-width:480px;">
+        <label>Personal Access Token</label>
+        <div style="position:relative;">
+          <input type="password" id="setting-oura-token" placeholder="Q4GPA7Q…" autocomplete="off"
+            style="width:100%;padding-right:36px;">
+          <button onclick="togglePasswordVis('setting-oura-token',this)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-muted);padding:0;font-size:11px;">👁</button>
+        </div>
+      </div>
+      <button class="btn btn-sm" style="margin-top:8px;" onclick="saveIntegrations()">Save</button>
+    </div>
+
     <!-- Anthropic -->
     <div class="panel" style="margin-bottom:16px;">
       <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Anthropic — food photo analysis &amp; blood test reading</div>
@@ -1251,11 +1269,13 @@ function loadCfg() {
   cfg.githubPat    = localStorage.getItem('dt_gh_pat')        || '';
   cfg.githubRepo   = localStorage.getItem('dt_gh_repo')       || 'AndyKupke/Diet';
   cfg.githubBranch = localStorage.getItem('dt_gh_branch')     || 'main';
+  cfg.ouraToken    = localStorage.getItem('dt_oura_token')    || _o;
   // Populate settings fields
   const f = (id, v) => { const el=document.getElementById(id); if(el) el.value=v; };
   f('setting-gh-pat',       cfg.githubPat);
   f('setting-gh-repo',      cfg.githubRepo);
   f('setting-gh-branch',    cfg.githubBranch);
+  f('setting-oura-token',   cfg.ouraToken);
   f('setting-anthropic-key',cfg.anthropicKey);
   const btn = document.getElementById('oura-import-btn');
   if (btn) btn.style.display = 'inline-flex';
@@ -1267,10 +1287,12 @@ function saveIntegrations() {
   cfg.githubPat    = s('setting-gh-pat');
   cfg.githubRepo   = s('setting-gh-repo')   || 'AndyKupke/Diet';
   cfg.githubBranch = s('setting-gh-branch') || 'main';
+  cfg.ouraToken    = s('setting-oura-token') || _o;
   cfg.anthropicKey = s('setting-anthropic-key');
   localStorage.setItem('dt_gh_pat',        cfg.githubPat);
   localStorage.setItem('dt_gh_repo',       cfg.githubRepo);
   localStorage.setItem('dt_gh_branch',     cfg.githubBranch);
+  localStorage.setItem('dt_oura_token',    cfg.ouraToken);
   localStorage.setItem('dt_anthropic_key', cfg.anthropicKey);
   const status = document.getElementById('setting-gh-status');
   if (!cfg.githubPat) {
