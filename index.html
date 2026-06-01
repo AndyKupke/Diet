@@ -1774,11 +1774,30 @@ function startHistEdit(id, type, btn) {
   if (!tr) return;
 
   let e = id ? events.find(ev=>ev.id===id) : null;
-  // Fallbacks for today's state items without event id
+  // Fallbacks when event not found in events array (state-only or cross-device sync gap)
   if (!e) {
-    if (type==='weight')   e = {id:null, type:'weight',   date:todayISO(), weight_kg:state.weight_kg||0};
-    else if (type==='water') e = {id:null, type:'water',  date:todayISO(), water_ml:state.water_ml||0};
-    else return;
+    if (type==='weight') {
+      e = {id:null, type:'weight', date:todayISO(), weight_kg:state.weight_kg||0};
+    } else if (type==='water') {
+      e = {id:null, type:'water', date:todayISO(), water_ml:state.water_ml||0};
+    } else if (type==='meal') {
+      // Look up in state.meals by _evtId first, else take the last meal
+      const m = id ? (state.meals||[]).find(m=>m._evtId===id) : null;
+      if (m) {
+        e = {id:m._evtId||null, type:'meal', date:todayISO(), name:m.name, kcal:m.kcal, protein_g:m.protein_g, carbs_g:m.carbs_g, fat_g:m.fat_g};
+      } else {
+        toast('Entry not found — try refreshing', 'error'); return;
+      }
+    } else if (type==='exercise') {
+      const x = id ? (state.exercise||[]).find(x=>x._evtId===id) : null;
+      if (x) {
+        e = {id:x._evtId||null, type:'exercise', date:todayISO(), name:x.name, duration_min:x.duration_min, kcal_burned:x.kcal_burned, ex_type:x.type};
+      } else {
+        toast('Entry not found — try refreshing', 'error'); return;
+      }
+    } else {
+      return;
+    }
   }
 
   const numInp = (eid, val, w='80px') =>
@@ -1823,8 +1842,14 @@ function saveHistEdit(id, type, btn) {
 
   if (id) {
     const idx = events.findIndex(e=>e.id===id);
-    if (idx>=0) { events[idx] = {...events[idx], ...patch}; saveEvents(); }
-    // Also sync today's state cache
+    if (idx>=0) {
+      events[idx] = {...events[idx], ...patch}; saveEvents();
+    } else {
+      // Event not in events array — push it now so it persists
+      if (type==='meal')     pushEvent({id, type:'meal',     date:todayISO(), ...patch});
+      if (type==='exercise') pushEvent({id, type:'exercise', date:todayISO(), ...patch});
+    }
+    // Sync today's state cache
     if (type==='meal') {
       const m = state.meals?.find(m=>m._evtId===id);
       if (m) { Object.assign(m, {name:patch.name, kcal:patch.kcal, protein_g:patch.protein_g, carbs_g:patch.carbs_g, fat_g:patch.fat_g}); recalc(); saveState(); }
