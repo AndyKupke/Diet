@@ -323,10 +323,7 @@ body {
   letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-muted); margin-bottom: 16px; transition: color 0.4s ease;
 }
-.chart-canvas { width: 100%; display: block; }
-.chart-card.chart-tall { height: 400px; overflow: hidden; display: flex; flex-direction: column; }
-.chart-card.chart-tall .chart-title { flex-shrink: 0; }
-.chart-card.chart-tall .chart-canvas { flex: 1; min-height: 0; }
+.chart-canvas { display: block; }
 
 /* ── KPI tile ───────────────────────────────────────────────────────────── */
 .kpi-tile {
@@ -706,31 +703,18 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       </div>
       <div class="grid-4" id="oura-kpi-tiles"></div>
     </div>
-    <!-- Oura 14-day history charts -->
-    <div id="oura-history-strip" style="display:none;margin-bottom:12px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:10px;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        Oura Ring — Last 14 Days
-        <span id="oura-history-fetch-label" style="font-size:8px;opacity:0.5;"></span>
-        <button class="btn btn-ghost btn-sm" onclick="fetchAndSaveOuraHistory()" style="margin-left:auto;padding:3px 10px;font-size:8px;">Refresh 14d</button>
-      </div>
-      <div class="grid-2">
-        <div class="chart-card"><div class="chart-title">Readiness Score — 14 Days</div><canvas id="chart-oura-readiness" class="chart-canvas" height="120"></canvas></div>
-        <div class="chart-card"><div class="chart-title">Sleep Score — 14 Days</div><canvas id="chart-oura-sleep" class="chart-canvas" height="120"></canvas></div>
-      </div>
-      <div class="grid-2" style="margin-top:12px;">
-        <div class="chart-card"><div class="chart-title">Steps — 14 Days</div><canvas id="chart-oura-steps" class="chart-canvas" height="120"></canvas></div>
-        <div class="chart-card"><div class="chart-title">Active kcal — 14 Days</div><canvas id="chart-oura-kcal" class="chart-canvas" height="120"></canvas></div>
-      </div>
+    <!-- 6 main charts: 2 columns × 3 rows -->
+    <div class="grid-2" style="margin-bottom:12px;">
+      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas" height="340"></canvas></div>
     </div>
-    <div class="chart-card chart-tall" style="margin-bottom:12px;"><div class="chart-title">Weight Trend — Last 30 Days</div><canvas id="chart-weight" class="chart-canvas"></canvas></div>
+    <div class="grid-2" style="margin-bottom:12px;">
+      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas" height="340"></canvas></div>
+    </div>
     <div class="grid-2">
-      <div class="chart-card chart-tall"><div class="chart-title">Calorie Intake — Last 14 Days</div><canvas id="chart-calories" class="chart-canvas"></canvas></div>
-      <div class="chart-card chart-tall"><div class="chart-title">Daily Deficit — Last 14 Days</div><canvas id="chart-deficit" class="chart-canvas"></canvas></div>
-    </div>
-    <div class="grid-2" style="margin-top:12px;">
-      <div class="chart-card chart-tall"><div class="chart-title">Water Intake — Last 14 Days</div><canvas id="chart-water" class="chart-canvas"></canvas></div>
-      <div class="chart-card chart-tall"><div class="chart-title">Protein — Last 14 Days</div><canvas id="chart-protein" class="chart-canvas"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Protein Intake — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas" height="340"></canvas></div>
     </div>
   </div>
 </div>
@@ -2570,12 +2554,33 @@ function updateKPIs(){
 /* ══ Charts ══════════════════════════════════════════════════════════════ */
 function drawCharts(){
   updateKPIs();
-  const all=allRows(),last30=all.slice(0,30).reverse(),last14=all.slice(0,14).reverse();
-  drawLineChart('chart-weight',  last30,d=>d.weight_kg,            '#FFCC00',TARGETS.goalWeight);
-  drawBarChart ('chart-calories',last14,d=>d.calories||0,          '#FFCC00',TARGETS.kcal, 3000,500);
-  drawBarChart ('chart-deficit', last14,d=>TARGETS.kcal-(d.calories||0),'#4cca8a',0,       3000,500);
-  drawBarChart ('chart-water',   last14,d=>d.water_ml||0,          '#7aabff',TARGETS.water);
-  drawBarChart ('chart-protein', last14,d=>d.protein_g||0,         '#FFCC00',TARGETS.protein);
+  const all=allRows(), last14diet=all.slice(0,14).reverse();
+
+  // Build Oura 14-day lookup by date
+  const ouraByDate={};
+  if(ouraHistory?.days){
+    ouraHistory.days.forEach(d=>{ ouraByDate[d.date]={steps:d.activity?.steps??null, burn:d.activity?.active_cal??null}; });
+  }
+
+  // Merge diet + oura into 14-day rows
+  const last14=last14diet.map(d=>({
+    ...d,
+    oura_steps: ouraByDate[d.date]?.steps ?? null,
+    oura_burn:  ouraByDate[d.date]?.burn  ?? null,
+  }));
+
+  // 1 Weight
+  drawLineChartWithTrend('chart-weight',  last14, d=>d.weight_kg,   '#FFCC00', TARGETS.goalWeight);
+  // 2 Steps (Oura)
+  drawBarChartWithTrend ('chart-steps',   last14, d=>d.oura_steps,  '#7aabff', 10000);
+  // 3 Calorie intake
+  drawBarChartWithTrend ('chart-calories',last14, d=>d.calories||0, '#FFCC00', TARGETS.kcal);
+  // 4 Calorie burn (Oura active kcal)
+  drawBarChartWithTrend ('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null);
+  // 5 Deficit/surplus: positive = deficit (ate less than burned), negative = surplus
+  drawDeficitChart('chart-deficit', last14);
+  // 6 Protein
+  drawBarChartWithTrend ('chart-protein', last14, d=>d.protein_g||0,'#FFCC00', TARGETS.protein);
 }
 
 function getThemeColors(){
@@ -2590,88 +2595,182 @@ function getThemeColors(){
 
 function setupCanvas(id){
   const canvas=document.getElementById(id);
+  if(!canvas)return null;
   const dpr=window.devicePixelRatio||1;
-  const cssW=canvas.parentElement.clientWidth-44;
-  const attrH=parseInt(canvas.getAttribute('height'));
-  const isTall=canvas.parentElement.classList.contains('chart-tall');
-  // For tall cards: use the canvas's own clientHeight (set by flex) or fall back to computed value
-  let cssH;
-  if(attrH>0){ cssH=attrH; }
-  else if(isTall){ cssH=canvas.clientHeight>10 ? canvas.clientHeight : 300; }
-  else{ cssH=160; }
-  canvas.width=cssW*dpr;canvas.height=cssH*dpr;
-  canvas.style.width=cssW+'px';canvas.style.height=cssH+'px';
-  const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
+  // Width: fill the card minus its horizontal padding (22px each side)
+  const cssW=Math.max(100, canvas.parentElement.clientWidth-44);
+  // Height: always read from the height attribute — set it in HTML, don't compute
+  const cssH=parseInt(canvas.getAttribute('height'))||200;
+  canvas.width=cssW*dpr; canvas.height=cssH*dpr;
+  canvas.style.width=cssW+'px'; canvas.style.height=cssH+'px';
+  const ctx=canvas.getContext('2d'); ctx.scale(dpr,dpr);
   return{ctx,W:cssW,H:cssH};
 }
 
-function drawLineChart(id,data,accessor,color,targetVal){
-  const{ctx,W,H}=setupCanvas(id);
-  const PAD={t:12,r:8,b:28,l:42},cW=W-PAD.l-PAD.r,cH=H-PAD.t-PAD.b;
+// ── Linear regression trend helper ────────────────────────────────────────
+function linReg(pts){
+  const n=pts.length; if(n<2)return null;
+  let sx=0,sy=0,sxy=0,sx2=0;
+  pts.forEach(({x,y})=>{sx+=x;sy+=y;sxy+=x*y;sx2+=x*x;});
+  const m=(n*sxy-sx*sy)/(n*sx2-sx*sx||1);
+  const b=(sy-m*sx)/n;
+  return{m,b,at:x=>m*x+b};
+}
+
+const PAD={t:16,r:12,b:36,l:48};
+
+function drawLineChartWithTrend(id,data,accessor,color,targetVal){
+  const s=setupCanvas(id); if(!s)return;
+  const{ctx,W,H}=s;
+  const {t,r,b,l}=PAD, cW=W-l-r, cH=H-t-b;
   const tc=getThemeColors();
   ctx.clearRect(0,0,W,H);
   const pts=data.map((d,i)=>({i,v:accessor(d),date:d.date})).filter(p=>p.v!=null);
   if(!pts.length){noData(ctx,W,H,tc.axis);return;}
-  // Single point: draw a labelled dot and return
   if(pts.length===1){
     const p=pts[0];
-    ctx.clearRect(0,0,W,H);
     ctx.beginPath();ctx.arc(W/2,H/2,6,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();
     ctx.font='11px "DM Mono",monospace';ctx.fillStyle=tc.axis;ctx.textAlign='center';
-    ctx.fillText(`${p.v} kg`,W/2,H/2-14);
-    ctx.fillText(p.date.slice(5),W/2,H/2+20);
-    return;
+    ctx.fillText(`${p.v}`,W/2,H/2-14);ctx.fillText(p.date.slice(5),W/2,H/2+20);return;
   }
   let minV=Math.min(...pts.map(p=>p.v)),maxV=Math.max(...pts.map(p=>p.v));
   if(targetVal!=null){minV=Math.min(minV,targetVal);maxV=Math.max(maxV,targetVal);}
-  const rng=maxV-minV||1,pad=rng*0.12;minV-=pad;maxV+=pad;
-  const xS=i=>PAD.l+(i/(data.length-1||1))*cW;
-  const yS=v=>PAD.t+cH-((v-minV)/(maxV-minV))*cH;
+  const rng=maxV-minV||1,pad=rng*0.15;minV-=pad;maxV+=pad;
+  const xS=i=>l+(i/(data.length-1||1))*cW;
+  const yS=v=>t+cH-((v-minV)/(maxV-minV))*cH;
   drawGrid(ctx,PAD,cW,cH,W,minV,maxV,true,tc);
   if(targetVal!=null){
     ctx.strokeStyle=tc.target;ctx.lineWidth=1;ctx.setLineDash([4,4]);
-    ctx.beginPath();ctx.moveTo(PAD.l,yS(targetVal));ctx.lineTo(W-PAD.r,yS(targetVal));ctx.stroke();ctx.setLineDash([]);
+    ctx.beginPath();ctx.moveTo(l,yS(targetVal));ctx.lineTo(W-r,yS(targetVal));ctx.stroke();ctx.setLineDash([]);
   }
-  const grad=ctx.createLinearGradient(0,PAD.t,0,PAD.t+cH);
+  // Area fill
+  const grad=ctx.createLinearGradient(0,t,0,t+cH);
   grad.addColorStop(0,color+'28');grad.addColorStop(1,color+'00');
   ctx.fillStyle=grad;ctx.beginPath();
   ctx.moveTo(xS(pts[0].i),yS(pts[0].v));
   pts.forEach(p=>ctx.lineTo(xS(p.i),yS(p.v)));
-  ctx.lineTo(xS(pts[pts.length-1].i),PAD.t+cH);ctx.lineTo(xS(pts[0].i),PAD.t+cH);
+  ctx.lineTo(xS(pts[pts.length-1].i),t+cH);ctx.lineTo(xS(pts[0].i),t+cH);
   ctx.closePath();ctx.fill();
+  // Line
   ctx.strokeStyle=color;ctx.lineWidth=2;ctx.lineJoin='round';ctx.beginPath();
   pts.forEach((p,i)=>i===0?ctx.moveTo(xS(p.i),yS(p.v)):ctx.lineTo(xS(p.i),yS(p.v)));ctx.stroke();
+  // Dots
   pts.forEach(p=>{ctx.beginPath();ctx.arc(xS(p.i),yS(p.v),3,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();ctx.strokeStyle=tc.bg;ctx.lineWidth=1.5;ctx.stroke();});
+  // Trend line
+  const reg=linReg(pts.map(p=>({x:p.i,y:p.v})));
+  if(reg){
+    ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+    ctx.beginPath();ctx.moveTo(xS(pts[0].i),yS(reg.at(pts[0].i)));ctx.lineTo(xS(pts[pts.length-1].i),yS(reg.at(pts[pts.length-1].i)));ctx.stroke();ctx.setLineDash([]);
+  }
   xLabels(ctx,data,PAD,cW,H,i=>xS(i),tc.axis);
 }
 
-function drawBarChart(id,data,accessor,color,targetVal,fixedMax,gridStep){
-  const{ctx,W,H}=setupCanvas(id);
-  const PAD={t:12,r:8,b:28,l:42},cW=W-PAD.l-PAD.r,cH=H-PAD.t-PAD.b;
+function drawBarChartWithTrend(id,data,accessor,color,targetVal){
+  const s=setupCanvas(id); if(!s)return;
+  const{ctx,W,H}=s;
+  const {t,r,b,l}=PAD, cW=W-l-r, cH=H-t-b;
   const tc=getThemeColors();
   ctx.clearRect(0,0,W,H);
   if(!data.length){noData(ctx,W,H,tc.axis);return;}
   const vals=data.map(d=>accessor(d));
-  let maxV=fixedMax||Math.max(...vals,targetVal||0,1)*1.12;
-  if(fixedMax&&gridStep){
-    drawGridFixed(ctx,PAD,cW,cH,W,fixedMax,gridStep,tc);
-  } else {
-    drawGrid(ctx,PAD,cW,cH,W,0,maxV,false,tc);
-  }
+  const hasData=vals.some(v=>v!=null&&v>0);
+  if(!hasData){noData(ctx,W,H,tc.axis);return;}
+  const nonNull=vals.filter(v=>v!=null);
+  let maxV=Math.max(...nonNull,targetVal||0,1)*1.12;
+  drawGrid(ctx,PAD,cW,cH,W,0,maxV,false,tc);
   if(targetVal){
-    const ty=PAD.t+cH-(targetVal/maxV)*cH;
+    const ty=t+cH-(targetVal/maxV)*cH;
     ctx.strokeStyle=tc.target;ctx.lineWidth=1;ctx.setLineDash([4,4]);
-    ctx.beginPath();ctx.moveTo(PAD.l,ty);ctx.lineTo(W-PAD.r,ty);ctx.stroke();ctx.setLineDash([]);
+    ctx.beginPath();ctx.moveTo(l,ty);ctx.lineTo(W-r,ty);ctx.stroke();ctx.setLineDash([]);
   }
-  const bW=(cW/data.length)*0.65,gap=(cW/data.length)*0.175;
+  const bW=(cW/data.length)*0.6,gap=(cW/data.length)*0.2;
+  const barCentres=[];
   data.forEach((d,i)=>{
-    const v=accessor(d),bH=Math.max(2,(v/maxV)*cH),x=PAD.l+i*(cW/data.length)+gap,y=PAD.t+cH-bH;
+    const v=accessor(d);
+    const cx=l+i*(cW/data.length)+(cW/data.length)*0.5;
+    barCentres.push({i,cx,v});
+    if(v==null)return;
+    const bH=Math.max(2,(v/maxV)*cH),x=l+i*(cW/data.length)+gap,y=t+cH-bH;
     ctx.fillStyle=(targetVal?v/targetVal:1)>=1?color:color+'60';
     ctx.beginPath();
     if(ctx.roundRect)ctx.roundRect(x,y,bW,bH,[2,2,0,0]);else ctx.rect(x,y,bW,bH);
     ctx.fill();
   });
-  xLabels(ctx,data,PAD,cW,H,i=>PAD.l+i*(cW/data.length)+(cW/data.length)*0.5,tc.axis);
+  // Trend line through bar tops (non-null only)
+  const trendPts=barCentres.filter(p=>p.v!=null).map(p=>({x:p.i,y:p.v}));
+  const reg=linReg(trendPts);
+  if(reg&&trendPts.length>=2){
+    const x0=trendPts[0].x, x1=trendPts[trendPts.length-1].x;
+    const clamp=v=>Math.max(0,Math.min(maxV,v));
+    ctx.strokeStyle='rgba(255,255,255,0.35)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+    ctx.beginPath();
+    ctx.moveTo(l+x0*(cW/data.length)+(cW/data.length)*0.5, t+cH-(clamp(reg.at(x0))/maxV)*cH);
+    ctx.lineTo(l+x1*(cW/data.length)+(cW/data.length)*0.5, t+cH-(clamp(reg.at(x1))/maxV)*cH);
+    ctx.stroke();ctx.setLineDash([]);
+  }
+  xLabels(ctx,data,PAD,cW,H,i=>l+i*(cW/data.length)+(cW/data.length)*0.5,tc.axis);
+}
+
+function drawDeficitChart(id,data){
+  // Positive = deficit (ate < burned), negative = surplus
+  const s=setupCanvas(id); if(!s)return;
+  const{ctx,W,H}=s;
+  const {t,r,b,l}=PAD, cW=W-l-r, cH=H-t-b;
+  const tc=getThemeColors();
+  ctx.clearRect(0,0,W,H);
+  if(!data.length){noData(ctx,W,H,tc.axis);return;}
+
+  const vals=data.map(d=>{
+    const intake=d.calories||0;
+    const burn=d.oura_burn!=null ? d.oura_burn : (TARGETS.kcal||2000);
+    return intake>0||d.oura_burn!=null ? burn-intake : null;
+  });
+  const nonNull=vals.filter(v=>v!=null);
+  if(!nonNull.length){noData(ctx,W,H,tc.axis);return;}
+
+  const absMax=Math.max(...nonNull.map(Math.abs),500)*1.15;
+  const zero=t+cH/2;  // centre line at 0
+
+  // Grid: draw lines at ±25%, ±50%, ±75%, 0
+  ctx.strokeStyle=tc.grid;ctx.lineWidth=1;ctx.font='9px "DM Mono",monospace';ctx.fillStyle=tc.axis;ctx.textAlign='right';
+  [-1,-0.5,0,0.5,1].forEach(f=>{
+    const y=t+cH/2-f*(cH/2);
+    ctx.beginPath();ctx.moveTo(l,y);ctx.lineTo(W-r,y);ctx.stroke();
+    ctx.fillText(Math.round(absMax*f),l-5,y+3);
+  });
+  // Zero line thicker
+  ctx.strokeStyle=tc.axis;ctx.lineWidth=1;
+  ctx.beginPath();ctx.moveTo(l,zero);ctx.lineTo(W-r,zero);ctx.stroke();
+
+  const toY=v=>t+cH/2-(v/absMax)*(cH/2);
+  const bW=(cW/data.length)*0.6,gap=(cW/data.length)*0.2;
+  const barCentres=[];
+  data.forEach((d,i)=>{
+    const v=vals[i];
+    const cx=l+i*(cW/data.length)+(cW/data.length)*0.5;
+    barCentres.push({i,cx,v});
+    if(v==null)return;
+    const color=v>=0?'#4cca8a':'#e74c3c';
+    const y0=zero, y1=toY(v);
+    const top=Math.min(y0,y1), h=Math.abs(y0-y1)||2;
+    const x=l+i*(cW/data.length)+gap;
+    ctx.fillStyle=color+'90';
+    ctx.beginPath();
+    if(ctx.roundRect)ctx.roundRect(x,top,bW,h,[2,2,0,0]);else ctx.rect(x,top,bW,h);
+    ctx.fill();
+  });
+  // Trend
+  const trendPts=barCentres.filter(p=>p.v!=null).map(p=>({x:p.i,y:p.v}));
+  const reg=linReg(trendPts);
+  if(reg&&trendPts.length>=2){
+    const x0=trendPts[0].x, x1=trendPts[trendPts.length-1].x;
+    ctx.strokeStyle='rgba(255,255,255,0.35)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+    ctx.beginPath();
+    ctx.moveTo(l+x0*(cW/data.length)+(cW/data.length)*0.5, toY(reg.at(x0)));
+    ctx.lineTo(l+x1*(cW/data.length)+(cW/data.length)*0.5, toY(reg.at(x1)));
+    ctx.stroke();ctx.setLineDash([]);
+  }
+  xLabels(ctx,data,PAD,cW,H,i=>l+i*(cW/data.length)+(cW/data.length)*0.5,tc.axis);
 }
 
 function drawGrid(ctx,PAD,cW,cH,W,minV,maxV,decimals,tc){
@@ -2692,9 +2791,9 @@ function drawGridFixed(ctx,PAD,cW,cH,W,maxV,step,tc){
   }
 }
 function xLabels(ctx,data,PAD,cW,H,xFn,axisColor){
-  ctx.font='8px "DM Mono",monospace';ctx.fillStyle=axisColor;ctx.textAlign='center';
-  const step=Math.max(1,Math.floor(data.length/5));
-  data.forEach((d,i)=>{if(i%step===0)ctx.fillText(d.date?d.date.slice(5):'',xFn(i),H-6);});
+  ctx.font='9px "DM Mono",monospace';ctx.fillStyle=axisColor;ctx.textAlign='center';
+  const step=Math.max(1,Math.floor(data.length/7));
+  data.forEach((d,i)=>{if(i%step===0||i===data.length-1)ctx.fillText(d.date?d.date.slice(5):'',xFn(i),H-10);});
 }
 function noData(ctx,W,H,color){
   ctx.font='10px "DM Mono",monospace';ctx.fillStyle=color;ctx.textAlign='center';
@@ -2807,89 +2906,11 @@ async function fetchAndSaveOuraHistory(silent = false) {
 }
 
 function renderOuraHistory() {
-  const h = ouraHistory;
-  const strip = document.getElementById('oura-history-strip');
-  if (!h || !h.days?.length || !strip) return;
-
-  strip.style.display = 'block';
-  const lbl = document.getElementById('oura-history-fetch-label');
-  if (lbl) lbl.textContent = `fetched ${h.fetched}`;
-
-  const days  = h.days;
-  const dates = days.map(d => d.date.slice(5)); // MM-DD labels
-
-  const barColor = (vals, target) => vals.map(v =>
-    v == null ? 'rgba(107,117,153,0.3)' :
-    v >= (target * 0.85) ? 'var(--green)' :
-    v >= (target * 0.65) ? 'var(--yellow)' : 'var(--red)'
-  );
-
-  const readiness = days.map(d => d.readiness?.score ?? null);
-  const sleep     = days.map(d => d.sleep?.score    ?? null);
-  const steps     = days.map(d => d.activity?.steps ?? null);
-  const activeCal = days.map(d => d.activity?.active_cal ?? null);
-
-  const drawOuraBar = (canvasId, vals, labels, targetLine) => {
-    const canvas = document.getElementById(canvasId);
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const W = canvas.offsetWidth || 300, H = canvas.offsetHeight || 120;
-    canvas.width = W; canvas.height = H;
-    const {grid, axis, bg} = getThemeColors();
-    ctx.clearRect(0, 0, W, H);
-    ctx.fillStyle = bg; ctx.fillRect(0, 0, W, H);
-
-    const padL=28, padR=8, padT=10, padB=22;
-    const chartW = W-padL-padR, chartH = H-padT-padB;
-    const n = vals.length;
-    if (!n) return;
-
-    const maxVal = Math.max(...vals.filter(v=>v!=null), targetLine||0, 1);
-    const toY = v => padT + chartH - (v / maxVal) * chartH;
-
-    // Grid lines
-    ctx.strokeStyle = grid; ctx.lineWidth = 1;
-    [0.25,0.5,0.75,1].forEach(f => {
-      const y = padT + chartH*(1-f);
-      ctx.beginPath(); ctx.moveTo(padL,y); ctx.lineTo(W-padR,y); ctx.stroke();
-      ctx.fillStyle = axis; ctx.font = '8px DM Mono,monospace';
-      ctx.textAlign = 'right'; ctx.fillText(Math.round(maxVal*f), padL-3, y+3);
-    });
-
-    // Target line
-    if (targetLine) {
-      const ty = toY(targetLine);
-      ctx.strokeStyle = 'rgba(255,204,0,0.3)'; ctx.lineWidth=1; ctx.setLineDash([4,3]);
-      ctx.beginPath(); ctx.moveTo(padL,ty); ctx.lineTo(W-padR,ty); ctx.stroke();
-      ctx.setLineDash([]);
-    }
-
-    // Bars
-    const gap=3, barW = Math.max(4, (chartW - gap*(n-1)) / n);
-    const colors = barColor(vals, targetLine||maxVal);
-    vals.forEach((v, i) => {
-      const x = padL + i*(barW+gap);
-      const bH = v != null ? (v/maxVal)*chartH : 2;
-      const y  = padT + chartH - bH;
-      ctx.fillStyle = colors[i];
-      ctx.beginPath();
-      if (ctx.roundRect) ctx.roundRect(x, y, barW, bH, [2,2,0,0]);
-      else { ctx.rect(x, y, barW, bH); }
-      ctx.fill();
-
-      // Date label (every other on narrow screens)
-      if (i % 2 === 0 || barW > 20) {
-        ctx.fillStyle = axis; ctx.font = '7px DM Mono,monospace';
-        ctx.textAlign = 'center';
-        ctx.fillText(labels[i], x + barW/2, H-5);
-      }
-    });
-  };
-
-  drawOuraBar('chart-oura-readiness', readiness, dates, 85);
-  drawOuraBar('chart-oura-sleep',     sleep,     dates, 85);
-  drawOuraBar('chart-oura-steps',     steps,     dates, 8000);
-  drawOuraBar('chart-oura-kcal',      activeCal, dates, 500);
+  // Oura history is now integrated into the main 6 charts via drawCharts()
+  // Trigger a chart redraw so Steps and Burn charts pick up fresh oura data
+  if (document.getElementById('tab-dashboard').classList.contains('active')) {
+    setTimeout(drawCharts, 50);
+  }
 }
 
 // ── Score → colour ─────────────────────────────────────────────────────────
