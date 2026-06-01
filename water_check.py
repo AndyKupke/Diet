@@ -55,7 +55,7 @@ def safe_get(base: str, endpoint: str, params: dict, headers: dict) -> list:
     return []
 
 
-def fetch_oura_full(days: int = 14) -> tuple[dict, list]:
+def fetch_oura_full(days: int = 90) -> tuple[dict, list]:
     """Fetch today + last `days` days of Oura data. Returns (today_dict, history_list)."""
     headers = {"Authorization": f"Bearer {OURA_TOKEN}"}
     base    = "https://api.ouraring.com/v2/usercollection"
