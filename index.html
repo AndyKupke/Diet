@@ -308,7 +308,8 @@ body {
 .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
 .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
 @media (max-width: 700px) { .grid-4 { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr 1fr !important; } }
+@media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr 1fr; } .grid-2 { grid-template-columns: 1fr; } .chart-grid { grid-template-columns: 1fr !important; } }
 
 /* ── Chart card ─────────────────────────────────────────────────────────── */
 .chart-card {
@@ -694,18 +695,14 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="kpi-tile"><div class="kpi-label">Avg Deficit</div><div class="kpi-value" id="kpi-avg-deficit">—<span class="kpi-unit">kcal</span></div><div class="kpi-sub" id="kpi-deficit-sub">vs target</div></div>
     </div>
     <!-- Oura today KPI strip removed — Oura data shown in Daily Summary tab -->
-    <!-- 6 main charts: 2 columns × 3 rows -->
-    <div class="grid-2" style="margin-bottom:12px;">
-      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas" height="340"></canvas></div>
-    </div>
-    <div class="grid-2" style="margin-bottom:12px;">
-      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas" height="340"></canvas></div>
-    </div>
-    <div class="grid-2">
-      <div class="chart-card"><div class="chart-title">Calorie Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Protein Intake — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas" height="340"></canvas></div>
+    <!-- 6 main charts: 3 columns × 2 rows -->
+    <div class="grid-3 chart-grid">
+      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="200"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas" height="200"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas" height="200"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas" height="200"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas" height="200"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Protein — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas" height="200"></canvas></div>
     </div>
   </div>
 </div>
