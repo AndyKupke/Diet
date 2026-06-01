@@ -2,9 +2,9 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T13:31:04.926Z",
-    "total_analyses": 5,
-    "total_corrections": 1
+    "last_updated": "2026-06-01T16:43:35.882Z",
+    "total_analyses": 6,
+    "total_corrections": 2
   },
   "calibrations": {
     "description": "User-confirmed corrections to past estimates. Used to fine-tune future prompts.",
@@ -25,6 +25,41 @@
           }
         ],
         "overall_confidence": 0.75
+      },
+      {
+        "date": "2026-06-01",
+        "food": "Fresh strawberries, Fresh blueberries, Cherry tomatoes, Frankfurter/Vienna sausage",
+        "user_note": "",
+        "estimated_kcal": 136,
+        "actual_kcal": null,
+        "correction_text": "The sausage is half a sausage so divide by two",
+        "estimated_items": [
+          {
+            "name": "Fresh strawberries",
+            "qty": "4 medium strawberries (approx 60g)",
+            "kcal": 19,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh blueberries",
+            "qty": "12 blueberries (approx 18g)",
+            "kcal": 10,
+            "confidence": 0.9
+          },
+          {
+            "name": "Cherry tomatoes",
+            "qty": "2 cherry tomatoes (approx 30g)",
+            "kcal": 5,
+            "confidence": 0.9
+          },
+          {
+            "name": "Frankfurter/Vienna sausage",
+            "qty": "1 small sausage (approx 35g)",
+            "kcal": 102,
+            "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   },
@@ -105,15 +140,15 @@
       },
       {
         "name": "Fresh blueberries",
-        "serving": "12 blueberries (approx 18g)",
-        "weight_g": 18,
-        "kcal": 10,
-        "protein_g": 0.1,
-        "carbs_g": 2.6,
+        "serving": "approximately 25-28 blueberries (approx 35g)",
+        "weight_g": 35,
+        "kcal": 15,
+        "protein_g": 0.2,
+        "carbs_g": 3.8,
         "fat_g": 0.1,
-        "confidence": 0.9,
+        "confidence": 0.8,
         "last_seen": "2026-06-01",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Cherry tomatoes",
@@ -136,6 +171,30 @@
         "carbs_g": 1,
         "fat_g": 9.1,
         "confidence": 0.8,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Skyr (Icelandic yogurt, diluted with water)",
+        "serving": "approximately 280g skyr + water (from 314g total)",
+        "weight_g": 280,
+        "kcal": 168,
+        "protein_g": 30.8,
+        "carbs_g": 11.2,
+        "fat_g": 0.6,
+        "confidence": 0.92,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh strawberries (halved)",
+        "serving": "approximately 10 strawberry halves (approx 45g)",
+        "weight_g": 45,
+        "kcal": 14,
+        "protein_g": 0.3,
+        "carbs_g": 3.5,
+        "fat_g": 0.1,
+        "confidence": 0.82,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -386,6 +445,53 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780332215881,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "314 Grams, Skyr with a bit of water",
+        "totals": {
+          "kcal": 202,
+          "protein_g": 31.4,
+          "carbs_g": 19.7,
+          "fat_g": 0.8,
+          "fiber_g": 1.7,
+          "sugar_g": 16.9
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic yogurt, diluted with water)",
+            "weight_g": 280,
+            "serving": "approximately 280g skyr + water (from 314g total)",
+            "kcal": 168,
+            "protein_g": 30.8,
+            "carbs_g": 11.2,
+            "fat_g": 0.6,
+            "confidence": 0.92
+          },
+          {
+            "name": "Fresh strawberries (halved)",
+            "weight_g": 45,
+            "serving": "approximately 10 strawberry halves (approx 45g)",
+            "kcal": 14,
+            "protein_g": 0.3,
+            "carbs_g": 3.5,
+            "fat_g": 0.1,
+            "confidence": 0.82
+          },
+          {
+            "name": "Fresh blueberries",
+            "weight_g": 35,
+            "serving": "approximately 25-28 blueberries (approx 35g)",
+            "kcal": 20,
+            "protein_g": 0.3,
+            "carbs_g": 5,
+            "fat_g": 0.1,
+            "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.88
       }
     ]
   }
