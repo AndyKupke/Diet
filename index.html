@@ -635,6 +635,9 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       Input
     </div></li>
+    <li><div class="sidebar-nav-item" data-tab="quickanalysis" onclick="switchTab('quickanalysis')">
+      <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v3l2 2"/></svg>
+      Quick Analysis</div></li>
     <li><div class="sidebar-nav-item" data-tab="history" onclick="switchTab('history')">
       <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
       History
@@ -903,6 +906,61 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
     <div class="panel">
       <textarea id="notes-input" placeholder="How are you feeling today? Energy, sleep, appetite…"></textarea>
       <button class="btn btn-sm" style="margin-top:12px;" onclick="saveNotes()">Save Notes</button>
+    </div>
+  </div>
+</div>
+
+<!-- QUICK ANALYSIS -->
+<div class="tab-panel" id="tab-quickanalysis">
+  <div class="wrap">
+    <div class="panel panel-accent">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:4px;">Analyse Only — Not Tracked</div>
+      <div style="font-size:11px;color:var(--text-muted);margin-bottom:16px;line-height:1.6;">Take a photo of any food to get an instant nutritional breakdown and health score. Results are <strong>not saved or tracked</strong> — use the Input tab to log meals.</div>
+
+      <img id="qa-photo-preview" alt="Food photo" style="display:none;max-width:100%;max-height:280px;border-radius:var(--radius);margin-bottom:12px;object-fit:contain;">
+      <div class="photo-zone" id="qa-photo-zone">
+        <input type="file" id="qa-photo-input" accept="image/*" onchange="handlePhotoQA(event)">
+        <div class="photo-zone-icon">📷</div>
+        <p>Drop a food photo / barcode or tap to analyse with Claude Vision</p>
+      </div>
+
+      <div id="qa-context-row" style="display:none;margin-bottom:12px;">
+        <div class="field" style="margin-bottom:8px;">
+          <label>Add context note (optional)</label>
+          <input type="text" id="qa-note" placeholder='e.g. "two slices of sourdough, skipped the butter"'>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+          <button class="btn" id="qa-analyse-btn" onclick="analysePhotoQA()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Analyse with Claude Vision
+          </button>
+          <button class="btn btn-ghost btn-sm" onclick="clearQA()">✕ Clear</button>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div id="qa-detail" style="display:none;background:rgba(255,204,0,0.04);border:1px solid var(--divider-y);border-radius:var(--radius);padding:14px 16px;">
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;">Analysis breakdown</div>
+        <div id="qa-items"></div>
+        <!-- Totals row -->
+        <div id="qa-totals" style="display:none;margin-top:10px;padding:8px 10px;background:rgba(255,204,0,0.06);border-radius:var(--radius);font-family:'DM Mono',monospace;font-size:11px;display:flex;gap:16px;flex-wrap:wrap;"></div>
+        <!-- Health assessment -->
+        <div id="qa-health" style="display:none;margin-top:14px;border-top:1px solid var(--divider-y);padding-top:12px;"></div>
+        <div style="display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;">
+          <span id="qa-confidence" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
+          <span id="qa-tip" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--text-muted);font-style:italic;"></span>
+        </div>
+        <!-- Correction box -->
+        <div style="margin-top:14px;border-top:1px solid var(--divider-y);padding-top:12px;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Correct or comment on this analysis</div>
+          <textarea id="qa-correction" placeholder='e.g. "The rice was 200g not 100g, closer to 260 kcal."'
+            style="width:100%;min-height:70px;resize:vertical;font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;box-sizing:border-box;"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn-sm" onclick="saveQACorrection()">💾 Save Correction to Learning DB</button>
+            <span id="qa-correction-status" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);"></span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -1221,7 +1279,7 @@ function closeSidebar() {
 }
 
 /* ══ Tab switching ════════════════════════════════════════════════════════ */
-const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', history:'History', supplements:'Supplements', blood:'Check-up Blood', settings:'Settings' };
+const TAB_LABELS = { dashboard:'Dashboard', summary:'Daily Summary', input:'Input', quickanalysis:'Quick Analysis', history:'History', supplements:'Supplements', blood:'Check-up Blood', settings:'Settings' };
 
 // applyAutoTheme() is called further below, after ALL let/const declarations
 function switchTab(name) {
@@ -2140,44 +2198,7 @@ async function analysePhoto() {
     document.getElementById('analysis-tip').textContent = parsed.improvement_hint || '';
 
     // ── Health Assessment ─────────────────────────────────────────────────
-    const ha = parsed.health_assessment;
-    const healthEl = document.getElementById('analysis-health');
-    if (ha && ha.health_score != null) {
-      const score = parseFloat(ha.health_score);
-      // Color gradient: 1=red, 5=yellow, 8=green, 10=bright green
-      const scoreColor = score >= 8 ? '#4cca8a' : score >= 6 ? '#FFCC00' : score >= 4 ? '#ff9f43' : '#e74c3c';
-      const scoreBar   = Math.round((score / 10) * 100);
-      const redFlags   = (ha.red_flags   || []);
-      const greenFlags = (ha.green_flags || []);
-      healthEl.innerHTML = `
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Health Assessment</div>
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap;">
-          <div style="display:flex;align-items:baseline;gap:6px;">
-            <span style="font-size:28px;font-weight:600;color:${scoreColor};font-family:'DM Mono',monospace;line-height:1;">${score.toFixed(1)}</span>
-            <span style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace;">/10</span>
-          </div>
-          <div style="flex:1;min-width:120px;">
-            <div style="height:6px;background:var(--divider);border-radius:3px;overflow:hidden;">
-              <div style="height:100%;width:${scoreBar}%;background:${scoreColor};border-radius:3px;transition:width 0.6s ease;"></div>
-            </div>
-            ${ha.summary ? `<div style="font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.5;">${esc(ha.summary)}</div>` : ''}
-          </div>
-        </div>
-        ${redFlags.length ? `
-        <div style="margin-bottom:8px;">
-          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#e74c3c;margin-bottom:5px;">⚠ Concerns</div>
-          ${redFlags.map(f=>`<div style="font-size:11px;color:var(--text);padding:2px 0 2px 10px;border-left:2px solid #e74c3c;margin-bottom:3px;">${esc(f)}</div>`).join('')}
-        </div>` : ''}
-        ${greenFlags.length ? `
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#4cca8a;margin-bottom:5px;">✓ Positives</div>
-          ${greenFlags.map(f=>`<div style="font-size:11px;color:var(--text);padding:2px 0 2px 10px;border-left:2px solid #4cca8a;margin-bottom:3px;">${esc(f)}</div>`).join('')}
-        </div>` : ''}
-      `;
-      healthEl.style.display = 'block';
-    } else {
-      healthEl.style.display = 'none';
-    }
+    _renderHealthPanel(parsed.health_assessment, 'analysis-health');
 
     detailEl.style.display = 'block';
 
@@ -2245,6 +2266,223 @@ async function saveAnalysisCorrection() {
     document.getElementById('analysis-correction').value = '';
   } catch(e) {
     console.error('saveAnalysisCorrection', e);
+    if (statusEl) statusEl.textContent = '✗ failed to save';
+    toast('Could not save correction: ' + e.message, 'error');
+  }
+}
+
+/* ══ Quick Analysis (no tracking) ════════════════════════════════════════ */
+let qaPhotoB64  = null;
+let qaMimeType  = 'image/jpeg';
+let _lastQA     = null;
+
+function handlePhotoQA(event) {
+  const file = event.target.files[0]; if (!file) return;
+  qaMimeType = file.type || 'image/jpeg';
+  const reader = new FileReader();
+  reader.onload = e => {
+    const url = e.target.result;
+    qaPhotoB64 = url.split(',')[1];
+    const prev = document.getElementById('qa-photo-preview');
+    prev.src = url; prev.style.display = 'block';
+    document.getElementById('qa-photo-zone').style.display = 'none';
+    document.getElementById('qa-context-row').style.display = 'block';
+    document.getElementById('qa-detail').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function clearQA() {
+  qaPhotoB64 = null;
+  document.getElementById('qa-photo-preview').style.display = 'none';
+  document.getElementById('qa-photo-zone').style.display = 'block';
+  document.getElementById('qa-context-row').style.display = 'none';
+  document.getElementById('qa-detail').style.display = 'none';
+  document.getElementById('qa-health').style.display = 'none';
+  document.getElementById('qa-photo-input').value = '';
+  document.getElementById('qa-note').value = '';
+  document.getElementById('qa-correction').value = '';
+  document.getElementById('qa-correction-status').textContent = '';
+  _lastQA = null;
+}
+
+function _renderHealthPanel(ha, elId) {
+  const healthEl = document.getElementById(elId);
+  if (!ha || ha.health_score == null) { healthEl.style.display = 'none'; return; }
+  const score = parseFloat(ha.health_score);
+  const scoreColor = score >= 8 ? '#4cca8a' : score >= 6 ? '#FFCC00' : score >= 4 ? '#ff9f43' : '#e74c3c';
+  const scoreBar   = Math.round((score / 10) * 100);
+  const redFlags   = ha.red_flags   || [];
+  const greenFlags = ha.green_flags || [];
+  healthEl.innerHTML = `
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Health Assessment</div>
+    <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:baseline;gap:6px;">
+        <span style="font-size:28px;font-weight:600;color:${scoreColor};font-family:'DM Mono',monospace;line-height:1;">${score.toFixed(1)}</span>
+        <span style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace;">/10</span>
+      </div>
+      <div style="flex:1;min-width:120px;">
+        <div style="height:6px;background:var(--divider);border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:${scoreBar}%;background:${scoreColor};border-radius:3px;transition:width 0.6s ease;"></div>
+        </div>
+        ${ha.summary ? `<div style="font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.5;">${esc(ha.summary)}</div>` : ''}
+      </div>
+    </div>
+    ${redFlags.length ? `
+    <div style="margin-bottom:8px;">
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#e74c3c;margin-bottom:5px;">⚠ Concerns</div>
+      ${redFlags.map(f=>`<div style="font-size:11px;color:var(--text);padding:2px 0 2px 10px;border-left:2px solid #e74c3c;margin-bottom:3px;">${esc(f)}</div>`).join('')}
+    </div>` : ''}
+    ${greenFlags.length ? `
+    <div>
+      <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#4cca8a;margin-bottom:5px;">✓ Positives</div>
+      ${greenFlags.map(f=>`<div style="font-size:11px;color:var(--text);padding:2px 0 2px 10px;border-left:2px solid #4cca8a;margin-bottom:3px;">${esc(f)}</div>`).join('')}
+    </div>` : ''}
+  `;
+  healthEl.style.display = 'block';
+}
+
+async function analysePhotoQA() {
+  if (!qaPhotoB64) return;
+  if (!cfg.anthropicKey) {
+    const k = prompt('Enter your Anthropic API key (stored locally, never uploaded):');
+    if (!k) return;
+    cfg.anthropicKey = k.trim();
+    localStorage.setItem('dt_anthropic_key', cfg.anthropicKey);
+  }
+
+  document.getElementById('overlay').classList.add('active');
+  document.getElementById('qa-detail').style.display = 'none';
+
+  try {
+    const userNote = document.getElementById('qa-note').value.trim();
+    const hour = new Date().getHours();
+    const knowledge = await loadKnowledgeBase();
+
+    let systemPrompt, userPrompt;
+    if (window.FoodPrompt) {
+      ({ systemPrompt, userPrompt } = window.FoodPrompt.buildFoodPrompt({ userNote, knowledge, hour }));
+    } else {
+      systemPrompt = 'You are a precise nutritionist. Analyse food images and return JSON with nutritional data.';
+      userPrompt = `Analyse this food image. Return ONLY JSON: {"meal_type":"","items":[{"name":"","quantity_desc":"","weight_g":0,"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"confidence":0.8,"estimation_basis":""}],"totals":{"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0},"overall_confidence":0.8,"estimation_notes":"","improvement_hint":"","health_assessment":{"health_score":5,"red_flags":[],"green_flags":[],"summary":""}}${userNote ? '\nUser note: "'+userNote+'"' : ''}`;
+    }
+
+    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': cfg.anthropicKey,
+        'anthropic-version': '2023-06-01',
+        'anthropic-dangerous-direct-browser-access': 'true',
+      },
+      body: JSON.stringify({
+        model: 'claude-opus-4-5',
+        max_tokens: 1500,
+        system: systemPrompt,
+        messages: [{ role: 'user', content: [
+          { type: 'image', source: { type: 'base64', media_type: qaMimeType, data: qaPhotoB64 } },
+          { type: 'text', text: userPrompt },
+        ]}],
+      }),
+    });
+
+    if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API ${resp.status}`); }
+
+    const raw = (await resp.json()).content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
+    const parsed = JSON.parse(raw);
+    const tot = parsed.totals || {};
+
+    // Items list
+    document.getElementById('qa-items').innerHTML = (parsed.items || []).map(item => `
+      <div style="display:flex;justify-content:space-between;align-items:baseline;padding:5px 0;border-bottom:1px solid var(--divider);gap:8px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:120px;">
+          <span style="font-size:13px;font-weight:400;">${esc(item.name)}</span>
+          <span style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-left:8px;">${esc(item.quantity_desc||'')}</span>
+        </div>
+        <div style="font-family:'DM Mono',monospace;font-size:10px;display:flex;gap:10px;white-space:nowrap;">
+          <span style="color:var(--yellow);">${item.kcal} kcal</span>
+          <span>P ${item.protein_g}g</span>
+          <span>C ${item.carbs_g}g</span>
+          <span>F ${item.fat_g}g</span>
+          <span style="color:var(--text-muted);font-size:8px;">${Math.round((item.confidence||0)*100)}%</span>
+        </div>
+      </div>`).join('');
+
+    // Totals summary row
+    if (parsed.items?.length > 1) {
+      const totEl = document.getElementById('qa-totals');
+      totEl.innerHTML = `
+        <span style="color:var(--yellow);font-weight:500;">Total: ${tot.kcal||0} kcal</span>
+        <span>Protein ${tot.protein_g||0}g</span>
+        <span>Carbs ${tot.carbs_g||0}g</span>
+        <span>Fat ${tot.fat_g||0}g</span>
+        ${tot.fiber_g ? `<span style="color:var(--text-muted);">Fibre ${tot.fiber_g}g</span>` : ''}
+      `;
+      totEl.style.display = 'flex';
+    } else {
+      document.getElementById('qa-totals').style.display = 'none';
+    }
+
+    // Health assessment
+    _renderHealthPanel(parsed.health_assessment, 'qa-health');
+
+    // Confidence & tip
+    const conf = Math.round((parsed.overall_confidence || 0.8) * 100);
+    const confColor = conf >= 80 ? 'var(--green)' : conf >= 60 ? 'var(--yellow)' : 'var(--red)';
+    document.getElementById('qa-confidence').innerHTML =
+      `Confidence: <strong style="color:${confColor}">${conf}%</strong> · ${esc(parsed.estimation_notes||'')}`;
+    document.getElementById('qa-tip').textContent = parsed.improvement_hint || '';
+
+    document.getElementById('qa-detail').style.display = 'block';
+
+    // Update knowledge base (learning still benefits even without tracking)
+    if (knowledge && window.FoodPrompt) {
+      const updatedKb = updateKnowledgeBase(knowledge, parsed, userNote);
+      saveKnowledgeBase(updatedKb).catch(() => {});
+    }
+
+    _lastQA = { parsed, userNote, knowledge };
+    document.getElementById('qa-correction').value = '';
+    document.getElementById('qa-correction-status').textContent = '';
+
+    toast(`${parsed.items?.length||1} item${parsed.items?.length!==1?'s':''} analysed — not tracked`, 'success');
+
+  } catch(err) {
+    toast('Analysis failed: ' + err.message, 'error');
+    console.error(err);
+  } finally {
+    document.getElementById('overlay').classList.remove('active');
+  }
+}
+
+async function saveQACorrection() {
+  const correctionText = document.getElementById('qa-correction')?.value.trim();
+  if (!correctionText) { toast('Type a correction first', 'error'); return; }
+  if (!_lastQA) { toast('No analysis to correct', 'error'); return; }
+  const statusEl = document.getElementById('qa-correction-status');
+  if (statusEl) statusEl.textContent = 'Saving…';
+  try {
+    const kb = await loadKnowledgeBase();
+    const parsed = _lastQA.parsed;
+    const mealLabel = parsed.items?.map(i=>i.name).join(', ') || 'Unknown meal';
+    const calibration = {
+      date:            new Date().toISOString().split('T')[0],
+      food:            mealLabel,
+      estimated_kcal:  parsed.totals?.kcal || null,
+      actual_kcal:     null,
+      correction_text: correctionText,
+      source:          'quick_analysis',
+    };
+    if (!kb.calibrations) kb.calibrations = { entries: [] };
+    kb.calibrations.entries.push(calibration);
+    if (kb.calibrations.entries.length > 50) kb.calibrations.entries = kb.calibrations.entries.slice(-50);
+    kb._meta = { ...kb._meta, last_updated: new Date().toISOString(), total_corrections: (kb._meta?.total_corrections||0)+1 };
+    await saveKnowledgeBase(kb);
+    if (statusEl) statusEl.textContent = '✓ saved to learning database';
+    toast('Correction saved — Claude will use this in future analyses', 'success');
+    document.getElementById('qa-correction').value = '';
+  } catch(e) {
+    console.error('saveQACorrection', e);
     if (statusEl) statusEl.textContent = '✗ failed to save';
     toast('Could not save correction: ' + e.message, 'error');
   }
