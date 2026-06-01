@@ -2,9 +2,9 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T16:55:27.992Z",
-    "total_analyses": 10,
-    "total_corrections": 2
+    "last_updated": "2026-06-01T16:57:02.398Z",
+    "total_analyses": 11,
+    "total_corrections": 3
   },
   "calibrations": {
     "description": "User-confirmed corrections to past estimates. Used to fine-tune future prompts.",
@@ -60,6 +60,14 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "date": "2026-06-01",
+        "food": "White bread roll (Brötchen/Semmel), Sliced Gouda/Emmental-style cheese, Butter (spread on bread)",
+        "estimated_kcal": 513,
+        "actual_kcal": null,
+        "correction_text": "There is no butter on it",
+        "source": "quick_analysis"
       }
     ]
   },
@@ -291,6 +299,30 @@
         "carbs_g": 0,
         "fat_g": 8.1,
         "confidence": 0.65,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Rustic bread slice with hummus spread",
+        "serving": "1 small slice with generous hummus topping (bread ~30g, hummus ~25g)",
+        "weight_g": 55,
+        "kcal": 143,
+        "protein_g": 5.2,
+        "carbs_g": 18.5,
+        "fat_g": 5.4,
+        "confidence": 0.75,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Pâté / Liver mousse (French-style)",
+        "serving": "1 thick slice (approx 50g)",
+        "weight_g": 50,
+        "kcal": 160,
+        "protein_g": 6.5,
+        "carbs_g": 1.5,
+        "fat_g": 14,
+        "confidence": 0.72,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -756,6 +788,43 @@
           }
         ],
         "overall_confidence": 0.78
+      },
+      {
+        "id": 1780333022398,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 303,
+          "protein_g": 11.7,
+          "carbs_g": 20,
+          "fat_g": 19.4,
+          "fiber_g": 2.8,
+          "sugar_g": 1.5
+        },
+        "items": [
+          {
+            "name": "Rustic bread slice with hummus spread",
+            "weight_g": 55,
+            "serving": "1 small slice with generous hummus topping (bread ~30g, hummus ~25g)",
+            "kcal": 143,
+            "protein_g": 5.2,
+            "carbs_g": 18.5,
+            "fat_g": 5.4,
+            "confidence": 0.75
+          },
+          {
+            "name": "Pâté / Liver mousse (French-style)",
+            "weight_g": 50,
+            "serving": "1 thick slice (approx 50g)",
+            "kcal": 160,
+            "protein_g": 6.5,
+            "carbs_g": 1.5,
+            "fat_g": 14,
+            "confidence": 0.72
+          }
+        ],
+        "overall_confidence": 0.73
       }
     ]
   }
