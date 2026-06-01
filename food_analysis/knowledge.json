@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T10:23:45.518Z",
-    "total_analyses": 4,
+    "last_updated": "2026-06-01T13:31:04.926Z",
+    "total_analyses": 5,
     "total_corrections": 1
   },
   "calibrations": {
@@ -33,15 +33,15 @@
     "entries": [
       {
         "name": "Fresh strawberries",
-        "serving": "2.5 medium strawberries (approx 45g total)",
-        "weight_g": 45,
-        "kcal": 14,
+        "serving": "4 medium strawberries (approx 60g)",
+        "weight_g": 60,
+        "kcal": 17,
         "protein_g": 0.3,
-        "carbs_g": 3.5,
-        "fat_g": 0.1,
-        "confidence": 0.75,
+        "carbs_g": 4,
+        "fat_g": 0.2,
+        "confidence": 0.9,
         "last_seen": "2026-06-01",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Rigatoni pasta (cooked)",
@@ -102,6 +102,42 @@
         "confidence": 0.98,
         "last_seen": "2026-06-01",
         "seen_count": 2
+      },
+      {
+        "name": "Fresh blueberries",
+        "serving": "12 blueberries (approx 18g)",
+        "weight_g": 18,
+        "kcal": 10,
+        "protein_g": 0.1,
+        "carbs_g": 2.6,
+        "fat_g": 0.1,
+        "confidence": 0.9,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Cherry tomatoes",
+        "serving": "2 cherry tomatoes (approx 30g)",
+        "weight_g": 30,
+        "kcal": 5,
+        "protein_g": 0.3,
+        "carbs_g": 1.2,
+        "fat_g": 0.1,
+        "confidence": 0.9,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Frankfurter/Vienna sausage",
+        "serving": "1 small sausage (approx 35g)",
+        "weight_g": 35,
+        "kcal": 102,
+        "protein_g": 4.2,
+        "carbs_g": 1,
+        "fat_g": 9.1,
+        "confidence": 0.8,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
       }
     ]
   },
@@ -293,6 +329,63 @@
           }
         ],
         "overall_confidence": 0.98
+      },
+      {
+        "id": 1780320664925,
+        "date": "2026-06-01",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 136,
+          "protein_g": 5,
+          "carbs_g": 9.4,
+          "fat_g": 9.5,
+          "fiber_g": 2,
+          "sugar_g": 6
+        },
+        "items": [
+          {
+            "name": "Fresh strawberries",
+            "weight_g": 60,
+            "serving": "4 medium strawberries (approx 60g)",
+            "kcal": 19,
+            "protein_g": 0.4,
+            "carbs_g": 4.6,
+            "fat_g": 0.2,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh blueberries",
+            "weight_g": 18,
+            "serving": "12 blueberries (approx 18g)",
+            "kcal": 10,
+            "protein_g": 0.1,
+            "carbs_g": 2.6,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 30,
+            "serving": "2 cherry tomatoes (approx 30g)",
+            "kcal": 5,
+            "protein_g": 0.3,
+            "carbs_g": 1.2,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Frankfurter/Vienna sausage",
+            "weight_g": 35,
+            "serving": "1 small sausage (approx 35g)",
+            "kcal": 102,
+            "protein_g": 4.2,
+            "carbs_g": 1,
+            "fat_g": 9.1,
+            "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
