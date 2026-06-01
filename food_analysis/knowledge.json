@@ -2,12 +2,31 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base â grows with every analysed meal",
-    "last_updated": "2026-06-01T08:59:09.436Z",
-    "total_analyses": 1
+    "last_updated": "2026-06-01T09:00:54.782Z",
+    "total_analyses": 1,
+    "total_corrections": 1
   },
   "calibrations": {
     "description": "User-confirmed corrections to past estimates. Used to fine-tune future prompts.",
-    "entries": []
+    "entries": [
+      {
+        "date": "2026-06-01",
+        "food": "Fresh strawberries",
+        "user_note": "two and a half strawberries please make sure that you understand correctly the size of the strawberries",
+        "estimated_kcal": 14,
+        "actual_kcal": null,
+        "correction_text": "In case you recognize and food based on a visible brand or color coding, research the web for more accurate information on ingredients.",
+        "estimated_items": [
+          {
+            "name": "Fresh strawberries",
+            "qty": "2.5 medium strawberries (approx 45g total)",
+            "kcal": 14,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.75
+      }
+    ]
   },
   "known_items": {
     "description": "Foods seen before with confirmed or estimated nutritional data",
