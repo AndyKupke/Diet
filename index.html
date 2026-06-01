@@ -849,6 +849,19 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
           <span id="analysis-confidence" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
           <span id="analysis-tip" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--text-muted);font-style:italic;"></span>
         </div>
+        <!-- Correction / comment box -->
+        <div style="margin-top:14px;border-top:1px solid var(--divider-y);padding-top:12px;">
+          <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;">Correct or comment on this analysis</div>
+          <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-bottom:8px;line-height:1.6;">
+            Describe any mistakes — wrong portion sizes, missing items, incorrect kcal etc. This is saved to the learning database so future analyses improve.
+          </div>
+          <textarea id="analysis-correction" placeholder='e.g. "The rice was 200g not 100g, closer to 260 kcal. Also missed the olive oil dressing (~80 kcal)."'
+            style="width:100%;min-height:80px;resize:vertical;font-family:'DM Mono',monospace;font-size:11px;background:var(--input-bg);color:var(--text);border:1px solid var(--divider);border-radius:var(--radius);padding:8px 10px;box-sizing:border-box;"></textarea>
+          <div style="display:flex;gap:8px;margin-top:8px;align-items:center;flex-wrap:wrap;">
+            <button class="btn btn-sm" onclick="saveAnalysisCorrection()">💾 Save Correction to Learning DB</button>
+            <span id="correction-status" style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);"></span>
+          </div>
+        </div>
       </div>
       <div class="field"><label>Meal Name</label><input type="text" id="meal-name" placeholder="e.g. Chicken & Rice Bowl"></div>
       <div class="macro-row">
@@ -1794,12 +1807,13 @@ function removeMeal(i){
   state.meals.splice(i,1); recalc(); saveState(); renderAll();
 }
 function clearMealForm(){
-  ['meal-name','meal-kcal','meal-protein','meal-carbs','meal-fat','photo-note'].forEach(id=>document.getElementById(id).value='');
+  ['meal-name','meal-kcal','meal-protein','meal-carbs','meal-fat','photo-note','analysis-correction'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
   photoB64=null; photoMimeType='image/jpeg';
   document.getElementById('photo-preview').style.display='none';
   document.getElementById('photo-zone').style.display='block';
   document.getElementById('photo-context-row').style.display='none';
   document.getElementById('analysis-detail').style.display='none';
+  _lastAnalysis = null;
 }
 function recalc(){
   state.calories =Math.round(state.meals.reduce((s,m)=>s+m.kcal,0));
@@ -2128,6 +2142,11 @@ async function analysePhoto() {
       saveKnowledgeBase(updatedKb).catch(() => {});
     }
 
+    // Store for correction box
+    _lastAnalysis = { parsed, userNote, knowledge };
+    document.getElementById('analysis-correction').value = '';
+    document.getElementById('correction-status').textContent = '';
+
     toast(`${parsed.items?.length||1} item${parsed.items?.length!==1?'s':''} analysed — review & confirm`,'success');
 
   } catch(err) {
@@ -2135,6 +2154,54 @@ async function analysePhoto() {
     console.error(err);
   } finally {
     document.getElementById('overlay').classList.remove('active');
+  }
+}
+
+let _lastAnalysis = null; // holds {parsed, userNote, knowledge} from the most recent vision call
+
+async function saveAnalysisCorrection() {
+  const correctionText = document.getElementById('analysis-correction')?.value.trim();
+  if (!correctionText) { toast('Type a correction first','error'); return; }
+  if (!_lastAnalysis) { toast('No analysis to correct','error'); return; }
+
+  const statusEl = document.getElementById('correction-status');
+  if (statusEl) statusEl.textContent = '…saving';
+
+  const { parsed, userNote } = _lastAnalysis;
+  const totals = parsed.totals || {};
+  const mealLabel = parsed.items?.map(i=>i.name).join(', ') || document.getElementById('meal-name')?.value || 'Unknown meal';
+
+  // Build calibration entry for the knowledge base
+  const calibration = {
+    date:           new Date().toISOString().split('T')[0],
+    food:           mealLabel,
+    user_note:      userNote || '',
+    estimated_kcal: totals.kcal || 0,
+    actual_kcal:    null,           // user hasn't given a number — stored as free text
+    correction_text: correctionText,
+    estimated_items: (parsed.items||[]).map(i=>({name:i.name, qty:i.quantity_desc, kcal:i.kcal, confidence:i.confidence})),
+    overall_confidence: parsed.overall_confidence,
+  };
+
+  // Also try to extract a corrected kcal number from the text (e.g. "closer to 350 kcal")
+  const kcalMatch = correctionText.match(/(\d{2,4})\s*(?:kcal|cal|calories)/i);
+  if (kcalMatch) calibration.actual_kcal = parseInt(kcalMatch[1]);
+
+  try {
+    const kb = await loadKnowledgeBase() || { calibrations:{entries:[]}, known_items:{entries:[]}, analyses:{entries:[]}, _meta:{} };
+    if (!kb.calibrations) kb.calibrations = { entries: [] };
+    kb.calibrations.entries.push(calibration);
+    // Keep last 50 calibrations
+    if (kb.calibrations.entries.length > 50) kb.calibrations.entries = kb.calibrations.entries.slice(-50);
+    kb._meta = { ...kb._meta, last_updated: new Date().toISOString(), total_corrections: (kb._meta?.total_corrections||0)+1 };
+    await saveKnowledgeBase(kb);
+    if (statusEl) statusEl.textContent = '✓ saved to learning database';
+    toast('Correction saved — Claude will use this in future analyses', 'success');
+    document.getElementById('analysis-correction').value = '';
+  } catch(e) {
+    console.error('saveAnalysisCorrection', e);
+    if (statusEl) statusEl.textContent = '✗ failed to save';
+    toast('Could not save correction: ' + e.message, 'error');
   }
 }
 

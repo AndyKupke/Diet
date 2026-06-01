@@ -38,12 +38,16 @@ function buildCalibrationContext(knowledge) {
     });
   }
 
-  // Inject up to 5 user corrections so the model learns from mistakes
-  const corrections = (knowledge.calibrations?.entries || []).slice(-5);
+  // Inject up to 8 user corrections so the model learns from mistakes
+  const corrections = (knowledge.calibrations?.entries || []).slice(-8);
   if (corrections.length) {
     lines.push('\nUSER CORRECTIONS (learn from these — the model was wrong before):');
     corrections.forEach(c => {
-      lines.push(`  • ${c.food}: estimated ${c.estimated_kcal} kcal, actual ${c.actual_kcal} kcal (${c.note})`);
+      const kcalNote = (c.estimated_kcal && c.actual_kcal)
+        ? `estimated ${c.estimated_kcal} kcal → actual ${c.actual_kcal} kcal` : '';
+      const freeText = c.correction_text || c.note || '';
+      const detail = [kcalNote, freeText].filter(Boolean).join(' — ');
+      lines.push(`  • ${c.date} | ${c.food}: ${detail}`);
     });
   }
 
