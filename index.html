@@ -693,16 +693,7 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="kpi-tile"><div class="kpi-label">Avg Calories</div><div class="kpi-value" id="kpi-avg-kcal">—<span class="kpi-unit">kcal</span></div><div class="kpi-sub">Last 14 days</div></div>
       <div class="kpi-tile"><div class="kpi-label">Avg Deficit</div><div class="kpi-value" id="kpi-avg-deficit">—<span class="kpi-unit">kcal</span></div><div class="kpi-sub" id="kpi-deficit-sub">vs target</div></div>
     </div>
-    <!-- Oura ring strip -->
-    <div id="oura-dashboard-strip" style="display:none;margin-bottom:12px;">
-      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:8px;display:flex;align-items:center;gap:10px;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        Oura Ring — Today
-        <span id="oura-last-fetch" style="margin-left:6px;font-size:8px;opacity:0.5;"></span>
-        <button class="btn btn-ghost btn-sm" onclick="refreshOura()" style="margin-left:auto;padding:3px 10px;font-size:8px;">Refresh</button>
-      </div>
-      <div class="grid-4" id="oura-kpi-tiles"></div>
-    </div>
+    <!-- Oura today KPI strip removed — Oura data shown in Daily Summary tab -->
     <!-- 6 main charts: 2 columns × 3 rows -->
     <div class="grid-2" style="margin-bottom:12px;">
       <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="340"></canvas></div>
@@ -2927,19 +2918,19 @@ function fmtSec(s) {
 }
 function fmtNum(n, unit = '') { return n != null ? `${n.toLocaleString()}${unit}` : '—'; }
 
-// ── Dashboard KPI tiles ────────────────────────────────────────────────────
+// ── Dashboard KPI tiles (rendered in Daily Summary only) ──────────────────
 function renderOuraDashboard(data) {
   if (!data) return;
+  // The dashboard strip was removed; tiles are only shown in the Summary tab.
   const strip   = document.getElementById('oura-dashboard-strip');
   const tilesEl = document.getElementById('oura-kpi-tiles');
+  if (strip)   strip.style.display = 'none';   // keep hidden
 
-  strip.style.display  = 'block';
-  // Show last fetch time
   const lastFetch = localStorage.getItem('dt_oura_last_fetch');
   if (lastFetch) {
     const t = new Date(lastFetch);
-    document.getElementById('oura-last-fetch').textContent =
-      `fetched ${t.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'})}`;
+    const el = document.getElementById('oura-last-fetch');
+    if (el) el.textContent = `fetched ${t.toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'})}`;
   }
 
   const tiles = [
