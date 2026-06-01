@@ -1029,7 +1029,55 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
 <div class="tab-panel" id="tab-settings">
   <div class="wrap">
     <div class="section-head"><span class="section-title">Settings</span><span class="section-rule"></span></div>
-    <div class="section-head" style="margin-top:0;"><span class="section-title" style="font-size:16px;">Targets</span><span class="section-rule"></span></div>
+
+    <!-- ── Integrations ─────────────────────────────────────────────────── -->
+    <div class="section-head" style="margin-top:0;"><span class="section-title" style="font-size:16px;">Integrations</span><span class="section-rule"></span></div>
+
+    <!-- GitHub -->
+    <div class="panel" style="margin-bottom:16px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">GitHub — data sync across all devices</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">
+        All your data is stored in <strong style="color:var(--text);">data.json</strong> in your GitHub repo. Enter the same token on every device to keep them in sync.<br>
+        Create a token at <a href="https://github.com/settings/tokens" target="_blank" style="color:var(--yellow);">github.com/settings/tokens</a> with <strong style="color:var(--text);">repo</strong> scope (classic token).
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label>Personal Access Token (PAT)</label>
+          <div style="position:relative;">
+            <input type="password" id="setting-gh-pat" placeholder="ghp_…" autocomplete="off"
+              style="width:100%;padding-right:36px;">
+            <button onclick="togglePasswordVis('setting-gh-pat',this)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-muted);padding:0;font-size:11px;">👁</button>
+          </div>
+        </div>
+        <div class="field"><label>Repository (owner/name)</label><input type="text" id="setting-gh-repo" placeholder="AndyKupke/Diet"></div>
+        <div class="field"><label>Branch</label><input type="text" id="setting-gh-branch" placeholder="main"></div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:4px;">
+        <button class="btn btn-sm" onclick="saveIntegrations()">Save &amp; Sync Now</button>
+        <span id="setting-gh-status" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
+      </div>
+    </div>
+
+    <!-- Anthropic -->
+    <div class="panel" style="margin-bottom:16px;">
+      <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;">Anthropic — food photo analysis &amp; blood test reading</div>
+      <div style="font-family:'DM Mono',monospace;font-size:9px;color:var(--text-muted);margin-bottom:12px;line-height:1.6;">
+        Used for Claude Vision (food photos) and PDF blood test extraction.<br>
+        Get your key at <a href="https://console.anthropic.com/settings/keys" target="_blank" style="color:var(--yellow);">console.anthropic.com</a>.
+      </div>
+      <div class="field" style="max-width:480px;">
+        <label>API Key</label>
+        <div style="position:relative;">
+          <input type="password" id="setting-anthropic-key" placeholder="sk-ant-…" autocomplete="off"
+            style="width:100%;padding-right:36px;">
+          <button onclick="togglePasswordVis('setting-anthropic-key',this)" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--text-muted);padding:0;font-size:11px;">👁</button>
+        </div>
+      </div>
+      <button class="btn btn-sm" style="margin-top:8px;" onclick="saveIntegrations()">Save</button>
+    </div>
+
+    <!-- ── Targets ───────────────────────────────────────────────────────── -->
+    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Daily Targets</span><span class="section-rule"></span></div>
     <div class="panel">
       <div class="grid-2">
         <div class="field"><label>Calorie target (kcal/day)</label><input type="number" id="setting-kcal" placeholder="1750"></div>
@@ -1039,6 +1087,8 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       </div>
       <button class="btn btn-sm" onclick="saveTargets()">Save Targets</button>
     </div>
+
+    <!-- ── Theme ─────────────────────────────────────────────────────────── -->
     <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Theme</span><span class="section-rule"></span></div>
     <div class="panel">
       <div style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-muted);margin-bottom:14px;">
@@ -1050,6 +1100,8 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
         <button class="btn btn-ghost btn-sm" onclick="setTheme(autoTheme(), false)">Auto (by hour)</button>
       </div>
     </div>
+
+    <!-- ── Data ──────────────────────────────────────────────────────────── -->
     <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Data</span><span class="section-rule"></span></div>
     <div class="panel">
       <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
@@ -1196,9 +1248,50 @@ function saveState() { localStorage.setItem('dt_state', JSON.stringify(state)); 
 
 function loadCfg() {
   cfg.anthropicKey = localStorage.getItem('dt_anthropic_key') || '';
+  cfg.githubPat    = localStorage.getItem('dt_gh_pat')        || '';
+  cfg.githubRepo   = localStorage.getItem('dt_gh_repo')       || 'AndyKupke/Diet';
+  cfg.githubBranch = localStorage.getItem('dt_gh_branch')     || 'main';
+  // Populate settings fields
+  const f = (id, v) => { const el=document.getElementById(id); if(el) el.value=v; };
+  f('setting-gh-pat',       cfg.githubPat);
+  f('setting-gh-repo',      cfg.githubRepo);
+  f('setting-gh-branch',    cfg.githubBranch);
+  f('setting-anthropic-key',cfg.anthropicKey);
   const btn = document.getElementById('oura-import-btn');
   if (btn) btn.style.display = 'inline-flex';
   const op = document.getElementById('oura-dashboard-prompt'); if (op) op.style.display = 'none';
+}
+
+function saveIntegrations() {
+  const s = id => document.getElementById(id)?.value.trim()||'';
+  cfg.githubPat    = s('setting-gh-pat');
+  cfg.githubRepo   = s('setting-gh-repo')   || 'AndyKupke/Diet';
+  cfg.githubBranch = s('setting-gh-branch') || 'main';
+  cfg.anthropicKey = s('setting-anthropic-key');
+  localStorage.setItem('dt_gh_pat',        cfg.githubPat);
+  localStorage.setItem('dt_gh_repo',       cfg.githubRepo);
+  localStorage.setItem('dt_gh_branch',     cfg.githubBranch);
+  localStorage.setItem('dt_anthropic_key', cfg.anthropicKey);
+  const status = document.getElementById('setting-gh-status');
+  if (!cfg.githubPat) {
+    toast('GitHub PAT is required for sync','error');
+    if (status) status.textContent = '✗ No PAT set';
+    return;
+  }
+  toast('Saved — syncing…','success');
+  if (status) status.textContent = '…syncing';
+  syncToGitHub().then(() => {
+    if (status) status.textContent = '✓ Synced';
+  }).catch(() => {
+    if (status) status.textContent = '✗ Sync failed';
+  });
+}
+
+function togglePasswordVis(inputId, btn) {
+  const el = document.getElementById(inputId);
+  if (!el) return;
+  if (el.type === 'password') { el.type = 'text';     btn.textContent = '🙈'; }
+  else                        { el.type = 'password'; btn.textContent = '👁';  }
 }
 function loadTargets() {
   const raw=localStorage.getItem('dt_targets');
