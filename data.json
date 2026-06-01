@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-01",
-    "calories": 790,
-    "protein_g": 48.3,
-    "carbs_g": 78.3,
-    "fat_g": 33.1,
+    "calories": 992,
+    "protein_g": 79.7,
+    "carbs_g": 98,
+    "fat_g": 33.9,
     "water_ml": 500,
     "weight_kg": 76,
     "meals": [
@@ -52,6 +52,15 @@
         "fat_g": 5,
         "time": "2026-06-01T13:32:38.194Z",
         "_evtId": "evt_1780320758194_muuhc"
+      },
+      {
+        "name": "Skyr (Icelandic yogurt, diluted with water), Fresh strawberries (halved), Fresh blueberries",
+        "kcal": 202,
+        "protein_g": 31.4,
+        "carbs_g": 19.7,
+        "fat_g": 0.8,
+        "time": "2026-06-01T16:44:46.024Z",
+        "_evtId": "evt_1780332286024_0ar7o"
       }
     ],
     "exercise": [],
@@ -183,6 +192,17 @@
       "carbs_g": 9.4,
       "fat_g": 5,
       "ts": "2026-06-01T13:32:38.195Z"
+    },
+    {
+      "id": "evt_1780332286024_0ar7o",
+      "type": "meal",
+      "date": "2026-06-01",
+      "name": "Skyr (Icelandic yogurt, diluted with water), Fresh strawberries (halved), Fresh blueberries",
+      "kcal": 202,
+      "protein_g": 31.4,
+      "carbs_g": 19.7,
+      "fat_g": 0.8,
+      "ts": "2026-06-01T16:44:46.025Z"
     }
   ]
 }
