@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-01",
-    "calories": 1204,
-    "protein_g": 93.2,
-    "carbs_g": 120.7,
-    "fat_g": 41.5,
+    "calories": 1365,
+    "protein_g": 99,
+    "carbs_g": 146.7,
+    "fat_g": 44.9,
     "water_ml": 500,
     "weight_kg": 76,
     "meals": [
@@ -70,6 +70,15 @@
         "fat_g": 7.6,
         "time": "2026-06-01T16:48:43.093Z",
         "_evtId": "evt_1780332523093_t9miy"
+      },
+      {
+        "name": "Tuna Onigiri (Reiszubereitung mit Thunfisch)",
+        "kcal": 161,
+        "protein_g": 5.8,
+        "carbs_g": 26,
+        "fat_g": 3.4,
+        "time": "2026-06-01T16:50:56.178Z",
+        "_evtId": "evt_1780332656178_mu279"
       }
     ],
     "exercise": [],
@@ -223,6 +232,17 @@
       "carbs_g": 22.7,
       "fat_g": 7.6,
       "ts": "2026-06-01T16:48:43.093Z"
+    },
+    {
+      "id": "evt_1780332656178_mu279",
+      "type": "meal",
+      "date": "2026-06-01",
+      "name": "Tuna Onigiri (Reiszubereitung mit Thunfisch)",
+      "kcal": 161,
+      "protein_g": 5.8,
+      "carbs_g": 26,
+      "fat_g": 3.4,
+      "ts": "2026-06-01T16:50:56.178Z"
     }
   ]
 }
