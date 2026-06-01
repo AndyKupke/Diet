@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T17:05:57.609Z",
-    "total_analyses": 13,
+    "last_updated": "2026-06-01T17:10:10.105Z",
+    "total_analyses": 14,
     "total_corrections": 3
   },
   "calibrations": {
@@ -352,13 +352,25 @@
       },
       {
         "name": "Multi-seed/grain bread slice",
-        "serving": "1 thick slice (approx 45g)",
-        "weight_g": 45,
-        "kcal": 125,
-        "protein_g": 5,
-        "carbs_g": 20,
-        "fat_g": 2.5,
-        "confidence": 0.82,
+        "serving": "1 thick slice (approx 40g)",
+        "weight_g": 40,
+        "kcal": 118,
+        "protein_g": 4.7,
+        "carbs_g": 18.9,
+        "fat_g": 2.4,
+        "confidence": 0.8,
+        "last_seen": "2026-06-01",
+        "seen_count": 2
+      },
+      {
+        "name": "Sliced turkey breast (deli meat)",
+        "serving": "2 thin slices (approx 40g total)",
+        "weight_g": 40,
+        "kcal": 42,
+        "protein_g": 8.8,
+        "carbs_g": 0.4,
+        "fat_g": 0.5,
+        "confidence": 0.78,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -925,6 +937,43 @@
           }
         ],
         "overall_confidence": 0.82
+      },
+      {
+        "id": 1780333810104,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 153,
+          "protein_g": 13.2,
+          "carbs_g": 18.2,
+          "fat_g": 2.7,
+          "fiber_g": 2.5,
+          "sugar_g": 1.4
+        },
+        "items": [
+          {
+            "name": "Multi-seed/grain bread slice",
+            "weight_g": 40,
+            "serving": "1 thick slice (approx 40g)",
+            "kcal": 111,
+            "protein_g": 4.4,
+            "carbs_g": 17.8,
+            "fat_g": 2.2,
+            "confidence": 0.8
+          },
+          {
+            "name": "Sliced turkey breast (deli meat)",
+            "weight_g": 40,
+            "serving": "2 thin slices (approx 40g total)",
+            "kcal": 42,
+            "protein_g": 8.8,
+            "carbs_g": 0.4,
+            "fat_g": 0.5,
+            "confidence": 0.78
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
