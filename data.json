@@ -18,15 +18,6 @@
         "_evtId": "evt_1780290883165_6gdot"
       },
       {
-        "name": "Fresh strawberries",
-        "kcal": 14,
-        "protein_g": 0.3,
-        "carbs_g": 3.5,
-        "fat_g": 0.1,
-        "time": "2026-06-01T09:01:00.197Z",
-        "_evtId": "evt_1780304460197_cbyoc"
-      },
-      {
         "name": "Rigatoni pasta (cooked), Bolognese/meat ragù sauce, Mixed leaf salad (undressed), Olive oil (in sauce/cooking)",
         "kcal": 578,
         "protein_g": 22.2,
@@ -43,6 +34,15 @@
         "fat_g": 0,
         "time": "2026-06-01T10:23:52.403Z",
         "_evtId": "evt_1780309432403_7xmjd"
+      },
+      {
+        "name": "Fresh strawberries",
+        "kcal": 14,
+        "protein_g": 0.3,
+        "carbs_g": 3.5,
+        "fat_g": 0.1,
+        "time": "2026-06-01T09:01:00.197Z",
+        "_evtId": "evt_1780304460197_cbyoc"
       }
     ],
     "exercise": [],
