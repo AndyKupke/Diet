@@ -1004,10 +1004,40 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <button class="btn" onclick="addSupplement()">Add Supplement</button>
     </div>
 
-    <!-- Supplement library -->
-    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">My Supplements</span><span class="section-rule"></span></div>
+    <!-- Supplement library (legacy checklist items) -->
+    <div class="section-head" style="margin-top:28px;"><span class="section-title" style="font-size:16px;">Quick-Add List</span><span class="section-rule"></span></div>
     <div id="supp-library" class="item-list"></div>
     <div id="supp-library-empty" style="font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.12em;color:var(--text-muted);padding:12px 0;display:none;">No supplements saved.</div>
+
+    <!-- My Supplements stack table -->
+    <div style="display:flex;align-items:center;gap:12px;margin-top:36px;margin-bottom:14px;flex-wrap:wrap;">
+      <div class="section-head" style="margin:0;flex:1;"><span class="section-title" style="font-size:16px;">My Supplements</span><span class="section-rule"></span></div>
+      <button class="btn btn-sm" onclick="openSuppModal(null)">＋ Add Supplement</button>
+    </div>
+    <div class="panel" style="padding:0;overflow:hidden;">
+      <table id="supp-stack-table" style="width:100%;border-collapse:collapse;"></table>
+    </div>
+  </div>
+</div>
+
+<!-- Supplement edit modal -->
+<div id="supp-modal-backdrop" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:2000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;" onclick="e=>{if(e.target===this)closeSuppModal()}">
+  <div style="background:var(--surface);border:1px solid var(--divider);border-radius:var(--radius);padding:28px 28px 24px;width:100%;max-width:520px;box-shadow:0 20px 60px rgba(0,0,0,0.5);position:relative;" onclick="event.stopPropagation()">
+    <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:20px;" id="supp-modal-title">Edit Supplement</div>
+    <div class="grid-2" style="gap:14px;margin-bottom:14px;">
+      <div class="field"><label>Brand</label><input type="text" id="sm-brand" placeholder="e.g. LifeExtension"></div>
+      <div class="field"><label>Supplement Name</label><input type="text" id="sm-name" placeholder="e.g. Vitamin D3+K2"></div>
+    </div>
+    <div class="grid-2" style="gap:14px;margin-bottom:14px;">
+      <div class="field"><label>Content</label><input type="text" id="sm-content" placeholder="e.g. 120 Kapsel"></div>
+      <div class="field"><label>Daily Dose</label><input type="text" id="sm-dose" placeholder="e.g. 2 Kapsel"></div>
+    </div>
+    <div class="field" style="margin-bottom:20px;"><label>Link to buy (optional)</label><input type="url" id="sm-link" placeholder="https://..."></div>
+    <input type="hidden" id="sm-id">
+    <div style="display:flex;gap:10px;justify-content:flex-end;">
+      <button class="btn btn-ghost btn-sm" onclick="closeSuppModal()">Cancel</button>
+      <button class="btn btn-sm" onclick="saveSuppModal()">💾 Save</button>
+    </div>
   </div>
 </div>
 
@@ -1263,14 +1293,14 @@ function switchTab(name) {
   if (name==='summary')      { renderSummaryMeals(); loadOuraIfNeeded().then(d=>renderOuraSummary(d)); }
   if (name==='input')        renderWeight();
   if (name==='history')      renderHistoryTable();
-  if (name==='supplements')  renderSupplements();
+  if (name==='supplements')  { renderSupplements(); renderSuppStack(); }
   if (name==='blood')        renderBloodTab();
 }
 
 /* ══ Boot ════════════════════════════════════════════════════════════════ */
 function todayISO() { return new Date().toISOString().split('T')[0]; }
 function init() {
-  loadCfg(); loadTargets(); loadHistory(); loadEvents(); loadState(); loadSupplements(); loadBloodTests(); loadOuraHistory(); renderAll();
+  loadCfg(); loadTargets(); loadHistory(); loadEvents(); loadState(); loadSupplements(); loadSuppStack(); loadBloodTests(); loadOuraHistory(); renderAll();
   // Initialise date picker to today
   const inputDateEl = document.getElementById('input-date');
   if (inputDateEl) inputDateEl.value = todayISO();
@@ -1493,6 +1523,15 @@ async function syncFromGitHub() {
         state.weight_kg = remoteToday.weight_kg; changed = true;
       }
       if (changed) saveState();
+    }
+
+    // ── Merge suppStack (remote wins for existing ids, add new ones) ───────
+    if (Array.isArray(remote.suppStack) && remote.suppStack.length) {
+      const localMap = new Map(suppStack.map(s=>[s.id, s]));
+      remote.suppStack.forEach(rs => localMap.set(rs.id, rs)); // remote overrides
+      suppStack = [...localMap.values()];
+      localStorage.setItem('dt_supp_stack', JSON.stringify(suppStack));
+      changed = true;
     }
 
     const t = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
@@ -2496,7 +2535,7 @@ async function syncToGitHub(){
   try{
     let sha=null;const get=await fetch(`${apiUrl}?ref=${branch}`,{headers});
     if(get.ok)sha=(await get.json()).sha;else if(get.status!==404)throw new Error(`GitHub ${get.status}`);
-    const content=btoa(unescape(encodeURIComponent(JSON.stringify({today:state,history:history.slice(-90),events:events.slice(-500)},null,2))));
+    const content=btoa(unescape(encodeURIComponent(JSON.stringify({today:state,history:history.slice(-90),events:events.slice(-500),suppStack},null,2))));
     const body={message:`tracker: update data.json for ${state.date}`,content,branch};if(sha)body.sha=sha;
     const put=await fetch(apiUrl,{method:'PUT',headers,body:JSON.stringify(body)});
     if(!put.ok){const e=await put.json();throw new Error(e.message||`PUT ${put.status}`);}
@@ -3162,6 +3201,126 @@ setInterval(ouraMinuteTick, 60_000);
 
 /* ══ Utils ════════════════════════════════════════════════════════════════ */
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+
+/* ══ Supplement Stack ═════════════════════════════════════════════════════ */
+// Full supplement stack: [{id, brand, name, content, dose, link}]
+const DEFAULT_SUPP_STACK = [
+  {id:'ss1',  brand:'German Elite Nutrition', name:'AAKG',                                       content:'83g',          dose:'6g',        link:''},
+  {id:'ss2',  brand:'German Elite Nutrition', name:'Acetyl L-Carnitin',                           content:'250 Kapsel',   dose:'6 Kapsel',  link:''},
+  {id:'ss3',  brand:'natural elements',       name:'Ashwagandha Komplex Kapseln',                 content:'120 Kapsel',   dose:'2 Kapsel',  link:''},
+  {id:'ss4',  brand:'German Elite Nutrition', name:'BCAA Ultra 8:1:1',                            content:'365 Kapsel',   dose:'8 Kapsel',  link:''},
+  {id:'ss5',  brand:'Qidosha',               name:'Coenzym Q10 als UBIQUINOL mit Leinsamenöl',   content:'90 Kapsel',    dose:'1 Kapsel',  link:''},
+  {id:'ss6',  brand:'German Elite Nutrition', name:'Creatin Ultra Caps',                          content:'420 Kapsel',   dose:'3 Kapsel',  link:''},
+  {id:'ss7',  brand:'natural elements',       name:'Hyaluron & Kollagen Komplex Kapseln',         content:'180 Kapsel',   dose:'2 Kapsel',  link:''},
+  {id:'ss8',  brand:'German Elite Nutrition', name:'L-Glutamin Ultra',                            content:'365 Kapsel',   dose:'6 Kapsel',  link:''},
+  {id:'ss9',  brand:'ESN',                    name:'Magnesium',                                   content:'120 Kapsel',   dose:'1 Kapsel',  link:''},
+  {id:'ss10', brand:'LifeExtension',          name:'Melatonin',                                   content:'120 Kapsel',   dose:'1 Kapsel',  link:''},
+  {id:'ss11', brand:'natural elements',       name:'MSM',                                         content:'180 Kapsel',   dose:'2 Kapsel',  link:''},
+  {id:'ss12', brand:'LifeExtension',          name:'N-Acetyl-Cysteine (NAC)',                     content:'60 Kapsel',    dose:'1 Kapsel',  link:''},
+  {id:'ss13', brand:'natural elements',       name:'Omega 3 Fischöl Kapseln',                    content:'365 Kapsel',   dose:'2 Kapsel',  link:''},
+  {id:'ss14', brand:'Raibu',                  name:'BIO Kurkuma & Ingwer mit Schwarzem Pfeffer',  content:'120 Kapsel',   dose:'2 Kapsel',  link:''},
+  {id:'ss15', brand:'plantomol',              name:'Spermidin-Sulforaphan Komplex Kapseln',       content:'90 Kapsel',    dose:'1 Kapsel',  link:''},
+  {id:'ss16', brand:'natural elements',       name:'Vitamin B Komplex Kapseln',                   content:'240 Tablette', dose:'1 Tablette',link:''},
+  {id:'ss17', brand:'Heidelberger Chlorella', name:'Vitamin D3+K2 Öl',                            content:'600 Tropfen',  dose:'5 Tropfen', link:''},
+];
+
+let suppStack = []; // loaded from localStorage / GitHub
+
+function loadSuppStack() {
+  const raw = localStorage.getItem('dt_supp_stack');
+  suppStack = raw ? JSON.parse(raw) : JSON.parse(JSON.stringify(DEFAULT_SUPP_STACK));
+}
+
+function saveSuppStack() {
+  localStorage.setItem('dt_supp_stack', JSON.stringify(suppStack));
+  autoSyncToGitHub();
+}
+
+function renderSuppStack() {
+  const tbl = document.getElementById('supp-stack-table');
+  if (!tbl) return;
+  const th = t => `<th style="padding:8px 12px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);text-align:left;border-bottom:2px solid var(--divider);white-space:nowrap;">${t}</th>`;
+  const pencilSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;pointer-events:none;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
+  const trashSVG  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;pointer-events:none;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`;
+
+  const head = `<thead><tr>${th('#')}${th('Brand')}${th('Supplement')}${th('Content')}${th('Daily Dose')}${th('Link')}${th('')}</tr></thead>`;
+
+  const tdC = 'padding:9px 12px;border-bottom:1px solid var(--divider);font-size:12px;vertical-align:middle;';
+  const tdM = tdC + 'font-family:\'DM Mono\',monospace;font-size:11px;color:var(--text-muted);';
+
+  const rows = suppStack.map((s, i) => `
+    <tr>
+      <td style="${tdM}">${i+1}</td>
+      <td style="${tdC}">${esc(s.brand)}</td>
+      <td style="${tdC}font-weight:400;">${esc(s.name)}</td>
+      <td style="${tdM}">${esc(s.content)}</td>
+      <td style="${tdM}">${esc(s.dose)}</td>
+      <td style="${tdC}">
+        ${s.link ? `<a href="${esc(s.link)}" target="_blank" rel="noopener" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);text-decoration:none;" title="${esc(s.link)}">🔗 Buy</a>` : '<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--text-muted);">—</span>'}
+      </td>
+      <td style="${tdC}white-space:nowrap;">
+        <div style="display:flex;gap:4px;align-items:center;">
+          <button class="btn-icon" onclick="openSuppModal('${s.id}')" title="Edit" style="padding:5px;">${pencilSVG}</button>
+          <button class="btn-icon" onclick="deleteSuppStackItem('${s.id}')" title="Delete" style="padding:5px;color:var(--red);">${trashSVG}</button>
+        </div>
+      </td>
+    </tr>`).join('');
+
+  tbl.innerHTML = head + `<tbody>${rows || '<tr><td colspan="7" style="padding:16px 12px;font-family:\'DM Mono\',monospace;font-size:10px;color:var(--text-muted);">No supplements yet.</td></tr>'}</tbody>`;
+}
+
+function openSuppModal(id) {
+  const backdrop = document.getElementById('supp-modal-backdrop');
+  const s = id ? suppStack.find(x=>x.id===id) : null;
+  document.getElementById('supp-modal-title').textContent = s ? 'Edit Supplement' : 'Add Supplement';
+  document.getElementById('sm-id').value      = s ? s.id : '';
+  document.getElementById('sm-brand').value   = s ? s.brand   : '';
+  document.getElementById('sm-name').value    = s ? s.name    : '';
+  document.getElementById('sm-content').value = s ? s.content : '';
+  document.getElementById('sm-dose').value    = s ? s.dose    : '';
+  document.getElementById('sm-link').value    = s ? s.link    : '';
+  backdrop.style.display = 'flex';
+  setTimeout(()=>document.getElementById('sm-brand').focus(), 80);
+}
+
+function closeSuppModal() {
+  document.getElementById('supp-modal-backdrop').style.display = 'none';
+}
+
+function saveSuppModal() {
+  const id      = document.getElementById('sm-id').value;
+  const brand   = document.getElementById('sm-brand').value.trim();
+  const name    = document.getElementById('sm-name').value.trim();
+  const content = document.getElementById('sm-content').value.trim();
+  const dose    = document.getElementById('sm-dose').value.trim();
+  const link    = document.getElementById('sm-link').value.trim();
+  if (!name) { toast('Enter a supplement name', 'error'); return; }
+  if (id) {
+    const idx = suppStack.findIndex(s=>s.id===id);
+    if (idx>=0) suppStack[idx] = {...suppStack[idx], brand, name, content, dose, link};
+  } else {
+    suppStack.push({id:'ss'+Date.now(), brand, name, content, dose, link});
+  }
+  saveSuppStack();
+  renderSuppStack();
+  closeSuppModal();
+  toast(`${name} saved`, 'success');
+}
+
+function deleteSuppStackItem(id) {
+  const s = suppStack.find(x=>x.id===id);
+  if (!s) return;
+  if (!confirm(`Delete "${s.name}"?`)) return;
+  suppStack = suppStack.filter(x=>x.id!==id);
+  saveSuppStack();
+  renderSuppStack();
+  toast(`${s.name} deleted`, 'success');
+}
+
+// Close modal on Escape
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeSuppModal();
+});
 
 /* ══ Supplements ══════════════════════════════════════════════════════════ */
 let suppItems = [];   // [{id, name, dose, timing, notes}]
