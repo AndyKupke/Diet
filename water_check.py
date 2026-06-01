@@ -48,6 +48,8 @@ def safe_get(base: str, endpoint: str, params: dict, headers: dict) -> list:
         r = requests.get(f"{base}/{endpoint}", headers=headers, params=params, timeout=15)
         if r.ok:
             return r.json().get("data", [])
+        else:
+            print(f"[oura] {endpoint} HTTP {r.status_code}: {r.text[:300]}", file=sys.stderr)
     except Exception as e:
         print(f"[oura] {endpoint} fetch error: {e}", file=sys.stderr)
     return []
