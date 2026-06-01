@@ -24,12 +24,12 @@
   "history": [
     {
       "date": "2026-05-31",
-      "calories": 43,
-      "protein_g": 2,
-      "carbs_g": 9.1,
-      "fat_g": 0.4,
-      "water_ml": 910,
-      "weight_kg": 75.3
+      "calories": 427,
+      "protein_g": 20.1,
+      "carbs_g": 43.9,
+      "fat_g": 19.5,
+      "water_ml": 0,
+      "weight_kg": 71
     }
   ],
   "events": [
