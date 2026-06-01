@@ -1439,6 +1439,11 @@ function pushEvent(evt) {
 function deleteEvent(id) {
   events = events.filter(e=>e.id!==id);
   saveEvents();
+  // Also remove from today's state so collectHistEvents doesn't re-surface it
+  const mealIdx = (state.meals||[]).findIndex(m=>m._evtId===id);
+  if (mealIdx>=0) { state.meals.splice(mealIdx,1); recalc(); saveState(); }
+  const exIdx = (state.exercise||[]).findIndex(x=>x._evtId===id);
+  if (exIdx>=0) { state.exercise.splice(exIdx,1); saveState(); }
   autoSyncToGitHub();
   renderHistoryTable();
   toast('Entry deleted','success');
