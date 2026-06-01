@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T10:22:38.262Z",
-    "total_analyses": 3,
+    "last_updated": "2026-06-01T10:23:45.518Z",
+    "total_analyses": 4,
     "total_corrections": 1
   },
   "calibrations": {
@@ -101,7 +101,7 @@
         "fat_g": 0,
         "confidence": 0.98,
         "last_seen": "2026-06-01",
-        "seen_count": 1
+        "seen_count": 2
       }
     ]
   },
@@ -242,6 +242,33 @@
       },
       {
         "id": 1780309358262,
+        "date": "2026-06-01",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 1,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Fritz-Kola Zero (sugar-free cola)",
+            "weight_g": 330,
+            "serving": "1 bottle (330ml)",
+            "kcal": 1,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
+      },
+      {
+        "id": 1780309425518,
         "date": "2026-06-01",
         "meal_type": "lunch",
         "user_note": "",
