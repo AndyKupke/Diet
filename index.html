@@ -2613,7 +2613,9 @@ function drawCharts(){
   };
   Object.entries(titles).forEach(([id,txt])=>{ const el=document.getElementById(id); if(el) el.textContent=txt; });
 
-  const all=allRows(), slicedDiet=all.slice(0,n).reverse();
+  // Build diet lookup by date
+  const dietByDate={};
+  allRows().forEach(d=>{ dietByDate[d.date]=d; });
 
   // Build Oura lookup by date
   const ouraByDate={};
@@ -2621,12 +2623,24 @@ function drawCharts(){
     ouraHistory.days.forEach(d=>{ ouraByDate[d.date]={steps:d.activity?.steps??null, burn:d.activity?.active_cal??null}; });
   }
 
-  // Merge diet + oura rows
-  const last14=slicedDiet.map(d=>({
-    ...d,
-    oura_steps: ouraByDate[d.date]?.steps ?? null,
-    oura_burn:  ouraByDate[d.date]?.burn  ?? null,
-  }));
+  // Build a full date series for the selected range — one entry per calendar day
+  // regardless of whether diet data exists for that day
+  const last14 = [];
+  for(let i=n-1; i>=0; i--){
+    const dt = new Date(Date.now() - i*86400000);
+    const dateStr = dt.toISOString().split('T')[0];
+    const diet = dietByDate[dateStr] || {};
+    const oura = ouraByDate[dateStr] || {};
+    last14.push({
+      date:       dateStr,
+      weight_kg:  diet.weight_kg  ?? null,
+      calories:   diet.calories   ?? null,
+      protein_g:  diet.protein_g  ?? null,
+      water_ml:   diet.water_ml   ?? null,
+      oura_steps: oura.steps      ?? null,
+      oura_burn:  oura.burn       ?? null,
+    });
+  }
 
   // 1 Weight  — fixed 70–80 kg
   drawLineChartWithTrend('chart-weight',  last14, d=>d.weight_kg,   '#FFCC00', TARGETS.goalWeight, 70, 80);
