@@ -1,9 +1,9 @@
 {
   "_meta": {
     "version": 1,
-    "description": "Food analysis knowledge base â grows with every analysed meal",
-    "last_updated": "2026-06-01T09:00:54.782Z",
-    "total_analyses": 1,
+    "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
+    "last_updated": "2026-06-01T10:19:55.800Z",
+    "total_analyses": 2,
     "total_corrections": 1
   },
   "calibrations": {
@@ -40,6 +40,54 @@
         "carbs_g": 3.5,
         "fat_g": 0.1,
         "confidence": 0.75,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Rigatoni pasta (cooked)",
+        "serving": "approximately 180g cooked pasta",
+        "weight_g": 180,
+        "kcal": 252,
+        "protein_g": 9,
+        "carbs_g": 52,
+        "fat_g": 1.4,
+        "confidence": 0.8,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Bolognese/meat ragù sauce",
+        "serving": "approximately 150g sauce with ground meat",
+        "weight_g": 150,
+        "kcal": 188,
+        "protein_g": 12,
+        "carbs_g": 10,
+        "fat_g": 11,
+        "confidence": 0.75,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Mixed leaf salad (undressed)",
+        "serving": "approximately 60g mixed leaves",
+        "weight_g": 60,
+        "kcal": 14,
+        "protein_g": 1.2,
+        "carbs_g": 2,
+        "fat_g": 0.2,
+        "confidence": 0.85,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Olive oil (in sauce/cooking)",
+        "serving": "approximately 1 tablespoon",
+        "weight_g": 14,
+        "kcal": 124,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 14,
+        "confidence": 0.6,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -122,6 +170,63 @@
           }
         ],
         "overall_confidence": 0.75
+      },
+      {
+        "id": 1780309195799,
+        "date": "2026-06-01",
+        "meal_type": "lunch",
+        "user_note": "There is pasta below the salad",
+        "totals": {
+          "kcal": 578,
+          "protein_g": 22.2,
+          "carbs_g": 64,
+          "fat_g": 26.6,
+          "fiber_g": 6,
+          "sugar_g": 6.8
+        },
+        "items": [
+          {
+            "name": "Rigatoni pasta (cooked)",
+            "weight_g": 180,
+            "serving": "approximately 180g cooked pasta",
+            "kcal": 252,
+            "protein_g": 9,
+            "carbs_g": 52,
+            "fat_g": 1.4,
+            "confidence": 0.8
+          },
+          {
+            "name": "Bolognese/meat ragù sauce",
+            "weight_g": 150,
+            "serving": "approximately 150g sauce with ground meat",
+            "kcal": 188,
+            "protein_g": 12,
+            "carbs_g": 10,
+            "fat_g": 11,
+            "confidence": 0.75
+          },
+          {
+            "name": "Mixed leaf salad (undressed)",
+            "weight_g": 60,
+            "serving": "approximately 60g mixed leaves",
+            "kcal": 14,
+            "protein_g": 1.2,
+            "carbs_g": 2,
+            "fat_g": 0.2,
+            "confidence": 0.85
+          },
+          {
+            "name": "Olive oil (in sauce/cooking)",
+            "weight_g": 14,
+            "serving": "approximately 1 tablespoon",
+            "kcal": 124,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 14,
+            "confidence": 0.6
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
