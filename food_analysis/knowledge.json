@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T16:49:23.575Z",
-    "total_analyses": 8,
+    "last_updated": "2026-06-01T16:53:16.041Z",
+    "total_analyses": 9,
     "total_corrections": 2
   },
   "calibrations": {
@@ -152,15 +152,15 @@
       },
       {
         "name": "Cherry tomatoes",
-        "serving": "5 cherry tomatoes (approx 60g)",
-        "weight_g": 60,
-        "kcal": 8,
-        "protein_g": 0.4,
-        "carbs_g": 1.8,
+        "serving": "2 cherry tomatoes (approx 24g)",
+        "weight_g": 24,
+        "kcal": 6,
+        "protein_g": 0.3,
+        "carbs_g": 1.4,
         "fat_g": 0.1,
-        "confidence": 0.9,
+        "confidence": 0.92,
         "last_seen": "2026-06-01",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "Frankfurter/Vienna sausage",
@@ -231,6 +231,30 @@
         "carbs_g": 26,
         "fat_g": 3.4,
         "confidence": 0.98,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "White bread baguette slices",
+        "serving": "2 halves of a small baguette (approx 80g total)",
+        "weight_g": 80,
+        "kcal": 216,
+        "protein_g": 7.2,
+        "carbs_g": 42.4,
+        "fat_g": 1.6,
+        "confidence": 0.82,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Fleischsalat (German meat salad with mayonnaise)",
+        "serving": "generous spread on both slices (approx 70g)",
+        "weight_g": 70,
+        "kcal": 189,
+        "protein_g": 5.6,
+        "carbs_g": 2.8,
+        "fat_g": 17.5,
+        "confidence": 0.78,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -602,6 +626,53 @@
           }
         ],
         "overall_confidence": 0.98
+      },
+      {
+        "id": 1780332796041,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 409,
+          "protein_g": 13,
+          "carbs_g": 46.1,
+          "fat_g": 19.1,
+          "fiber_g": 2.4,
+          "sugar_g": 4.4
+        },
+        "items": [
+          {
+            "name": "White bread baguette slices",
+            "weight_g": 80,
+            "serving": "2 halves of a small baguette (approx 80g total)",
+            "kcal": 216,
+            "protein_g": 7.2,
+            "carbs_g": 42.4,
+            "fat_g": 1.6,
+            "confidence": 0.82
+          },
+          {
+            "name": "Fleischsalat (German meat salad with mayonnaise)",
+            "weight_g": 70,
+            "serving": "generous spread on both slices (approx 70g)",
+            "kcal": 189,
+            "protein_g": 5.6,
+            "carbs_g": 2.8,
+            "fat_g": 17.5,
+            "confidence": 0.78
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 24,
+            "serving": "2 cherry tomatoes (approx 24g)",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 0.9,
+            "fat_g": 0,
+            "confidence": 0.92
+          }
+        ],
+        "overall_confidence": 0.8
       }
     ]
   }
