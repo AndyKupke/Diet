@@ -2645,15 +2645,15 @@ function drawCharts(){
   // 1 Weight  — fixed 70–80 kg
   drawLineChartWithTrend('chart-weight',  last14, d=>d.weight_kg,   '#FFCC00', TARGETS.goalWeight, 70, 80);
   // 2 Steps (Oura) — fixed 0–20 000
-  drawLineChartWithTrend('chart-steps',   last14, d=>d.oura_steps,  '#7aabff', 10000,              0,  20000);
-  // 3 Calorie intake — fixed 1 000–3 000
-  drawLineChartWithTrend('chart-calories',last14, d=>d.calories||0, '#FFCC00', TARGETS.kcal,       1000, 3000);
+  drawLineChartWithTrend('chart-steps',   last14, d=>d.oura_steps,  '#7aabff', 10000,              0,  20000, true);
+  // 3 Calorie intake — fixed 0–3 000
+  drawLineChartWithTrend('chart-calories',last14, d=>d.calories||0, '#FFCC00', TARGETS.kcal,       0, 3000, true);
   // 4 Calorie burn (Oura active kcal) — fixed 0–1 500
-  drawLineChartWithTrend('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null,                0,  1500);
+  drawLineChartWithTrend('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null,                0, 1500, true);
   // 5 Deficit/surplus — fixed ±1 500 kcal
   drawDeficitChart('chart-deficit', last14, 1500);
-  // 6 Protein — fixed 50–250 g
-  drawLineChartWithTrend('chart-protein', last14, d=>d.protein_g||0,'#FFCC00', TARGETS.protein,   50,  250);
+  // 6 Protein — fixed 0–250 g
+  drawLineChartWithTrend('chart-protein', last14, d=>d.protein_g||0,'#FFCC00', TARGETS.protein,    0,  250);
 }
 
 function getThemeColors(){
@@ -2692,7 +2692,7 @@ function linReg(pts){
 
 const PAD={t:16,r:12,b:36,l:48};
 
-function drawLineChartWithTrend(id,data,accessor,color,targetVal,fixedMin,fixedMax){
+function drawLineChartWithTrend(id,data,accessor,color,targetVal,fixedMin,fixedMax,thousandFmt=false){
   const s=setupCanvas(id); if(!s)return;
   const{ctx,W,H}=s;
   const {t,r,b,l}=PAD, cW=W-l-r, cH=H-t-b;
@@ -2715,7 +2715,7 @@ function drawLineChartWithTrend(id,data,accessor,color,targetVal,fixedMin,fixedM
   }
   const xS=i=>l+(i/(data.length-1||1))*cW;
   const yS=v=>t+cH-((v-minV)/(maxV-minV))*cH;
-  drawGrid(ctx,PAD,cW,cH,W,minV,maxV,true,tc);
+  drawGrid(ctx,PAD,cW,cH,W,minV,maxV,thousandFmt?'k':true,tc);
   if(targetVal!=null){
     ctx.strokeStyle=tc.target;ctx.lineWidth=1;ctx.setLineDash([4,4]);
     ctx.beginPath();ctx.moveTo(l,yS(targetVal));ctx.lineTo(W-r,yS(targetVal));ctx.stroke();ctx.setLineDash([]);
@@ -2733,10 +2733,12 @@ function drawLineChartWithTrend(id,data,accessor,color,targetVal,fixedMin,fixedM
   pts.forEach((p,i)=>i===0?ctx.moveTo(xS(p.i),yS(p.v)):ctx.lineTo(xS(p.i),yS(p.v)));ctx.stroke();
   // Dots
   pts.forEach(p=>{ctx.beginPath();ctx.arc(xS(p.i),yS(p.v),3,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();ctx.strokeStyle=tc.bg;ctx.lineWidth=1.5;ctx.stroke();});
-  // Trend line
+  // Trend line (visible in both themes)
   const reg=linReg(pts.map(p=>({x:p.i,y:p.v})));
-  if(reg){
-    ctx.strokeStyle='rgba(255,255,255,0.3)';ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
+  if(reg&&pts.length>=3){
+    const dark=document.documentElement.getAttribute('data-theme')==='dark';
+    ctx.strokeStyle=dark?'rgba(255,255,255,0.5)':'rgba(0,0,0,0.35)';
+    ctx.lineWidth=1.5;ctx.setLineDash([6,4]);
     ctx.beginPath();ctx.moveTo(xS(pts[0].i),yS(reg.at(pts[0].i)));ctx.lineTo(xS(pts[pts.length-1].i),yS(reg.at(pts[pts.length-1].i)));ctx.stroke();ctx.setLineDash([]);
   }
   xLabels(ctx,data,PAD,cW,H,i=>xS(i),tc.axis);
@@ -2818,7 +2820,7 @@ function drawDeficitChart(id,data,fixedAbsMax){
   [-1,-0.5,0,0.5,1].forEach(f=>{
     const y=t+cH/2-f*(cH/2);
     ctx.beginPath();ctx.moveTo(l,y);ctx.lineTo(W-r,y);ctx.stroke();
-    ctx.fillText(Math.round(absMax*f),l-5,y+3);
+    ctx.fillText(Math.round(absMax*f).toLocaleString('en-US'),l-5,y+3);
   });
   // Zero line thicker
   ctx.strokeStyle=tc.axis;ctx.lineWidth=1;
@@ -2855,12 +2857,18 @@ function drawDeficitChart(id,data,fixedAbsMax){
   xLabels(ctx,data,PAD,cW,H,i=>l+i*(cW/data.length)+(cW/data.length)*0.5,tc.axis);
 }
 
-function drawGrid(ctx,PAD,cW,cH,W,minV,maxV,decimals,tc){
+function drawGrid(ctx,PAD,cW,cH,W,minV,maxV,fmt,tc){
+  // fmt: true=decimal, false=integer, 'k'=integer with thousand separator
   ctx.strokeStyle=tc.grid;ctx.lineWidth=1;ctx.font='9px "DM Mono",monospace';ctx.fillStyle=tc.axis;ctx.textAlign='right';
   for(let g=0;g<=4;g++){
     const y=PAD.t+(g/4)*cH;
     ctx.beginPath();ctx.moveTo(PAD.l,y);ctx.lineTo(W-PAD.r,y);ctx.stroke();
-    ctx.fillText(decimals?(maxV-(g/4)*(maxV-minV)).toFixed(1):Math.round(maxV-(g/4)*(maxV-minV)),PAD.l-6,y+3);
+    const v=maxV-(g/4)*(maxV-minV);
+    let label;
+    if(fmt==='k')       label=Math.round(v).toLocaleString('en-US');
+    else if(fmt===true) label=v.toFixed(1);
+    else                label=Math.round(v);
+    ctx.fillText(label,PAD.l-6,y+3);
   }
 }
 // Fixed-scale grid with explicit step size (e.g. 0,500,1000…3000)
