@@ -324,6 +324,8 @@ body {
   color: var(--text-muted); margin-bottom: 16px; transition: color 0.4s ease;
 }
 .chart-canvas { width: 100%; display: block; }
+.chart-card.chart-tall { height: 400px; display: flex; flex-direction: column; }
+.chart-card.chart-tall .chart-canvas { flex: 1; height: 0; }
 
 /* ── KPI tile ───────────────────────────────────────────────────────────── */
 .kpi-tile {
@@ -717,14 +719,14 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
         <div class="chart-card"><div class="chart-title">Active kcal — 14 Days</div><canvas id="chart-oura-kcal" class="chart-canvas" height="120"></canvas></div>
       </div>
     </div>
-    <div class="chart-card" style="margin-bottom:12px;"><div class="chart-title">Weight Trend — Last 30 Days</div><canvas id="chart-weight" class="chart-canvas" height="140"></canvas></div>
+    <div class="chart-card chart-tall" style="margin-bottom:12px;"><div class="chart-title">Weight Trend — Last 30 Days</div><canvas id="chart-weight" class="chart-canvas"></canvas></div>
     <div class="grid-2">
-      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days</div><canvas id="chart-calories" class="chart-canvas" height="140"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Daily Deficit — Last 14 Days</div><canvas id="chart-deficit" class="chart-canvas" height="140"></canvas></div>
+      <div class="chart-card chart-tall"><div class="chart-title">Calorie Intake — Last 14 Days</div><canvas id="chart-calories" class="chart-canvas"></canvas></div>
+      <div class="chart-card chart-tall"><div class="chart-title">Daily Deficit — Last 14 Days</div><canvas id="chart-deficit" class="chart-canvas"></canvas></div>
     </div>
     <div class="grid-2" style="margin-top:12px;">
-      <div class="chart-card"><div class="chart-title">Water Intake — Last 14 Days</div><canvas id="chart-water" class="chart-canvas" height="140"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Protein — Last 14 Days</div><canvas id="chart-protein" class="chart-canvas" height="140"></canvas></div>
+      <div class="chart-card chart-tall"><div class="chart-title">Water Intake — Last 14 Days</div><canvas id="chart-water" class="chart-canvas"></canvas></div>
+      <div class="chart-card chart-tall"><div class="chart-title">Protein — Last 14 Days</div><canvas id="chart-protein" class="chart-canvas"></canvas></div>
     </div>
   </div>
 </div>
@@ -2128,7 +2130,9 @@ function setupCanvas(id){
   const canvas=document.getElementById(id);
   const dpr=window.devicePixelRatio||1;
   const cssW=canvas.parentElement.clientWidth-44;
-  const cssH=parseInt(canvas.getAttribute('height'));
+  // Use explicit height attribute if set, otherwise fill parent (for chart-tall cards)
+  const attrH=parseInt(canvas.getAttribute('height'));
+  const cssH=attrH>0 ? attrH : (canvas.parentElement.clientHeight - 50) || 340;
   canvas.width=cssW*dpr;canvas.height=cssH*dpr;
   canvas.style.width=cssW+'px';canvas.style.height=cssH+'px';
   const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
