@@ -324,8 +324,7 @@ body {
   color: var(--text-muted); margin-bottom: 16px; transition: color 0.4s ease;
 }
 .chart-canvas { width: 100%; display: block; }
-.chart-card.chart-tall { height: 400px; display: flex; flex-direction: column; }
-.chart-card.chart-tall .chart-canvas { flex: 1; height: 0; }
+.chart-card.chart-tall { height: 400px; overflow: hidden; }
 
 /* ── KPI tile ───────────────────────────────────────────────────────────── */
 .kpi-tile {
@@ -2284,9 +2283,10 @@ function setupCanvas(id){
   const canvas=document.getElementById(id);
   const dpr=window.devicePixelRatio||1;
   const cssW=canvas.parentElement.clientWidth-44;
-  // Use explicit height attribute if set, otherwise fill parent (for chart-tall cards)
+  // chart-tall cards are 400px; subtract padding (36px) + title row (~34px) = 330px for canvas
   const attrH=parseInt(canvas.getAttribute('height'));
-  const cssH=attrH>0 ? attrH : (canvas.parentElement.clientHeight - 50) || 340;
+  const isTall=canvas.parentElement.classList.contains('chart-tall');
+  const cssH=attrH>0 ? attrH : isTall ? 330 : 160;
   canvas.width=cssW*dpr;canvas.height=cssH*dpr;
   canvas.style.width=cssW+'px';canvas.style.height=cssH+'px';
   const ctx=canvas.getContext('2d');ctx.scale(dpr,dpr);
