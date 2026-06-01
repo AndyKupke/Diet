@@ -314,7 +314,7 @@ body {
 .chart-card {
   background: var(--surface); border: 1px solid var(--divider);
   border-radius: var(--radius); padding: 20px 22px 16px;
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--card-shadow); max-height: 400px; overflow: hidden;
   transition: border-color 0.2s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
 .chart-card:hover { border-color: var(--border-hover); }
@@ -696,12 +696,12 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
     <!-- Oura today KPI strip removed — Oura data shown in Daily Summary tab -->
     <!-- 6 main charts: 3 columns × 2 rows -->
     <div class="grid-2 chart-grid">
-      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="200"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas" height="200"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas" height="200"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas" height="200"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas" height="200"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Protein — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas" height="200"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Protein — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas" height="340"></canvas></div>
     </div>
   </div>
 </div>
@@ -1009,7 +1009,9 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <button class="btn btn-sm" onclick="openSuppModal(null)">＋ Add Supplement</button>
     </div>
     <div class="panel" style="padding:0;overflow:hidden;">
-      <table id="supp-stack-table" style="width:100%;border-collapse:collapse;"></table>
+      <div style="overflow-x:auto;">
+      <table id="supp-stack-table" style="width:100%;border-collapse:collapse;table-layout:auto;"></table>
+      </div>
     </div>
   </div>
 </div>
@@ -3246,22 +3248,24 @@ function renderSuppStack() {
   const pencilSVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;pointer-events:none;"><path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>`;
   const trashSVG  = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:13px;height:13px;pointer-events:none;"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>`;
 
-  const head = `<thead><tr>${th('#')}${th('Brand')}${th('Supplement')}${th('Content')}${th('Daily Dose')}${th('Link')}${th('')}</tr></thead>`;
+  const head = `<thead><tr>${th('Supplement')}${th('Brand')}${th('Content')}${th('Daily Dose')}${th('Link')}${th('')}</tr></thead>`;
 
-  const tdC = 'padding:9px 12px;border-bottom:1px solid var(--divider);font-size:12px;vertical-align:middle;';
-  const tdM = tdC + 'font-family:\'DM Mono\',monospace;font-size:11px;color:var(--text-muted);';
+  // Mobile-friendly: cells wrap, no fixed widths, name column gets most space
+  const tdBase = 'padding:8px 10px;border-bottom:1px solid var(--divider);vertical-align:middle;';
+  const tdName = tdBase + 'font-size:12px;word-break:break-word;min-width:0;';
+  const tdMono = tdBase + 'font-family:\'DM Mono\',monospace;font-size:10px;color:var(--text-muted);white-space:nowrap;';
+  const tdAct  = tdBase + 'white-space:nowrap;width:64px;';
 
-  const rows = suppStack.map((s, i) => `
+  const rows = suppStack.map(s => `
     <tr>
-      <td style="${tdM}">${i+1}</td>
-      <td style="${tdC}">${esc(s.brand)}</td>
-      <td style="${tdC}font-weight:400;">${esc(s.name)}</td>
-      <td style="${tdM}">${esc(s.content)}</td>
-      <td style="${tdM}">${esc(s.dose)}</td>
-      <td style="${tdC}">
-        ${s.link ? `<a href="${esc(s.link)}" target="_blank" rel="noopener" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);text-decoration:none;" title="${esc(s.link)}">🔗 Buy</a>` : '<span style="font-family:\'DM Mono\',monospace;font-size:9px;color:var(--text-muted);">—</span>'}
+      <td style="${tdName}">${esc(s.name)}</td>
+      <td style="${tdBase}font-size:11px;color:var(--text-muted);word-break:break-word;min-width:0;">${esc(s.brand)}</td>
+      <td style="${tdMono}">${esc(s.content)}</td>
+      <td style="${tdMono}">${esc(s.dose)}</td>
+      <td style="${tdBase}white-space:nowrap;">
+        ${s.link ? `<a href="${esc(s.link)}" target="_blank" rel="noopener" style="font-family:'DM Mono',monospace;font-size:10px;color:var(--yellow);text-decoration:none;">🔗</a>` : '<span style="color:var(--text-muted);font-size:9px;">—</span>'}
       </td>
-      <td style="${tdC}white-space:nowrap;">
+      <td style="${tdAct}">
         <div style="display:flex;gap:4px;align-items:center;">
           <button class="btn-icon" onclick="openSuppModal('${s.id}')" title="Edit" style="padding:5px;">${pencilSVG}</button>
           <button class="btn-icon" onclick="deleteSuppStackItem('${s.id}')" title="Delete" style="padding:5px;color:var(--red);">${trashSVG}</button>
@@ -3269,7 +3273,7 @@ function renderSuppStack() {
       </td>
     </tr>`).join('');
 
-  tbl.innerHTML = head + `<tbody>${rows || '<tr><td colspan="7" style="padding:16px 12px;font-family:\'DM Mono\',monospace;font-size:10px;color:var(--text-muted);">No supplements yet.</td></tr>'}</tbody>`;
+  tbl.innerHTML = head + `<tbody>${rows || '<tr><td colspan="6" style="padding:16px 12px;font-family:\'DM Mono\',monospace;font-size:10px;color:var(--text-muted);">No supplements yet.</td></tr>'}</tbody>`;
 }
 
 function openSuppModal(id) {
