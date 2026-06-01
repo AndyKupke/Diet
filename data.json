@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-01",
-    "calories": 125,
-    "protein_g": 23.1,
-    "carbs_g": 4.9,
-    "fat_g": 1.5,
+    "calories": 703,
+    "protein_g": 45.3,
+    "carbs_g": 68.9,
+    "fat_g": 28.1,
     "water_ml": 0,
     "weight_kg": 76,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 0.1,
         "time": "2026-06-01T09:01:00.197Z",
         "_evtId": "evt_1780304460197_cbyoc"
+      },
+      {
+        "name": "Rigatoni pasta (cooked), Bolognese/meat ragù sauce, Mixed leaf salad (undressed), Olive oil (in sauce/cooking)",
+        "kcal": 578,
+        "protein_g": 22.2,
+        "carbs_g": 64,
+        "fat_g": 26.6,
+        "time": "2026-06-01T10:20:33.411Z",
+        "_evtId": "evt_1780309233411_mjvyz"
       }
     ],
     "exercise": [],
@@ -116,6 +125,17 @@
       "carbs_g": 1.4,
       "fat_g": 1.4,
       "ts": "2026-06-01T05:14:43.166Z"
+    },
+    {
+      "id": "evt_1780309233411_mjvyz",
+      "type": "meal",
+      "date": "2026-06-01",
+      "name": "Rigatoni pasta (cooked), Bolognese/meat ragù sauce, Mixed leaf salad (undressed), Olive oil (in sauce/cooking)",
+      "kcal": 578,
+      "protein_g": 22.2,
+      "carbs_g": 64,
+      "fat_g": 26.6,
+      "ts": "2026-06-01T10:20:33.412Z"
     }
   ]
 }
