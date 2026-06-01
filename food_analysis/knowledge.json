@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T16:57:02.398Z",
-    "total_analyses": 11,
+    "last_updated": "2026-06-01T17:00:20.165Z",
+    "total_analyses": 12,
     "total_corrections": 3
   },
   "calibrations": {
@@ -323,6 +323,30 @@
         "carbs_g": 1.5,
         "fat_g": 14,
         "confidence": 0.72,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Leberkäse/Fleischkäse (German meat loaf slice)",
+        "serving": "1 thick round slice (approx 80g)",
+        "weight_g": 80,
+        "kcal": 248,
+        "protein_g": 11.2,
+        "carbs_g": 1.6,
+        "fat_g": 22.4,
+        "confidence": 0.75,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Mayonnaise/Remoulade topping",
+        "serving": "generous dollop (approx 15g)",
+        "weight_g": 15,
+        "kcal": 104,
+        "protein_g": 0.2,
+        "carbs_g": 0.5,
+        "fat_g": 11.5,
+        "confidence": 0.7,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -822,6 +846,43 @@
             "carbs_g": 1.5,
             "fat_g": 14,
             "confidence": 0.72
+          }
+        ],
+        "overall_confidence": 0.73
+      },
+      {
+        "id": 1780333220163,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 352,
+          "protein_g": 11.4,
+          "carbs_g": 2.1,
+          "fat_g": 33.9,
+          "fiber_g": 0,
+          "sugar_g": 0.8
+        },
+        "items": [
+          {
+            "name": "Leberkäse/Fleischkäse (German meat loaf slice)",
+            "weight_g": 80,
+            "serving": "1 thick round slice (approx 80g)",
+            "kcal": 248,
+            "protein_g": 11.2,
+            "carbs_g": 1.6,
+            "fat_g": 22.4,
+            "confidence": 0.75
+          },
+          {
+            "name": "Mayonnaise/Remoulade topping",
+            "weight_g": 15,
+            "serving": "generous dollop (approx 15g)",
+            "kcal": 104,
+            "protein_g": 0.2,
+            "carbs_g": 0.5,
+            "fat_g": 11.5,
+            "confidence": 0.7
           }
         ],
         "overall_confidence": 0.73
