@@ -1232,6 +1232,12 @@ function init() {
   renderHistoryTable();
   setHistRange(30); // default range
   window.addEventListener('load', () => {
+    // Pull & merge from GitHub on every startup so all devices stay in sync
+    syncFromGitHub().then(() => {
+      renderAll();
+      renderHistoryTable();
+      if (document.getElementById('tab-dashboard').classList.contains('active')) drawCharts();
+    });
     // Always attempt Oura fetch on load (auto-decides if refresh needed)
     loadOuraIfNeeded().then(data => {
       if (!data) return;
@@ -1374,6 +1380,87 @@ function autoSyncToGitHub() {
   const el = document.getElementById('sync-status-inline');
   if (el) el.textContent = '…saving';
 }
+/* ── Pull from GitHub and merge into local state ──────────────────────── */
+async function syncFromGitHub() {
+  const {githubPat, githubRepo, githubBranch} = cfg;
+  if (!githubPat || !githubRepo) return;
+
+  const el = document.getElementById('sync-status-inline');
+  if (el) el.textContent = '↓ pulling…';
+
+  try {
+    const branch = githubBranch || 'main';
+    const url = `https://raw.githubusercontent.com/${githubRepo}/${branch}/data.json?_=${Date.now()}`;
+    const r = await fetch(url);
+    if (!r.ok) { if (el) el.textContent = ''; return; } // no file yet
+    const remote = await r.json();
+
+    let changed = false;
+
+    // ── Merge events (union by id) ──────────────────────────────────────
+    if (Array.isArray(remote.events)) {
+      const localIds = new Set(events.map(e => e.id).filter(Boolean));
+      const incoming = remote.events.filter(e => e.id && !localIds.has(e.id));
+      if (incoming.length) {
+        events = [...events, ...incoming]
+          .sort((a,b) => (a.date||'').localeCompare(b.date||'')||((a.ts||'').localeCompare(b.ts||'')));
+        saveEvents();
+        changed = true;
+      }
+    }
+
+    // ── Merge history (union by date) ───────────────────────────────────
+    if (Array.isArray(remote.history)) {
+      const localDates = new Set(history.map(h => h.date));
+      const incoming = remote.history.filter(h => h.date && !localDates.has(h.date));
+      if (incoming.length) {
+        history = [...history, ...incoming]
+          .sort((a,b) => a.date.localeCompare(b.date));
+        saveHistory();
+        changed = true;
+      }
+    }
+
+    // ── Merge today's state ─────────────────────────────────────────────
+    const remoteToday = remote.today;
+    if (remoteToday && remoteToday.date === todayISO()) {
+      // Meals: union by _evtId
+      const localEvtIds = new Set((state.meals||[]).map(m=>m._evtId).filter(Boolean));
+      const newMeals = (remoteToday.meals||[]).filter(m => !m._evtId || !localEvtIds.has(m._evtId));
+      if (newMeals.length) {
+        state.meals = [...(state.meals||[]), ...newMeals];
+        recalc(); changed = true;
+      }
+      // Exercise: union by _evtId
+      const localExIds = new Set((state.exercise||[]).map(x=>x._evtId).filter(Boolean));
+      const newEx = (remoteToday.exercise||[]).filter(x => !x._evtId || !localExIds.has(x._evtId));
+      if (newEx.length) {
+        state.exercise = [...(state.exercise||[]), ...newEx];
+        changed = true;
+      }
+      // Water: take the higher value
+      if ((remoteToday.water_ml||0) > (state.water_ml||0)) {
+        state.water_ml = remoteToday.water_ml; changed = true;
+      }
+      // Weight: use remote if local is missing
+      if (!state.weight_kg && remoteToday.weight_kg) {
+        state.weight_kg = remoteToday.weight_kg; changed = true;
+      }
+      if (changed) saveState();
+    }
+
+    const t = new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+    if (el) el.textContent = changed ? `✓ merged ${t}` : `✓ up to date ${t}`;
+
+    // Push merged result back so remote is also complete
+    if (changed) autoSyncToGitHub();
+
+  } catch(e) {
+    console.warn('syncFromGitHub failed', e);
+    if (el) el.textContent = '';
+  }
+}
+
 async function _doAutoSync() {
   const {githubPat, githubRepo, githubBranch} = cfg;
   if (!githubPat || !githubRepo) return;
