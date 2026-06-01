@@ -314,16 +314,18 @@ body {
 .chart-card {
   background: var(--surface); border: 1px solid var(--divider);
   border-radius: var(--radius); padding: 20px 22px 16px;
-  box-shadow: var(--card-shadow); max-height: 400px; overflow: hidden;
+  box-shadow: var(--card-shadow);
+  height: 300px; display: flex; flex-direction: column; overflow: hidden;
   transition: border-color 0.2s ease, background-color 0.4s ease, box-shadow 0.4s ease;
 }
 .chart-card:hover { border-color: var(--border-hover); }
 .chart-title {
   font-family: 'DM Mono', monospace; font-size: 9px;
   letter-spacing: 0.14em; text-transform: uppercase;
-  color: var(--text-muted); margin-bottom: 16px; transition: color 0.4s ease;
+  color: var(--text-muted); margin-bottom: 12px; flex-shrink: 0;
+  transition: color 0.4s ease;
 }
-.chart-canvas { display: block; }
+.chart-canvas { display: block; flex: 1; min-height: 0; width: 100%; }
 
 /* ── KPI tile ───────────────────────────────────────────────────────────── */
 .kpi-tile {
@@ -696,12 +698,12 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
     <!-- Oura today KPI strip removed — Oura data shown in Daily Summary tab -->
     <!-- 6 main charts: 3 columns × 2 rows -->
     <div class="grid-2 chart-grid">
-      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas" height="340"></canvas></div>
-      <div class="chart-card"><div class="chart-title">Protein — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas" height="340"></canvas></div>
+      <div class="chart-card"><div class="chart-title">Weight — Last 14 Days &amp; Trend</div><canvas id="chart-weight" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title">Steps — Last 14 Days &amp; Trend</div><canvas id="chart-steps" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Intake — Last 14 Days &amp; Trend</div><canvas id="chart-calories" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title">Calorie Burn (Oura) — Last 14 Days &amp; Trend</div><canvas id="chart-burn" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title">Deficit / Surplus — Last 14 Days &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title">Protein — Last 14 Days &amp; Trend</div><canvas id="chart-protein" class="chart-canvas"</canvas></div>
     </div>
   </div>
 </div>
@@ -2627,8 +2629,8 @@ function setupCanvas(id){
   const dpr=window.devicePixelRatio||1;
   // Width: fill the card minus its horizontal padding (22px each side)
   const cssW=Math.max(100, canvas.parentElement.clientWidth-44);
-  // Height: always read from the height attribute — set it in HTML, don't compute
-  const cssH=parseInt(canvas.getAttribute('height'))||200;
+  // Height: use the canvas's actual rendered height from flex layout
+  const cssH=Math.max(80, canvas.clientHeight||canvas.parentElement.clientHeight-50);
   canvas.width=cssW*dpr; canvas.height=cssH*dpr;
   canvas.style.width=cssW+'px'; canvas.style.height=cssH+'px';
   const ctx=canvas.getContext('2d'); ctx.scale(dpr,dpr);
