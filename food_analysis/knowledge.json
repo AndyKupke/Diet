@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T16:43:35.882Z",
-    "total_analyses": 6,
+    "last_updated": "2026-06-01T16:48:23.631Z",
+    "total_analyses": 7,
     "total_corrections": 2
   },
   "calibrations": {
@@ -152,15 +152,15 @@
       },
       {
         "name": "Cherry tomatoes",
-        "serving": "2 cherry tomatoes (approx 30g)",
-        "weight_g": 30,
-        "kcal": 5,
-        "protein_g": 0.3,
-        "carbs_g": 1.2,
+        "serving": "5 cherry tomatoes (approx 60g)",
+        "weight_g": 60,
+        "kcal": 8,
+        "protein_g": 0.4,
+        "carbs_g": 1.8,
         "fat_g": 0.1,
         "confidence": 0.9,
         "last_seen": "2026-06-01",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Frankfurter/Vienna sausage",
@@ -194,6 +194,30 @@
         "protein_g": 0.3,
         "carbs_g": 3.5,
         "fat_g": 0.1,
+        "confidence": 0.82,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Whole grain seeded bread",
+        "serving": "1 slice (approx 55g)",
+        "weight_g": 55,
+        "kcal": 132,
+        "protein_g": 5.5,
+        "carbs_g": 20,
+        "fat_g": 3.3,
+        "confidence": 0.85,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Prosciutto/dry-cured ham",
+        "serving": "2 thin slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 69,
+        "protein_g": 7.5,
+        "carbs_g": 0.3,
+        "fat_g": 4.2,
         "confidence": 0.82,
         "last_seen": "2026-06-01",
         "seen_count": 1
@@ -492,6 +516,53 @@
           }
         ],
         "overall_confidence": 0.88
+      },
+      {
+        "id": 1780332503630,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 212,
+          "protein_g": 13.5,
+          "carbs_g": 22.7,
+          "fat_g": 7.6,
+          "fiber_g": 4.7,
+          "sugar_g": 3.3
+        },
+        "items": [
+          {
+            "name": "Whole grain seeded bread",
+            "weight_g": 55,
+            "serving": "1 slice (approx 55g)",
+            "kcal": 132,
+            "protein_g": 5.5,
+            "carbs_g": 20,
+            "fat_g": 3.3,
+            "confidence": 0.85
+          },
+          {
+            "name": "Prosciutto/dry-cured ham",
+            "weight_g": 30,
+            "serving": "2 thin slices (approx 30g)",
+            "kcal": 69,
+            "protein_g": 7.5,
+            "carbs_g": 0.3,
+            "fat_g": 4.2,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 60,
+            "serving": "5 cherry tomatoes (approx 60g)",
+            "kcal": 11,
+            "protein_g": 0.5,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
