@@ -2602,15 +2602,15 @@ function drawCharts(){
   // 1 Weight  — fixed 70–80 kg
   drawLineChartWithTrend('chart-weight',  last14, d=>d.weight_kg,   '#FFCC00', TARGETS.goalWeight, 70, 80);
   // 2 Steps (Oura) — fixed 0–20 000
-  drawBarChartWithTrend ('chart-steps',   last14, d=>d.oura_steps,  '#7aabff', 10000,              0,  20000);
+  drawLineChartWithTrend('chart-steps',   last14, d=>d.oura_steps,  '#7aabff', 10000,              0,  20000);
   // 3 Calorie intake — fixed 1 000–3 000
-  drawBarChartWithTrend ('chart-calories',last14, d=>d.calories||0, '#FFCC00', TARGETS.kcal,       1000, 3000);
+  drawLineChartWithTrend('chart-calories',last14, d=>d.calories||0, '#FFCC00', TARGETS.kcal,       1000, 3000);
   // 4 Calorie burn (Oura active kcal) — fixed 0–1 500
-  drawBarChartWithTrend ('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null,                0,  1500);
+  drawLineChartWithTrend('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null,                0,  1500);
   // 5 Deficit/surplus — fixed ±1 500 kcal
   drawDeficitChart('chart-deficit', last14, 1500);
   // 6 Protein — fixed 50–250 g
-  drawBarChartWithTrend ('chart-protein', last14, d=>d.protein_g||0,'#FFCC00', TARGETS.protein,   50,  250);
+  drawLineChartWithTrend('chart-protein', last14, d=>d.protein_g||0,'#FFCC00', TARGETS.protein,   50,  250);
 }
 
 function getThemeColors(){
