@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T16:48:23.631Z",
-    "total_analyses": 7,
+    "last_updated": "2026-06-01T16:49:23.575Z",
+    "total_analyses": 8,
     "total_corrections": 2
   },
   "calibrations": {
@@ -219,6 +219,18 @@
         "carbs_g": 0.3,
         "fat_g": 4.2,
         "confidence": 0.82,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Tuna Onigiri (Reiszubereitung mit Thunfisch)",
+        "serving": "1 portion (100g as per packaging)",
+        "weight_g": 100,
+        "kcal": 161,
+        "protein_g": 5.8,
+        "carbs_g": 26,
+        "fat_g": 3.4,
+        "confidence": 0.98,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -563,6 +575,33 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780332563575,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 161,
+          "protein_g": 5.8,
+          "carbs_g": 26,
+          "fat_g": 3.4,
+          "fiber_g": 0.5,
+          "sugar_g": 6.5
+        },
+        "items": [
+          {
+            "name": "Tuna Onigiri (Reiszubereitung mit Thunfisch)",
+            "weight_g": 100,
+            "serving": "1 portion (100g as per packaging)",
+            "kcal": 161,
+            "protein_g": 5.8,
+            "carbs_g": 26,
+            "fat_g": 3.4,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
       }
     ]
   }
