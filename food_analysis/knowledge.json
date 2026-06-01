@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T17:00:20.165Z",
-    "total_analyses": 12,
+    "last_updated": "2026-06-01T17:05:57.609Z",
+    "total_analyses": 13,
     "total_corrections": 3
   },
   "calibrations": {
@@ -347,6 +347,18 @@
         "carbs_g": 0.5,
         "fat_g": 11.5,
         "confidence": 0.7,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Multi-seed/grain bread slice",
+        "serving": "1 thick slice (approx 45g)",
+        "weight_g": 45,
+        "kcal": 125,
+        "protein_g": 5,
+        "carbs_g": 20,
+        "fat_g": 2.5,
+        "confidence": 0.82,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -886,6 +898,33 @@
           }
         ],
         "overall_confidence": 0.73
+      },
+      {
+        "id": 1780333557608,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 125,
+          "protein_g": 5,
+          "carbs_g": 20,
+          "fat_g": 2.5,
+          "fiber_g": 3,
+          "sugar_g": 1.5
+        },
+        "items": [
+          {
+            "name": "Multi-seed/grain bread slice",
+            "weight_g": 45,
+            "serving": "1 thick slice (approx 45g)",
+            "kcal": 125,
+            "protein_g": 5,
+            "carbs_g": 20,
+            "fat_g": 2.5,
+            "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
