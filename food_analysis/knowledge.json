@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T16:53:16.041Z",
-    "total_analyses": 9,
+    "last_updated": "2026-06-01T16:55:27.992Z",
+    "total_analyses": 10,
     "total_corrections": 2
   },
   "calibrations": {
@@ -255,6 +255,42 @@
         "carbs_g": 2.8,
         "fat_g": 17.5,
         "confidence": 0.78,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "White bread roll (Brötchen/Semmel)",
+        "serving": "2 halves of bread rolls (approx 90g total)",
+        "weight_g": 90,
+        "kcal": 243,
+        "protein_g": 7.6,
+        "carbs_g": 47.7,
+        "fat_g": 1.8,
+        "confidence": 0.82,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced Gouda/Emmental-style cheese",
+        "serving": "6-7 thin slices (approx 55g total)",
+        "weight_g": 55,
+        "kcal": 198,
+        "protein_g": 13.8,
+        "carbs_g": 0.6,
+        "fat_g": 15.7,
+        "confidence": 0.8,
+        "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Butter (spread on bread)",
+        "serving": "Light spread on rolls (approx 10g)",
+        "weight_g": 10,
+        "kcal": 72,
+        "protein_g": 0.1,
+        "carbs_g": 0,
+        "fat_g": 8.1,
+        "confidence": 0.65,
         "last_seen": "2026-06-01",
         "seen_count": 1
       }
@@ -673,6 +709,53 @@
           }
         ],
         "overall_confidence": 0.8
+      },
+      {
+        "id": 1780332927990,
+        "date": "2026-06-01",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 513,
+          "protein_g": 21.5,
+          "carbs_g": 48.3,
+          "fat_g": 25.6,
+          "fiber_g": 2.3,
+          "sugar_g": 3
+        },
+        "items": [
+          {
+            "name": "White bread roll (Brötchen/Semmel)",
+            "weight_g": 90,
+            "serving": "2 halves of bread rolls (approx 90g total)",
+            "kcal": 243,
+            "protein_g": 7.6,
+            "carbs_g": 47.7,
+            "fat_g": 1.8,
+            "confidence": 0.82
+          },
+          {
+            "name": "Sliced Gouda/Emmental-style cheese",
+            "weight_g": 55,
+            "serving": "6-7 thin slices (approx 55g total)",
+            "kcal": 198,
+            "protein_g": 13.8,
+            "carbs_g": 0.6,
+            "fat_g": 15.7,
+            "confidence": 0.8
+          },
+          {
+            "name": "Butter (spread on bread)",
+            "weight_g": 10,
+            "serving": "Light spread on rolls (approx 10g)",
+            "kcal": 72,
+            "protein_g": 0.1,
+            "carbs_g": 0,
+            "fat_g": 8.1,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
