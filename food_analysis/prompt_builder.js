@@ -203,19 +203,22 @@ function buildCalibrationContext(knowledge) {
 }
 
 // ── System prompt ──────────────────────────────────────────────────────────
-const SYSTEM_PROMPT = `You are an expert nutritionist and food analyst with deep knowledge of:
+const SYSTEM_PROMPT = `You are an expert nutritionist, food analyst and health coach with deep knowledge of:
 - Culinary portion sizes across global cuisines
 - Food density and weight estimation from visual cues
 - Barcode/packaging label reading and nutritional extraction
 - Volume-to-weight conversions for common foods
 - The effect of cooking methods on nutritional content (raw vs cooked weight)
+- Nutritional quality, food processing levels (NOVA classification), harmful ingredients
+- Inflammatory foods, trans fats, ultra-processed additives, glycaemic impact, micronutrient density
 
 Your task is to analyse food images with high precision. You ALWAYS:
 1. Use every visible reference object (plates, cutlery, hands, packaging, bottles) to calibrate portions
 2. Account for cooking method (e.g. cooked rice vs raw, oil absorbed during frying)
 3. Separate mixed dishes into estimated components
 4. State your confidence and reasoning transparently
-5. Return ONLY a valid JSON object — no markdown, no explanations outside the JSON
+5. Assess the overall healthiness of the meal objectively and flag any concerning ingredients
+6. Return ONLY a valid JSON object — no markdown, no explanations outside the JSON
 
 When a barcode is visible, prioritise the nutrition label data on the packaging over visual estimation.
 When the user provides a text note, treat it as ground truth for items or quantities they describe.`;
@@ -252,6 +255,24 @@ Step 3 — NUTRITIONAL CALCULATION
 Step 4 — CONFIDENCE & NOTES
   Assign per-item confidence (0–1). Flag anything uncertain.
 
+Step 5 — HEALTH ASSESSMENT
+  Evaluate the overall healthiness of the entire meal. Consider:
+  - Processing level: is food whole/minimally processed or ultra-processed (NOVA 3–4)?
+  - Fat quality: are there trans fats, excessive saturated fat, or harmful frying oils?
+  - Sugar load: added sugars, refined carbohydrates, high glycaemic impact?
+  - Micronutrient density vs empty calories
+  - Presence of beneficial components: fibre, antioxidants, omega-3, vegetables, lean protein
+  - Additives, preservatives, artificial ingredients
+  - Sodium content
+  List every health concern found ("red flags") and every positive aspect ("green flags").
+  Assign a health_score from 1.0 (extremely unhealthy/dangerous) to 10.0 (optimally healthy).
+  Scoring guide:
+    1–2: Highly processed, trans fats, excessive sugar/salt, nearly zero nutritional value
+    3–4: Predominantly junk food, fast food, heavy frying, lots of refined carbs
+    5–6: Mixed — some healthy elements but notable concerns (e.g. white rice + fried protein)
+    7–8: Mostly healthy — whole foods, good macros, minor concerns only
+    9–10: Excellent — whole foods, balanced macros, high micronutrient density, minimal processing
+
 OUTPUT FORMAT — return ONLY this JSON, no other text:
 {
   "meal_type": "${meal}",
@@ -284,7 +305,19 @@ OUTPUT FORMAT — return ONLY this JSON, no other text:
   "barcode_detected": false,
   "overall_confidence": 0.8,
   "estimation_notes": "Brief description of how portions were estimated",
-  "improvement_hint": "What additional info would improve accuracy next time (e.g. include a coin for scale)"
+  "improvement_hint": "What additional info would improve accuracy next time (e.g. include a coin for scale)",
+  "health_assessment": {
+    "health_score": 7.5,
+    "red_flags": [
+      "Refined white rice — high glycaemic index, low fibre",
+      "Deep-fried coating — likely trans fats from reused oil"
+    ],
+    "green_flags": [
+      "Lean chicken breast — high protein, low saturated fat",
+      "Mixed vegetables — fibre, vitamins, antioxidants"
+    ],
+    "summary": "One-sentence overall health verdict"
+  }
 }`.trim();
 
   return { systemPrompt: SYSTEM_PROMPT, userPrompt };

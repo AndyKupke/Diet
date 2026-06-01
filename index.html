@@ -846,6 +846,8 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div id="analysis-detail" style="display:none;background:rgba(255,204,0,0.04);border:1px solid var(--divider-y);border-radius:var(--radius);padding:14px 16px;margin-bottom:14px;">
         <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--yellow);margin-bottom:10px;">Analysis breakdown</div>
         <div id="analysis-items"></div>
+        <!-- Health assessment -->
+        <div id="analysis-health" style="display:none;margin-top:14px;border-top:1px solid var(--divider-y);padding-top:12px;"></div>
         <div style="display:flex;gap:16px;margin-top:10px;flex-wrap:wrap;">
           <span id="analysis-confidence" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.1em;color:var(--text-muted);"></span>
           <span id="analysis-tip" style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.08em;color:var(--text-muted);font-style:italic;"></span>
@@ -1814,6 +1816,7 @@ function clearMealForm(){
   document.getElementById('photo-zone').style.display='block';
   document.getElementById('photo-context-row').style.display='none';
   document.getElementById('analysis-detail').style.display='none';
+  document.getElementById('analysis-health').style.display='none';
   _lastAnalysis = null;
 }
 function recalc(){
@@ -2135,6 +2138,47 @@ async function analysePhoto() {
     document.getElementById('analysis-confidence').innerHTML =
       `Confidence: <strong style="color:${confColor}">${conf}%</strong> · ${esc(parsed.estimation_notes||'')}`;
     document.getElementById('analysis-tip').textContent = parsed.improvement_hint || '';
+
+    // ── Health Assessment ─────────────────────────────────────────────────
+    const ha = parsed.health_assessment;
+    const healthEl = document.getElementById('analysis-health');
+    if (ha && ha.health_score != null) {
+      const score = parseFloat(ha.health_score);
+      // Color gradient: 1=red, 5=yellow, 8=green, 10=bright green
+      const scoreColor = score >= 8 ? '#4cca8a' : score >= 6 ? '#FFCC00' : score >= 4 ? '#ff9f43' : '#e74c3c';
+      const scoreBar   = Math.round((score / 10) * 100);
+      const redFlags   = (ha.red_flags   || []);
+      const greenFlags = (ha.green_flags || []);
+      healthEl.innerHTML = `
+        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px;">Health Assessment</div>
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:12px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="font-size:28px;font-weight:600;color:${scoreColor};font-family:'DM Mono',monospace;line-height:1;">${score.toFixed(1)}</span>
+            <span style="font-size:11px;color:var(--text-muted);font-family:'DM Mono',monospace;">/10</span>
+          </div>
+          <div style="flex:1;min-width:120px;">
+            <div style="height:6px;background:var(--divider);border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:${scoreBar}%;background:${scoreColor};border-radius:3px;transition:width 0.6s ease;"></div>
+            </div>
+            ${ha.summary ? `<div style="font-size:11px;color:var(--text-muted);margin-top:6px;line-height:1.5;">${esc(ha.summary)}</div>` : ''}
+          </div>
+        </div>
+        ${redFlags.length ? `
+        <div style="margin-bottom:8px;">
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#e74c3c;margin-bottom:5px;">⚠ Concerns</div>
+          ${redFlags.map(f=>`<div style="font-size:11px;color:var(--text);padding:2px 0 2px 10px;border-left:2px solid #e74c3c;margin-bottom:3px;">${esc(f)}</div>`).join('')}
+        </div>` : ''}
+        ${greenFlags.length ? `
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:8px;letter-spacing:0.12em;text-transform:uppercase;color:#4cca8a;margin-bottom:5px;">✓ Positives</div>
+          ${greenFlags.map(f=>`<div style="font-size:11px;color:var(--text);padding:2px 0 2px 10px;border-left:2px solid #4cca8a;margin-bottom:3px;">${esc(f)}</div>`).join('')}
+        </div>` : ''}
+      `;
+      healthEl.style.display = 'block';
+    } else {
+      healthEl.style.display = 'none';
+    }
+
     detailEl.style.display = 'block';
 
     // ── Learn: update knowledge base asynchronously ───────────────────────
