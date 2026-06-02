@@ -1660,17 +1660,21 @@ function allRows() {
     if (patch.water_ml)  { d.water_ml  += patch.water_ml; }
     if (patch.weight_kg) { d.weight_kg  = patch.weight_kg; }
   };
-  // Legacy history entries (daily snapshots from old system)
-  history.forEach(h => {
-    if (h.date === todayISO()) return;
-    if (!byDate[h.date]) byDate[h.date] = {...h};
-  });
-  // Events (per-item log)
+  // Events (per-item log) — process first so we know which dates have event data
+  const datesWithEvents = new Set();
   events.forEach(e => {
     if (e.date === todayISO()) return;
+    datesWithEvents.add(e.date);
     if (e.type==='meal')    add(e.date, {kcal:e.kcal||0, protein_g:e.protein_g||0, carbs_g:e.carbs_g||0, fat_g:e.fat_g||0});
     if (e.type==='water')   add(e.date, {water_ml:e.water_ml||0});
     if (e.type==='weight')  add(e.date, {weight_kg:e.weight_kg});
+  });
+  // Legacy history entries (daily snapshots) — only used for dates with no events,
+  // otherwise the snapshot total and the individual events would both be counted
+  history.forEach(h => {
+    if (h.date === todayISO()) return;
+    if (datesWithEvents.has(h.date)) return;   // events are the source of truth
+    if (!byDate[h.date]) byDate[h.date] = {...h};
   });
   // Today (from state)
   byDate[todayISO()] = {date:todayISO(), calories:state.calories, protein_g:state.protein_g, carbs_g:state.carbs_g, fat_g:state.fat_g, water_ml:state.water_ml, weight_kg:state.weight_kg};
