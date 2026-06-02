@@ -2659,7 +2659,7 @@ function drawCharts(){
   // Build a full date series for the selected range — one entry per calendar day
   // regardless of whether diet data exists for that day
   const last14 = [];
-  for(let i=n-1; i>=0; i--){
+  for(let i=n; i>=1; i--){
     const dt = new Date(Date.now() - i*86400000);
     const dateStr = dt.toISOString().split('T')[0];
     const diet = dietByDate[dateStr] || {};
