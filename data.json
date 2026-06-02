@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 148,
+    "protein_g": 1.7,
+    "carbs_g": 20,
+    "fat_g": 6.5,
     "water_ml": 0,
     "weight_kg": 75.5,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Chio Tortilla Chips (Cheese flavour)",
+        "kcal": 148,
+        "protein_g": 1.7,
+        "carbs_g": 20,
+        "fat_g": 6.5,
+        "time": "2026-06-02T08:40:58.534Z",
+        "_evtId": "evt_1780389658534_4b96n"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -197,6 +207,17 @@
       "weight_kg": 75.5,
       "id": "evt_1780376775620_guke5",
       "ts": "2026-06-02T05:06:15.620Z"
+    },
+    {
+      "id": "evt_1780389658534_4b96n",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Chio Tortilla Chips (Cheese flavour)",
+      "kcal": 148,
+      "protein_g": 1.7,
+      "carbs_g": 20,
+      "fat_g": 6.5,
+      "ts": "2026-06-02T08:40:58.535Z"
     }
   ]
 }
