@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 200,
-    "protein_g": 1.7,
-    "carbs_g": 29.2,
-    "fat_g": 6.5,
+    "calories": 374,
+    "protein_g": 4.3,
+    "carbs_g": 50.1,
+    "fat_g": 15.6,
     "water_ml": 0,
     "weight_kg": 75.5,
     "meals": [
@@ -34,6 +34,15 @@
         "fat_g": 0,
         "time": "2026-06-02T10:37:52.163Z",
         "_evtId": "evt_1780396672163_lyncg"
+      },
+      {
+        "name": "Boiled baby potatoes (skin-on), Remoulade sauce (herb mayonnaise-based)",
+        "kcal": 174,
+        "protein_g": 2.6,
+        "carbs_g": 20.9,
+        "fat_g": 9.1,
+        "time": "2026-06-02T10:52:25.064Z",
+        "_evtId": "evt_1780397545064_nnqsm"
       }
     ],
     "exercise": [],
@@ -258,6 +267,17 @@
       "carbs_g": 9.2,
       "fat_g": 0,
       "ts": "2026-06-02T10:37:52.164Z"
+    },
+    {
+      "id": "evt_1780397545064_nnqsm",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Boiled baby potatoes (skin-on), Remoulade sauce (herb mayonnaise-based)",
+      "kcal": 174,
+      "protein_g": 2.6,
+      "carbs_g": 20.9,
+      "fat_g": 9.1,
+      "ts": "2026-06-02T10:52:25.065Z"
     }
   ]
 }
