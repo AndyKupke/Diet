@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 1423,
-    "protein_g": 53,
-    "carbs_g": 89.2,
-    "fat_g": 93.6,
+    "calories": 1719,
+    "protein_g": 76.5,
+    "carbs_g": 124.8,
+    "fat_g": 100.5,
     "water_ml": 0,
     "weight_kg": 75.5,
     "meals": [
@@ -61,6 +61,15 @@
         "fat_g": 25,
         "time": "2026-06-02T11:11:34.479Z",
         "_evtId": "evt_1780398694479_4adj1"
+      },
+      {
+        "name": "Whole grain bread roll (Vollkornbrötchen), Cottage cheese (full-fat), Cherry tomatoes, Sliced cooked ham (Kochschinken), Water",
+        "kcal": 296,
+        "protein_g": 23.5,
+        "carbs_g": 35.6,
+        "fat_g": 6.9,
+        "time": "2026-06-02T19:44:51.753Z",
+        "_evtId": "evt_1780429491753_eqbbr"
       }
     ],
     "exercise": [],
@@ -69,19 +78,19 @@
   "history": [
     {
       "date": "2026-05-31",
-      "calories": 43,
-      "protein_g": 2,
-      "carbs_g": 9.1,
-      "fat_g": 0.4,
-      "water_ml": 910,
-      "weight_kg": 75.3
+      "calories": 427,
+      "protein_g": 20.1,
+      "carbs_g": 43.9,
+      "fat_g": 19.5,
+      "water_ml": 0,
+      "weight_kg": 71
     },
     {
       "date": "2026-06-01",
-      "calories": 790,
-      "protein_g": 48.3,
-      "carbs_g": 78.3,
-      "fat_g": 33.1,
+      "calories": 1490,
+      "protein_g": 104,
+      "carbs_g": 166.7,
+      "fat_g": 47.4,
       "water_ml": 500,
       "weight_kg": 76
     }
@@ -318,6 +327,17 @@
       "carbs_g": 35.1,
       "fat_g": 25,
       "ts": "2026-06-02T11:11:34.480Z"
+    },
+    {
+      "id": "evt_1780429491753_eqbbr",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Whole grain bread roll (Vollkornbrötchen), Cottage cheese (full-fat), Cherry tomatoes, Sliced cooked ham (Kochschinken), Water",
+      "kcal": 296,
+      "protein_g": 23.5,
+      "carbs_g": 35.6,
+      "fat_g": 6.9,
+      "ts": "2026-06-02T19:44:51.754Z"
     }
   ]
 }
