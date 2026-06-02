@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 1719,
-    "protein_g": 76.5,
-    "carbs_g": 124.8,
-    "fat_g": 100.5,
+    "calories": 1834,
+    "protein_g": 79.9,
+    "carbs_g": 142.6,
+    "fat_g": 104.3,
     "water_ml": 0,
     "weight_kg": 75.5,
     "meals": [
@@ -70,6 +70,15 @@
         "fat_g": 6.9,
         "time": "2026-06-02T19:44:51.753Z",
         "_evtId": "evt_1780429491753_eqbbr"
+      },
+      {
+        "name": "Mixed salad greens (arugula/rocket & lettuce), Fresh tomato slices, Red onion rings, Green bell pepper strips, Yellow bell pepper strips, Cucumber slices, Yoghurt dressing (full-fat), Balsamic glaze/reduction",
+        "kcal": 115,
+        "protein_g": 3.4,
+        "carbs_g": 17.8,
+        "fat_g": 3.8,
+        "time": "2026-06-02T19:59:23.453Z",
+        "_evtId": "evt_1780430363453_6vhic"
       }
     ],
     "exercise": [],
@@ -338,6 +347,17 @@
       "carbs_g": 35.6,
       "fat_g": 6.9,
       "ts": "2026-06-02T19:44:51.754Z"
+    },
+    {
+      "id": "evt_1780430363453_6vhic",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Mixed salad greens (arugula/rocket & lettuce), Fresh tomato slices, Red onion rings, Green bell pepper strips, Yellow bell pepper strips, Cucumber slices, Yoghurt dressing (full-fat), Balsamic glaze/reduction",
+      "kcal": 115,
+      "protein_g": 3.4,
+      "carbs_g": 17.8,
+      "fat_g": 3.8,
+      "ts": "2026-06-02T19:59:23.454Z"
     }
   ]
 }
