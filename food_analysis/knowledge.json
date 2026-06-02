@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T11:10:15.683Z",
-    "total_analyses": 24,
+    "last_updated": "2026-06-02T19:44:35.801Z",
+    "total_analyses": 25,
     "total_corrections": 3
   },
   "calibrations": {
@@ -160,15 +160,15 @@
       },
       {
         "name": "Cherry tomatoes",
-        "serving": "2 cherry tomatoes (approx 24g)",
-        "weight_g": 24,
-        "kcal": 6,
-        "protein_g": 0.3,
-        "carbs_g": 1.4,
+        "serving": "4 medium tomatoes (approx 60g total)",
+        "weight_g": 60,
+        "kcal": 9,
+        "protein_g": 0.4,
+        "carbs_g": 1.8,
         "fat_g": 0.1,
-        "confidence": 0.92,
-        "last_seen": "2026-06-01",
-        "seen_count": 3
+        "confidence": 0.88,
+        "last_seen": "2026-06-02",
+        "seen_count": 4
       },
       {
         "name": "Frankfurter/Vienna sausage",
@@ -539,6 +539,54 @@
         "carbs_g": 2.4,
         "fat_g": 0.3,
         "confidence": 0.72,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Whole grain bread roll (Vollkornbrötchen)",
+        "serving": "1 roll cut in half (approx 70g total)",
+        "weight_g": 70,
+        "kcal": 168,
+        "protein_g": 6.3,
+        "carbs_g": 30.8,
+        "fat_g": 2.1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Cottage cheese (full-fat)",
+        "serving": "Generous spread on both halves (approx 60g total)",
+        "weight_g": 60,
+        "kcal": 62,
+        "protein_g": 7.2,
+        "carbs_g": 2,
+        "fat_g": 2.9,
+        "confidence": 0.82,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced cooked ham (Kochschinken)",
+        "serving": "2 thin slices (approx 50g total)",
+        "weight_g": 50,
+        "kcal": 55,
+        "protein_g": 9.5,
+        "carbs_g": 0.5,
+        "fat_g": 1.8,
+        "confidence": 0.84,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Water",
+        "serving": "1 glass (approx 250ml)",
+        "weight_g": 250,
+        "kcal": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "confidence": 0.95,
         "last_seen": "2026-06-02",
         "seen_count": 1
       }
@@ -1512,6 +1560,73 @@
           }
         ],
         "overall_confidence": 0.8
+      },
+      {
+        "id": 1780429475800,
+        "date": "2026-06-02",
+        "meal_type": "late snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 296,
+          "protein_g": 23.5,
+          "carbs_g": 35.6,
+          "fat_g": 6.9,
+          "fiber_g": 4.9,
+          "sugar_g": 5.6
+        },
+        "items": [
+          {
+            "name": "Whole grain bread roll (Vollkornbrötchen)",
+            "weight_g": 70,
+            "serving": "1 roll cut in half (approx 70g total)",
+            "kcal": 168,
+            "protein_g": 6.3,
+            "carbs_g": 30.8,
+            "fat_g": 2.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cottage cheese (full-fat)",
+            "weight_g": 60,
+            "serving": "Generous spread on both halves (approx 60g total)",
+            "kcal": 62,
+            "protein_g": 7.2,
+            "carbs_g": 2,
+            "fat_g": 2.9,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 60,
+            "serving": "4 medium tomatoes (approx 60g total)",
+            "kcal": 11,
+            "protein_g": 0.5,
+            "carbs_g": 2.3,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Sliced cooked ham (Kochschinken)",
+            "weight_g": 50,
+            "serving": "2 thin slices (approx 50g total)",
+            "kcal": 55,
+            "protein_g": 9.5,
+            "carbs_g": 0.5,
+            "fat_g": 1.8,
+            "confidence": 0.84
+          },
+          {
+            "name": "Water",
+            "weight_g": 250,
+            "serving": "1 glass (approx 250ml)",
+            "kcal": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "confidence": 0.95
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
