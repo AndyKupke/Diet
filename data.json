@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 374,
-    "protein_g": 4.3,
-    "carbs_g": 50.1,
-    "fat_g": 15.6,
+    "calories": 1032,
+    "protein_g": 45.2,
+    "carbs_g": 54.1,
+    "fat_g": 68.6,
     "water_ml": 0,
     "weight_kg": 75.5,
     "meals": [
@@ -43,6 +43,15 @@
         "fat_g": 9.1,
         "time": "2026-06-02T10:52:25.064Z",
         "_evtId": "evt_1780397545064_nnqsm"
+      },
+      {
+        "name": "Pan-seared salmon fillet, Beurre blanc sauce (butter-cream-wine sauce), Fresh parsley (garnish), Lemon wedge, Cucumber slice (garnish)",
+        "kcal": 658,
+        "protein_g": 40.9,
+        "carbs_g": 4,
+        "fat_g": 53,
+        "time": "2026-06-02T11:04:34.866Z",
+        "_evtId": "evt_1780398274866_t86fi"
       }
     ],
     "exercise": [],
@@ -278,6 +287,17 @@
       "carbs_g": 20.9,
       "fat_g": 9.1,
       "ts": "2026-06-02T10:52:25.065Z"
+    },
+    {
+      "id": "evt_1780398274866_t86fi",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Pan-seared salmon fillet, Beurre blanc sauce (butter-cream-wine sauce), Fresh parsley (garnish), Lemon wedge, Cucumber slice (garnish)",
+      "kcal": 658,
+      "protein_g": 40.9,
+      "carbs_g": 4,
+      "fat_g": 53,
+      "ts": "2026-06-02T11:04:34.867Z"
     }
   ]
 }
