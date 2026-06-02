@@ -2213,6 +2213,24 @@ function updateKnowledgeBase(kb, analysisResult, userNote) {
 }
 
 // ── Main analysis function ─────────────────────────────────────────────────
+// Robustly extract the first complete JSON object from a Claude response,
+// regardless of markdown fences, leading text, or trailing comments.
+function extractJSON(text, label='') {
+  const start = text.indexOf('{');
+  const end   = text.lastIndexOf('}');
+  if (start === -1 || end === -1 || end < start) {
+    console.error(label, 'No JSON object found in response:', text);
+    throw new Error('No JSON found in Claude response. See console for the raw text.');
+  }
+  const candidate = text.slice(start, end + 1);
+  try {
+    return JSON.parse(candidate);
+  } catch(e) {
+    console.error(label, 'JSON parse failed:', e.message, '\nCandidate:', candidate);
+    throw new Error(`Claude returned invalid JSON: ${e.message}`);
+  }
+}
+
 async function analysePhoto() {
   if (!photoB64) return;
   if (!cfg.anthropicKey) {
@@ -2268,11 +2286,9 @@ async function analysePhoto() {
 
     const apiResp = await resp.json();
     console.log('[analysePhoto] stop_reason:', apiResp.stop_reason, '| usage:', apiResp.usage);
-    const raw = apiResp.content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
-    console.log('[analysePhoto] raw response:', raw.slice(0, 300));
-    let parsed;
-    try { parsed = JSON.parse(raw); }
-    catch(je) { console.error('[analysePhoto] JSON parse failed:', je, '\nFull raw:', raw); throw new Error('Claude returned malformed JSON — see console for details.'); }
+    const rawText = apiResp.content[0].text;
+    console.log('[analysePhoto] raw response:', rawText.slice(0, 400));
+    const parsed = extractJSON(rawText, '[analysePhoto]');
 
     // ── Fill in the form fields from totals ───────────────────────────────
     const tot = parsed.totals || {};
@@ -2502,11 +2518,9 @@ async function analysePhotoQA() {
 
     const apiRespQA = await resp.json();
     console.log('[analysePhotoQA] stop_reason:', apiRespQA.stop_reason, '| usage:', apiRespQA.usage);
-    const raw = apiRespQA.content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
-    console.log('[analysePhotoQA] raw response:', raw.slice(0, 300));
-    let parsed;
-    try { parsed = JSON.parse(raw); }
-    catch(je) { console.error('[analysePhotoQA] JSON parse failed:', je, '\nFull raw:', raw); throw new Error('Claude returned malformed JSON — see console for details.'); }
+    const rawTextQA = apiRespQA.content[0].text;
+    console.log('[analysePhotoQA] raw response:', rawTextQA.slice(0, 400));
+    const parsed = extractJSON(rawTextQA, '[analysePhotoQA]');
     const tot = parsed.totals || {};
 
     // Items list
