@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T08:40:37.775Z",
-    "total_analyses": 17,
+    "last_updated": "2026-06-02T09:58:57.156Z",
+    "total_analyses": 18,
     "total_corrections": 3
   },
   "calibrations": {
@@ -385,6 +385,18 @@
         "confidence": 0.98,
         "last_seen": "2026-06-02",
         "seen_count": 3
+      },
+      {
+        "name": "Fritz-Kola Sugar-Free Cola",
+        "serving": "2 bottles × 330ml (as stated by user)",
+        "weight_g": 660,
+        "kcal": 2,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "confidence": 0.98,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
       }
     ]
   },
@@ -1063,6 +1075,33 @@
             "protein_g": 1.7,
             "carbs_g": 20,
             "fat_g": 6.5,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
+      },
+      {
+        "id": 1780394337155,
+        "date": "2026-06-02",
+        "meal_type": "brunch",
+        "user_note": "I drank two bottles",
+        "totals": {
+          "kcal": 2,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Fritz-Kola Sugar-Free Cola",
+            "weight_g": 660,
+            "serving": "2 bottles × 330ml (as stated by user)",
+            "kcal": 2,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
             "confidence": 0.98
           }
         ],
