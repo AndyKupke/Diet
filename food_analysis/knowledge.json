@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T19:44:35.801Z",
-    "total_analyses": 25,
+    "last_updated": "2026-06-02T19:59:10.759Z",
+    "total_analyses": 26,
     "total_corrections": 3
   },
   "calibrations": {
@@ -587,6 +587,102 @@
         "carbs_g": 0,
         "fat_g": 0,
         "confidence": 0.95,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Mixed salad greens (arugula/rocket & lettuce)",
+        "serving": "Small base layer (approx 40g)",
+        "weight_g": 40,
+        "kcal": 10,
+        "protein_g": 1,
+        "carbs_g": 1.4,
+        "fat_g": 0.2,
+        "confidence": 0.8,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh tomato slices",
+        "serving": "2-3 thick slices (approx 60g)",
+        "weight_g": 60,
+        "kcal": 11,
+        "protein_g": 0.5,
+        "carbs_g": 2.4,
+        "fat_g": 0.1,
+        "confidence": 0.82,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Red onion rings",
+        "serving": "3-4 thin rings (approx 20g)",
+        "weight_g": 20,
+        "kcal": 8,
+        "protein_g": 0.2,
+        "carbs_g": 1.9,
+        "fat_g": 0,
+        "confidence": 0.85,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Green bell pepper strips",
+        "serving": "2-3 small strips (approx 15g)",
+        "weight_g": 15,
+        "kcal": 3,
+        "protein_g": 0.1,
+        "carbs_g": 0.7,
+        "fat_g": 0,
+        "confidence": 0.75,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Yellow bell pepper strips",
+        "serving": "2-3 small strips (approx 15g)",
+        "weight_g": 15,
+        "kcal": 4,
+        "protein_g": 0.2,
+        "carbs_g": 0.9,
+        "fat_g": 0,
+        "confidence": 0.75,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber slices",
+        "serving": "2-3 slices (approx 15g)",
+        "weight_g": 15,
+        "kcal": 2,
+        "protein_g": 0.1,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "confidence": 0.7,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Yoghurt dressing (full-fat)",
+        "serving": "Generous drizzle (approx 35g)",
+        "weight_g": 35,
+        "kcal": 45,
+        "protein_g": 1.2,
+        "carbs_g": 2.5,
+        "fat_g": 3.5,
+        "confidence": 0.85,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Balsamic glaze/reduction",
+        "serving": "Light drizzle (approx 15g)",
+        "weight_g": 15,
+        "kcal": 32,
+        "protein_g": 0.1,
+        "carbs_g": 7.5,
+        "fat_g": 0,
+        "confidence": 0.88,
         "last_seen": "2026-06-02",
         "seen_count": 1
       }
@@ -1627,6 +1723,103 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780430350758,
+        "date": "2026-06-02",
+        "meal_type": "late snack",
+        "user_note": "Joghurt Dressing on top",
+        "totals": {
+          "kcal": 115,
+          "protein_g": 3.4,
+          "carbs_g": 17.8,
+          "fat_g": 3.8,
+          "fiber_g": 2.7,
+          "sugar_g": 12.8
+        },
+        "items": [
+          {
+            "name": "Mixed salad greens (arugula/rocket & lettuce)",
+            "weight_g": 40,
+            "serving": "Small base layer (approx 40g)",
+            "kcal": 10,
+            "protein_g": 1,
+            "carbs_g": 1.4,
+            "fat_g": 0.2,
+            "confidence": 0.8
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 60,
+            "serving": "2-3 thick slices (approx 60g)",
+            "kcal": 11,
+            "protein_g": 0.5,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.82
+          },
+          {
+            "name": "Red onion rings",
+            "weight_g": 20,
+            "serving": "3-4 thin rings (approx 20g)",
+            "kcal": 8,
+            "protein_g": 0.2,
+            "carbs_g": 1.9,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "Green bell pepper strips",
+            "weight_g": 15,
+            "serving": "2-3 small strips (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.75
+          },
+          {
+            "name": "Yellow bell pepper strips",
+            "weight_g": 15,
+            "serving": "2-3 small strips (approx 15g)",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 0.9,
+            "fat_g": 0,
+            "confidence": 0.75
+          },
+          {
+            "name": "Cucumber slices",
+            "weight_g": 15,
+            "serving": "2-3 slices (approx 15g)",
+            "kcal": 2,
+            "protein_g": 0.1,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.7
+          },
+          {
+            "name": "Yoghurt dressing (full-fat)",
+            "weight_g": 35,
+            "serving": "Generous drizzle (approx 35g)",
+            "kcal": 45,
+            "protein_g": 1.2,
+            "carbs_g": 2.5,
+            "fat_g": 3.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "Balsamic glaze/reduction",
+            "weight_g": 15,
+            "serving": "Light drizzle (approx 15g)",
+            "kcal": 32,
+            "protein_g": 0.1,
+            "carbs_g": 7.5,
+            "fat_g": 0,
+            "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.8
       }
     ]
   }
