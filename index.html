@@ -709,7 +709,7 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="chart-card"><div class="chart-title" id="ct-weight">Weight &amp; Trend</div><canvas id="chart-weight" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-steps">Steps &amp; Trend</div><canvas id="chart-steps" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-calories">Calorie Intake &amp; Trend</div><canvas id="chart-calories" class="chart-canvas"</canvas></div>
-      <div class="chart-card"><div class="chart-title" id="ct-burn">Calorie Burn (Oura) &amp; Trend</div><canvas id="chart-burn" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title" id="ct-burn">Total Burn (Oura) &amp; Trend</div><canvas id="chart-burn" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-deficit">Deficit / Surplus &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-protein">Protein &amp; Trend</div><canvas id="chart-protein" class="chart-canvas"</canvas></div>
     </div>
@@ -2611,7 +2611,7 @@ function drawCharts(){
     'ct-weight':   `Weight — ${label} & Trend`,
     'ct-steps':    `Steps — ${label} & Trend`,
     'ct-calories': `Calorie Intake — ${label} & Trend`,
-    'ct-burn':     `Calorie Burn (Oura) — ${label} & Trend`,
+    'ct-burn':     `Total Burn (Oura) — ${label} & Trend`,
     'ct-deficit':  `Deficit / Surplus — ${label} & Trend`,
     'ct-protein':  `Protein — ${label} & Trend`,
   };
@@ -2624,7 +2624,7 @@ function drawCharts(){
   // Build Oura lookup by date
   const ouraByDate={};
   if(ouraHistory?.days){
-    ouraHistory.days.forEach(d=>{ ouraByDate[d.date]={steps:d.activity?.steps??null, burn:d.activity?.active_cal??null}; });
+    ouraHistory.days.forEach(d=>{ ouraByDate[d.date]={steps:d.activity?.steps??null, burn:d.activity?.total_cal??null}; });
   }
 
   // Build a full date series for the selected range — one entry per calendar day
@@ -2652,10 +2652,10 @@ function drawCharts(){
   drawLineChartWithTrend('chart-steps',   last14, d=>d.oura_steps,  '#7aabff', 10000,              0,  20000, true);
   // 3 Calorie intake — fixed 0–3 000
   drawLineChartWithTrend('chart-calories',last14, d=>d.calories||0, '#FFCC00', TARGETS.kcal,       0, 3000, true);
-  // 4 Calorie burn (Oura active kcal) — fixed 0–1 500
-  drawLineChartWithTrend('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null,                0, 1500, true);
-  // 5 Deficit/surplus — fixed ±1 500 kcal
-  drawDeficitChart('chart-deficit', last14, 1500);
+  // 4 Calorie burn (Oura total kcal) — fixed 0–4 000
+  drawLineChartWithTrend('chart-burn',    last14, d=>d.oura_burn,   '#4cca8a', null,                0, 4000, true);
+  // 5 Deficit/surplus — fixed ±2 000 kcal
+  drawDeficitChart('chart-deficit', last14, 2000);
   // 6 Protein — fixed 0–250 g
   drawLineChartWithTrend('chart-protein', last14, d=>d.protein_g||0,'#FFCC00', TARGETS.protein,    0,  250);
 }
