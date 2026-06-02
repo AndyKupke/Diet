@@ -1,95 +1,13 @@
 {
   "today": {
-    "date": "2026-06-01",
-    "calories": 1490,
-    "protein_g": 104,
-    "carbs_g": 166.7,
-    "fat_g": 47.4,
-    "water_ml": 500,
-    "weight_kg": 76,
-    "meals": [
-      {
-        "name": "Protein Powder (Pro Dimi Healthcare)",
-        "kcal": 111,
-        "protein_g": 22.8,
-        "carbs_g": 1.4,
-        "fat_g": 1.4,
-        "time": "2026-06-01T05:14:43.165Z",
-        "_evtId": "evt_1780290883165_6gdot"
-      },
-      {
-        "name": "Fresh strawberries",
-        "kcal": 14,
-        "protein_g": 0.3,
-        "carbs_g": 3.5,
-        "fat_g": 0.1,
-        "time": "2026-06-01T09:01:00.197Z",
-        "_evtId": "evt_1780304460197_cbyoc"
-      },
-      {
-        "name": "Rigatoni pasta (cooked), Bolognese/meat ragù sauce, Mixed leaf salad (undressed), Olive oil (in sauce/cooking)",
-        "kcal": 578,
-        "protein_g": 22.2,
-        "carbs_g": 64,
-        "fat_g": 26.6,
-        "time": "2026-06-01T10:20:33.411Z",
-        "_evtId": "evt_1780309233411_mjvyz"
-      },
-      {
-        "name": "Fritz-Kola Zero (sugar-free cola)",
-        "kcal": 1,
-        "protein_g": 0,
-        "carbs_g": 0,
-        "fat_g": 0,
-        "time": "2026-06-01T10:23:52.403Z",
-        "_evtId": "evt_1780309432403_7xmjd"
-      },
-      {
-        "name": "Fresh strawberries, Fresh blueberries, Cherry tomatoes, Frankfurter/Vienna sausage",
-        "kcal": 86,
-        "protein_g": 3,
-        "carbs_g": 9.4,
-        "fat_g": 5,
-        "time": "2026-06-01T13:32:38.194Z",
-        "_evtId": "evt_1780320758194_muuhc"
-      },
-      {
-        "name": "Skyr (Icelandic yogurt, diluted with water), Fresh strawberries (halved), Fresh blueberries",
-        "kcal": 202,
-        "protein_g": 31.4,
-        "carbs_g": 19.7,
-        "fat_g": 0.8,
-        "time": "2026-06-01T16:44:46.024Z",
-        "_evtId": "evt_1780332286024_0ar7o"
-      },
-      {
-        "name": "Whole grain seeded bread, Prosciutto/dry-cured ham, Cherry tomatoes",
-        "kcal": 212,
-        "protein_g": 13.5,
-        "carbs_g": 22.7,
-        "fat_g": 7.6,
-        "time": "2026-06-01T16:48:43.093Z",
-        "_evtId": "evt_1780332523093_t9miy"
-      },
-      {
-        "name": "Tuna Onigiri (Reiszubereitung mit Thunfisch)",
-        "kcal": 161,
-        "protein_g": 5.8,
-        "carbs_g": 26,
-        "fat_g": 3.4,
-        "time": "2026-06-01T16:50:56.178Z",
-        "_evtId": "evt_1780332656178_mu279"
-      },
-      {
-        "name": "Multi-seed/grain bread slice",
-        "kcal": 125,
-        "protein_g": 5,
-        "carbs_g": 20,
-        "fat_g": 2.5,
-        "time": "2026-06-01T17:06:35.307Z",
-        "_evtId": "evt_1780333595308_03q7b"
-      }
-    ],
+    "date": "2026-06-02",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
+    "water_ml": 0,
+    "weight_kg": 75.5,
+    "meals": [],
     "exercise": [],
     "notes": ""
   },
@@ -102,6 +20,15 @@
       "fat_g": 19.5,
       "water_ml": 0,
       "weight_kg": 71
+    },
+    {
+      "date": "2026-06-01",
+      "calories": 1490,
+      "protein_g": 104,
+      "carbs_g": 166.7,
+      "fat_g": 47.4,
+      "water_ml": 500,
+      "weight_kg": 76
     }
   ],
   "events": [
@@ -263,6 +190,13 @@
       "carbs_g": 20,
       "fat_g": 2.5,
       "ts": "2026-06-01T17:06:35.308Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-02",
+      "weight_kg": 75.5,
+      "id": "evt_1780376775620_guke5",
+      "ts": "2026-06-02T05:06:15.620Z"
     }
   ]
 }
