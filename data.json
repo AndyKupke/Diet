@@ -1,7 +1,7 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 148,
+    "calories": 150,
     "protein_g": 1.7,
     "carbs_g": 20,
     "fat_g": 6.5,
@@ -16,6 +16,15 @@
         "fat_g": 6.5,
         "time": "2026-06-02T08:40:58.534Z",
         "_evtId": "evt_1780389658534_4b96n"
+      },
+      {
+        "name": "Fritz-Kola Sugar-Free Cola",
+        "kcal": 2,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "time": "2026-06-02T09:59:05.206Z",
+        "_evtId": "evt_1780394345206_l5925"
       }
     ],
     "exercise": [],
@@ -218,6 +227,17 @@
       "carbs_g": 20,
       "fat_g": 6.5,
       "ts": "2026-06-02T08:40:58.535Z"
+    },
+    {
+      "id": "evt_1780394345206_l5925",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Fritz-Kola Sugar-Free Cola",
+      "kcal": 2,
+      "protein_g": 0,
+      "carbs_g": 0,
+      "fat_g": 0,
+      "ts": "2026-06-02T09:59:05.207Z"
     }
   ]
 }
