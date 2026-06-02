@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-02",
-    "calories": 1032,
-    "protein_g": 45.2,
-    "carbs_g": 54.1,
-    "fat_g": 68.6,
+    "calories": 1423,
+    "protein_g": 53,
+    "carbs_g": 89.2,
+    "fat_g": 93.6,
     "water_ml": 0,
     "weight_kg": 75.5,
     "meals": [
@@ -52,6 +52,15 @@
         "fat_g": 53,
         "time": "2026-06-02T11:04:34.866Z",
         "_evtId": "evt_1780398274866_t86fi"
+      },
+      {
+        "name": "Bratkartoffeln (German fried potatoes), Speck/Bacon pieces (cured pork belly), Onion (caramelized/fried), Fresh parsley (garnish)",
+        "kcal": 391,
+        "protein_g": 7.8,
+        "carbs_g": 35.1,
+        "fat_g": 25,
+        "time": "2026-06-02T11:11:34.479Z",
+        "_evtId": "evt_1780398694479_4adj1"
       }
     ],
     "exercise": [],
@@ -298,6 +307,17 @@
       "carbs_g": 4,
       "fat_g": 53,
       "ts": "2026-06-02T11:04:34.867Z"
+    },
+    {
+      "id": "evt_1780398694479_4adj1",
+      "type": "meal",
+      "date": "2026-06-02",
+      "name": "Bratkartoffeln (German fried potatoes), Speck/Bacon pieces (cured pork belly), Onion (caramelized/fried), Fresh parsley (garnish)",
+      "kcal": 391,
+      "protein_g": 7.8,
+      "carbs_g": 35.1,
+      "fat_g": 25,
+      "ts": "2026-06-02T11:11:34.480Z"
     }
   ]
 }
