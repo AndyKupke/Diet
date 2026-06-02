@@ -2023,33 +2023,51 @@ let photoMimeType = 'image/jpeg';
 // Accepted MIME types by Anthropic vision API
 const ALLOWED_MIME = new Set(['image/jpeg','image/png','image/gif','image/webp']);
 
-// Load a file, normalise to an Anthropic-accepted MIME type (re-encode via canvas if needed),
-// and resolve with { b64, mimeType }.
+// Load a file, normalise to an Anthropic-accepted MIME type.
+// Strategy:
+//   1. Allowed type (jpeg/png/gif/webp) → read directly as base64, done.
+//   2. Other type (heic/heif/bmp/tiff…) → try re-encoding via canvas using
+//      createObjectURL (works on Safari for HEIC; works on all browsers for bmp etc.)
+//   3. If canvas decode fails (e.g. Chrome + HEIC) → clear error with advice.
 function loadImageForAPI(file) {
   return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onerror = reject;
-    reader.onload = e => {
-      const url = e.target.result;
-      const rawMime = file.type || '';
-      if (ALLOWED_MIME.has(rawMime)) {
-        resolve({ b64: url.split(',')[1], mimeType: rawMime });
-        return;
-      }
-      // Re-encode through canvas → JPEG (handles HEIC, HEIF, BMP, TIFF, unknown)
-      const img = new Image();
-      img.onerror = () => reject(new Error('Could not decode image'));
-      img.onload = () => {
+    const rawMime = file.type || '';
+
+    if (ALLOWED_MIME.has(rawMime)) {
+      // Fast path: just read the bytes directly
+      const reader = new FileReader();
+      reader.onerror = reject;
+      reader.onload = e => resolve({ b64: e.target.result.split(',')[1], mimeType: rawMime });
+      reader.readAsDataURL(file);
+      return;
+    }
+
+    // Slow path: re-encode via canvas using an object URL (handles HEIC on Safari,
+    // BMP/TIFF/etc. on all browsers)
+    const objectURL = URL.createObjectURL(file);
+    const img = new Image();
+
+    img.onerror = () => {
+      URL.revokeObjectURL(objectURL);
+      const fmt = rawMime || 'unknown format';
+      reject(new Error(`Your browser cannot decode ${fmt}. Please convert the photo to JPEG or PNG before uploading.`));
+    };
+
+    img.onload = () => {
+      URL.revokeObjectURL(objectURL);
+      try {
         const canvas = document.createElement('canvas');
-        canvas.width = img.naturalWidth;
+        canvas.width  = img.naturalWidth;
         canvas.height = img.naturalHeight;
         canvas.getContext('2d').drawImage(img, 0, 0);
         const jpeg = canvas.toDataURL('image/jpeg', 0.92);
         resolve({ b64: jpeg.split(',')[1], mimeType: 'image/jpeg' });
-      };
-      img.src = url;
+      } catch(e) {
+        reject(new Error('Could not re-encode image — try saving it as JPEG first.'));
+      }
     };
-    reader.readAsDataURL(file);
+
+    img.src = objectURL;
   });
 }
 
