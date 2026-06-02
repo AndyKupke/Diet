@@ -2020,20 +2020,51 @@ function updateInputDateUI() {
 /* ══ Photo + Vision (skill-powered) ══════════════════════════════════════ */
 let photoMimeType = 'image/jpeg';
 
+// Accepted MIME types by Anthropic vision API
+const ALLOWED_MIME = new Set(['image/jpeg','image/png','image/gif','image/webp']);
+
+// Load a file, normalise to an Anthropic-accepted MIME type (re-encode via canvas if needed),
+// and resolve with { b64, mimeType }.
+function loadImageForAPI(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = reject;
+    reader.onload = e => {
+      const url = e.target.result;
+      const rawMime = file.type || '';
+      if (ALLOWED_MIME.has(rawMime)) {
+        resolve({ b64: url.split(',')[1], mimeType: rawMime });
+        return;
+      }
+      // Re-encode through canvas → JPEG (handles HEIC, HEIF, BMP, TIFF, unknown)
+      const img = new Image();
+      img.onerror = () => reject(new Error('Could not decode image'));
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth;
+        canvas.height = img.naturalHeight;
+        canvas.getContext('2d').drawImage(img, 0, 0);
+        const jpeg = canvas.toDataURL('image/jpeg', 0.92);
+        resolve({ b64: jpeg.split(',')[1], mimeType: 'image/jpeg' });
+      };
+      img.src = url;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
 function handlePhoto(event){
   const file=event.target.files[0]; if(!file) return;
-  photoMimeType = file.type || 'image/jpeg';
-  const reader=new FileReader();
-  reader.onload=e=>{
-    const url=e.target.result;
-    photoB64=url.split(',')[1];
+  loadImageForAPI(file).then(({b64, mimeType}) => {
+    photoB64 = b64;
+    photoMimeType = mimeType;
+    const url = `data:${mimeType};base64,${b64}`;
     const prev=document.getElementById('photo-preview');
     prev.src=url; prev.style.display='block';
     document.getElementById('photo-zone').style.display='none';
     document.getElementById('photo-context-row').style.display='block';
     document.getElementById('analysis-detail').style.display='none';
-  };
-  reader.readAsDataURL(file);
+  }).catch(err => { toast('Could not load image: ' + err.message, 'error'); });
 }
 
 // ── Voice note via Web Speech API ─────────────────────────────────────────
@@ -2338,18 +2369,16 @@ let _lastQA     = null;
 
 function handlePhotoQA(event) {
   const file = event.target.files[0]; if (!file) return;
-  qaMimeType = file.type || 'image/jpeg';
-  const reader = new FileReader();
-  reader.onload = e => {
-    const url = e.target.result;
-    qaPhotoB64 = url.split(',')[1];
+  loadImageForAPI(file).then(({b64, mimeType}) => {
+    qaPhotoB64 = b64;
+    qaMimeType = mimeType;
+    const url = `data:${mimeType};base64,${b64}`;
     const prev = document.getElementById('qa-photo-preview');
     prev.src = url; prev.style.display = 'block';
     document.getElementById('qa-photo-zone').style.display = 'none';
     document.getElementById('qa-context-row').style.display = 'block';
     document.getElementById('qa-detail').style.display = 'none';
-  };
-  reader.readAsDataURL(file);
+  }).catch(err => { toast('Could not load image: ' + err.message, 'error'); });
 }
 
 function clearQA() {
