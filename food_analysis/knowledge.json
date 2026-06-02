@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T11:03:51.725Z",
-    "total_analyses": 23,
+    "last_updated": "2026-06-02T11:10:15.683Z",
+    "total_analyses": 24,
     "total_corrections": 3
   },
   "calibrations": {
@@ -478,9 +478,9 @@
         "protein_g": 0.1,
         "carbs_g": 0.1,
         "fat_g": 0,
-        "confidence": 0.9,
+        "confidence": 0.85,
         "last_seen": "2026-06-02",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Lemon wedge",
@@ -503,6 +503,42 @@
         "carbs_g": 0.4,
         "fat_g": 0,
         "confidence": 0.85,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Bratkartoffeln (German fried potatoes)",
+        "serving": "Medium portion (approx 180g cooked)",
+        "weight_g": 180,
+        "kcal": 270,
+        "protein_g": 3.6,
+        "carbs_g": 32.4,
+        "fat_g": 14.4,
+        "confidence": 0.82,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Speck/Bacon pieces (cured pork belly)",
+        "serving": "Small scattered pieces (approx 25g)",
+        "weight_g": 25,
+        "kcal": 108,
+        "protein_g": 3.8,
+        "carbs_g": 0.2,
+        "fat_g": 10.3,
+        "confidence": 0.78,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Onion (caramelized/fried)",
+        "serving": "Small amount mixed in (approx 20g raw weight)",
+        "weight_g": 15,
+        "kcal": 12,
+        "protein_g": 0.3,
+        "carbs_g": 2.4,
+        "fat_g": 0.3,
+        "confidence": 0.72,
         "last_seen": "2026-06-02",
         "seen_count": 1
       }
@@ -1414,6 +1450,63 @@
             "kcal": 2,
             "protein_g": 0.1,
             "carbs_g": 0.4,
+            "fat_g": 0,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.8
+      },
+      {
+        "id": 1780398615683,
+        "date": "2026-06-02",
+        "meal_type": "lunch",
+        "user_note": "Do not take into account the sauce",
+        "totals": {
+          "kcal": 391,
+          "protein_g": 7.8,
+          "carbs_g": 35.1,
+          "fat_g": 25,
+          "fiber_g": 3,
+          "sugar_g": 2.6
+        },
+        "items": [
+          {
+            "name": "Bratkartoffeln (German fried potatoes)",
+            "weight_g": 180,
+            "serving": "Medium portion (approx 180g cooked)",
+            "kcal": 270,
+            "protein_g": 3.6,
+            "carbs_g": 32.4,
+            "fat_g": 14.4,
+            "confidence": 0.82
+          },
+          {
+            "name": "Speck/Bacon pieces (cured pork belly)",
+            "weight_g": 25,
+            "serving": "Small scattered pieces (approx 25g)",
+            "kcal": 108,
+            "protein_g": 3.8,
+            "carbs_g": 0.2,
+            "fat_g": 10.3,
+            "confidence": 0.78
+          },
+          {
+            "name": "Onion (caramelized/fried)",
+            "weight_g": 15,
+            "serving": "Small amount mixed in (approx 20g raw weight)",
+            "kcal": 12,
+            "protein_g": 0.3,
+            "carbs_g": 2.4,
+            "fat_g": 0.3,
+            "confidence": 0.72
+          },
+          {
+            "name": "Fresh parsley (garnish)",
+            "weight_g": 2,
+            "serving": "Light sprinkle (approx 2g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
             "fat_g": 0,
             "confidence": 0.85
           }
