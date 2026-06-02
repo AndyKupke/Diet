@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T10:52:17.219Z",
-    "total_analyses": 22,
+    "last_updated": "2026-06-02T11:03:51.725Z",
+    "total_analyses": 23,
     "total_corrections": 3
   },
   "calibrations": {
@@ -443,6 +443,66 @@
         "carbs_g": 0.4,
         "fat_g": 9,
         "confidence": 0.78,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Pan-seared salmon fillet",
+        "serving": "2 pieces (approx 180g total cooked weight)",
+        "weight_g": 180,
+        "kcal": 374,
+        "protein_g": 40,
+        "carbs_g": 0,
+        "fat_g": 23,
+        "confidence": 0.82,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Beurre blanc sauce (butter-cream-wine sauce)",
+        "serving": "Generous pool (approx 60ml/55g)",
+        "weight_g": 55,
+        "kcal": 275,
+        "protein_g": 0.5,
+        "carbs_g": 1.5,
+        "fat_g": 30,
+        "confidence": 0.75,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh parsley (garnish)",
+        "serving": "Light sprinkle (approx 2g)",
+        "weight_g": 2,
+        "kcal": 1,
+        "protein_g": 0.1,
+        "carbs_g": 0.1,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Lemon wedge",
+        "serving": "1 quarter wedge (approx 20g)",
+        "weight_g": 20,
+        "kcal": 6,
+        "protein_g": 0.2,
+        "carbs_g": 2,
+        "fat_g": 0,
+        "confidence": 0.92,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber slice (garnish)",
+        "serving": "1-2 thin slices (approx 10g)",
+        "weight_g": 10,
+        "kcal": 2,
+        "protein_g": 0.1,
+        "carbs_g": 0.4,
+        "fat_g": 0,
+        "confidence": 0.85,
         "last_seen": "2026-06-02",
         "seen_count": 1
       }
@@ -1292,6 +1352,73 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780398231723,
+        "date": "2026-06-02",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 658,
+          "protein_g": 40.9,
+          "carbs_g": 4,
+          "fat_g": 53,
+          "fiber_g": 0.7,
+          "sugar_g": 1.2
+        },
+        "items": [
+          {
+            "name": "Pan-seared salmon fillet",
+            "weight_g": 180,
+            "serving": "2 pieces (approx 180g total cooked weight)",
+            "kcal": 374,
+            "protein_g": 40,
+            "carbs_g": 0,
+            "fat_g": 23,
+            "confidence": 0.82
+          },
+          {
+            "name": "Beurre blanc sauce (butter-cream-wine sauce)",
+            "weight_g": 55,
+            "serving": "Generous pool (approx 60ml/55g)",
+            "kcal": 275,
+            "protein_g": 0.5,
+            "carbs_g": 1.5,
+            "fat_g": 30,
+            "confidence": 0.75
+          },
+          {
+            "name": "Fresh parsley (garnish)",
+            "weight_g": 2,
+            "serving": "Light sprinkle (approx 2g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Lemon wedge",
+            "weight_g": 20,
+            "serving": "1 quarter wedge (approx 20g)",
+            "kcal": 6,
+            "protein_g": 0.2,
+            "carbs_g": 2,
+            "fat_g": 0,
+            "confidence": 0.92
+          },
+          {
+            "name": "Cucumber slice (garnish)",
+            "weight_g": 10,
+            "serving": "1-2 thin slices (approx 10g)",
+            "kcal": 2,
+            "protein_g": 0.1,
+            "carbs_g": 0.4,
+            "fat_g": 0,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.8
       }
     ]
   }
