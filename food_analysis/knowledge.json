@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-01T17:10:10.105Z",
-    "total_analyses": 14,
+    "last_updated": "2026-06-02T08:24:05.894Z",
+    "total_analyses": 15,
     "total_corrections": 3
   },
   "calibrations": {
@@ -372,6 +372,18 @@
         "fat_g": 0.5,
         "confidence": 0.78,
         "last_seen": "2026-06-01",
+        "seen_count": 1
+      },
+      {
+        "name": "Chio Tortilla Chips (Cheese flavour)",
+        "serving": "1 serving from pack (approx 30g)",
+        "weight_g": 30,
+        "kcal": 148,
+        "protein_g": 1.7,
+        "carbs_g": 20,
+        "fat_g": 6.5,
+        "confidence": 0.95,
+        "last_seen": "2026-06-02",
         "seen_count": 1
       }
     ]
@@ -974,6 +986,33 @@
           }
         ],
         "overall_confidence": 0.78
+      },
+      {
+        "id": 1780388645894,
+        "date": "2026-06-02",
+        "meal_type": "brunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 148,
+          "protein_g": 1.7,
+          "carbs_g": 20,
+          "fat_g": 6.5,
+          "fiber_g": 1.2,
+          "sugar_g": 1.2
+        },
+        "items": [
+          {
+            "name": "Chio Tortilla Chips (Cheese flavour)",
+            "weight_g": 30,
+            "serving": "1 serving from pack (approx 30g)",
+            "kcal": 148,
+            "protein_g": 1.7,
+            "carbs_g": 20,
+            "fat_g": 6.5,
+            "confidence": 0.95
+          }
+        ],
+        "overall_confidence": 0.95
       }
     ]
   }
