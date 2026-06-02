@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T10:37:44.624Z",
-    "total_analyses": 19,
+    "last_updated": "2026-06-02T10:49:39.729Z",
+    "total_analyses": 20,
     "total_corrections": 3
   },
   "calibrations": {
@@ -407,6 +407,30 @@
         "carbs_g": 9.2,
         "fat_g": 0,
         "confidence": 0.98,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Boiled baby potatoes (skin-on)",
+        "serving": "4 small potatoes (approx 160g total)",
+        "weight_g": 160,
+        "kcal": 139,
+        "protein_g": 3.4,
+        "carbs_g": 31.2,
+        "fat_g": 0.2,
+        "confidence": 0.85,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Herb mayonnaise/remoulade sauce",
+        "serving": "1 generous dollop (approx 20g)",
+        "weight_g": 20,
+        "kcal": 139,
+        "protein_g": 0.3,
+        "carbs_g": 0.7,
+        "fat_g": 15.3,
+        "confidence": 0.75,
         "last_seen": "2026-06-02",
         "seen_count": 1
       }
@@ -1145,6 +1169,43 @@
           }
         ],
         "overall_confidence": 0.98
+      },
+      {
+        "id": 1780397379728,
+        "date": "2026-06-02",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 278,
+          "protein_g": 3.7,
+          "carbs_g": 31.9,
+          "fat_g": 15.5,
+          "fiber_g": 3.2,
+          "sugar_g": 1.8
+        },
+        "items": [
+          {
+            "name": "Boiled baby potatoes (skin-on)",
+            "weight_g": 160,
+            "serving": "4 small potatoes (approx 160g total)",
+            "kcal": 139,
+            "protein_g": 3.4,
+            "carbs_g": 31.2,
+            "fat_g": 0.2,
+            "confidence": 0.85
+          },
+          {
+            "name": "Herb mayonnaise/remoulade sauce",
+            "weight_g": 20,
+            "serving": "1 generous dollop (approx 20g)",
+            "kcal": 139,
+            "protein_g": 0.3,
+            "carbs_g": 0.7,
+            "fat_g": 15.3,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
