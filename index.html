@@ -2252,7 +2252,7 @@ async function analysePhoto() {
       },
       body: JSON.stringify({
         model: 'claude-opus-4-5',
-        max_tokens: 1500,
+        max_tokens: 4096,
         system: systemPrompt,
         messages: [{
           role: 'user',
@@ -2266,8 +2266,13 @@ async function analysePhoto() {
 
     if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API ${resp.status}`); }
 
-    const raw = (await resp.json()).content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
-    const parsed = JSON.parse(raw);
+    const apiResp = await resp.json();
+    console.log('[analysePhoto] stop_reason:', apiResp.stop_reason, '| usage:', apiResp.usage);
+    const raw = apiResp.content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
+    console.log('[analysePhoto] raw response:', raw.slice(0, 300));
+    let parsed;
+    try { parsed = JSON.parse(raw); }
+    catch(je) { console.error('[analysePhoto] JSON parse failed:', je, '\nFull raw:', raw); throw new Error('Claude returned malformed JSON — see console for details.'); }
 
     // ── Fill in the form fields from totals ───────────────────────────────
     const tot = parsed.totals || {};
@@ -2484,7 +2489,7 @@ async function analysePhotoQA() {
       },
       body: JSON.stringify({
         model: 'claude-opus-4-5',
-        max_tokens: 1500,
+        max_tokens: 4096,
         system: systemPrompt,
         messages: [{ role: 'user', content: [
           { type: 'image', source: { type: 'base64', media_type: qaMimeType, data: qaPhotoB64 } },
@@ -2495,8 +2500,13 @@ async function analysePhotoQA() {
 
     if (!resp.ok) { const e = await resp.json(); throw new Error(e.error?.message || `API ${resp.status}`); }
 
-    const raw = (await resp.json()).content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
-    const parsed = JSON.parse(raw);
+    const apiRespQA = await resp.json();
+    console.log('[analysePhotoQA] stop_reason:', apiRespQA.stop_reason, '| usage:', apiRespQA.usage);
+    const raw = apiRespQA.content[0].text.trim().replace(/```json\n?|\n?```/g, '').trim();
+    console.log('[analysePhotoQA] raw response:', raw.slice(0, 300));
+    let parsed;
+    try { parsed = JSON.parse(raw); }
+    catch(je) { console.error('[analysePhotoQA] JSON parse failed:', je, '\nFull raw:', raw); throw new Error('Claude returned malformed JSON — see console for details.'); }
     const tot = parsed.totals || {};
 
     // Items list
