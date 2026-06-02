@@ -710,7 +710,7 @@ table.history-table .edit-input:focus { border-color: var(--yellow); }
       <div class="chart-card"><div class="chart-title" id="ct-steps">Steps &amp; Trend</div><canvas id="chart-steps" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-calories">Calorie Intake &amp; Trend</div><canvas id="chart-calories" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-burn">Total Burn (Oura) &amp; Trend</div><canvas id="chart-burn" class="chart-canvas"</canvas></div>
-      <div class="chart-card"><div class="chart-title" id="ct-deficit">Deficit / Surplus &amp; Trend</div><canvas id="chart-deficit" class="chart-canvas"</canvas></div>
+      <div class="chart-card"><div class="chart-title" id="ct-deficit">Intake − Burn (↓ deficit, ↑ surplus)</div><canvas id="chart-deficit" class="chart-canvas"</canvas></div>
       <div class="chart-card"><div class="chart-title" id="ct-protein">Protein &amp; Trend</div><canvas id="chart-protein" class="chart-canvas"</canvas></div>
     </div>
   </div>
@@ -2612,7 +2612,7 @@ function drawCharts(){
     'ct-steps':    `Steps — ${label} & Trend`,
     'ct-calories': `Calorie Intake — ${label} & Trend`,
     'ct-burn':     `Total Burn (Oura) — ${label} & Trend`,
-    'ct-deficit':  `Deficit / Surplus — ${label} & Trend`,
+    'ct-deficit':  `Intake − Burn — ${label} (↓ deficit, ↑ surplus)`,
     'ct-protein':  `Protein — ${label} & Trend`,
   };
   Object.entries(titles).forEach(([id,txt])=>{ const el=document.getElementById(id); if(el) el.textContent=txt; });
@@ -2800,7 +2800,7 @@ function drawBarChartWithTrend(id,data,accessor,color,targetVal,fixedMin,fixedMa
 }
 
 function drawDeficitChart(id,data,fixedAbsMax){
-  // Positive = deficit (ate < burned), negative = surplus
+  // Negative = deficit (intake < burn = good), Positive = surplus (intake > burn)
   const s=setupCanvas(id); if(!s)return;
   const{ctx,W,H}=s;
   const {t,r,b,l}=PAD, cW=W-l-r, cH=H-t-b;
@@ -2810,8 +2810,8 @@ function drawDeficitChart(id,data,fixedAbsMax){
 
   const vals=data.map(d=>{
     const intake=d.calories||0;
-    const burn=d.oura_burn!=null ? d.oura_burn : (TARGETS.kcal||2000);
-    return intake>0||d.oura_burn!=null ? burn-intake : null;
+    const burn=d.oura_burn!=null ? d.oura_burn : null;
+    return intake>0||burn!=null ? intake-(burn??intake) : null;
   });
   const nonNull=vals.filter(v=>v!=null);
   if(!nonNull.length){noData(ctx,W,H,tc.axis);return;}
@@ -2838,7 +2838,7 @@ function drawDeficitChart(id,data,fixedAbsMax){
     const cx=l+i*(cW/data.length)+(cW/data.length)*0.5;
     barCentres.push({i,cx,v});
     if(v==null)return;
-    const color=v>=0?'#4cca8a':'#e74c3c';
+    const color=v<=0?'#4cca8a':'#e74c3c';
     const y0=zero, y1=toY(v);
     const top=Math.min(y0,y1), h=Math.abs(y0-y1)||2;
     const x=l+i*(cW/data.length)+gap;
