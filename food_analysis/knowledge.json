@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T10:50:55.903Z",
-    "total_analyses": 21,
+    "last_updated": "2026-06-02T10:52:17.219Z",
+    "total_analyses": 22,
     "total_corrections": 3
   },
   "calibrations": {
@@ -412,15 +412,15 @@
       },
       {
         "name": "Boiled baby potatoes (skin-on)",
-        "serving": "3 small potatoes (approx 120g total)",
-        "weight_g": 120,
-        "kcal": 122,
-        "protein_g": 3,
-        "carbs_g": 27.3,
+        "serving": "3 small potatoes (approx 105g total)",
+        "weight_g": 105,
+        "kcal": 107,
+        "protein_g": 2.7,
+        "carbs_g": 23.9,
         "fat_g": 0.2,
         "confidence": 0.88,
         "last_seen": "2026-06-02",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "Herb mayonnaise/remoulade sauce",
@@ -433,6 +433,18 @@
         "confidence": 0.75,
         "last_seen": "2026-06-02",
         "seen_count": 2
+      },
+      {
+        "name": "Remoulade sauce (herb mayonnaise-based)",
+        "serving": "1 small dollop (approx 12g)",
+        "weight_g": 12,
+        "kcal": 83,
+        "protein_g": 0.2,
+        "carbs_g": 0.4,
+        "fat_g": 9,
+        "confidence": 0.78,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
       }
     ]
   },
@@ -1243,6 +1255,43 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1780397537219,
+        "date": "2026-06-02",
+        "meal_type": "lunch",
+        "user_note": "Three potatoes and a small dip of remolade",
+        "totals": {
+          "kcal": 174,
+          "protein_g": 2.6,
+          "carbs_g": 20.9,
+          "fat_g": 9.1,
+          "fiber_g": 2.1,
+          "sugar_g": 1.2
+        },
+        "items": [
+          {
+            "name": "Boiled baby potatoes (skin-on)",
+            "weight_g": 105,
+            "serving": "3 small potatoes (approx 105g total)",
+            "kcal": 91,
+            "protein_g": 2.4,
+            "carbs_g": 20.5,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Remoulade sauce (herb mayonnaise-based)",
+            "weight_g": 12,
+            "serving": "1 small dollop (approx 12g)",
+            "kcal": 83,
+            "protein_g": 0.2,
+            "carbs_g": 0.4,
+            "fat_g": 9,
+            "confidence": 0.78
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
