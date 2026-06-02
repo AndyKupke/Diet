@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T09:58:57.156Z",
-    "total_analyses": 18,
+    "last_updated": "2026-06-02T10:37:44.624Z",
+    "total_analyses": 19,
     "total_corrections": 3
   },
   "calibrations": {
@@ -393,6 +393,18 @@
         "kcal": 2,
         "protein_g": 0,
         "carbs_g": 0,
+        "fat_g": 0,
+        "confidence": 0.98,
+        "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Flensburger Frei (Alcohol-Free Pilsener)",
+        "serving": "1 bottle (330ml)",
+        "weight_g": 330,
+        "kcal": 50,
+        "protein_g": 0,
+        "carbs_g": 9.2,
         "fat_g": 0,
         "confidence": 0.98,
         "last_seen": "2026-06-02",
@@ -1101,6 +1113,33 @@
             "kcal": 2,
             "protein_g": 0,
             "carbs_g": 0,
+            "fat_g": 0,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
+      },
+      {
+        "id": 1780396664623,
+        "date": "2026-06-02",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 50,
+          "protein_g": 0,
+          "carbs_g": 9.2,
+          "fat_g": 0,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Flensburger Frei (Alcohol-Free Pilsener)",
+            "weight_g": 330,
+            "serving": "1 bottle (330ml)",
+            "kcal": 50,
+            "protein_g": 0,
+            "carbs_g": 9.2,
             "fat_g": 0,
             "confidence": 0.98
           }
