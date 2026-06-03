@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-03T11:28:14.471Z",
-    "total_analyses": 28,
+    "last_updated": "2026-06-03T16:16:20.286Z",
+    "total_analyses": 29,
     "total_corrections": 3
   },
   "calibrations": {
@@ -160,15 +160,15 @@
       },
       {
         "name": "Cherry tomatoes",
-        "serving": "4 medium tomatoes (approx 60g total)",
-        "weight_g": 60,
+        "serving": "4 small tomatoes (approx 50g)",
+        "weight_g": 50,
         "kcal": 9,
         "protein_g": 0.4,
-        "carbs_g": 1.8,
+        "carbs_g": 1.9,
         "fat_g": 0.1,
-        "confidence": 0.88,
-        "last_seen": "2026-06-02",
-        "seen_count": 4
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 5
       },
       {
         "name": "Frankfurter/Vienna sausage",
@@ -208,15 +208,15 @@
       },
       {
         "name": "Whole grain seeded bread",
-        "serving": "1 slice (approx 55g)",
-        "weight_g": 55,
-        "kcal": 132,
-        "protein_g": 5.5,
-        "carbs_g": 20,
-        "fat_g": 3.3,
+        "serving": "1 slice (approx 45g)",
+        "weight_g": 45,
+        "kcal": 121,
+        "protein_g": 5,
+        "carbs_g": 19,
+        "fat_g": 2.4,
         "confidence": 0.85,
-        "last_seen": "2026-06-01",
-        "seen_count": 1
+        "last_seen": "2026-06-03",
+        "seen_count": 2
       },
       {
         "name": "Prosciutto/dry-cured ham",
@@ -791,6 +791,66 @@
         "carbs_g": 1.4,
         "fat_g": 0,
         "confidence": 0.65,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Prosciutto/cooked ham (thinly sliced)",
+        "serving": "3-4 thin slices (approx 25g)",
+        "weight_g": 25,
+        "kcal": 35,
+        "protein_g": 5,
+        "carbs_g": 0.5,
+        "fat_g": 1.5,
+        "confidence": 0.8,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Italian salami (sliced)",
+        "serving": "3 slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 120,
+        "protein_g": 6,
+        "carbs_g": 0.5,
+        "fat_g": 10,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Cremini/chestnut mushrooms (raw)",
+        "serving": "6 small mushrooms (approx 55g)",
+        "weight_g": 55,
+        "kcal": 12,
+        "protein_g": 1.7,
+        "carbs_g": 1.8,
+        "fat_g": 0.2,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Carrot sticks (raw)",
+        "serving": "5 sticks (approx 50g)",
+        "weight_g": 50,
+        "kcal": 20,
+        "protein_g": 0.5,
+        "carbs_g": 4.5,
+        "fat_g": 0.1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper (raw slices)",
+        "serving": "3 slices (approx 40g)",
+        "weight_g": 40,
+        "kcal": 12,
+        "protein_g": 0.4,
+        "carbs_g": 2.5,
+        "fat_g": 0.1,
+        "confidence": 0.85,
         "last_seen": "2026-06-03",
         "seen_count": 1
       }
@@ -2062,6 +2122,93 @@
           }
         ],
         "overall_confidence": 0.78
+      },
+      {
+        "id": 1780503380285,
+        "date": "2026-06-03",
+        "meal_type": "dinner",
+        "user_note": "Use my watch as a reference for size and volume of food",
+        "totals": {
+          "kcal": 318,
+          "protein_g": 18.5,
+          "carbs_g": 29.8,
+          "fat_g": 13.5,
+          "fiber_g": 6.4,
+          "sugar_g": 7.6
+        },
+        "items": [
+          {
+            "name": "Whole grain seeded bread",
+            "weight_g": 45,
+            "serving": "1 slice (approx 45g)",
+            "kcal": 110,
+            "protein_g": 4.5,
+            "carbs_g": 18,
+            "fat_g": 1.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "Prosciutto/cooked ham (thinly sliced)",
+            "weight_g": 25,
+            "serving": "3-4 thin slices (approx 25g)",
+            "kcal": 35,
+            "protein_g": 5,
+            "carbs_g": 0.5,
+            "fat_g": 1.5,
+            "confidence": 0.8
+          },
+          {
+            "name": "Italian salami (sliced)",
+            "weight_g": 30,
+            "serving": "3 slices (approx 30g)",
+            "kcal": 120,
+            "protein_g": 6,
+            "carbs_g": 0.5,
+            "fat_g": 10,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cremini/chestnut mushrooms (raw)",
+            "weight_g": 55,
+            "serving": "6 small mushrooms (approx 55g)",
+            "kcal": 12,
+            "protein_g": 1.7,
+            "carbs_g": 1.8,
+            "fat_g": 0.2,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 50,
+            "serving": "4 small tomatoes (approx 50g)",
+            "kcal": 9,
+            "protein_g": 0.4,
+            "carbs_g": 2,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 50,
+            "serving": "5 sticks (approx 50g)",
+            "kcal": 20,
+            "protein_g": 0.5,
+            "carbs_g": 4.5,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Red bell pepper (raw slices)",
+            "weight_g": 40,
+            "serving": "3 slices (approx 40g)",
+            "kcal": 12,
+            "protein_g": 0.4,
+            "carbs_g": 2.5,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.84
       }
     ]
   }
