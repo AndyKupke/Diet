@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-02T19:59:10.759Z",
-    "total_analyses": 26,
+    "last_updated": "2026-06-03T05:09:06.852Z",
+    "total_analyses": 27,
     "total_corrections": 3
   },
   "calibrations": {
@@ -684,6 +684,30 @@
         "fat_g": 0,
         "confidence": 0.88,
         "last_seen": "2026-06-02",
+        "seen_count": 1
+      },
+      {
+        "name": "Protein powder (whey/casein blend, chocolate flavour)",
+        "serving": "1 portion = 30g powder (2 scoops)",
+        "weight_g": 30,
+        "kcal": 111,
+        "protein_g": 22.8,
+        "carbs_g": 1.4,
+        "fat_g": 1.4,
+        "confidence": 0.95,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Low-fat milk (1.5% fat)",
+        "serving": "200ml as per label serving suggestion",
+        "weight_g": 206,
+        "kcal": 93,
+        "protein_g": 6.8,
+        "carbs_g": 9.6,
+        "fat_g": 3,
+        "confidence": 0.9,
+        "last_seen": "2026-06-03",
         "seen_count": 1
       }
     ]
@@ -1820,6 +1844,43 @@
           }
         ],
         "overall_confidence": 0.8
+      },
+      {
+        "id": 1780463346851,
+        "date": "2026-06-03",
+        "meal_type": "breakfast",
+        "user_note": "One portion",
+        "totals": {
+          "kcal": 204,
+          "protein_g": 29.6,
+          "carbs_g": 11,
+          "fat_g": 4.4,
+          "fiber_g": 0.8,
+          "sugar_g": 10.4
+        },
+        "items": [
+          {
+            "name": "Protein powder (whey/casein blend, chocolate flavour)",
+            "weight_g": 30,
+            "serving": "1 portion = 30g powder (2 scoops)",
+            "kcal": 111,
+            "protein_g": 22.8,
+            "carbs_g": 1.4,
+            "fat_g": 1.4,
+            "confidence": 0.95
+          },
+          {
+            "name": "Low-fat milk (1.5% fat)",
+            "weight_g": 206,
+            "serving": "200ml as per label serving suggestion",
+            "kcal": 93,
+            "protein_g": 6.8,
+            "carbs_g": 9.6,
+            "fat_g": 3,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.93
       }
     ]
   }
