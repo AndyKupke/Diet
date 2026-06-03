@@ -1,12 +1,12 @@
 {
   "today": {
     "date": "2026-06-03",
-    "calories": 204,
-    "protein_g": 29.6,
-    "carbs_g": 11,
-    "fat_g": 4.4,
+    "calories": 1011,
+    "protein_g": 68.2,
+    "carbs_g": 63.3,
+    "fat_g": 54.5,
     "water_ml": 0,
-    "weight_kg": null,
+    "weight_kg": 74.7,
     "meals": [
       {
         "name": "Protein powder (whey/casein blend, chocolate flavour), Low-fat milk (1.5% fat)",
@@ -16,6 +16,15 @@
         "fat_g": 4.4,
         "time": "2026-06-03T05:09:35.098Z",
         "_evtId": "evt_1780463375098_zua58"
+      },
+      {
+        "name": "Brioche-style burger bun (sesame), Beef burger patty (grilled/fried), Processed American-style cheese, Burger sauce (mayo-based special sauce), Iceberg lettuce, Fresh tomato slices, Pickles (dill cucumber), White onion (raw)",
+        "kcal": 807,
+        "protein_g": 38.6,
+        "carbs_g": 52.3,
+        "fat_g": 50.1,
+        "time": "2026-06-03T11:28:41.917Z",
+        "_evtId": "evt_1780486121917_7onqk"
       }
     ],
     "exercise": [],
@@ -315,6 +324,24 @@
       "carbs_g": 11,
       "fat_g": 4.4,
       "ts": "2026-06-03T05:09:35.099Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-03",
+      "weight_kg": 74.7,
+      "id": "evt_1780463388522_tnkq3",
+      "ts": "2026-06-03T05:09:48.522Z"
+    },
+    {
+      "id": "evt_1780486121917_7onqk",
+      "type": "meal",
+      "date": "2026-06-03",
+      "name": "Brioche-style burger bun (sesame), Beef burger patty (grilled/fried), Processed American-style cheese, Burger sauce (mayo-based special sauce), Iceberg lettuce, Fresh tomato slices, Pickles (dill cucumber), White onion (raw)",
+      "kcal": 807,
+      "protein_g": 38.6,
+      "carbs_g": 52.3,
+      "fat_g": 50.1,
+      "ts": "2026-06-03T11:28:41.917Z"
     }
   ]
 }
