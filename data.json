@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-03",
-    "calories": 1011,
-    "protein_g": 68.2,
-    "carbs_g": 63.3,
-    "fat_g": 54.5,
+    "calories": 1329,
+    "protein_g": 86.7,
+    "carbs_g": 93.1,
+    "fat_g": 68,
     "water_ml": 0,
     "weight_kg": 74.7,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 50.1,
         "time": "2026-06-03T11:28:41.917Z",
         "_evtId": "evt_1780486121917_7onqk"
+      },
+      {
+        "name": "Whole grain seeded bread, Prosciutto/cooked ham (thinly sliced), Italian salami (sliced), Cremini/chestnut mushrooms (raw), Cherry tomatoes, Carrot sticks (raw), Red bell pepper (raw slices)",
+        "kcal": 318,
+        "protein_g": 18.5,
+        "carbs_g": 29.8,
+        "fat_g": 13.5,
+        "time": "2026-06-03T16:16:33.925Z",
+        "_evtId": "evt_1780503393926_nuniy"
       }
     ],
     "exercise": [],
@@ -342,6 +351,17 @@
       "carbs_g": 52.3,
       "fat_g": 50.1,
       "ts": "2026-06-03T11:28:41.917Z"
+    },
+    {
+      "id": "evt_1780503393926_nuniy",
+      "type": "meal",
+      "date": "2026-06-03",
+      "name": "Whole grain seeded bread, Prosciutto/cooked ham (thinly sliced), Italian salami (sliced), Cremini/chestnut mushrooms (raw), Cherry tomatoes, Carrot sticks (raw), Red bell pepper (raw slices)",
+      "kcal": 318,
+      "protein_g": 18.5,
+      "carbs_g": 29.8,
+      "fat_g": 13.5,
+      "ts": "2026-06-03T16:16:33.926Z"
     }
   ]
 }
