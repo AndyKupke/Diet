@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-03T16:20:49.192Z",
-    "total_analyses": 31,
+    "last_updated": "2026-06-03T16:22:23.552Z",
+    "total_analyses": 32,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "5 sticks (approx 50g)",
-        "weight_g": 50,
-        "kcal": 20,
+        "serving": "6 sticks (approx 45g)",
+        "weight_g": 45,
+        "kcal": 19,
         "protein_g": 0.5,
-        "carbs_g": 4.5,
+        "carbs_g": 4.4,
         "fat_g": 0.1,
         "confidence": 0.85,
         "last_seen": "2026-06-03",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -875,6 +875,18 @@
         "carbs_g": 1.4,
         "fat_g": 0,
         "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber slices (raw)",
+        "serving": "2 slices (approx 20g)",
+        "weight_g": 20,
+        "kcal": 3,
+        "protein_g": 0.1,
+        "carbs_g": 0.7,
+        "fat_g": 0,
+        "confidence": 0.9,
         "last_seen": "2026-06-03",
         "seen_count": 1
       }
@@ -2324,6 +2336,43 @@
             "carbs_g": 1,
             "fat_g": 0,
             "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1780503743552,
+        "date": "2026-06-03",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 21,
+          "protein_g": 0.5,
+          "carbs_g": 5,
+          "fat_g": 0.1,
+          "fiber_g": 1.4,
+          "sugar_g": 2.4
+        },
+        "items": [
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 45,
+            "serving": "6 sticks (approx 45g)",
+            "kcal": 18,
+            "protein_g": 0.4,
+            "carbs_g": 4.3,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cucumber slices (raw)",
+            "weight_g": 20,
+            "serving": "2 slices (approx 20g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.9
           }
         ],
         "overall_confidence": 0.85
