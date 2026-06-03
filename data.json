@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-03",
-    "calories": 1625,
-    "protein_g": 115.9,
-    "carbs_g": 121.9,
-    "fat_g": 73.4,
+    "calories": 2012,
+    "protein_g": 146.1,
+    "carbs_g": 164.2,
+    "fat_g": 83.3,
     "water_ml": 0,
     "weight_kg": 74.7,
     "meals": [
@@ -52,6 +52,24 @@
         "fat_g": 0.4,
         "time": "2026-06-03T16:27:02.114Z",
         "_evtId": "evt_1780504022114_4y59m"
+      },
+      {
+        "name": "Pastrami / Smoked beef slices, Sourdough bread slices, Carrot sticks (raw), Red bell pepper slices (raw)",
+        "kcal": 297,
+        "protein_g": 18.7,
+        "carbs_g": 41.7,
+        "fat_g": 5.4,
+        "time": "2026-06-03T17:25:44.095Z",
+        "_evtId": "evt_1780507544095_y4hqz"
+      },
+      {
+        "name": "Prosciutto crudo / dry-cured ham (Schwarzwälder Schinken style)",
+        "kcal": 90,
+        "protein_g": 11.5,
+        "carbs_g": 0.6,
+        "fat_g": 4.5,
+        "time": "2026-06-03T20:29:34.676Z",
+        "_evtId": "evt_1780518574677_rr2uz"
       }
     ],
     "exercise": [],
@@ -402,6 +420,28 @@
       "carbs_g": 10.3,
       "fat_g": 0.4,
       "ts": "2026-06-03T16:27:02.115Z"
+    },
+    {
+      "id": "evt_1780507544095_y4hqz",
+      "type": "meal",
+      "date": "2026-06-03",
+      "name": "Pastrami / Smoked beef slices, Sourdough bread slices, Carrot sticks (raw), Red bell pepper slices (raw)",
+      "kcal": 297,
+      "protein_g": 18.7,
+      "carbs_g": 41.7,
+      "fat_g": 5.4,
+      "ts": "2026-06-03T17:25:44.098Z"
+    },
+    {
+      "id": "evt_1780518574677_rr2uz",
+      "type": "meal",
+      "date": "2026-06-03",
+      "name": "Prosciutto crudo / dry-cured ham (Schwarzwälder Schinken style)",
+      "kcal": 90,
+      "protein_g": 11.5,
+      "carbs_g": 0.6,
+      "fat_g": 4.5,
+      "ts": "2026-06-03T20:29:34.677Z"
     }
   ]
 }
