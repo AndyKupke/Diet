@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-03T16:26:48.649Z",
-    "total_analyses": 34,
+    "last_updated": "2026-06-03T17:25:36.523Z",
+    "total_analyses": 35,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "6 sticks (approx 45g)",
-        "weight_g": 45,
-        "kcal": 19,
+        "serving": "5 sticks (approx 40g)",
+        "weight_g": 40,
+        "kcal": 18,
         "protein_g": 0.5,
-        "carbs_g": 4.4,
+        "carbs_g": 4.1,
         "fat_g": 0.1,
         "confidence": 0.85,
         "last_seen": "2026-06-03",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -922,6 +922,42 @@
         "protein_g": 16.5,
         "carbs_g": 6,
         "fat_g": 0.3,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Pastrami / Smoked beef slices",
+        "serving": "2 slices (approx 60g)",
+        "weight_g": 60,
+        "kcal": 90,
+        "protein_g": 12,
+        "carbs_g": 1,
+        "fat_g": 4.2,
+        "confidence": 0.75,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Sourdough bread slices",
+        "serving": "2 slices (approx 70g total)",
+        "weight_g": 70,
+        "kcal": 182,
+        "protein_g": 6,
+        "carbs_g": 35,
+        "fat_g": 1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper slices (raw)",
+        "serving": "2 slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 9,
+        "protein_g": 0.3,
+        "carbs_g": 1.9,
+        "fat_g": 0.1,
         "confidence": 0.85,
         "last_seen": "2026-06-03",
         "seen_count": 1
@@ -2486,6 +2522,63 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1780507536522,
+        "date": "2026-06-03",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 297,
+          "protein_g": 18.7,
+          "carbs_g": 41.7,
+          "fat_g": 5.4,
+          "fiber_g": 3.7,
+          "sugar_g": 5.2
+        },
+        "items": [
+          {
+            "name": "Pastrami / Smoked beef slices",
+            "weight_g": 60,
+            "serving": "2 slices (approx 60g)",
+            "kcal": 90,
+            "protein_g": 12,
+            "carbs_g": 1,
+            "fat_g": 4.2,
+            "confidence": 0.75
+          },
+          {
+            "name": "Sourdough bread slices",
+            "weight_g": 70,
+            "serving": "2 slices (approx 70g total)",
+            "kcal": 182,
+            "protein_g": 6,
+            "carbs_g": 35,
+            "fat_g": 1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 40,
+            "serving": "5 sticks (approx 40g)",
+            "kcal": 16,
+            "protein_g": 0.4,
+            "carbs_g": 3.8,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Red bell pepper slices (raw)",
+            "weight_g": 30,
+            "serving": "2 slices (approx 30g)",
+            "kcal": 9,
+            "protein_g": 0.3,
+            "carbs_g": 1.9,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.8
       }
     ]
   }
