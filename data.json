@@ -1,84 +1,21 @@
 {
   "today": {
-    "date": "2026-06-02",
-    "calories": 1834,
-    "protein_g": 79.9,
-    "carbs_g": 142.6,
-    "fat_g": 104.3,
+    "date": "2026-06-03",
+    "calories": 204,
+    "protein_g": 29.6,
+    "carbs_g": 11,
+    "fat_g": 4.4,
     "water_ml": 0,
-    "weight_kg": 75.5,
+    "weight_kg": null,
     "meals": [
       {
-        "name": "Chio Tortilla Chips (Cheese flavour)",
-        "kcal": 148,
-        "protein_g": 1.7,
-        "carbs_g": 20,
-        "fat_g": 6.5,
-        "time": "2026-06-02T08:40:58.534Z",
-        "_evtId": "evt_1780389658534_4b96n"
-      },
-      {
-        "name": "Fritz-Kola Sugar-Free Cola",
-        "kcal": 2,
-        "protein_g": 0,
-        "carbs_g": 0,
-        "fat_g": 0,
-        "time": "2026-06-02T09:59:05.206Z",
-        "_evtId": "evt_1780394345206_l5925"
-      },
-      {
-        "name": "Flensburger Frei (Alcohol-Free Pilsener)",
-        "kcal": 50,
-        "protein_g": 0,
-        "carbs_g": 9.2,
-        "fat_g": 0,
-        "time": "2026-06-02T10:37:52.163Z",
-        "_evtId": "evt_1780396672163_lyncg"
-      },
-      {
-        "name": "Boiled baby potatoes (skin-on), Remoulade sauce (herb mayonnaise-based)",
-        "kcal": 174,
-        "protein_g": 2.6,
-        "carbs_g": 20.9,
-        "fat_g": 9.1,
-        "time": "2026-06-02T10:52:25.064Z",
-        "_evtId": "evt_1780397545064_nnqsm"
-      },
-      {
-        "name": "Pan-seared salmon fillet, Beurre blanc sauce (butter-cream-wine sauce), Fresh parsley (garnish), Lemon wedge, Cucumber slice (garnish)",
-        "kcal": 658,
-        "protein_g": 40.9,
-        "carbs_g": 4,
-        "fat_g": 53,
-        "time": "2026-06-02T11:04:34.866Z",
-        "_evtId": "evt_1780398274866_t86fi"
-      },
-      {
-        "name": "Bratkartoffeln (German fried potatoes), Speck/Bacon pieces (cured pork belly), Onion (caramelized/fried), Fresh parsley (garnish)",
-        "kcal": 391,
-        "protein_g": 7.8,
-        "carbs_g": 35.1,
-        "fat_g": 25,
-        "time": "2026-06-02T11:11:34.479Z",
-        "_evtId": "evt_1780398694479_4adj1"
-      },
-      {
-        "name": "Whole grain bread roll (Vollkornbrötchen), Cottage cheese (full-fat), Cherry tomatoes, Sliced cooked ham (Kochschinken), Water",
-        "kcal": 296,
-        "protein_g": 23.5,
-        "carbs_g": 35.6,
-        "fat_g": 6.9,
-        "time": "2026-06-02T19:44:51.753Z",
-        "_evtId": "evt_1780429491753_eqbbr"
-      },
-      {
-        "name": "Mixed salad greens (arugula/rocket & lettuce), Fresh tomato slices, Red onion rings, Green bell pepper strips, Yellow bell pepper strips, Cucumber slices, Yoghurt dressing (full-fat), Balsamic glaze/reduction",
-        "kcal": 115,
-        "protein_g": 3.4,
-        "carbs_g": 17.8,
-        "fat_g": 3.8,
-        "time": "2026-06-02T19:59:23.453Z",
-        "_evtId": "evt_1780430363453_6vhic"
+        "name": "Protein powder (whey/casein blend, chocolate flavour), Low-fat milk (1.5% fat)",
+        "kcal": 204,
+        "protein_g": 29.6,
+        "carbs_g": 11,
+        "fat_g": 4.4,
+        "time": "2026-06-03T05:09:35.098Z",
+        "_evtId": "evt_1780463375098_zua58"
       }
     ],
     "exercise": [],
@@ -102,6 +39,15 @@
       "fat_g": 47.4,
       "water_ml": 500,
       "weight_kg": 76
+    },
+    {
+      "date": "2026-06-02",
+      "calories": 1834,
+      "protein_g": 79.9,
+      "carbs_g": 142.6,
+      "fat_g": 104.3,
+      "water_ml": 0,
+      "weight_kg": 75.5
     }
   ],
   "events": [
@@ -358,6 +304,17 @@
       "carbs_g": 17.8,
       "fat_g": 3.8,
       "ts": "2026-06-02T19:59:23.454Z"
+    },
+    {
+      "id": "evt_1780463375098_zua58",
+      "type": "meal",
+      "date": "2026-06-03",
+      "name": "Protein powder (whey/casein blend, chocolate flavour), Low-fat milk (1.5% fat)",
+      "kcal": 204,
+      "protein_g": 29.6,
+      "carbs_g": 11,
+      "fat_g": 4.4,
+      "ts": "2026-06-03T05:09:35.099Z"
     }
   ]
 }
