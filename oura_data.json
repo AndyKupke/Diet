@@ -1,19 +1,19 @@
 {
-  "updated": "2026-06-02T23:51:56Z",
+  "updated": "2026-06-03T04:49:03Z",
   "today": {
-    "date": "2026-06-02",
+    "date": "2026-06-03",
     "readiness": {
-      "score": 68,
-      "resting_hr": 99,
-      "hrv": 71,
-      "recovery": 38,
-      "temperature": 100
+      "score": 69,
+      "resting_hr": 100,
+      "hrv": 76,
+      "recovery": 54,
+      "temperature": 96
     },
     "sleep": {
-      "score": 82,
-      "total_sleep_s": 78,
-      "deep_sleep_s": 96,
-      "rem_sleep_s": 59,
+      "score": 67,
+      "total_sleep_s": 55,
+      "deep_sleep_s": 90,
+      "rem_sleep_s": 21,
       "efficiency": null,
       "latency": null,
       "timing": null
@@ -21,37 +21,6 @@
     "workouts": []
   },
   "history": [
-    {
-      "date": "2026-05-20",
-      "readiness": {
-        "score": 76,
-        "resting_hr": 88,
-        "hrv": 69,
-        "recovery": 65,
-        "temperature": 100
-      },
-      "sleep": {
-        "score": 72,
-        "total_sleep_s": 66,
-        "deep_sleep_s": 59,
-        "rem_sleep_s": 46,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
-      "activity": {
-        "score": 85,
-        "active_calories": 719,
-        "total_calories": 2800,
-        "steps": 5436,
-        "equivalent_walking_distance": 12505,
-        "meters_to_target": -5100,
-        "high_activity": 3600,
-        "medium_activity": 1260,
-        "low_activity": 13020,
-        "sedentary": 33600
-      }
-    },
     {
       "date": "2026-05-21",
       "readiness": {
@@ -422,6 +391,37 @@
         "medium_activity": 5460,
         "low_activity": 12000,
         "sedentary": 37320
+      }
+    },
+    {
+      "date": "2026-06-02",
+      "readiness": {
+        "score": 68,
+        "resting_hr": 99,
+        "hrv": 71,
+        "recovery": 38,
+        "temperature": 100
+      },
+      "sleep": {
+        "score": 82,
+        "total_sleep_s": 78,
+        "deep_sleep_s": 96,
+        "rem_sleep_s": 59,
+        "efficiency": null,
+        "latency": null,
+        "timing": null
+      },
+      "activity": {
+        "score": 93,
+        "active_calories": 636,
+        "total_calories": 2742,
+        "steps": 5537,
+        "equivalent_walking_distance": 12175,
+        "meters_to_target": -6400,
+        "high_activity": 0,
+        "medium_activity": 6840,
+        "low_activity": 12180,
+        "sedentary": 38460
       }
     }
   ]
