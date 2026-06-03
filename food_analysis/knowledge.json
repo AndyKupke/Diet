@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-03T17:25:36.523Z",
-    "total_analyses": 35,
+    "last_updated": "2026-06-03T20:29:29.318Z",
+    "total_analyses": 36,
     "total_corrections": 3
   },
   "calibrations": {
@@ -904,15 +904,15 @@
       },
       {
         "name": "Prosciutto crudo / dry-cured ham (Schwarzwälder Schinken style)",
-        "serving": "2 thin slices (approx 35g)",
-        "weight_g": 35,
-        "kcal": 70,
-        "protein_g": 9,
-        "carbs_g": 0.5,
-        "fat_g": 3.5,
-        "confidence": 0.8,
+        "serving": "4-5 thin slices, loosely piled (approx 45g)",
+        "weight_g": 45,
+        "kcal": 90,
+        "protein_g": 11.5,
+        "carbs_g": 0.6,
+        "fat_g": 4.5,
+        "confidence": 0.75,
         "last_seen": "2026-06-03",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Skyr (Icelandic-style yogurt)",
@@ -2579,6 +2579,33 @@
           }
         ],
         "overall_confidence": 0.8
+      },
+      {
+        "id": 1780518569318,
+        "date": "2026-06-03",
+        "meal_type": "late snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 90,
+          "protein_g": 11.5,
+          "carbs_g": 0.6,
+          "fat_g": 4.5,
+          "fiber_g": 0,
+          "sugar_g": 0.3
+        },
+        "items": [
+          {
+            "name": "Prosciutto crudo / dry-cured ham (Schwarzwälder Schinken style)",
+            "weight_g": 45,
+            "serving": "4-5 thin slices, loosely piled (approx 45g)",
+            "kcal": 90,
+            "protein_g": 11.5,
+            "carbs_g": 0.6,
+            "fat_g": 4.5,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.75
       }
     ]
   }
