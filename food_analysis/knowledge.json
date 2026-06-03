@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-03T05:09:06.852Z",
-    "total_analyses": 27,
+    "last_updated": "2026-06-03T11:28:14.471Z",
+    "total_analyses": 28,
     "total_corrections": 3
   },
   "calibrations": {
@@ -604,15 +604,15 @@
       },
       {
         "name": "Fresh tomato slices",
-        "serving": "2-3 thick slices (approx 60g)",
-        "weight_g": 60,
-        "kcal": 11,
-        "protein_g": 0.5,
-        "carbs_g": 2.4,
+        "serving": "2-3 slices (approx 35g)",
+        "weight_g": 35,
+        "kcal": 9,
+        "protein_g": 0.4,
+        "carbs_g": 1.9,
         "fat_g": 0.1,
-        "confidence": 0.82,
-        "last_seen": "2026-06-02",
-        "seen_count": 1
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 2
       },
       {
         "name": "Red onion rings",
@@ -707,6 +707,90 @@
         "carbs_g": 9.6,
         "fat_g": 3,
         "confidence": 0.9,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Brioche-style burger bun (sesame)",
+        "serving": "1 whole bun (approx 85g)",
+        "weight_g": 85,
+        "kcal": 265,
+        "protein_g": 8.5,
+        "carbs_g": 45,
+        "fat_g": 6,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Beef burger patty (grilled/fried)",
+        "serving": "1 whole patty (approx 120g cooked weight)",
+        "weight_g": 120,
+        "kcal": 290,
+        "protein_g": 24,
+        "carbs_g": 0,
+        "fat_g": 21,
+        "confidence": 0.8,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Processed American-style cheese",
+        "serving": "1-2 slices melted (approx 30g)",
+        "weight_g": 30,
+        "kcal": 95,
+        "protein_g": 5,
+        "carbs_g": 1.5,
+        "fat_g": 8,
+        "confidence": 0.85,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Burger sauce (mayo-based special sauce)",
+        "serving": "Generous spread (approx 25g)",
+        "weight_g": 25,
+        "kcal": 140,
+        "protein_g": 0.3,
+        "carbs_g": 2,
+        "fat_g": 15,
+        "confidence": 0.75,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Iceberg lettuce",
+        "serving": "2-3 leaves (approx 20g)",
+        "weight_g": 20,
+        "kcal": 3,
+        "protein_g": 0.2,
+        "carbs_g": 0.6,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Pickles (dill cucumber)",
+        "serving": "2-3 slices (approx 15g)",
+        "weight_g": 15,
+        "kcal": 2,
+        "protein_g": 0.1,
+        "carbs_g": 0.4,
+        "fat_g": 0,
+        "confidence": 0.7,
+        "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "White onion (raw)",
+        "serving": "Small amount diced/rings (approx 15g)",
+        "weight_g": 15,
+        "kcal": 6,
+        "protein_g": 0.2,
+        "carbs_g": 1.4,
+        "fat_g": 0,
+        "confidence": 0.65,
         "last_seen": "2026-06-03",
         "seen_count": 1
       }
@@ -1881,6 +1965,103 @@
           }
         ],
         "overall_confidence": 0.93
+      },
+      {
+        "id": 1780486094470,
+        "date": "2026-06-03",
+        "meal_type": "lunch",
+        "user_note": "I ate this burger but when it was a whole one, take this into account",
+        "totals": {
+          "kcal": 807,
+          "protein_g": 38.6,
+          "carbs_g": 52.3,
+          "fat_g": 50.1,
+          "fiber_g": 2.7,
+          "sugar_g": 10.1
+        },
+        "items": [
+          {
+            "name": "Brioche-style burger bun (sesame)",
+            "weight_g": 85,
+            "serving": "1 whole bun (approx 85g)",
+            "kcal": 265,
+            "protein_g": 8.5,
+            "carbs_g": 45,
+            "fat_g": 6,
+            "confidence": 0.85
+          },
+          {
+            "name": "Beef burger patty (grilled/fried)",
+            "weight_g": 120,
+            "serving": "1 whole patty (approx 120g cooked weight)",
+            "kcal": 290,
+            "protein_g": 24,
+            "carbs_g": 0,
+            "fat_g": 21,
+            "confidence": 0.8
+          },
+          {
+            "name": "Processed American-style cheese",
+            "weight_g": 30,
+            "serving": "1-2 slices melted (approx 30g)",
+            "kcal": 95,
+            "protein_g": 5,
+            "carbs_g": 1.5,
+            "fat_g": 8,
+            "confidence": 0.85
+          },
+          {
+            "name": "Burger sauce (mayo-based special sauce)",
+            "weight_g": 25,
+            "serving": "Generous spread (approx 25g)",
+            "kcal": 140,
+            "protein_g": 0.3,
+            "carbs_g": 2,
+            "fat_g": 15,
+            "confidence": 0.75
+          },
+          {
+            "name": "Iceberg lettuce",
+            "weight_g": 20,
+            "serving": "2-3 leaves (approx 20g)",
+            "kcal": 3,
+            "protein_g": 0.2,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 35,
+            "serving": "2-3 slices (approx 35g)",
+            "kcal": 6,
+            "protein_g": 0.3,
+            "carbs_g": 1.4,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Pickles (dill cucumber)",
+            "weight_g": 15,
+            "serving": "2-3 slices (approx 15g)",
+            "kcal": 2,
+            "protein_g": 0.1,
+            "carbs_g": 0.4,
+            "fat_g": 0,
+            "confidence": 0.7
+          },
+          {
+            "name": "White onion (raw)",
+            "weight_g": 15,
+            "serving": "Small amount diced/rings (approx 15g)",
+            "kcal": 6,
+            "protein_g": 0.2,
+            "carbs_g": 1.4,
+            "fat_g": 0,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
