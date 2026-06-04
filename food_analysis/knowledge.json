@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-04T17:06:09.058Z",
-    "total_analyses": 41,
+    "last_updated": "2026-06-04T18:39:16.862Z",
+    "total_analyses": 42,
     "total_corrections": 3
   },
   "calibrations": {
@@ -148,15 +148,15 @@
       },
       {
         "name": "Fresh blueberries",
-        "serving": "approx 25 berries (approx 30g)",
+        "serving": "scattered portion (approx 30g)",
         "weight_g": 30,
-        "kcal": 16,
+        "kcal": 17,
         "protein_g": 0.2,
-        "carbs_g": 4,
+        "carbs_g": 4.3,
         "fat_g": 0.1,
-        "confidence": 0.8,
-        "last_seen": "2026-06-03",
-        "seen_count": 3
+        "confidence": 0.75,
+        "last_seen": "2026-06-04",
+        "seen_count": 4
       },
       {
         "name": "Cherry tomatoes",
@@ -196,15 +196,15 @@
       },
       {
         "name": "Fresh strawberries (halved)",
-        "serving": "approximately 10 strawberry halves (approx 45g)",
-        "weight_g": 45,
-        "kcal": 14,
-        "protein_g": 0.3,
-        "carbs_g": 3.5,
-        "fat_g": 0.1,
-        "confidence": 0.82,
-        "last_seen": "2026-06-01",
-        "seen_count": 1
+        "serving": "approx 10-12 halves (approx 80g)",
+        "weight_g": 80,
+        "kcal": 20,
+        "protein_g": 0.4,
+        "carbs_g": 4.8,
+        "fat_g": 0.2,
+        "confidence": 0.8,
+        "last_seen": "2026-06-04",
+        "seen_count": 2
       },
       {
         "name": "Whole grain seeded bread",
@@ -916,15 +916,15 @@
       },
       {
         "name": "Skyr (Icelandic-style yogurt)",
-        "serving": "half bowl (approx 120g)",
-        "weight_g": 120,
-        "kcal": 89,
-        "protein_g": 14.8,
-        "carbs_g": 5.4,
-        "fat_g": 0.3,
+        "serving": "base layer (approx 250g)",
+        "weight_g": 250,
+        "kcal": 127,
+        "protein_g": 21.1,
+        "carbs_g": 7.7,
+        "fat_g": 0.4,
         "confidence": 0.85,
         "last_seen": "2026-06-04",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "Pastrami / Smoked beef slices",
@@ -1091,6 +1091,18 @@
         "carbs_g": 5,
         "fat_g": 3.5,
         "confidence": 0.85,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Crunchy granola/muesli cereal",
+        "serving": "generous topping (approx 96g)",
+        "weight_g": 96,
+        "kcal": 422,
+        "protein_g": 9.6,
+        "carbs_g": 62.4,
+        "fat_g": 14.4,
+        "confidence": 0.8,
         "last_seen": "2026-06-04",
         "seen_count": 1
       }
@@ -3013,6 +3025,63 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1780598356861,
+        "date": "2026-06-04",
+        "meal_type": "dinner",
+        "user_note": "456 gram of food. Skyr and blue berries below strawberries and crunchy cereals",
+        "totals": {
+          "kcal": 630,
+          "protein_g": 37.8,
+          "carbs_g": 82.9,
+          "fat_g": 15.2,
+          "fiber_g": 8.1,
+          "sugar_g": 36.1
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic-style yogurt)",
+            "weight_g": 250,
+            "serving": "base layer (approx 250g)",
+            "kcal": 165,
+            "protein_g": 27.5,
+            "carbs_g": 10,
+            "fat_g": 0.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh strawberries (halved)",
+            "weight_g": 80,
+            "serving": "approx 10-12 halves (approx 80g)",
+            "kcal": 26,
+            "protein_g": 0.5,
+            "carbs_g": 6.2,
+            "fat_g": 0.2,
+            "confidence": 0.8
+          },
+          {
+            "name": "Fresh blueberries",
+            "weight_g": 30,
+            "serving": "scattered portion (approx 30g)",
+            "kcal": 17,
+            "protein_g": 0.2,
+            "carbs_g": 4.3,
+            "fat_g": 0.1,
+            "confidence": 0.75
+          },
+          {
+            "name": "Crunchy granola/muesli cereal",
+            "weight_g": 96,
+            "serving": "generous topping (approx 96g)",
+            "kcal": 422,
+            "protein_g": 9.6,
+            "carbs_g": 62.4,
+            "fat_g": 14.4,
+            "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
