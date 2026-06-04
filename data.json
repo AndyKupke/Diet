@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-04",
-    "calories": 808,
-    "protein_g": 49.8,
-    "carbs_g": 64.8,
-    "fat_g": 35.9,
+    "calories": 1127,
+    "protein_g": 73.3,
+    "carbs_g": 96.9,
+    "fat_g": 44.5,
     "water_ml": 0,
     "weight_kg": 74,
     "meals": [
@@ -34,6 +34,24 @@
         "fat_g": 15.9,
         "time": "2026-06-04T11:52:32.436Z",
         "_evtId": "evt_1780573952437_gnrp9"
+      },
+      {
+        "name": "Fritz-Kola Zero (sugar-free cola)",
+        "kcal": 5,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "time": "2026-06-04T11:53:09.311Z",
+        "_evtId": "evt_1780573989311_3f8kb"
+      },
+      {
+        "name": "Dark rye bread / Vollkornbrot, Cottage cheese (full-fat), Sliced roast turkey/chicken breast (cold cut), Carrot sticks (raw), Cucumber slices (raw), Sauerkraut (fermented cabbage), Crispy fried onions (Röstzwiebeln)",
+        "kcal": 314,
+        "protein_g": 23.5,
+        "carbs_g": 32.1,
+        "fat_g": 8.6,
+        "time": "2026-06-04T17:06:44.899Z",
+        "_evtId": "evt_1780592804899_2tq1f"
       }
     ],
     "exercise": [],
@@ -448,6 +466,28 @@
       "carbs_g": 19.5,
       "fat_g": 15.9,
       "ts": "2026-06-04T11:52:32.437Z"
+    },
+    {
+      "id": "evt_1780573989311_3f8kb",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "Fritz-Kola Zero (sugar-free cola)",
+      "kcal": 5,
+      "protein_g": 0,
+      "carbs_g": 0,
+      "fat_g": 0,
+      "ts": "2026-06-04T11:53:09.311Z"
+    },
+    {
+      "id": "evt_1780592804899_2tq1f",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "Dark rye bread / Vollkornbrot, Cottage cheese (full-fat), Sliced roast turkey/chicken breast (cold cut), Carrot sticks (raw), Cucumber slices (raw), Sauerkraut (fermented cabbage), Crispy fried onions (Röstzwiebeln)",
+      "kcal": 314,
+      "protein_g": 23.5,
+      "carbs_g": 32.1,
+      "fat_g": 8.6,
+      "ts": "2026-06-04T17:06:44.899Z"
     }
   ]
 }
