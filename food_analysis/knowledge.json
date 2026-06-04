@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-04T11:52:21.389Z",
-    "total_analyses": 39,
+    "last_updated": "2026-06-04T17:06:09.058Z",
+    "total_analyses": 41,
     "total_corrections": 3
   },
   "calibrations": {
@@ -136,15 +136,15 @@
       },
       {
         "name": "Fritz-Kola Zero (sugar-free cola)",
-        "serving": "1 bottle (330ml)",
-        "weight_g": 330,
-        "kcal": 1,
+        "serving": "1 bottle (500ml)",
+        "weight_g": 500,
+        "kcal": 3,
         "protein_g": 0,
         "carbs_g": 0,
         "fat_g": 0,
         "confidence": 0.98,
-        "last_seen": "2026-06-01",
-        "seen_count": 2
+        "last_seen": "2026-06-04",
+        "seen_count": 3
       },
       {
         "name": "Fresh blueberries",
@@ -556,15 +556,15 @@
       },
       {
         "name": "Cottage cheese (full-fat)",
-        "serving": "Generous spread on both halves (approx 60g total)",
-        "weight_g": 60,
-        "kcal": 62,
-        "protein_g": 7.2,
-        "carbs_g": 2,
-        "fat_g": 2.9,
-        "confidence": 0.82,
-        "last_seen": "2026-06-02",
-        "seen_count": 1
+        "serving": "approx 2 tablespoons (50g)",
+        "weight_g": 50,
+        "kcal": 57,
+        "protein_g": 6.3,
+        "carbs_g": 1.8,
+        "fat_g": 2.7,
+        "confidence": 0.85,
+        "last_seen": "2026-06-04",
+        "seen_count": 2
       },
       {
         "name": "Sliced cooked ham (Kochschinken)",
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "5 sticks (approx 40g)",
-        "weight_g": 40,
-        "kcal": 18,
+        "serving": "4 sticks (approx 50g)",
+        "weight_g": 50,
+        "kcal": 20,
         "protein_g": 0.5,
-        "carbs_g": 4.1,
+        "carbs_g": 4.4,
         "fat_g": 0.1,
-        "confidence": 0.85,
-        "last_seen": "2026-06-03",
-        "seen_count": 3
+        "confidence": 0.9,
+        "last_seen": "2026-06-04",
+        "seen_count": 4
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -880,15 +880,15 @@
       },
       {
         "name": "Cucumber slices (raw)",
-        "serving": "2 slices (approx 20g)",
-        "weight_g": 20,
-        "kcal": 3,
-        "protein_g": 0.1,
-        "carbs_g": 0.7,
+        "serving": "3 slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 4,
+        "protein_g": 0.2,
+        "carbs_g": 0.9,
         "fat_g": 0,
         "confidence": 0.9,
-        "last_seen": "2026-06-03",
-        "seen_count": 1
+        "last_seen": "2026-06-04",
+        "seen_count": 2
       },
       {
         "name": "Dark rye bread with seeds (Vollkornbrot/Schwarzbrot)",
@@ -1044,7 +1044,7 @@
         "fat_g": 1.5,
         "confidence": 0.85,
         "last_seen": "2026-06-04",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Raw white onion rings",
@@ -1055,6 +1055,42 @@
         "carbs_g": 1.4,
         "fat_g": 0,
         "confidence": 0.9,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced roast turkey/chicken breast (cold cut)",
+        "serving": "2 slices (approx 60g)",
+        "weight_g": 60,
+        "kcal": 65,
+        "protein_g": 13,
+        "carbs_g": 0.5,
+        "fat_g": 1,
+        "confidence": 0.8,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Sauerkraut (fermented cabbage)",
+        "serving": "small portion (approx 30g)",
+        "weight_g": 30,
+        "kcal": 6,
+        "protein_g": 0.3,
+        "carbs_g": 1.2,
+        "fat_g": 0,
+        "confidence": 0.75,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Crispy fried onions (Röstzwiebeln)",
+        "serving": "approx 1 tablespoon (10g)",
+        "weight_g": 10,
+        "kcal": 55,
+        "protein_g": 0.5,
+        "carbs_g": 5,
+        "fat_g": 3.5,
+        "confidence": 0.85,
         "last_seen": "2026-06-04",
         "seen_count": 1
       }
@@ -2863,6 +2899,120 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780573982196,
+        "date": "2026-06-04",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 5,
+          "protein_g": 0,
+          "carbs_g": 0,
+          "fat_g": 0,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Fritz-Kola Zero (sugar-free cola)",
+            "weight_g": 500,
+            "serving": "1 bottle (500ml)",
+            "kcal": 5,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
+      },
+      {
+        "id": 1780592769057,
+        "date": "2026-06-04",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 314,
+          "protein_g": 23.5,
+          "carbs_g": 32.1,
+          "fat_g": 8.6,
+          "fiber_g": 6.7,
+          "sugar_g": 6.9
+        },
+        "items": [
+          {
+            "name": "Dark rye bread / Vollkornbrot",
+            "weight_g": 50,
+            "serving": "1 slice (approx 50g)",
+            "kcal": 110,
+            "protein_g": 3.5,
+            "carbs_g": 18,
+            "fat_g": 1.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cottage cheese (full-fat)",
+            "weight_g": 50,
+            "serving": "approx 2 tablespoons (50g)",
+            "kcal": 52,
+            "protein_g": 5.5,
+            "carbs_g": 1.5,
+            "fat_g": 2.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "Sliced roast turkey/chicken breast (cold cut)",
+            "weight_g": 60,
+            "serving": "2 slices (approx 60g)",
+            "kcal": 65,
+            "protein_g": 13,
+            "carbs_g": 0.5,
+            "fat_g": 1,
+            "confidence": 0.8
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 50,
+            "serving": "4 sticks (approx 50g)",
+            "kcal": 21,
+            "protein_g": 0.5,
+            "carbs_g": 4.8,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Cucumber slices (raw)",
+            "weight_g": 30,
+            "serving": "3 slices (approx 30g)",
+            "kcal": 5,
+            "protein_g": 0.2,
+            "carbs_g": 1.1,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Sauerkraut (fermented cabbage)",
+            "weight_g": 30,
+            "serving": "small portion (approx 30g)",
+            "kcal": 6,
+            "protein_g": 0.3,
+            "carbs_g": 1.2,
+            "fat_g": 0,
+            "confidence": 0.75
+          },
+          {
+            "name": "Crispy fried onions (Röstzwiebeln)",
+            "weight_g": 10,
+            "serving": "approx 1 tablespoon (10g)",
+            "kcal": 55,
+            "protein_g": 0.5,
+            "carbs_g": 5,
+            "fat_g": 3.5,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.83
       }
     ]
   }
