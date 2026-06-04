@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-04",
-    "calories": 1127,
-    "protein_g": 73.3,
-    "carbs_g": 96.9,
-    "fat_g": 44.5,
+    "calories": 1910,
+    "protein_g": 121,
+    "carbs_g": 180.1,
+    "fat_g": 72,
     "water_ml": 0,
     "weight_kg": 74,
     "meals": [
@@ -52,6 +52,24 @@
         "fat_g": 8.6,
         "time": "2026-06-04T17:06:44.899Z",
         "_evtId": "evt_1780592804899_2tq1f"
+      },
+      {
+        "name": "Skyr (Icelandic-style yogurt), Fresh strawberries (halved), Fresh blueberries, Crunchy granola/muesli cereal",
+        "kcal": 630,
+        "protein_g": 37.8,
+        "carbs_g": 82.9,
+        "fat_g": 15.2,
+        "time": "2026-06-04T18:39:38.522Z",
+        "_evtId": "evt_1780598378522_ty94d"
+      },
+      {
+        "name": "Salami Sticks (air-dried, noble mold-ripened)",
+        "kcal": 153,
+        "protein_g": 9.9,
+        "carbs_g": 0.3,
+        "fat_g": 12.3,
+        "time": "2026-06-04T20:53:36.952Z",
+        "_evtId": "evt_1780606416952_5euhu"
       }
     ],
     "exercise": [],
@@ -488,6 +506,28 @@
       "carbs_g": 32.1,
       "fat_g": 8.6,
       "ts": "2026-06-04T17:06:44.899Z"
+    },
+    {
+      "id": "evt_1780598378522_ty94d",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "Skyr (Icelandic-style yogurt), Fresh strawberries (halved), Fresh blueberries, Crunchy granola/muesli cereal",
+      "kcal": 630,
+      "protein_g": 37.8,
+      "carbs_g": 82.9,
+      "fat_g": 15.2,
+      "ts": "2026-06-04T18:39:38.523Z"
+    },
+    {
+      "id": "evt_1780606416952_5euhu",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "Salami Sticks (air-dried, noble mold-ripened)",
+      "kcal": 153,
+      "protein_g": 9.9,
+      "carbs_g": 0.3,
+      "fat_g": 12.3,
+      "ts": "2026-06-04T20:53:36.952Z"
     }
   ]
 }
