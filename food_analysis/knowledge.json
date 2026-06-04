@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-04T05:09:44.101Z",
-    "total_analyses": 37,
+    "last_updated": "2026-06-04T06:28:44.926Z",
+    "total_analyses": 38,
     "total_corrections": 3
   },
   "calibrations": {
@@ -604,15 +604,15 @@
       },
       {
         "name": "Fresh tomato slices",
-        "serving": "2-3 slices (approx 35g)",
-        "weight_g": 35,
-        "kcal": 9,
-        "protein_g": 0.4,
-        "carbs_g": 1.9,
+        "serving": "3 slices (approx 60g)",
+        "weight_g": 60,
+        "kcal": 10,
+        "protein_g": 0.5,
+        "carbs_g": 2.1,
         "fat_g": 0.1,
-        "confidence": 0.85,
-        "last_seen": "2026-06-03",
-        "seen_count": 2
+        "confidence": 0.9,
+        "last_seen": "2026-06-04",
+        "seen_count": 3
       },
       {
         "name": "Red onion rings",
@@ -971,6 +971,54 @@
         "carbs_g": 19.5,
         "fat_g": 2.1,
         "confidence": 0.8,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "French omelette / folded omelette",
+        "serving": "1 omelette made from approx 2 eggs (approx 100g cooked)",
+        "weight_g": 100,
+        "kcal": 154,
+        "protein_g": 10.8,
+        "carbs_g": 0.6,
+        "fat_g": 12,
+        "confidence": 0.85,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Dark rye bread / Vollkornbrot (beneath omelette)",
+        "serving": "1 slice (approx 50g)",
+        "weight_g": 50,
+        "kcal": 110,
+        "protein_g": 3.5,
+        "carbs_g": 18,
+        "fat_g": 1.5,
+        "confidence": 0.8,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh chives (chopped)",
+        "serving": "1 tablespoon chopped (approx 3g)",
+        "weight_g": 3,
+        "kcal": 1,
+        "protein_g": 0.1,
+        "carbs_g": 0.1,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooking fat (butter/oil for omelette)",
+        "serving": "approx 1 tsp (5g)",
+        "weight_g": 5,
+        "kcal": 37,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 4.1,
+        "confidence": 0.7,
         "last_seen": "2026-06-04",
         "seen_count": 1
       }
@@ -2652,6 +2700,73 @@
             "carbs_g": 19.5,
             "fat_g": 2.1,
             "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.82
+      },
+      {
+        "id": 1780554524925,
+        "date": "2026-06-04",
+        "meal_type": "breakfast",
+        "user_note": "There is a bread beneath it",
+        "totals": {
+          "kcal": 313,
+          "protein_g": 14.9,
+          "carbs_g": 21,
+          "fat_g": 17.7,
+          "fiber_g": 4.8,
+          "sugar_g": 3
+        },
+        "items": [
+          {
+            "name": "French omelette / folded omelette",
+            "weight_g": 100,
+            "serving": "1 omelette made from approx 2 eggs (approx 100g cooked)",
+            "kcal": 154,
+            "protein_g": 10.8,
+            "carbs_g": 0.6,
+            "fat_g": 12,
+            "confidence": 0.85
+          },
+          {
+            "name": "Dark rye bread / Vollkornbrot (beneath omelette)",
+            "weight_g": 50,
+            "serving": "1 slice (approx 50g)",
+            "kcal": 110,
+            "protein_g": 3.5,
+            "carbs_g": 18,
+            "fat_g": 1.5,
+            "confidence": 0.8
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 60,
+            "serving": "3 slices (approx 60g)",
+            "kcal": 11,
+            "protein_g": 0.5,
+            "carbs_g": 2.3,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh chives (chopped)",
+            "weight_g": 3,
+            "serving": "1 tablespoon chopped (approx 3g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Cooking fat (butter/oil for omelette)",
+            "weight_g": 5,
+            "serving": "approx 1 tsp (5g)",
+            "kcal": 37,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 4.1,
+            "confidence": 0.7
           }
         ],
         "overall_confidence": 0.82
