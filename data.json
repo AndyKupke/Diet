@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-04",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 193,
+    "protein_g": 16.7,
+    "carbs_g": 24.3,
+    "fat_g": 2.3,
     "water_ml": 0,
     "weight_kg": 74,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Skyr (Icelandic-style yogurt), Rolled oats (dry)",
+        "kcal": 193,
+        "protein_g": 16.7,
+        "carbs_g": 24.3,
+        "fat_g": 2.3,
+        "time": "2026-06-04T05:10:58.553Z",
+        "_evtId": "evt_1780549858553_hi96r"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -394,6 +404,17 @@
       "weight_kg": 74,
       "id": "evt_1780544235162_uturc",
       "ts": "2026-06-04T03:37:15.162Z"
+    },
+    {
+      "id": "evt_1780549858553_hi96r",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "Skyr (Icelandic-style yogurt), Rolled oats (dry)",
+      "kcal": 193,
+      "protein_g": 16.7,
+      "carbs_g": 24.3,
+      "fat_g": 2.3,
+      "ts": "2026-06-04T05:10:58.554Z"
     }
   ]
 }
