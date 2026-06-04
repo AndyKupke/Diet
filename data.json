@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-04",
-    "calories": 506,
-    "protein_g": 31.6,
-    "carbs_g": 45.3,
-    "fat_g": 20,
+    "calories": 808,
+    "protein_g": 49.8,
+    "carbs_g": 64.8,
+    "fat_g": 35.9,
     "water_ml": 0,
     "weight_kg": 74,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 17.7,
         "time": "2026-06-04T06:28:57.026Z",
         "_evtId": "evt_1780554537027_7vtxh"
+      },
+      {
+        "name": "Mett/Hackepeter (German raw minced pork spread), Dark rye bread / Vollkornbrot, Raw white onion rings, Fresh chives (chopped)",
+        "kcal": 302,
+        "protein_g": 18.2,
+        "carbs_g": 19.5,
+        "fat_g": 15.9,
+        "time": "2026-06-04T11:52:32.436Z",
+        "_evtId": "evt_1780573952437_gnrp9"
       }
     ],
     "exercise": [],
@@ -428,6 +437,17 @@
       "carbs_g": 21,
       "fat_g": 17.7,
       "ts": "2026-06-04T06:28:57.027Z"
+    },
+    {
+      "id": "evt_1780573952437_gnrp9",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "Mett/Hackepeter (German raw minced pork spread), Dark rye bread / Vollkornbrot, Raw white onion rings, Fresh chives (chopped)",
+      "kcal": 302,
+      "protein_g": 18.2,
+      "carbs_g": 19.5,
+      "fat_g": 15.9,
+      "ts": "2026-06-04T11:52:32.437Z"
     }
   ]
 }
