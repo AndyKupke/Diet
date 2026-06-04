@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-04T18:39:16.862Z",
-    "total_analyses": 42,
+    "last_updated": "2026-06-04T20:52:59.998Z",
+    "total_analyses": 43,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1103,6 +1103,18 @@
         "carbs_g": 62.4,
         "fat_g": 14.4,
         "confidence": 0.8,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Salami Sticks (air-dried, noble mold-ripened)",
+        "serving": "3 sticks (approx 30g)",
+        "weight_g": 30,
+        "kcal": 153,
+        "protein_g": 9.9,
+        "carbs_g": 0.3,
+        "fat_g": 12.3,
+        "confidence": 0.95,
         "last_seen": "2026-06-04",
         "seen_count": 1
       }
@@ -3082,6 +3094,33 @@
           }
         ],
         "overall_confidence": 0.82
+      },
+      {
+        "id": 1780606379998,
+        "date": "2026-06-04",
+        "meal_type": "late snack",
+        "user_note": "Drei stück",
+        "totals": {
+          "kcal": 153,
+          "protein_g": 9.9,
+          "carbs_g": 0.3,
+          "fat_g": 12.3,
+          "fiber_g": 0,
+          "sugar_g": 0.12
+        },
+        "items": [
+          {
+            "name": "Salami Sticks (air-dried, noble mold-ripened)",
+            "weight_g": 30,
+            "serving": "3 sticks (approx 30g)",
+            "kcal": 153,
+            "protein_g": 9.9,
+            "carbs_g": 0.3,
+            "fat_g": 12.3,
+            "confidence": 0.95
+          }
+        ],
+        "overall_confidence": 0.95
       }
     ]
   }
