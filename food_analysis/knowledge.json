@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-03T20:29:29.318Z",
-    "total_analyses": 36,
+    "last_updated": "2026-06-04T05:09:44.101Z",
+    "total_analyses": 37,
     "total_corrections": 3
   },
   "calibrations": {
@@ -916,15 +916,15 @@
       },
       {
         "name": "Skyr (Icelandic-style yogurt)",
-        "serving": "1 small bowl (approx 150g)",
-        "weight_g": 150,
-        "kcal": 99,
-        "protein_g": 16.5,
-        "carbs_g": 6,
+        "serving": "half bowl (approx 120g)",
+        "weight_g": 120,
+        "kcal": 89,
+        "protein_g": 14.8,
+        "carbs_g": 5.4,
         "fat_g": 0.3,
         "confidence": 0.85,
-        "last_seen": "2026-06-03",
-        "seen_count": 1
+        "last_seen": "2026-06-04",
+        "seen_count": 2
       },
       {
         "name": "Pastrami / Smoked beef slices",
@@ -960,6 +960,18 @@
         "fat_g": 0.1,
         "confidence": 0.85,
         "last_seen": "2026-06-03",
+        "seen_count": 1
+      },
+      {
+        "name": "Rolled oats (dry)",
+        "serving": "approx 30g dry",
+        "weight_g": 30,
+        "kcal": 114,
+        "protein_g": 3.5,
+        "carbs_g": 19.5,
+        "fat_g": 2.1,
+        "confidence": 0.8,
+        "last_seen": "2026-06-04",
         "seen_count": 1
       }
     ]
@@ -2606,6 +2618,43 @@
           }
         ],
         "overall_confidence": 0.75
+      },
+      {
+        "id": 1780549784100,
+        "date": "2026-06-04",
+        "meal_type": "breakfast",
+        "user_note": "Skyr and oats half full",
+        "totals": {
+          "kcal": 193,
+          "protein_g": 16.7,
+          "carbs_g": 24.3,
+          "fat_g": 2.3,
+          "fiber_g": 3,
+          "sugar_g": 4.3
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic-style yogurt)",
+            "weight_g": 120,
+            "serving": "half bowl (approx 120g)",
+            "kcal": 79,
+            "protein_g": 13.2,
+            "carbs_g": 4.8,
+            "fat_g": 0.2,
+            "confidence": 0.85
+          },
+          {
+            "name": "Rolled oats (dry)",
+            "weight_g": 30,
+            "serving": "approx 30g dry",
+            "kcal": 114,
+            "protein_g": 3.5,
+            "carbs_g": 19.5,
+            "fat_g": 2.1,
+            "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
