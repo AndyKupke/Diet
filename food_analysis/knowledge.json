@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-04T06:28:44.926Z",
-    "total_analyses": 38,
+    "last_updated": "2026-06-04T11:52:21.389Z",
+    "total_analyses": 39,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1000,7 +1000,7 @@
       },
       {
         "name": "Fresh chives (chopped)",
-        "serving": "1 tablespoon chopped (approx 3g)",
+        "serving": "approx 1 tablespoon (3g)",
         "weight_g": 3,
         "kcal": 1,
         "protein_g": 0.1,
@@ -1008,7 +1008,7 @@
         "fat_g": 0,
         "confidence": 0.9,
         "last_seen": "2026-06-04",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Cooking fat (butter/oil for omelette)",
@@ -1019,6 +1019,42 @@
         "carbs_g": 0,
         "fat_g": 4.1,
         "confidence": 0.7,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Mett/Hackepeter (German raw minced pork spread)",
+        "serving": "generous spread on bread (approx 80g)",
+        "weight_g": 80,
+        "kcal": 185,
+        "protein_g": 14.4,
+        "carbs_g": 0,
+        "fat_g": 14.4,
+        "confidence": 0.85,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Dark rye bread / Vollkornbrot",
+        "serving": "1 slice (approx 50g)",
+        "weight_g": 50,
+        "kcal": 110,
+        "protein_g": 3.5,
+        "carbs_g": 18,
+        "fat_g": 1.5,
+        "confidence": 0.85,
+        "last_seen": "2026-06-04",
+        "seen_count": 1
+      },
+      {
+        "name": "Raw white onion rings",
+        "serving": "approx 15g",
+        "weight_g": 15,
+        "kcal": 6,
+        "protein_g": 0.2,
+        "carbs_g": 1.4,
+        "fat_g": 0,
+        "confidence": 0.9,
         "last_seen": "2026-06-04",
         "seen_count": 1
       }
@@ -2770,6 +2806,63 @@
           }
         ],
         "overall_confidence": 0.82
+      },
+      {
+        "id": 1780573941388,
+        "date": "2026-06-04",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 302,
+          "protein_g": 18.2,
+          "carbs_g": 19.5,
+          "fat_g": 15.9,
+          "fiber_g": 4.4,
+          "sugar_g": 1.6
+        },
+        "items": [
+          {
+            "name": "Mett/Hackepeter (German raw minced pork spread)",
+            "weight_g": 80,
+            "serving": "generous spread on bread (approx 80g)",
+            "kcal": 185,
+            "protein_g": 14.4,
+            "carbs_g": 0,
+            "fat_g": 14.4,
+            "confidence": 0.85
+          },
+          {
+            "name": "Dark rye bread / Vollkornbrot",
+            "weight_g": 50,
+            "serving": "1 slice (approx 50g)",
+            "kcal": 110,
+            "protein_g": 3.5,
+            "carbs_g": 18,
+            "fat_g": 1.5,
+            "confidence": 0.85
+          },
+          {
+            "name": "Raw white onion rings",
+            "weight_g": 15,
+            "serving": "approx 15g",
+            "kcal": 6,
+            "protein_g": 0.2,
+            "carbs_g": 1.4,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh chives (chopped)",
+            "weight_g": 3,
+            "serving": "approx 1 tablespoon (3g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
