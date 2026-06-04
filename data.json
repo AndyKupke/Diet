@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-04",
-    "calories": 193,
-    "protein_g": 16.7,
-    "carbs_g": 24.3,
-    "fat_g": 2.3,
+    "calories": 506,
+    "protein_g": 31.6,
+    "carbs_g": 45.3,
+    "fat_g": 20,
     "water_ml": 0,
     "weight_kg": 74,
     "meals": [
@@ -16,6 +16,15 @@
         "fat_g": 2.3,
         "time": "2026-06-04T05:10:58.553Z",
         "_evtId": "evt_1780549858553_hi96r"
+      },
+      {
+        "name": "French omelette / folded omelette, Dark rye bread / Vollkornbrot (beneath omelette), Fresh tomato slices, Fresh chives (chopped), Cooking fat (butter/oil for omelette)",
+        "kcal": 313,
+        "protein_g": 14.9,
+        "carbs_g": 21,
+        "fat_g": 17.7,
+        "time": "2026-06-04T06:28:57.026Z",
+        "_evtId": "evt_1780554537027_7vtxh"
       }
     ],
     "exercise": [],
@@ -408,6 +417,17 @@
       "carbs_g": 24.3,
       "fat_g": 2.3,
       "ts": "2026-06-04T05:10:58.554Z"
+    },
+    {
+      "id": "evt_1780554537027_7vtxh",
+      "type": "meal",
+      "date": "2026-06-04",
+      "name": "French omelette / folded omelette, Dark rye bread / Vollkornbrot (beneath omelette), Fresh tomato slices, Fresh chives (chopped), Cooking fat (butter/oil for omelette)",
+      "kcal": 313,
+      "protein_g": 14.9,
+      "carbs_g": 21,
+      "fat_g": 17.7,
+      "ts": "2026-06-04T06:28:57.027Z"
     }
   ]
 }
