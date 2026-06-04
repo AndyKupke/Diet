@@ -1,77 +1,13 @@
 {
   "today": {
-    "date": "2026-06-03",
-    "calories": 2012,
-    "protein_g": 146.1,
-    "carbs_g": 164.2,
-    "fat_g": 83.3,
+    "date": "2026-06-04",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": 74.7,
-    "meals": [
-      {
-        "name": "Protein powder (whey/casein blend, chocolate flavour), Low-fat milk (1.5% fat)",
-        "kcal": 204,
-        "protein_g": 29.6,
-        "carbs_g": 11,
-        "fat_g": 4.4,
-        "time": "2026-06-03T05:09:35.098Z",
-        "_evtId": "evt_1780463375098_zua58"
-      },
-      {
-        "name": "Brioche-style burger bun (sesame), Beef burger patty (grilled/fried), Processed American-style cheese, Burger sauce (mayo-based special sauce), Iceberg lettuce, Fresh tomato slices, Pickles (dill cucumber), White onion (raw)",
-        "kcal": 807,
-        "protein_g": 38.6,
-        "carbs_g": 52.3,
-        "fat_g": 50.1,
-        "time": "2026-06-03T11:28:41.917Z",
-        "_evtId": "evt_1780486121917_7onqk"
-      },
-      {
-        "name": "Whole grain seeded bread, Prosciutto/cooked ham (thinly sliced), Italian salami (sliced), Cremini/chestnut mushrooms (raw), Cherry tomatoes, Carrot sticks (raw), Red bell pepper (raw slices)",
-        "kcal": 318,
-        "protein_g": 18.5,
-        "carbs_g": 29.8,
-        "fat_g": 13.5,
-        "time": "2026-06-03T16:16:33.925Z",
-        "_evtId": "evt_1780503393926_nuniy"
-      },
-      {
-        "name": "Dark rye bread with seeds (Vollkornbrot/Schwarzbrot), Prosciutto crudo / dry-cured ham (Schwarzwälder Schinken style)",
-        "kcal": 180,
-        "protein_g": 12.5,
-        "carbs_g": 18.5,
-        "fat_g": 5,
-        "time": "2026-06-03T16:23:12.823Z",
-        "_evtId": "evt_1780503792824_xqjyr"
-      },
-      {
-        "name": "Skyr (Icelandic-style yogurt), Fresh blueberries",
-        "kcal": 116,
-        "protein_g": 16.7,
-        "carbs_g": 10.3,
-        "fat_g": 0.4,
-        "time": "2026-06-03T16:27:02.114Z",
-        "_evtId": "evt_1780504022114_4y59m"
-      },
-      {
-        "name": "Pastrami / Smoked beef slices, Sourdough bread slices, Carrot sticks (raw), Red bell pepper slices (raw)",
-        "kcal": 297,
-        "protein_g": 18.7,
-        "carbs_g": 41.7,
-        "fat_g": 5.4,
-        "time": "2026-06-03T17:25:44.095Z",
-        "_evtId": "evt_1780507544095_y4hqz"
-      },
-      {
-        "name": "Prosciutto crudo / dry-cured ham (Schwarzwälder Schinken style)",
-        "kcal": 90,
-        "protein_g": 11.5,
-        "carbs_g": 0.6,
-        "fat_g": 4.5,
-        "time": "2026-06-03T20:29:34.676Z",
-        "_evtId": "evt_1780518574677_rr2uz"
-      }
-    ],
+    "weight_kg": 74,
+    "meals": [],
     "exercise": [],
     "notes": ""
   },
@@ -102,6 +38,15 @@
       "fat_g": 104.3,
       "water_ml": 0,
       "weight_kg": 75.5
+    },
+    {
+      "date": "2026-06-03",
+      "calories": 2012,
+      "protein_g": 146.1,
+      "carbs_g": 164.2,
+      "fat_g": 83.3,
+      "water_ml": 0,
+      "weight_kg": 74.7
     }
   ],
   "events": [
@@ -442,6 +387,13 @@
       "carbs_g": 0.6,
       "fat_g": 4.5,
       "ts": "2026-06-03T20:29:34.677Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-04",
+      "weight_kg": 74,
+      "id": "evt_1780544235162_uturc",
+      "ts": "2026-06-04T03:37:15.162Z"
     }
   ]
 }
