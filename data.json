@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-05",
-    "calories": 1085,
-    "protein_g": 71.2,
-    "carbs_g": 107.1,
-    "fat_g": 40.2,
+    "calories": 1847,
+    "protein_g": 111.5,
+    "carbs_g": 172.9,
+    "fat_g": 75.6,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 35.8,
         "time": "2026-06-05T13:37:54.632Z",
         "_evtId": "evt_1780666674632_mmcuu"
+      },
+      {
+        "name": "Penne pasta (cooked), Creamy tomato sauce (vodka/rosa style with cream and butter), Chicken breast pieces (diced, sautéed), Carrot strips/julienne, Grated Parmesan cheese, Fresh parsley (garnish), Olive oil/butter in sauce preparation",
+        "kcal": 762,
+        "protein_g": 40.3,
+        "carbs_g": 65.8,
+        "fat_g": 35.4,
+        "time": "2026-06-05T16:11:55.197Z",
+        "_evtId": "evt_1780675915198_ng3xq"
       }
     ],
     "exercise": [],
@@ -521,6 +530,17 @@
       "carbs_g": 96.1,
       "fat_g": 35.8,
       "ts": "2026-06-05T13:37:54.633Z"
+    },
+    {
+      "id": "evt_1780675915198_ng3xq",
+      "type": "meal",
+      "date": "2026-06-05",
+      "name": "Penne pasta (cooked), Creamy tomato sauce (vodka/rosa style with cream and butter), Chicken breast pieces (diced, sautéed), Carrot strips/julienne, Grated Parmesan cheese, Fresh parsley (garnish), Olive oil/butter in sauce preparation",
+      "kcal": 762,
+      "protein_g": 40.3,
+      "carbs_g": 65.8,
+      "fat_g": 35.4,
+      "ts": "2026-06-05T16:11:55.198Z"
     }
   ]
 }
