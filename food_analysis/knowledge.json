@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-05T16:09:56.444Z",
-    "total_analyses": 47,
+    "last_updated": "2026-06-05T16:11:32.416Z",
+    "total_analyses": 48,
     "total_corrections": 3
   },
   "calibrations": {
@@ -480,7 +480,7 @@
         "fat_g": 0,
         "confidence": 0.9,
         "last_seen": "2026-06-05",
-        "seen_count": 3
+        "seen_count": 4
       },
       {
         "name": "Lemon wedge",
@@ -1248,19 +1248,19 @@
         "fat_g": 4,
         "confidence": 0.8,
         "last_seen": "2026-06-05",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Carrot strips/julienne",
-        "serving": "approx 30g",
-        "weight_g": 30,
-        "kcal": 12,
+        "serving": "approx 25g carrot strips",
+        "weight_g": 25,
+        "kcal": 11,
         "protein_g": 0.3,
-        "carbs_g": 2.9,
+        "carbs_g": 2.6,
         "fat_g": 0.1,
         "confidence": 0.8,
         "last_seen": "2026-06-05",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Olive oil / cooking fat in sauce",
@@ -1270,6 +1270,54 @@
         "protein_g": 0,
         "carbs_g": 0,
         "fat_g": 10,
+        "confidence": 0.55,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Penne pasta (cooked)",
+        "serving": "approx 200g cooked pasta",
+        "weight_g": 200,
+        "kcal": 280,
+        "protein_g": 8,
+        "carbs_g": 56,
+        "fat_g": 2,
+        "confidence": 0.75,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Creamy tomato sauce (vodka/rosa style with cream and butter)",
+        "serving": "approx 120g sauce coating pasta",
+        "weight_g": 120,
+        "kcal": 174,
+        "protein_g": 1.8,
+        "carbs_g": 7.2,
+        "fat_g": 14.4,
+        "confidence": 0.65,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Chicken breast pieces (diced, sautéed)",
+        "serving": "approx 80g cooked chicken pieces",
+        "weight_g": 80,
+        "kcal": 132,
+        "protein_g": 24.8,
+        "carbs_g": 0,
+        "fat_g": 2.9,
+        "confidence": 0.7,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Olive oil/butter in sauce preparation",
+        "serving": "approx 12g (in sauce and pasta finishing)",
+        "weight_g": 12,
+        "kcal": 106,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 12,
         "confidence": 0.55,
         "last_seen": "2026-06-05",
         "seen_count": 1
@@ -3495,6 +3543,93 @@
           }
         ],
         "overall_confidence": 0.7
+      },
+      {
+        "id": 1780675892415,
+        "date": "2026-06-05",
+        "meal_type": "dinner",
+        "user_note": "There are pieces of chicken inside",
+        "totals": {
+          "kcal": 762,
+          "protein_g": 40.3,
+          "carbs_g": 65.8,
+          "fat_g": 35.4,
+          "fiber_g": 4.1,
+          "sugar_g": 6.2
+        },
+        "items": [
+          {
+            "name": "Penne pasta (cooked)",
+            "weight_g": 200,
+            "serving": "approx 200g cooked pasta",
+            "kcal": 280,
+            "protein_g": 8,
+            "carbs_g": 56,
+            "fat_g": 2,
+            "confidence": 0.75
+          },
+          {
+            "name": "Creamy tomato sauce (vodka/rosa style with cream and butter)",
+            "weight_g": 120,
+            "serving": "approx 120g sauce coating pasta",
+            "kcal": 174,
+            "protein_g": 1.8,
+            "carbs_g": 7.2,
+            "fat_g": 14.4,
+            "confidence": 0.65
+          },
+          {
+            "name": "Chicken breast pieces (diced, sautéed)",
+            "weight_g": 80,
+            "serving": "approx 80g cooked chicken pieces",
+            "kcal": 132,
+            "protein_g": 24.8,
+            "carbs_g": 0,
+            "fat_g": 2.9,
+            "confidence": 0.7
+          },
+          {
+            "name": "Carrot strips/julienne",
+            "weight_g": 25,
+            "serving": "approx 25g carrot strips",
+            "kcal": 10,
+            "protein_g": 0.2,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.8
+          },
+          {
+            "name": "Grated Parmesan cheese",
+            "weight_g": 15,
+            "serving": "approx 15g sprinkled on top",
+            "kcal": 59,
+            "protein_g": 5.4,
+            "carbs_g": 0.1,
+            "fat_g": 4,
+            "confidence": 0.8
+          },
+          {
+            "name": "Fresh parsley (garnish)",
+            "weight_g": 2,
+            "serving": "approx 2g chopped",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Olive oil/butter in sauce preparation",
+            "weight_g": 12,
+            "serving": "approx 12g (in sauce and pasta finishing)",
+            "kcal": 106,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 12,
+            "confidence": 0.55
+          }
+        ],
+        "overall_confidence": 0.72
       }
     ]
   }
