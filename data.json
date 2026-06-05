@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-05",
-    "calories": 2228,
-    "protein_g": 128.1,
-    "carbs_g": 196.8,
-    "fat_g": 99.4,
+    "calories": 2329,
+    "protein_g": 134.7,
+    "carbs_g": 197,
+    "fat_g": 107.6,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -43,6 +43,15 @@
         "fat_g": 23.8,
         "time": "2026-06-05T16:22:30.350Z",
         "_evtId": "evt_1780676550350_k03ai"
+      },
+      {
+        "name": "Edeka air-dried salami (edelschimmelgereift)",
+        "kcal": 101,
+        "protein_g": 6.6,
+        "carbs_g": 0.2,
+        "fat_g": 8.2,
+        "time": "2026-06-05T17:15:56.996Z",
+        "_evtId": "evt_1780679756996_yedmn"
       }
     ],
     "exercise": [],
@@ -561,6 +570,17 @@
       "carbs_g": 23.9,
       "fat_g": 23.8,
       "ts": "2026-06-05T16:22:30.351Z"
+    },
+    {
+      "id": "evt_1780679756996_yedmn",
+      "type": "meal",
+      "date": "2026-06-05",
+      "name": "Edeka air-dried salami (edelschimmelgereift)",
+      "kcal": 101,
+      "protein_g": 6.6,
+      "carbs_g": 0.2,
+      "fat_g": 8.2,
+      "ts": "2026-06-05T17:15:56.997Z"
     }
   ]
 }
