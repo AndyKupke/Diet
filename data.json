@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-05",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 204,
+    "protein_g": 29.6,
+    "carbs_g": 11,
+    "fat_g": 4.4,
     "water_ml": 0,
     "weight_kg": 73.3,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Protein Powder (Chocolate) - mixed with low-fat milk",
+        "kcal": 204,
+        "protein_g": 29.6,
+        "carbs_g": 11,
+        "fat_g": 4.4,
+        "time": "2026-06-05T05:31:45.544Z",
+        "_evtId": "evt_1780637505544_jg3ur"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -480,6 +490,17 @@
       "weight_kg": 73.3,
       "id": "evt_1780634560275_v6mvt",
       "ts": "2026-06-05T04:42:40.275Z"
+    },
+    {
+      "id": "evt_1780637505544_jg3ur",
+      "type": "meal",
+      "date": "2026-06-05",
+      "name": "Protein Powder (Chocolate) - mixed with low-fat milk",
+      "kcal": 204,
+      "protein_g": 29.6,
+      "carbs_g": 11,
+      "fat_g": 4.4,
+      "ts": "2026-06-05T05:31:45.545Z"
     }
   ]
 }
