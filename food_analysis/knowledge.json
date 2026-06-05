@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-05T16:22:24.619Z",
-    "total_analyses": 50,
+    "last_updated": "2026-06-05T17:15:51.871Z",
+    "total_analyses": 51,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1403,6 +1403,18 @@
         "carbs_g": 0.6,
         "fat_g": 9,
         "confidence": 0.8,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Edeka air-dried salami (edelschimmelgereift)",
+        "serving": "2 slices (approx 20g total)",
+        "weight_g": 20,
+        "kcal": 101,
+        "protein_g": 6.6,
+        "carbs_g": 0.2,
+        "fat_g": 8.2,
+        "confidence": 0.95,
         "last_seen": "2026-06-05",
         "seen_count": 1
       }
@@ -3848,6 +3860,33 @@
           }
         ],
         "overall_confidence": 0.7
+      },
+      {
+        "id": 1780679751870,
+        "date": "2026-06-05",
+        "meal_type": "dinner",
+        "user_note": "Zwei stück",
+        "totals": {
+          "kcal": 101,
+          "protein_g": 6.6,
+          "carbs_g": 0.2,
+          "fat_g": 8.2,
+          "fiber_g": 0,
+          "sugar_g": 0.1
+        },
+        "items": [
+          {
+            "name": "Edeka air-dried salami (edelschimmelgereift)",
+            "weight_g": 20,
+            "serving": "2 slices (approx 20g total)",
+            "kcal": 101,
+            "protein_g": 6.6,
+            "carbs_g": 0.2,
+            "fat_g": 8.2,
+            "confidence": 0.95
+          }
+        ],
+        "overall_confidence": 0.95
       }
     ]
   }
