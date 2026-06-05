@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-05",
-    "calories": 1847,
-    "protein_g": 111.5,
-    "carbs_g": 172.9,
-    "fat_g": 75.6,
+    "calories": 2228,
+    "protein_g": 128.1,
+    "carbs_g": 196.8,
+    "fat_g": 99.4,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -34,6 +34,15 @@
         "fat_g": 35.4,
         "time": "2026-06-05T16:11:55.197Z",
         "_evtId": "evt_1780675915198_ng3xq"
+      },
+      {
+        "name": "Pizza crust (thin, white/wheat base), Pizza tomato sauce, Mozzarella cheese (melted), Pepperoni/salami slices (cured pork), Cooking oil absorbed in crust",
+        "kcal": 381,
+        "protein_g": 16.6,
+        "carbs_g": 23.9,
+        "fat_g": 23.8,
+        "time": "2026-06-05T16:22:30.350Z",
+        "_evtId": "evt_1780676550350_k03ai"
       }
     ],
     "exercise": [],
@@ -541,6 +550,17 @@
       "carbs_g": 65.8,
       "fat_g": 35.4,
       "ts": "2026-06-05T16:11:55.198Z"
+    },
+    {
+      "id": "evt_1780676550350_k03ai",
+      "type": "meal",
+      "date": "2026-06-05",
+      "name": "Pizza crust (thin, white/wheat base), Pizza tomato sauce, Mozzarella cheese (melted), Pepperoni/salami slices (cured pork), Cooking oil absorbed in crust",
+      "kcal": 381,
+      "protein_g": 16.6,
+      "carbs_g": 23.9,
+      "fat_g": 23.8,
+      "ts": "2026-06-05T16:22:30.351Z"
     }
   ]
 }
