@@ -1,77 +1,13 @@
 {
   "today": {
-    "date": "2026-06-04",
-    "calories": 1910,
-    "protein_g": 121,
-    "carbs_g": 180.1,
-    "fat_g": 72,
+    "date": "2026-06-05",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": 74,
-    "meals": [
-      {
-        "name": "Skyr (Icelandic-style yogurt), Rolled oats (dry)",
-        "kcal": 193,
-        "protein_g": 16.7,
-        "carbs_g": 24.3,
-        "fat_g": 2.3,
-        "time": "2026-06-04T05:10:58.553Z",
-        "_evtId": "evt_1780549858553_hi96r"
-      },
-      {
-        "name": "French omelette / folded omelette, Dark rye bread / Vollkornbrot (beneath omelette), Fresh tomato slices, Fresh chives (chopped), Cooking fat (butter/oil for omelette)",
-        "kcal": 313,
-        "protein_g": 14.9,
-        "carbs_g": 21,
-        "fat_g": 17.7,
-        "time": "2026-06-04T06:28:57.026Z",
-        "_evtId": "evt_1780554537027_7vtxh"
-      },
-      {
-        "name": "Mett/Hackepeter (German raw minced pork spread), Dark rye bread / Vollkornbrot, Raw white onion rings, Fresh chives (chopped)",
-        "kcal": 302,
-        "protein_g": 18.2,
-        "carbs_g": 19.5,
-        "fat_g": 15.9,
-        "time": "2026-06-04T11:52:32.436Z",
-        "_evtId": "evt_1780573952437_gnrp9"
-      },
-      {
-        "name": "Fritz-Kola Zero (sugar-free cola)",
-        "kcal": 5,
-        "protein_g": 0,
-        "carbs_g": 0,
-        "fat_g": 0,
-        "time": "2026-06-04T11:53:09.311Z",
-        "_evtId": "evt_1780573989311_3f8kb"
-      },
-      {
-        "name": "Dark rye bread / Vollkornbrot, Cottage cheese (full-fat), Sliced roast turkey/chicken breast (cold cut), Carrot sticks (raw), Cucumber slices (raw), Sauerkraut (fermented cabbage), Crispy fried onions (Röstzwiebeln)",
-        "kcal": 314,
-        "protein_g": 23.5,
-        "carbs_g": 32.1,
-        "fat_g": 8.6,
-        "time": "2026-06-04T17:06:44.899Z",
-        "_evtId": "evt_1780592804899_2tq1f"
-      },
-      {
-        "name": "Skyr (Icelandic-style yogurt), Fresh strawberries (halved), Fresh blueberries, Crunchy granola/muesli cereal",
-        "kcal": 630,
-        "protein_g": 37.8,
-        "carbs_g": 82.9,
-        "fat_g": 15.2,
-        "time": "2026-06-04T18:39:38.522Z",
-        "_evtId": "evt_1780598378522_ty94d"
-      },
-      {
-        "name": "Salami Sticks (air-dried, noble mold-ripened)",
-        "kcal": 153,
-        "protein_g": 9.9,
-        "carbs_g": 0.3,
-        "fat_g": 12.3,
-        "time": "2026-06-04T20:53:36.952Z",
-        "_evtId": "evt_1780606416952_5euhu"
-      }
-    ],
+    "weight_kg": 73.3,
+    "meals": [],
     "exercise": [],
     "notes": ""
   },
@@ -111,6 +47,15 @@
       "fat_g": 83.3,
       "water_ml": 0,
       "weight_kg": 74.7
+    },
+    {
+      "date": "2026-06-04",
+      "calories": 1910,
+      "protein_g": 121,
+      "carbs_g": 180.1,
+      "fat_g": 72,
+      "water_ml": 0,
+      "weight_kg": 74
     }
   ],
   "events": [
@@ -528,6 +473,13 @@
       "carbs_g": 0.3,
       "fat_g": 12.3,
       "ts": "2026-06-04T20:53:36.952Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-05",
+      "weight_kg": 73.3,
+      "id": "evt_1780634560275_v6mvt",
+      "ts": "2026-06-05T04:42:40.275Z"
     }
   ]
 }
