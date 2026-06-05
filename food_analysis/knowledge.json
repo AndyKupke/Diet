@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-05T16:11:32.416Z",
-    "total_analyses": 48,
+    "last_updated": "2026-06-05T16:21:17.435Z",
+    "total_analyses": 49,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1319,6 +1319,66 @@
         "carbs_g": 0,
         "fat_g": 12,
         "confidence": 0.55,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Pizza slice (thin crust, white base)",
+        "serving": "1 large triangular slice (approx 120g)",
+        "weight_g": 120,
+        "kcal": 312,
+        "protein_g": 12,
+        "carbs_g": 36,
+        "fat_g": 12,
+        "confidence": 0.75,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Pepperoni/salami (cured pork sausage)",
+        "serving": "4 slices (approx 20g total)",
+        "weight_g": 20,
+        "kcal": 100,
+        "protein_g": 4.2,
+        "carbs_g": 0.6,
+        "fat_g": 9,
+        "confidence": 0.8,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Pizza tomato sauce",
+        "serving": "thin layer (approx 35g)",
+        "weight_g": 35,
+        "kcal": 21,
+        "protein_g": 0.5,
+        "carbs_g": 4.2,
+        "fat_g": 0.4,
+        "confidence": 0.65,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Mozzarella cheese (melted)",
+        "serving": "moderate layer (approx 40g)",
+        "weight_g": 40,
+        "kcal": 112,
+        "protein_g": 8.8,
+        "carbs_g": 1.2,
+        "fat_g": 8,
+        "confidence": 0.7,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooking oil absorbed in crust",
+        "serving": "absorbed during baking (approx 5g)",
+        "weight_g": 5,
+        "kcal": 44,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 5,
+        "confidence": 0.6,
         "last_seen": "2026-06-05",
         "seen_count": 1
       }
@@ -3627,6 +3687,73 @@
             "carbs_g": 0,
             "fat_g": 12,
             "confidence": 0.55
+          }
+        ],
+        "overall_confidence": 0.72
+      },
+      {
+        "id": 1780676477434,
+        "date": "2026-06-05",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 589,
+          "protein_g": 25.5,
+          "carbs_g": 42,
+          "fat_g": 34.4,
+          "fiber_g": 2.5,
+          "sugar_g": 5.8
+        },
+        "items": [
+          {
+            "name": "Pizza slice (thin crust, white base)",
+            "weight_g": 120,
+            "serving": "1 large triangular slice (approx 120g)",
+            "kcal": 312,
+            "protein_g": 12,
+            "carbs_g": 36,
+            "fat_g": 12,
+            "confidence": 0.75
+          },
+          {
+            "name": "Pepperoni/salami (cured pork sausage)",
+            "weight_g": 20,
+            "serving": "4 slices (approx 20g total)",
+            "kcal": 100,
+            "protein_g": 4.2,
+            "carbs_g": 0.6,
+            "fat_g": 9,
+            "confidence": 0.8
+          },
+          {
+            "name": "Pizza tomato sauce",
+            "weight_g": 35,
+            "serving": "thin layer (approx 35g)",
+            "kcal": 21,
+            "protein_g": 0.5,
+            "carbs_g": 4.2,
+            "fat_g": 0.4,
+            "confidence": 0.65
+          },
+          {
+            "name": "Mozzarella cheese (melted)",
+            "weight_g": 40,
+            "serving": "moderate layer (approx 40g)",
+            "kcal": 112,
+            "protein_g": 8.8,
+            "carbs_g": 1.2,
+            "fat_g": 8,
+            "confidence": 0.7
+          },
+          {
+            "name": "Cooking oil absorbed in crust",
+            "weight_g": 5,
+            "serving": "absorbed during baking (approx 5g)",
+            "kcal": 44,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 5,
+            "confidence": 0.6
           }
         ],
         "overall_confidence": 0.72
