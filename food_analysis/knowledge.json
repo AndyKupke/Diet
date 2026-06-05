@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-05T05:31:25.799Z",
-    "total_analyses": 45,
+    "last_updated": "2026-06-05T13:37:40.823Z",
+    "total_analyses": 46,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1127,6 +1127,90 @@
         "carbs_g": 11,
         "fat_g": 4.4,
         "confidence": 0.95,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooked white rice (long grain)",
+        "serving": "approx 280g cooked (2 portions)",
+        "weight_g": 280,
+        "kcal": 364,
+        "protein_g": 6.7,
+        "carbs_g": 79.8,
+        "fat_g": 0.8,
+        "confidence": 0.75,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooked ground meat (beef/pork mix)",
+        "serving": "approx 160g cooked (2 portions)",
+        "weight_g": 160,
+        "kcal": 352,
+        "protein_g": 32,
+        "carbs_g": 0,
+        "fat_g": 24,
+        "confidence": 0.7,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Diced red bell pepper",
+        "serving": "approx 50g (2 portions)",
+        "weight_g": 50,
+        "kcal": 16,
+        "protein_g": 0.5,
+        "carbs_g": 3,
+        "fat_g": 0.2,
+        "confidence": 0.8,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Diced zucchini/courgette",
+        "serving": "approx 60g (2 portions)",
+        "weight_g": 60,
+        "kcal": 10,
+        "protein_g": 0.7,
+        "carbs_g": 1.9,
+        "fat_g": 0.2,
+        "confidence": 0.75,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Diced carrots",
+        "serving": "approx 40g (2 portions)",
+        "weight_g": 40,
+        "kcal": 16,
+        "protein_g": 0.4,
+        "carbs_g": 3.8,
+        "fat_g": 0.1,
+        "confidence": 0.75,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Sweet corn kernels",
+        "serving": "approx 40g (2 portions)",
+        "weight_g": 40,
+        "kcal": 35,
+        "protein_g": 1.3,
+        "carbs_g": 7.6,
+        "fat_g": 0.5,
+        "confidence": 0.8,
+        "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooking oil (vegetable/canola)",
+        "serving": "approx 10g (used for sautéing)",
+        "weight_g": 10,
+        "kcal": 88,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 10,
+        "confidence": 0.6,
         "last_seen": "2026-06-05",
         "seen_count": 1
       }
@@ -3187,6 +3271,93 @@
           }
         ],
         "overall_confidence": 0.95
+      },
+      {
+        "id": 1780666660821,
+        "date": "2026-06-05",
+        "meal_type": "snack",
+        "user_note": "Take two portions of this bowl",
+        "totals": {
+          "kcal": 881,
+          "protein_g": 41.6,
+          "carbs_g": 96.1,
+          "fat_g": 35.8,
+          "fiber_g": 4.7,
+          "sugar_g": 8.3
+        },
+        "items": [
+          {
+            "name": "Cooked white rice (long grain)",
+            "weight_g": 280,
+            "serving": "approx 280g cooked (2 portions)",
+            "kcal": 364,
+            "protein_g": 6.7,
+            "carbs_g": 79.8,
+            "fat_g": 0.8,
+            "confidence": 0.75
+          },
+          {
+            "name": "Cooked ground meat (beef/pork mix)",
+            "weight_g": 160,
+            "serving": "approx 160g cooked (2 portions)",
+            "kcal": 352,
+            "protein_g": 32,
+            "carbs_g": 0,
+            "fat_g": 24,
+            "confidence": 0.7
+          },
+          {
+            "name": "Diced red bell pepper",
+            "weight_g": 50,
+            "serving": "approx 50g (2 portions)",
+            "kcal": 16,
+            "protein_g": 0.5,
+            "carbs_g": 3,
+            "fat_g": 0.2,
+            "confidence": 0.8
+          },
+          {
+            "name": "Diced zucchini/courgette",
+            "weight_g": 60,
+            "serving": "approx 60g (2 portions)",
+            "kcal": 10,
+            "protein_g": 0.7,
+            "carbs_g": 1.9,
+            "fat_g": 0.2,
+            "confidence": 0.75
+          },
+          {
+            "name": "Diced carrots",
+            "weight_g": 40,
+            "serving": "approx 40g (2 portions)",
+            "kcal": 16,
+            "protein_g": 0.4,
+            "carbs_g": 3.8,
+            "fat_g": 0.1,
+            "confidence": 0.75
+          },
+          {
+            "name": "Sweet corn kernels",
+            "weight_g": 40,
+            "serving": "approx 40g (2 portions)",
+            "kcal": 35,
+            "protein_g": 1.3,
+            "carbs_g": 7.6,
+            "fat_g": 0.5,
+            "confidence": 0.8
+          },
+          {
+            "name": "Cooking oil (vegetable/canola)",
+            "weight_g": 10,
+            "serving": "approx 10g (used for sautéing)",
+            "kcal": 88,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 10,
+            "confidence": 0.6
+          }
+        ],
+        "overall_confidence": 0.72
       }
     ]
   }
