@@ -2213,6 +2213,20 @@ function updateKnowledgeBase(kb, analysisResult, userNote) {
 }
 
 // ── Main analysis function ─────────────────────────────────────────────────
+// Fetch with automatic retry on 529 (overloaded) — waits 2s then 5s before giving up
+async function fetchWithRetry(url, opts, label='API') {
+  const delays = [2000, 5000];
+  for (let attempt = 0; attempt <= delays.length; attempt++) {
+    const resp = await fetch(url, opts);
+    if (resp.status !== 529) return resp;
+    if (attempt < delays.length) {
+      toast(`${label} overloaded — retrying in ${delays[attempt]/1000}s…`);
+      await new Promise(r => setTimeout(r, delays[attempt]));
+    }
+  }
+  return await fetch(url, opts);
+}
+
 // Robustly extract the first complete JSON object from a Claude response,
 // regardless of markdown fences, leading text, or trailing comments.
 function extractJSON(text, label='') {
@@ -2260,7 +2274,7 @@ async function analysePhoto() {
       userPrompt = `Analyse this food image. Return ONLY JSON: {"meal_type":"","items":[{"name":"","quantity_desc":"","weight_g":0,"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"confidence":0.8,"estimation_basis":""}],"totals":{"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0},"overall_confidence":0.8,"estimation_notes":"","improvement_hint":""}${userNote ? '\nUser note: "'+userNote+'"' : ''}`;
     }
 
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    const resp = await fetchWithRetry('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -2269,7 +2283,7 @@ async function analysePhoto() {
         'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-5',
+        model: 'claude-sonnet-4-5',
         max_tokens: 4096,
         system: systemPrompt,
         messages: [{
@@ -2495,7 +2509,7 @@ async function analysePhotoQA() {
       userPrompt = `Analyse this food image. Return ONLY JSON: {"meal_type":"","items":[{"name":"","quantity_desc":"","weight_g":0,"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0,"confidence":0.8,"estimation_basis":""}],"totals":{"kcal":0,"protein_g":0,"carbs_g":0,"fat_g":0,"fiber_g":0,"sugar_g":0},"overall_confidence":0.8,"estimation_notes":"","improvement_hint":"","health_assessment":{"health_score":5,"red_flags":[],"green_flags":[],"summary":""}}${userNote ? '\nUser note: "'+userNote+'"' : ''}`;
     }
 
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    const resp = await fetchWithRetry('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -2504,7 +2518,7 @@ async function analysePhotoQA() {
         'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
-        model: 'claude-opus-4-5',
+        model: 'claude-sonnet-4-5',
         max_tokens: 4096,
         system: systemPrompt,
         messages: [{ role: 'user', content: [
@@ -4087,7 +4101,7 @@ Rules:
       ? { type: 'document', source: { type: 'base64', media_type: 'application/pdf', data: b64 } }
       : { type: 'image',    source: { type: 'base64', media_type: mime,               data: b64 } };
 
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
+    const resp = await fetchWithRetry('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
         'x-api-key':         apiKey,
@@ -4096,7 +4110,7 @@ Rules:
         'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
-        model:      'claude-opus-4-5',
+        model:      'claude-sonnet-4-5',
         max_tokens: 2048,
         system:     systemPrompt,
         messages: [{ role: 'user', content: [contentBlock, { type: 'text', text: userPrompt }] }],
