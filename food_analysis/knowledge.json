@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T05:36:03.862Z",
-    "total_analyses": 53,
+    "last_updated": "2026-06-06T12:52:27.743Z",
+    "total_analyses": 54,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1523,6 +1523,66 @@
         "carbs_g": 0.4,
         "fat_g": 0,
         "confidence": 0.7,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Dark rye bread (pumpernickel/vollkornbrot)",
+        "serving": "2 slices (approx 70g total)",
+        "weight_g": 70,
+        "kcal": 161,
+        "protein_g": 5.6,
+        "carbs_g": 30.1,
+        "fat_g": 1.4,
+        "confidence": 0.8,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Roast beef (medium-rare)",
+        "serving": "2 slices (approx 60g)",
+        "weight_g": 60,
+        "kcal": 99,
+        "protein_g": 16.8,
+        "carbs_g": 0,
+        "fat_g": 3.3,
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber slices (fresh)",
+        "serving": "3 slices (approx 15g)",
+        "weight_g": 15,
+        "kcal": 2,
+        "protein_g": 0.1,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper (fresh)",
+        "serving": "1 wedge (approx 25g)",
+        "weight_g": 25,
+        "kcal": 8,
+        "protein_g": 0.3,
+        "carbs_g": 1.8,
+        "fat_g": 0.1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Carrot stick",
+        "serving": "1 piece (approx 20g)",
+        "weight_g": 20,
+        "kcal": 8,
+        "protein_g": 0.2,
+        "carbs_g": 1.9,
+        "fat_g": 0.1,
+        "confidence": 0.85,
         "last_seen": "2026-06-06",
         "seen_count": 1
       }
@@ -4139,6 +4199,73 @@
           }
         ],
         "overall_confidence": 0.65
+      },
+      {
+        "id": 1780750347741,
+        "date": "2026-06-06",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 278,
+          "protein_g": 23,
+          "carbs_g": 34.3,
+          "fat_g": 4.9,
+          "fiber_g": 7.6,
+          "sugar_g": 4.6
+        },
+        "items": [
+          {
+            "name": "Dark rye bread (pumpernickel/vollkornbrot)",
+            "weight_g": 70,
+            "serving": "2 slices (approx 70g total)",
+            "kcal": 161,
+            "protein_g": 5.6,
+            "carbs_g": 30.1,
+            "fat_g": 1.4,
+            "confidence": 0.8
+          },
+          {
+            "name": "Roast beef (medium-rare)",
+            "weight_g": 60,
+            "serving": "2 slices (approx 60g)",
+            "kcal": 99,
+            "protein_g": 16.8,
+            "carbs_g": 0,
+            "fat_g": 3.3,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cucumber slices (fresh)",
+            "weight_g": 15,
+            "serving": "3 slices (approx 15g)",
+            "kcal": 2,
+            "protein_g": 0.1,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Red bell pepper (fresh)",
+            "weight_g": 25,
+            "serving": "1 wedge (approx 25g)",
+            "kcal": 8,
+            "protein_g": 0.3,
+            "carbs_g": 1.8,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Carrot stick",
+            "weight_g": 20,
+            "serving": "1 piece (approx 20g)",
+            "kcal": 8,
+            "protein_g": 0.2,
+            "carbs_g": 1.9,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.84
       }
     ]
   }
