@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 149,
-    "protein_g": 20.3,
-    "carbs_g": 12.1,
-    "fat_g": 0.6,
+    "calories": 519,
+    "protein_g": 40.9,
+    "carbs_g": 23,
+    "fat_g": 28.6,
     "water_ml": 0,
     "weight_kg": null,
     "meals": [
@@ -16,6 +16,15 @@
         "fat_g": 0.6,
         "time": "2026-06-06T05:21:46.846Z",
         "_evtId": "evt_1780723306846_ww34s"
+      },
+      {
+        "name": "Scrambled eggs, Bell peppers (red and green), Mushrooms (sliced), Onion (diced), Tomato (diced), Cooking oil/butter (for scrambling), Cheese (likely cheddar or similar), Herbs/spices (black pepper, possibly parsley)",
+        "kcal": 370,
+        "protein_g": 20.6,
+        "carbs_g": 10.9,
+        "fat_g": 28,
+        "time": "2026-06-06T05:36:17.218Z",
+        "_evtId": "evt_1780724177219_0a079"
       }
     ],
     "exercise": [],
@@ -565,6 +574,17 @@
       "carbs_g": 12.1,
       "fat_g": 0.6,
       "ts": "2026-06-06T05:21:46.847Z"
+    },
+    {
+      "id": "evt_1780724177219_0a079",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Scrambled eggs, Bell peppers (red and green), Mushrooms (sliced), Onion (diced), Tomato (diced), Cooking oil/butter (for scrambling), Cheese (likely cheddar or similar), Herbs/spices (black pepper, possibly parsley)",
+      "kcal": 370,
+      "protein_g": 20.6,
+      "carbs_g": 10.9,
+      "fat_g": 28,
+      "ts": "2026-06-06T05:36:17.219Z"
     }
   ]
 }
