@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 1598,
-    "protein_g": 104.9,
-    "carbs_g": 161.5,
-    "fat_g": 58.1,
+    "calories": 1800,
+    "protein_g": 111.5,
+    "carbs_g": 161.7,
+    "fat_g": 66.3,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -52,6 +52,15 @@
         "fat_g": 16.3,
         "time": "2026-06-06T12:55:56.639Z",
         "_evtId": "evt_1780750556639_9mqqq"
+      },
+      {
+        "name": "Dry-cured salami stick (Edelschimmelgereifte Salami)",
+        "kcal": 202,
+        "protein_g": 6.6,
+        "carbs_g": 0.2,
+        "fat_g": 8.2,
+        "time": "2026-06-06T13:22:11.496Z",
+        "_evtId": "evt_1780752131497_txnrx"
       }
     ],
     "exercise": [],
@@ -652,6 +661,17 @@
       "carbs_g": 51.1,
       "fat_g": 16.3,
       "ts": "2026-06-06T12:55:56.639Z"
+    },
+    {
+      "id": "evt_1780752131497_txnrx",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Dry-cured salami stick (Edelschimmelgereifte Salami)",
+      "kcal": 202,
+      "protein_g": 6.6,
+      "carbs_g": 0.2,
+      "fat_g": 8.2,
+      "ts": "2026-06-06T13:22:11.497Z"
     }
   ]
 }
