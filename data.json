@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 797,
-    "protein_g": 63.9,
-    "carbs_g": 57.3,
-    "fat_g": 33.5,
+    "calories": 1598,
+    "protein_g": 104.9,
+    "carbs_g": 161.5,
+    "fat_g": 58.1,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -34,6 +34,24 @@
         "fat_g": 4.9,
         "time": "2026-06-06T12:52:51.324Z",
         "_evtId": "evt_1780750371324_gkaxg"
+      },
+      {
+        "name": "White baguette/sub roll, Smoked salmon (lox style), Red onion (raw, sliced), Green leaf lettuce, Tomato (fresh, sliced), Spread/condiment (likely cream cheese or mayonnaise)",
+        "kcal": 372,
+        "protein_g": 21.4,
+        "carbs_g": 53.1,
+        "fat_g": 8.3,
+        "time": "2026-06-06T12:53:48.193Z",
+        "_evtId": "evt_1780750428193_mfm6k"
+      },
+      {
+        "name": "White bread roll (baguette-style), Smoked fish (likely mackerel or herring), Green leaf lettuce, Red onion (raw, sliced), Mayonnaise-based spread",
+        "kcal": 429,
+        "protein_g": 19.6,
+        "carbs_g": 51.1,
+        "fat_g": 16.3,
+        "time": "2026-06-06T12:55:56.639Z",
+        "_evtId": "evt_1780750556639_9mqqq"
       }
     ],
     "exercise": [],
@@ -612,6 +630,28 @@
       "carbs_g": 34.3,
       "fat_g": 4.9,
       "ts": "2026-06-06T12:52:51.324Z"
+    },
+    {
+      "id": "evt_1780750428193_mfm6k",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "White baguette/sub roll, Smoked salmon (lox style), Red onion (raw, sliced), Green leaf lettuce, Tomato (fresh, sliced), Spread/condiment (likely cream cheese or mayonnaise)",
+      "kcal": 372,
+      "protein_g": 21.4,
+      "carbs_g": 53.1,
+      "fat_g": 8.3,
+      "ts": "2026-06-06T12:53:48.193Z"
+    },
+    {
+      "id": "evt_1780750556639_9mqqq",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "White bread roll (baguette-style), Smoked fish (likely mackerel or herring), Green leaf lettuce, Red onion (raw, sliced), Mayonnaise-based spread",
+      "kcal": 429,
+      "protein_g": 19.6,
+      "carbs_g": 51.1,
+      "fat_g": 16.3,
+      "ts": "2026-06-06T12:55:56.639Z"
     }
   ]
 }
