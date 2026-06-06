@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 2726,
-    "protein_g": 179.5,
-    "carbs_g": 213.8,
-    "fat_g": 114.9,
+    "calories": 2936,
+    "protein_g": 208.4,
+    "carbs_g": 214.3,
+    "fat_g": 125,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -97,6 +97,15 @@
         "fat_g": 2.1,
         "time": "2026-06-06T17:28:54.283Z",
         "_evtId": "evt_1780766934284_prr4m"
+      },
+      {
+        "name": "Grilled chicken breast (bone-in, marinated with black pepper seasoning), Cooking oil/marinade (absorbed during grilling)",
+        "kcal": 210,
+        "protein_g": 28.9,
+        "carbs_g": 0.5,
+        "fat_g": 10.1,
+        "time": "2026-06-06T17:30:34.192Z",
+        "_evtId": "evt_1780767034192_1uul4"
       }
     ],
     "exercise": [],
@@ -752,6 +761,17 @@
       "carbs_g": 0.9,
       "fat_g": 2.1,
       "ts": "2026-06-06T17:28:54.284Z"
+    },
+    {
+      "id": "evt_1780767034192_1uul4",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Grilled chicken breast (bone-in, marinated with black pepper seasoning), Cooking oil/marinade (absorbed during grilling)",
+      "kcal": 210,
+      "protein_g": 28.9,
+      "carbs_g": 0.5,
+      "fat_g": 10.1,
+      "ts": "2026-06-06T17:30:34.193Z"
     }
   ]
 }
