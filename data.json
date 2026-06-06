@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 1800,
-    "protein_g": 111.5,
-    "carbs_g": 161.7,
-    "fat_g": 66.3,
+    "calories": 2527,
+    "protein_g": 163.4,
+    "carbs_g": 206.3,
+    "fat_g": 103,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -61,6 +61,24 @@
         "fat_g": 8.2,
         "time": "2026-06-06T13:22:11.496Z",
         "_evtId": "evt_1780752131497_txnrx"
+      },
+      {
+        "name": "Ratsherrn alcohol-free beer (Alkoholfreies Bier)",
+        "kcal": 43,
+        "protein_g": 0,
+        "carbs_g": 8.6,
+        "fat_g": 0,
+        "time": "2026-06-06T15:29:31.347Z",
+        "_evtId": "evt_1780759771347_9jo9o"
+      },
+      {
+        "name": "Grilled beef steak (sirloin or ribeye), Carrot sticks (raw), Bell pepper strips (red and yellow, raw), Creamy coleslaw or mayonnaise-based salad, White bread roll (half)",
+        "kcal": 684,
+        "protein_g": 51.9,
+        "carbs_g": 36,
+        "fat_g": 36.7,
+        "time": "2026-06-06T16:11:19.481Z",
+        "_evtId": "evt_1780762279481_8eq3v"
       }
     ],
     "exercise": [],
@@ -672,6 +690,28 @@
       "carbs_g": 0.2,
       "fat_g": 8.2,
       "ts": "2026-06-06T13:22:11.497Z"
+    },
+    {
+      "id": "evt_1780759771347_9jo9o",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Ratsherrn alcohol-free beer (Alkoholfreies Bier)",
+      "kcal": 43,
+      "protein_g": 0,
+      "carbs_g": 8.6,
+      "fat_g": 0,
+      "ts": "2026-06-06T15:29:31.347Z"
+    },
+    {
+      "id": "evt_1780762279481_8eq3v",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Grilled beef steak (sirloin or ribeye), Carrot sticks (raw), Bell pepper strips (red and yellow, raw), Creamy coleslaw or mayonnaise-based salad, White bread roll (half)",
+      "kcal": 684,
+      "protein_g": 51.9,
+      "carbs_g": 36,
+      "fat_g": 36.7,
+      "ts": "2026-06-06T16:11:19.482Z"
     }
   ]
 }
