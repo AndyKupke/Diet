@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T12:55:34.423Z",
-    "total_analyses": 57,
+    "last_updated": "2026-06-06T13:21:57.087Z",
+    "total_analyses": 58,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1715,6 +1715,18 @@
         "carbs_g": 0.3,
         "fat_g": 7.7,
         "confidence": 0.65,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Dry-cured salami stick (Edelschimmelgereifte Salami)",
+        "serving": "2 sticks (each 10g)",
+        "weight_g": 20,
+        "kcal": 420,
+        "protein_g": 6.6,
+        "carbs_g": 0.2,
+        "fat_g": 8.2,
+        "confidence": 1,
         "last_seen": "2026-06-06",
         "seen_count": 1
       }
@@ -4609,6 +4621,33 @@
           }
         ],
         "overall_confidence": 0.78
+      },
+      {
+        "id": 1780752117086,
+        "date": "2026-06-06",
+        "meal_type": "snack",
+        "user_note": "I ate two",
+        "totals": {
+          "kcal": 202,
+          "protein_g": 6.6,
+          "carbs_g": 0.2,
+          "fat_g": 8.2,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Dry-cured salami stick (Edelschimmelgereifte Salami)",
+            "weight_g": 20,
+            "serving": "2 sticks (each 10g)",
+            "kcal": 420,
+            "protein_g": 6.6,
+            "carbs_g": 0.2,
+            "fat_g": 8.2,
+            "confidence": 1
+          }
+        ],
+        "overall_confidence": 1
       }
     ]
   }
