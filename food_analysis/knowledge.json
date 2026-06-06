@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T17:28:09.919Z",
-    "total_analyses": 64,
+    "last_updated": "2026-06-06T17:30:24.108Z",
+    "total_analyses": 66,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1810,9 +1810,9 @@
         "protein_g": 0.1,
         "carbs_g": 0.6,
         "fat_g": 0,
-        "confidence": 0.85,
+        "confidence": 0.9,
         "last_seen": "2026-06-06",
-        "seen_count": 5
+        "seen_count": 6
       },
       {
         "name": "White cheese cube (likely mozzarella or feta)",
@@ -1872,7 +1872,7 @@
         "fat_g": 2.1,
         "confidence": 0.75,
         "last_seen": "2026-06-06",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "White cheese cube (mozzarilla or mild white cheese)",
@@ -1894,6 +1894,30 @@
         "protein_g": 2.4,
         "carbs_g": 24,
         "fat_g": 9,
+        "confidence": 0.65,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Grilled chicken breast (bone-in, marinated with black pepper seasoning)",
+        "serving": "1 small chicken breast portion on bone (approx 85g edible meat)",
+        "weight_g": 85,
+        "kcal": 165,
+        "protein_g": 28.9,
+        "carbs_g": 0.5,
+        "fat_g": 5.1,
+        "confidence": 0.82,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooking oil/marinade (absorbed during grilling)",
+        "serving": "Residual oil from marinade (approx 5g)",
+        "weight_g": 5,
+        "kcal": 45,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 5,
         "confidence": 0.65,
         "last_seen": "2026-06-06",
         "seen_count": 1
@@ -5134,6 +5158,80 @@
             "protein_g": 2.4,
             "carbs_g": 24,
             "fat_g": 9,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.78
+      },
+      {
+        "id": 1780766927950,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "3 pieces tomato and chesse. No French fries",
+        "totals": {
+          "kcal": 31,
+          "protein_g": 2.4,
+          "carbs_g": 0.9,
+          "fat_g": 2.1,
+          "fiber_g": 0.2,
+          "sugar_g": 0.6
+        },
+        "items": [
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 cherry tomato (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "White cheese cube (mozzarella or mild white cheese)",
+            "weight_g": 10,
+            "serving": "1 small cheese cube (approx 10g)",
+            "kcal": 28,
+            "protein_g": 2.3,
+            "carbs_g": 0.3,
+            "fat_g": 2.1,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.82
+      },
+      {
+        "id": 1780767024107,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 210,
+          "protein_g": 28.9,
+          "carbs_g": 0.5,
+          "fat_g": 10.1,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Grilled chicken breast (bone-in, marinated with black pepper seasoning)",
+            "weight_g": 85,
+            "serving": "1 small chicken breast portion on bone (approx 85g edible meat)",
+            "kcal": 165,
+            "protein_g": 28.9,
+            "carbs_g": 0.5,
+            "fat_g": 5.1,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cooking oil/marinade (absorbed during grilling)",
+            "weight_g": 5,
+            "serving": "Residual oil from marinade (approx 5g)",
+            "kcal": 45,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 5,
             "confidence": 0.65
           }
         ],
