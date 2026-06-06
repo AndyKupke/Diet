@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T12:53:35.011Z",
-    "total_analyses": 55,
+    "last_updated": "2026-06-06T12:55:34.423Z",
+    "total_analyses": 57,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1612,27 +1612,27 @@
       },
       {
         "name": "Red onion (raw, sliced)",
-        "serving": "4-5 thin rings (approx 15g)",
-        "weight_g": 15,
-        "kcal": 6,
-        "protein_g": 0.2,
-        "carbs_g": 1.4,
+        "serving": "2-3 thin rings (approx 8g)",
+        "weight_g": 8,
+        "kcal": 4,
+        "protein_g": 0.1,
+        "carbs_g": 0.9,
         "fat_g": 0,
-        "confidence": 0.85,
+        "confidence": 0.75,
         "last_seen": "2026-06-06",
-        "seen_count": 1
+        "seen_count": 3
       },
       {
         "name": "Green leaf lettuce",
-        "serving": "2-3 leaves (approx 20g)",
-        "weight_g": 20,
+        "serving": "2 small leaves (approx 12g)",
+        "weight_g": 12,
         "kcal": 3,
         "protein_g": 0.3,
-        "carbs_g": 0.6,
+        "carbs_g": 0.5,
         "fat_g": 0,
-        "confidence": 0.9,
+        "confidence": 0.85,
         "last_seen": "2026-06-06",
-        "seen_count": 1
+        "seen_count": 3
       },
       {
         "name": "Tomato (fresh, sliced)",
@@ -1655,6 +1655,66 @@
         "carbs_g": 0.5,
         "fat_g": 5,
         "confidence": 0.6,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "White bread roll (baguette-style)",
+        "serving": "1 roll (approx 90g)",
+        "weight_g": 90,
+        "kcal": 255,
+        "protein_g": 8.3,
+        "carbs_g": 50.9,
+        "fat_g": 1.9,
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 2
+      },
+      {
+        "name": "Smoked fish/mackerel (likely smoked mackerel or herring)",
+        "serving": "3-4 slices (approx 55g)",
+        "weight_g": 55,
+        "kcal": 115,
+        "protein_g": 12.1,
+        "carbs_g": 0,
+        "fat_g": 7.4,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Spread/condiment (likely mayonnaise or remoulade)",
+        "serving": "thin layer (approx 12g)",
+        "weight_g": 12,
+        "kcal": 84,
+        "protein_g": 0.2,
+        "carbs_g": 0.4,
+        "fat_g": 9.2,
+        "confidence": 0.6,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Smoked fish (likely mackerel or herring)",
+        "serving": "3-4 slices, mostly inside roll (approx 50g)",
+        "weight_g": 50,
+        "kcal": 105,
+        "protein_g": 11,
+        "carbs_g": 0,
+        "fat_g": 6.8,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Mayonnaise-based spread",
+        "serving": "Thin layer (approx 10g)",
+        "weight_g": 10,
+        "kcal": 70,
+        "protein_g": 0.2,
+        "carbs_g": 0.3,
+        "fat_g": 7.7,
+        "confidence": 0.65,
         "last_seen": "2026-06-06",
         "seen_count": 1
       }
@@ -4412,6 +4472,140 @@
             "carbs_g": 0.5,
             "fat_g": 5,
             "confidence": 0.6
+          }
+        ],
+        "overall_confidence": 0.78
+      },
+      {
+        "id": 1780750470001,
+        "date": "2026-06-06",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 469,
+          "protein_g": 21.2,
+          "carbs_g": 54.3,
+          "fat_g": 18.5,
+          "fiber_g": 2.6,
+          "sugar_g": 3.9
+        },
+        "items": [
+          {
+            "name": "White bread roll (baguette-style)",
+            "weight_g": 95,
+            "serving": "1 roll (approx 95g)",
+            "kcal": 262,
+            "protein_g": 8.6,
+            "carbs_g": 52.3,
+            "fat_g": 1.9,
+            "confidence": 0.85
+          },
+          {
+            "name": "Smoked fish/mackerel (likely smoked mackerel or herring)",
+            "weight_g": 55,
+            "serving": "3-4 slices (approx 55g)",
+            "kcal": 115,
+            "protein_g": 12.1,
+            "carbs_g": 0,
+            "fat_g": 7.4,
+            "confidence": 0.75
+          },
+          {
+            "name": "Green leaf lettuce",
+            "weight_g": 18,
+            "serving": "2-3 leaves (approx 18g)",
+            "kcal": 3,
+            "protein_g": 0.2,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Red onion (raw, sliced)",
+            "weight_g": 12,
+            "serving": "3-4 thin rings (approx 12g)",
+            "kcal": 5,
+            "protein_g": 0.1,
+            "carbs_g": 1.1,
+            "fat_g": 0,
+            "confidence": 0.8
+          },
+          {
+            "name": "Spread/condiment (likely mayonnaise or remoulade)",
+            "weight_g": 12,
+            "serving": "thin layer (approx 12g)",
+            "kcal": 84,
+            "protein_g": 0.2,
+            "carbs_g": 0.4,
+            "fat_g": 9.2,
+            "confidence": 0.6
+          }
+        ],
+        "overall_confidence": 0.75
+      },
+      {
+        "id": 1780750534423,
+        "date": "2026-06-06",
+        "meal_type": "snack",
+        "user_note": "The fish is mostly inside the bread roll",
+        "totals": {
+          "kcal": 429,
+          "protein_g": 19.6,
+          "carbs_g": 51.1,
+          "fat_g": 16.3,
+          "fiber_g": 2.5,
+          "sugar_g": 3.5
+        },
+        "items": [
+          {
+            "name": "White bread roll (baguette-style)",
+            "weight_g": 90,
+            "serving": "1 roll (approx 90g)",
+            "kcal": 248,
+            "protein_g": 8.1,
+            "carbs_g": 49.5,
+            "fat_g": 1.8,
+            "confidence": 0.85
+          },
+          {
+            "name": "Smoked fish (likely mackerel or herring)",
+            "weight_g": 50,
+            "serving": "3-4 slices, mostly inside roll (approx 50g)",
+            "kcal": 105,
+            "protein_g": 11,
+            "carbs_g": 0,
+            "fat_g": 6.8,
+            "confidence": 0.75
+          },
+          {
+            "name": "Green leaf lettuce",
+            "weight_g": 12,
+            "serving": "2 small leaves (approx 12g)",
+            "kcal": 2,
+            "protein_g": 0.2,
+            "carbs_g": 0.4,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "Red onion (raw, sliced)",
+            "weight_g": 8,
+            "serving": "2-3 thin rings (approx 8g)",
+            "kcal": 4,
+            "protein_g": 0.1,
+            "carbs_g": 0.9,
+            "fat_g": 0,
+            "confidence": 0.75
+          },
+          {
+            "name": "Mayonnaise-based spread",
+            "weight_g": 10,
+            "serving": "Thin layer (approx 10g)",
+            "kcal": 70,
+            "protein_g": 0.2,
+            "carbs_g": 0.3,
+            "fat_g": 7.7,
+            "confidence": 0.65
           }
         ],
         "overall_confidence": 0.78
