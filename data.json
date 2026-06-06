@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 2695,
-    "protein_g": 177.1,
-    "carbs_g": 212.9,
-    "fat_g": 112.8,
+    "calories": 2726,
+    "protein_g": 179.5,
+    "carbs_g": 213.8,
+    "fat_g": 114.9,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -88,6 +88,15 @@
         "fat_g": 9.8,
         "time": "2026-06-06T16:22:52.550Z",
         "_evtId": "evt_1780762972550_an2r5"
+      },
+      {
+        "name": "Cherry tomato, White cheese cube (mozzarella or mild white cheese)",
+        "kcal": 31,
+        "protein_g": 2.4,
+        "carbs_g": 0.9,
+        "fat_g": 2.1,
+        "time": "2026-06-06T17:28:54.283Z",
+        "_evtId": "evt_1780766934284_prr4m"
       }
     ],
     "exercise": [],
@@ -732,6 +741,17 @@
       "carbs_g": 6.6,
       "fat_g": 9.8,
       "ts": "2026-06-06T16:22:52.551Z"
+    },
+    {
+      "id": "evt_1780766934284_prr4m",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Cherry tomato, White cheese cube (mozzarella or mild white cheese)",
+      "kcal": 31,
+      "protein_g": 2.4,
+      "carbs_g": 0.9,
+      "fat_g": 2.1,
+      "ts": "2026-06-06T17:28:54.284Z"
     }
   ]
 }
