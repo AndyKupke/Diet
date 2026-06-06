@@ -1,57 +1,21 @@
 {
   "today": {
-    "date": "2026-06-05",
-    "calories": 2329,
-    "protein_g": 134.7,
-    "carbs_g": 197,
-    "fat_g": 107.6,
+    "date": "2026-06-06",
+    "calories": 149,
+    "protein_g": 20.3,
+    "carbs_g": 12.1,
+    "fat_g": 0.6,
     "water_ml": 0,
-    "weight_kg": 73.3,
+    "weight_kg": null,
     "meals": [
       {
-        "name": "Protein Powder (Chocolate) - mixed with low-fat milk",
-        "kcal": 204,
-        "protein_g": 29.6,
-        "carbs_g": 11,
-        "fat_g": 4.4,
-        "time": "2026-06-05T05:31:45.544Z",
-        "_evtId": "evt_1780637505544_jg3ur"
-      },
-      {
-        "name": "Cooked white rice (long grain), Cooked ground meat (beef/pork mix), Diced red bell pepper, Diced zucchini/courgette, Diced carrots, Sweet corn kernels, Cooking oil (vegetable/canola)",
-        "kcal": 881,
-        "protein_g": 41.6,
-        "carbs_g": 96.1,
-        "fat_g": 35.8,
-        "time": "2026-06-05T13:37:54.632Z",
-        "_evtId": "evt_1780666674632_mmcuu"
-      },
-      {
-        "name": "Penne pasta (cooked), Creamy tomato sauce (vodka/rosa style with cream and butter), Chicken breast pieces (diced, sautéed), Carrot strips/julienne, Grated Parmesan cheese, Fresh parsley (garnish), Olive oil/butter in sauce preparation",
-        "kcal": 762,
-        "protein_g": 40.3,
-        "carbs_g": 65.8,
-        "fat_g": 35.4,
-        "time": "2026-06-05T16:11:55.197Z",
-        "_evtId": "evt_1780675915198_ng3xq"
-      },
-      {
-        "name": "Pizza crust (thin, white/wheat base), Pizza tomato sauce, Mozzarella cheese (melted), Pepperoni/salami slices (cured pork), Cooking oil absorbed in crust",
-        "kcal": 381,
-        "protein_g": 16.6,
-        "carbs_g": 23.9,
-        "fat_g": 23.8,
-        "time": "2026-06-05T16:22:30.350Z",
-        "_evtId": "evt_1780676550350_k03ai"
-      },
-      {
-        "name": "Edeka air-dried salami (edelschimmelgereift)",
-        "kcal": 101,
-        "protein_g": 6.6,
-        "carbs_g": 0.2,
-        "fat_g": 8.2,
-        "time": "2026-06-05T17:15:56.996Z",
-        "_evtId": "evt_1780679756996_yedmn"
+        "name": "Skyr (Icelandic yogurt), Fresh strawberries, Fresh blueberries",
+        "kcal": 149,
+        "protein_g": 20.3,
+        "carbs_g": 12.1,
+        "fat_g": 0.6,
+        "time": "2026-06-06T05:21:46.846Z",
+        "_evtId": "evt_1780723306846_ww34s"
       }
     ],
     "exercise": [],
@@ -102,6 +66,15 @@
       "fat_g": 72,
       "water_ml": 0,
       "weight_kg": 74
+    },
+    {
+      "date": "2026-06-05",
+      "calories": 2329,
+      "protein_g": 134.7,
+      "carbs_g": 197,
+      "fat_g": 107.6,
+      "water_ml": 0,
+      "weight_kg": 73.3
     }
   ],
   "events": [
@@ -581,6 +554,17 @@
       "carbs_g": 0.2,
       "fat_g": 8.2,
       "ts": "2026-06-05T17:15:56.997Z"
+    },
+    {
+      "id": "evt_1780723306846_ww34s",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Skyr (Icelandic yogurt), Fresh strawberries, Fresh blueberries",
+      "kcal": 149,
+      "protein_g": 20.3,
+      "carbs_g": 12.1,
+      "fat_g": 0.6,
+      "ts": "2026-06-06T05:21:46.847Z"
     }
   ]
 }
