@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-05T17:15:51.871Z",
-    "total_analyses": 51,
+    "last_updated": "2026-06-06T05:21:41.945Z",
+    "total_analyses": 52,
     "total_corrections": 3
   },
   "calibrations": {
@@ -76,15 +76,15 @@
     "entries": [
       {
         "name": "Fresh strawberries",
-        "serving": "4 medium strawberries (approx 60g)",
-        "weight_g": 60,
-        "kcal": 17,
+        "serving": "5 medium strawberries (approx 25g)",
+        "weight_g": 25,
+        "kcal": 13,
         "protein_g": 0.3,
-        "carbs_g": 4,
+        "carbs_g": 3,
         "fat_g": 0.2,
-        "confidence": 0.9,
-        "last_seen": "2026-06-01",
-        "seen_count": 2
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 3
       },
       {
         "name": "Rigatoni pasta (cooked)",
@@ -148,15 +148,15 @@
       },
       {
         "name": "Fresh blueberries",
-        "serving": "scattered portion (approx 30g)",
-        "weight_g": 30,
-        "kcal": 17,
+        "serving": "approx 10 blueberries (15g)",
+        "weight_g": 15,
+        "kcal": 13,
         "protein_g": 0.2,
-        "carbs_g": 4.3,
+        "carbs_g": 3.3,
         "fat_g": 0.1,
-        "confidence": 0.75,
-        "last_seen": "2026-06-04",
-        "seen_count": 4
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 5
       },
       {
         "name": "Cherry tomatoes",
@@ -1416,6 +1416,18 @@
         "fat_g": 8.2,
         "confidence": 0.95,
         "last_seen": "2026-06-05",
+        "seen_count": 1
+      },
+      {
+        "name": "Skyr (Icelandic yogurt)",
+        "serving": "approx 200g",
+        "weight_g": 200,
+        "kcal": 132,
+        "protein_g": 20,
+        "carbs_g": 8,
+        "fat_g": 0.4,
+        "confidence": 0.9,
+        "last_seen": "2026-06-06",
         "seen_count": 1
       }
     ]
@@ -3887,6 +3899,53 @@
           }
         ],
         "overall_confidence": 0.95
+      },
+      {
+        "id": 1780723301945,
+        "date": "2026-06-06",
+        "meal_type": "breakfast",
+        "user_note": "Skyr",
+        "totals": {
+          "kcal": 149,
+          "protein_g": 20.3,
+          "carbs_g": 12.1,
+          "fat_g": 0.6,
+          "fiber_g": 0.9,
+          "sugar_g": 10.7
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic yogurt)",
+            "weight_g": 200,
+            "serving": "approx 200g",
+            "kcal": 132,
+            "protein_g": 20,
+            "carbs_g": 8,
+            "fat_g": 0.4,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh strawberries",
+            "weight_g": 25,
+            "serving": "5 medium strawberries (approx 25g)",
+            "kcal": 8,
+            "protein_g": 0.2,
+            "carbs_g": 1.9,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh blueberries",
+            "weight_g": 15,
+            "serving": "approx 10 blueberries (15g)",
+            "kcal": 9,
+            "protein_g": 0.1,
+            "carbs_g": 2.2,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.88
       }
     ]
   }
