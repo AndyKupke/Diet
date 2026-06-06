@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 519,
-    "protein_g": 40.9,
-    "carbs_g": 23,
-    "fat_g": 28.6,
+    "calories": 797,
+    "protein_g": 63.9,
+    "carbs_g": 57.3,
+    "fat_g": 33.5,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 28,
         "time": "2026-06-06T05:36:17.218Z",
         "_evtId": "evt_1780724177219_0a079"
+      },
+      {
+        "name": "Dark rye bread (pumpernickel/vollkornbrot), Roast beef (medium-rare), Cucumber slices (fresh), Red bell pepper (fresh), Carrot stick",
+        "kcal": 278,
+        "protein_g": 23,
+        "carbs_g": 34.3,
+        "fat_g": 4.9,
+        "time": "2026-06-06T12:52:51.324Z",
+        "_evtId": "evt_1780750371324_gkaxg"
       }
     ],
     "exercise": [],
@@ -592,6 +601,17 @@
       "weight_kg": 73.3,
       "id": "evt_1780725097592_8nhsd",
       "ts": "2026-06-06T05:51:37.592Z"
+    },
+    {
+      "id": "evt_1780750371324_gkaxg",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Dark rye bread (pumpernickel/vollkornbrot), Roast beef (medium-rare), Cucumber slices (fresh), Red bell pepper (fresh), Carrot stick",
+      "kcal": 278,
+      "protein_g": 23,
+      "carbs_g": 34.3,
+      "fat_g": 4.9,
+      "ts": "2026-06-06T12:52:51.324Z"
     }
   ]
 }
