@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T12:52:27.743Z",
-    "total_analyses": 54,
+    "last_updated": "2026-06-06T12:53:35.011Z",
+    "total_analyses": 55,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1583,6 +1583,78 @@
         "carbs_g": 1.9,
         "fat_g": 0.1,
         "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "White baguette/sub roll",
+        "serving": "1 roll (approx 90g)",
+        "weight_g": 90,
+        "kcal": 248,
+        "protein_g": 8.1,
+        "carbs_g": 49.5,
+        "fat_g": 1.8,
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Smoked salmon (lox style)",
+        "serving": "3-4 slices (approx 50g)",
+        "weight_g": 50,
+        "kcal": 58,
+        "protein_g": 11.5,
+        "carbs_g": 0,
+        "fat_g": 1.4,
+        "confidence": 0.8,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Red onion (raw, sliced)",
+        "serving": "4-5 thin rings (approx 15g)",
+        "weight_g": 15,
+        "kcal": 6,
+        "protein_g": 0.2,
+        "carbs_g": 1.4,
+        "fat_g": 0,
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Green leaf lettuce",
+        "serving": "2-3 leaves (approx 20g)",
+        "weight_g": 20,
+        "kcal": 3,
+        "protein_g": 0.3,
+        "carbs_g": 0.6,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Tomato (fresh, sliced)",
+        "serving": "2 medium slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 5,
+        "protein_g": 0.3,
+        "carbs_g": 1.1,
+        "fat_g": 0.1,
+        "confidence": 0.8,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Spread/condiment (likely cream cheese or mayonnaise)",
+        "serving": "thin layer (approx 15g)",
+        "weight_g": 15,
+        "kcal": 52,
+        "protein_g": 1,
+        "carbs_g": 0.5,
+        "fat_g": 5,
+        "confidence": 0.6,
         "last_seen": "2026-06-06",
         "seen_count": 1
       }
@@ -4266,6 +4338,83 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1780750415011,
+        "date": "2026-06-06",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 372,
+          "protein_g": 21.4,
+          "carbs_g": 53.1,
+          "fat_g": 8.3,
+          "fiber_g": 3,
+          "sugar_g": 4.6
+        },
+        "items": [
+          {
+            "name": "White baguette/sub roll",
+            "weight_g": 90,
+            "serving": "1 roll (approx 90g)",
+            "kcal": 248,
+            "protein_g": 8.1,
+            "carbs_g": 49.5,
+            "fat_g": 1.8,
+            "confidence": 0.85
+          },
+          {
+            "name": "Smoked salmon (lox style)",
+            "weight_g": 50,
+            "serving": "3-4 slices (approx 50g)",
+            "kcal": 58,
+            "protein_g": 11.5,
+            "carbs_g": 0,
+            "fat_g": 1.4,
+            "confidence": 0.8
+          },
+          {
+            "name": "Red onion (raw, sliced)",
+            "weight_g": 15,
+            "serving": "4-5 thin rings (approx 15g)",
+            "kcal": 6,
+            "protein_g": 0.2,
+            "carbs_g": 1.4,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "Green leaf lettuce",
+            "weight_g": 20,
+            "serving": "2-3 leaves (approx 20g)",
+            "kcal": 3,
+            "protein_g": 0.3,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Tomato (fresh, sliced)",
+            "weight_g": 30,
+            "serving": "2 medium slices (approx 30g)",
+            "kcal": 5,
+            "protein_g": 0.3,
+            "carbs_g": 1.1,
+            "fat_g": 0.1,
+            "confidence": 0.8
+          },
+          {
+            "name": "Spread/condiment (likely cream cheese or mayonnaise)",
+            "weight_g": 15,
+            "serving": "thin layer (approx 15g)",
+            "kcal": 52,
+            "protein_g": 1,
+            "carbs_g": 0.5,
+            "fat_g": 5,
+            "confidence": 0.6
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
