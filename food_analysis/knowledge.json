@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T16:10:47.129Z",
-    "total_analyses": 61,
+    "last_updated": "2026-06-06T17:27:01.391Z",
+    "total_analyses": 63,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "5 sticks (approx 80g)",
-        "weight_g": 80,
-        "kcal": 33,
-        "protein_g": 0.8,
-        "carbs_g": 7.8,
+        "serving": "3 carrot sticks (approx 45g total)",
+        "weight_g": 45,
+        "kcal": 26,
+        "protein_g": 0.6,
+        "carbs_g": 6,
         "fat_g": 0.2,
-        "confidence": 0.75,
+        "confidence": 0.8,
         "last_seen": "2026-06-06",
-        "seen_count": 5
+        "seen_count": 6
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -1787,6 +1787,78 @@
         "carbs_g": 19.8,
         "fat_g": 0.7,
         "confidence": 0.8,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Grilled beef steak (medium-rare)",
+        "serving": "1 small steak remnant (approx 40g remaining, ~150g original cooked weight)",
+        "weight_g": 40,
+        "kcal": 104,
+        "protein_g": 10.4,
+        "carbs_g": 0,
+        "fat_g": 6.8,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Cherry tomato",
+        "serving": "1 cherry tomato (approx 15g)",
+        "weight_g": 15,
+        "kcal": 3,
+        "protein_g": 0.1,
+        "carbs_g": 0.6,
+        "fat_g": 0,
+        "confidence": 0.85,
+        "last_seen": "2026-06-06",
+        "seen_count": 2
+      },
+      {
+        "name": "White cheese cube (likely mozzarella or feta)",
+        "serving": "1 small cheese cube (approx 10g)",
+        "weight_g": 10,
+        "kcal": 28,
+        "protein_g": 2.3,
+        "carbs_g": 0.3,
+        "fat_g": 2.1,
+        "confidence": 0.7,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Gravy or pan sauce (beef jus)",
+        "serving": "Residual sauce on plate (approx 20ml/25g)",
+        "weight_g": 25,
+        "kcal": 15,
+        "protein_g": 0.5,
+        "carbs_g": 1.5,
+        "fat_g": 0.8,
+        "confidence": 0.6,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "White cheese cube (mozzarella or feta)",
+        "serving": "1 small cheese cube (approx 10g)",
+        "weight_g": 10,
+        "kcal": 28,
+        "protein_g": 2.3,
+        "carbs_g": 0.3,
+        "fat_g": 2.1,
+        "confidence": 0.7,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "French fries (visible in container)",
+        "serving": "Small portion visible in yellow container (approx 60g)",
+        "weight_g": 60,
+        "kcal": 186,
+        "protein_g": 2.4,
+        "carbs_g": 24,
+        "fat_g": 9,
+        "confidence": 0.65,
         "last_seen": "2026-06-06",
         "seen_count": 1
       }
@@ -4829,6 +4901,120 @@
           }
         ],
         "overall_confidence": 0.75
+      },
+      {
+        "id": 1780762936928,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 168,
+          "protein_g": 13.7,
+          "carbs_g": 6.6,
+          "fat_g": 9.8,
+          "fiber_g": 1.6,
+          "sugar_g": 3.6
+        },
+        "items": [
+          {
+            "name": "Grilled beef steak (medium-rare)",
+            "weight_g": 40,
+            "serving": "1 small steak remnant (approx 40g remaining, ~150g original cooked weight)",
+            "kcal": 104,
+            "protein_g": 10.4,
+            "carbs_g": 0,
+            "fat_g": 6.8,
+            "confidence": 0.75
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 45,
+            "serving": "3 carrot sticks (approx 45g total)",
+            "kcal": 18,
+            "protein_g": 0.4,
+            "carbs_g": 4.2,
+            "fat_g": 0.1,
+            "confidence": 0.8
+          },
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 cherry tomato (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "White cheese cube (likely mozzarella or feta)",
+            "weight_g": 10,
+            "serving": "1 small cheese cube (approx 10g)",
+            "kcal": 28,
+            "protein_g": 2.3,
+            "carbs_g": 0.3,
+            "fat_g": 2.1,
+            "confidence": 0.7
+          },
+          {
+            "name": "Gravy or pan sauce (beef jus)",
+            "weight_g": 25,
+            "serving": "Residual sauce on plate (approx 20ml/25g)",
+            "kcal": 15,
+            "protein_g": 0.5,
+            "carbs_g": 1.5,
+            "fat_g": 0.8,
+            "confidence": 0.6
+          }
+        ],
+        "overall_confidence": 0.72
+      },
+      {
+        "id": 1780766821390,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "3",
+        "totals": {
+          "kcal": 217,
+          "protein_g": 4.8,
+          "carbs_g": 24.9,
+          "fat_g": 11.1,
+          "fiber_g": 2.3,
+          "sugar_g": 1
+        },
+        "items": [
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 cherry tomato (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "White cheese cube (mozzarella or feta)",
+            "weight_g": 10,
+            "serving": "1 small cheese cube (approx 10g)",
+            "kcal": 28,
+            "protein_g": 2.3,
+            "carbs_g": 0.3,
+            "fat_g": 2.1,
+            "confidence": 0.7
+          },
+          {
+            "name": "French fries (visible in container)",
+            "weight_g": 60,
+            "serving": "Small portion visible in yellow container (approx 60g)",
+            "kcal": 186,
+            "protein_g": 2.4,
+            "carbs_g": 24,
+            "fat_g": 9,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.72
       }
     ]
   }
