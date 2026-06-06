@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T13:21:57.087Z",
-    "total_analyses": 58,
+    "last_updated": "2026-06-06T15:16:57.282Z",
+    "total_analyses": 59,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1726,6 +1726,18 @@
         "protein_g": 6.6,
         "carbs_g": 0.2,
         "fat_g": 8.2,
+        "confidence": 1,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Ratsherrn alcohol-free beer (Alkoholfreies Bier)",
+        "serving": "1 bottle (330ml)",
+        "weight_g": 330,
+        "kcal": 56,
+        "protein_g": 0,
+        "carbs_g": 8.3,
+        "fat_g": 0,
         "confidence": 1,
         "last_seen": "2026-06-06",
         "seen_count": 1
@@ -4644,6 +4656,33 @@
             "protein_g": 6.6,
             "carbs_g": 0.2,
             "fat_g": 8.2,
+            "confidence": 1
+          }
+        ],
+        "overall_confidence": 1
+      },
+      {
+        "id": 1780759017281,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 56,
+          "protein_g": 0,
+          "carbs_g": 8.3,
+          "fat_g": 0,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Ratsherrn alcohol-free beer (Alkoholfreies Bier)",
+            "weight_g": 330,
+            "serving": "1 bottle (330ml)",
+            "kcal": 56,
+            "protein_g": 0,
+            "carbs_g": 8.3,
+            "fat_g": 0,
             "confidence": 1
           }
         ],
