@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T17:27:01.391Z",
-    "total_analyses": 63,
+    "last_updated": "2026-06-06T17:28:09.919Z",
+    "total_analyses": 64,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1812,7 +1812,7 @@
         "fat_g": 0,
         "confidence": 0.85,
         "last_seen": "2026-06-06",
-        "seen_count": 2
+        "seen_count": 5
       },
       {
         "name": "White cheese cube (likely mozzarella or feta)",
@@ -1853,6 +1853,42 @@
       {
         "name": "French fries (visible in container)",
         "serving": "Small portion visible in yellow container (approx 60g)",
+        "weight_g": 60,
+        "kcal": 186,
+        "protein_g": 2.4,
+        "carbs_g": 24,
+        "fat_g": 9,
+        "confidence": 0.65,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "White cheese cube (mozzarella or mild white cheese)",
+        "serving": "1 small cheese cube (approx 10g)",
+        "weight_g": 10,
+        "kcal": 28,
+        "protein_g": 2.3,
+        "carbs_g": 0.3,
+        "fat_g": 2.1,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 2
+      },
+      {
+        "name": "White cheese cube (mozzarilla or mild white cheese)",
+        "serving": "1 small cheese cube (approx 10g)",
+        "weight_g": 10,
+        "kcal": 28,
+        "protein_g": 2.3,
+        "carbs_g": 0.3,
+        "fat_g": 2.1,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "French fries",
+        "serving": "Small portion in yellow container (approx 60g)",
         "weight_g": 60,
         "kcal": 186,
         "protein_g": 2.4,
@@ -5015,6 +5051,93 @@
           }
         ],
         "overall_confidence": 0.72
+      },
+      {
+        "id": 1780766889918,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "3 pieces tomato and chesse",
+        "totals": {
+          "kcal": 279,
+          "protein_g": 9.6,
+          "carbs_g": 26.7,
+          "fat_g": 13.3,
+          "fiber_g": 2.7,
+          "sugar_g": 2.2
+        },
+        "items": [
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 cherry tomato (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "White cheese cube (mozzarella or mild white cheese)",
+            "weight_g": 10,
+            "serving": "1 small cheese cube (approx 10g)",
+            "kcal": 28,
+            "protein_g": 2.3,
+            "carbs_g": 0.3,
+            "fat_g": 2.1,
+            "confidence": 0.75
+          },
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 cherry tomato (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "White cheese cube (mozzarella or mild white cheese)",
+            "weight_g": 10,
+            "serving": "1 small cheese cube (approx 10g)",
+            "kcal": 28,
+            "protein_g": 2.3,
+            "carbs_g": 0.3,
+            "fat_g": 2.1,
+            "confidence": 0.75
+          },
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 cherry tomato (approx 15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "White cheese cube (mozzarilla or mild white cheese)",
+            "weight_g": 10,
+            "serving": "1 small cheese cube (approx 10g)",
+            "kcal": 28,
+            "protein_g": 2.3,
+            "carbs_g": 0.3,
+            "fat_g": 2.1,
+            "confidence": 0.75
+          },
+          {
+            "name": "French fries",
+            "weight_g": 60,
+            "serving": "Small portion in yellow container (approx 60g)",
+            "kcal": 186,
+            "protein_g": 2.4,
+            "carbs_g": 24,
+            "fat_g": 9,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
