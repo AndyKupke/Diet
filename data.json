@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-06",
-    "calories": 2527,
-    "protein_g": 163.4,
-    "carbs_g": 206.3,
-    "fat_g": 103,
+    "calories": 2695,
+    "protein_g": 177.1,
+    "carbs_g": 212.9,
+    "fat_g": 112.8,
     "water_ml": 0,
     "weight_kg": 73.3,
     "meals": [
@@ -79,6 +79,15 @@
         "fat_g": 36.7,
         "time": "2026-06-06T16:11:19.481Z",
         "_evtId": "evt_1780762279481_8eq3v"
+      },
+      {
+        "name": "Grilled beef steak (medium-rare), Carrot sticks (raw), Cherry tomato, White cheese cube (likely mozzarella or feta), Gravy or pan sauce (beef jus)",
+        "kcal": 168,
+        "protein_g": 13.7,
+        "carbs_g": 6.6,
+        "fat_g": 9.8,
+        "time": "2026-06-06T16:22:52.550Z",
+        "_evtId": "evt_1780762972550_an2r5"
       }
     ],
     "exercise": [],
@@ -712,6 +721,17 @@
       "carbs_g": 36,
       "fat_g": 36.7,
       "ts": "2026-06-06T16:11:19.482Z"
+    },
+    {
+      "id": "evt_1780762972550_an2r5",
+      "type": "meal",
+      "date": "2026-06-06",
+      "name": "Grilled beef steak (medium-rare), Carrot sticks (raw), Cherry tomato, White cheese cube (likely mozzarella or feta), Gravy or pan sauce (beef jus)",
+      "kcal": 168,
+      "protein_g": 13.7,
+      "carbs_g": 6.6,
+      "fat_g": 9.8,
+      "ts": "2026-06-06T16:22:52.551Z"
     }
   ]
 }
