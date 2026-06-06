@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T15:29:05.320Z",
-    "total_analyses": 60,
+    "last_updated": "2026-06-06T16:10:47.129Z",
+    "total_analyses": 61,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "4 sticks (approx 50g)",
-        "weight_g": 50,
-        "kcal": 20,
-        "protein_g": 0.5,
-        "carbs_g": 4.4,
-        "fat_g": 0.1,
-        "confidence": 0.9,
-        "last_seen": "2026-06-04",
-        "seen_count": 4
+        "serving": "5 sticks (approx 80g)",
+        "weight_g": 80,
+        "kcal": 33,
+        "protein_g": 0.8,
+        "carbs_g": 7.8,
+        "fat_g": 0.2,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 5
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -1741,6 +1741,54 @@
         "confidence": 1,
         "last_seen": "2026-06-06",
         "seen_count": 2
+      },
+      {
+        "name": "Grilled beef steak (sirloin or ribeye)",
+        "serving": "1 steak (approx 180g cooked weight)",
+        "weight_g": 180,
+        "kcal": 468,
+        "protein_g": 46.8,
+        "carbs_g": 0,
+        "fat_g": 30.6,
+        "confidence": 0.8,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Bell pepper strips (red and yellow, raw)",
+        "serving": "3 strips (approx 60g)",
+        "weight_g": 60,
+        "kcal": 19,
+        "protein_g": 0.6,
+        "carbs_g": 4.4,
+        "fat_g": 0.2,
+        "confidence": 0.75,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Creamy coleslaw or mayonnaise-based salad",
+        "serving": "Dollop (approx 50g)",
+        "weight_g": 50,
+        "kcal": 65,
+        "protein_g": 0.5,
+        "carbs_g": 4,
+        "fat_g": 5,
+        "confidence": 0.65,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "White bread roll (half)",
+        "serving": "Half roll (approx 35g)",
+        "weight_g": 35,
+        "kcal": 99,
+        "protein_g": 3.2,
+        "carbs_g": 19.8,
+        "fat_g": 0.7,
+        "confidence": 0.8,
+        "last_seen": "2026-06-06",
+        "seen_count": 1
       }
     ]
   },
@@ -4714,6 +4762,73 @@
           }
         ],
         "overall_confidence": 1
+      },
+      {
+        "id": 1780762247128,
+        "date": "2026-06-06",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 684,
+          "protein_g": 51.9,
+          "carbs_g": 36,
+          "fat_g": 36.7,
+          "fiber_g": 5.2,
+          "sugar_g": 11.5
+        },
+        "items": [
+          {
+            "name": "Grilled beef steak (sirloin or ribeye)",
+            "weight_g": 180,
+            "serving": "1 steak (approx 180g cooked weight)",
+            "kcal": 468,
+            "protein_g": 46.8,
+            "carbs_g": 0,
+            "fat_g": 30.6,
+            "confidence": 0.8
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 80,
+            "serving": "5 sticks (approx 80g)",
+            "kcal": 33,
+            "protein_g": 0.8,
+            "carbs_g": 7.8,
+            "fat_g": 0.2,
+            "confidence": 0.75
+          },
+          {
+            "name": "Bell pepper strips (red and yellow, raw)",
+            "weight_g": 60,
+            "serving": "3 strips (approx 60g)",
+            "kcal": 19,
+            "protein_g": 0.6,
+            "carbs_g": 4.4,
+            "fat_g": 0.2,
+            "confidence": 0.75
+          },
+          {
+            "name": "Creamy coleslaw or mayonnaise-based salad",
+            "weight_g": 50,
+            "serving": "Dollop (approx 50g)",
+            "kcal": 65,
+            "protein_g": 0.5,
+            "carbs_g": 4,
+            "fat_g": 5,
+            "confidence": 0.65
+          },
+          {
+            "name": "White bread roll (half)",
+            "weight_g": 35,
+            "serving": "Half roll (approx 35g)",
+            "kcal": 99,
+            "protein_g": 3.2,
+            "carbs_g": 19.8,
+            "fat_g": 0.7,
+            "confidence": 0.8
+          }
+        ],
+        "overall_confidence": 0.75
       }
     ]
   }
