@@ -1,111 +1,21 @@
 {
   "today": {
-    "date": "2026-06-06",
-    "calories": 2936,
-    "protein_g": 208.4,
-    "carbs_g": 214.3,
-    "fat_g": 125,
+    "date": "2026-06-07",
+    "calories": 39,
+    "protein_g": 2.7,
+    "carbs_g": 3.3,
+    "fat_g": 1.8,
     "water_ml": 0,
-    "weight_kg": 73.3,
+    "weight_kg": null,
     "meals": [
       {
-        "name": "Skyr (Icelandic yogurt), Fresh strawberries, Fresh blueberries",
-        "kcal": 149,
-        "protein_g": 20.3,
-        "carbs_g": 12.1,
-        "fat_g": 0.6,
-        "time": "2026-06-06T05:21:46.846Z",
-        "_evtId": "evt_1780723306846_ww34s"
-      },
-      {
-        "name": "Scrambled eggs, Bell peppers (red and green), Mushrooms (sliced), Onion (diced), Tomato (diced), Cooking oil/butter (for scrambling), Cheese (likely cheddar or similar), Herbs/spices (black pepper, possibly parsley)",
-        "kcal": 370,
-        "protein_g": 20.6,
-        "carbs_g": 10.9,
-        "fat_g": 28,
-        "time": "2026-06-06T05:36:17.218Z",
-        "_evtId": "evt_1780724177219_0a079"
-      },
-      {
-        "name": "Dark rye bread (pumpernickel/vollkornbrot), Roast beef (medium-rare), Cucumber slices (fresh), Red bell pepper (fresh), Carrot stick",
-        "kcal": 278,
-        "protein_g": 23,
-        "carbs_g": 34.3,
-        "fat_g": 4.9,
-        "time": "2026-06-06T12:52:51.324Z",
-        "_evtId": "evt_1780750371324_gkaxg"
-      },
-      {
-        "name": "White baguette/sub roll, Smoked salmon (lox style), Red onion (raw, sliced), Green leaf lettuce, Tomato (fresh, sliced), Spread/condiment (likely cream cheese or mayonnaise)",
-        "kcal": 372,
-        "protein_g": 21.4,
-        "carbs_g": 53.1,
-        "fat_g": 8.3,
-        "time": "2026-06-06T12:53:48.193Z",
-        "_evtId": "evt_1780750428193_mfm6k"
-      },
-      {
-        "name": "White bread roll (baguette-style), Smoked fish (likely mackerel or herring), Green leaf lettuce, Red onion (raw, sliced), Mayonnaise-based spread",
-        "kcal": 429,
-        "protein_g": 19.6,
-        "carbs_g": 51.1,
-        "fat_g": 16.3,
-        "time": "2026-06-06T12:55:56.639Z",
-        "_evtId": "evt_1780750556639_9mqqq"
-      },
-      {
-        "name": "Dry-cured salami stick (Edelschimmelgereifte Salami)",
-        "kcal": 202,
-        "protein_g": 6.6,
-        "carbs_g": 0.2,
-        "fat_g": 8.2,
-        "time": "2026-06-06T13:22:11.496Z",
-        "_evtId": "evt_1780752131497_txnrx"
-      },
-      {
-        "name": "Ratsherrn alcohol-free beer (Alkoholfreies Bier)",
-        "kcal": 43,
-        "protein_g": 0,
-        "carbs_g": 8.6,
-        "fat_g": 0,
-        "time": "2026-06-06T15:29:31.347Z",
-        "_evtId": "evt_1780759771347_9jo9o"
-      },
-      {
-        "name": "Grilled beef steak (sirloin or ribeye), Carrot sticks (raw), Bell pepper strips (red and yellow, raw), Creamy coleslaw or mayonnaise-based salad, White bread roll (half)",
-        "kcal": 684,
-        "protein_g": 51.9,
-        "carbs_g": 36,
-        "fat_g": 36.7,
-        "time": "2026-06-06T16:11:19.481Z",
-        "_evtId": "evt_1780762279481_8eq3v"
-      },
-      {
-        "name": "Grilled beef steak (medium-rare), Carrot sticks (raw), Cherry tomato, White cheese cube (likely mozzarella or feta), Gravy or pan sauce (beef jus)",
-        "kcal": 168,
-        "protein_g": 13.7,
-        "carbs_g": 6.6,
-        "fat_g": 9.8,
-        "time": "2026-06-06T16:22:52.550Z",
-        "_evtId": "evt_1780762972550_an2r5"
-      },
-      {
-        "name": "Cherry tomato, White cheese cube (mozzarella or mild white cheese)",
-        "kcal": 31,
-        "protein_g": 2.4,
-        "carbs_g": 0.9,
-        "fat_g": 2.1,
-        "time": "2026-06-06T17:28:54.283Z",
-        "_evtId": "evt_1780766934284_prr4m"
-      },
-      {
-        "name": "Grilled chicken breast (bone-in, marinated with black pepper seasoning), Cooking oil/marinade (absorbed during grilling)",
-        "kcal": 210,
-        "protein_g": 28.9,
-        "carbs_g": 0.5,
-        "fat_g": 10.1,
-        "time": "2026-06-06T17:30:34.192Z",
-        "_evtId": "evt_1780767034192_1uul4"
+        "name": "Elinas Natural Yogurt (20% consumed)",
+        "kcal": 39,
+        "protein_g": 2.7,
+        "carbs_g": 3.3,
+        "fat_g": 1.8,
+        "time": "2026-06-07T05:33:04.891Z",
+        "_evtId": "evt_1780810384891_4e4qp"
       }
     ],
     "exercise": [],
@@ -163,6 +73,15 @@
       "protein_g": 134.7,
       "carbs_g": 197,
       "fat_g": 107.6,
+      "water_ml": 0,
+      "weight_kg": 73.3
+    },
+    {
+      "date": "2026-06-06",
+      "calories": 2936,
+      "protein_g": 208.4,
+      "carbs_g": 214.3,
+      "fat_g": 125,
       "water_ml": 0,
       "weight_kg": 73.3
     }
@@ -772,6 +691,17 @@
       "carbs_g": 0.5,
       "fat_g": 10.1,
       "ts": "2026-06-06T17:30:34.193Z"
+    },
+    {
+      "id": "evt_1780810384891_4e4qp",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Elinas Natural Yogurt (20% consumed)",
+      "kcal": 39,
+      "protein_g": 2.7,
+      "carbs_g": 3.3,
+      "fat_g": 1.8,
+      "ts": "2026-06-07T05:33:04.892Z"
     }
   ]
 }
