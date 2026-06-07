@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T17:01:53.830Z",
-    "total_analyses": 75,
+    "last_updated": "2026-06-07T17:04:56.388Z",
+    "total_analyses": 76,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "3 sticks (approx 45g)",
-        "weight_g": 45,
-        "kcal": 20,
+        "serving": "2 medium sticks (approx 50g)",
+        "weight_g": 50,
+        "kcal": 21,
         "protein_g": 0.5,
-        "carbs_g": 4.6,
+        "carbs_g": 4.8,
         "fat_g": 0.2,
-        "confidence": 0.9,
+        "confidence": 0.88,
         "last_seen": "2026-06-07",
-        "seen_count": 9
+        "seen_count": 10
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -2260,13 +2260,25 @@
       },
       {
         "name": "Cucumber slices (fresh, raw)",
-        "serving": "3 slices (approx 30g)",
-        "weight_g": 30,
-        "kcal": 5,
+        "serving": "2 thin slices (approx 20g)",
+        "weight_g": 20,
+        "kcal": 4,
         "protein_g": 0.2,
-        "carbs_g": 0.9,
+        "carbs_g": 0.8,
         "fat_g": 0.1,
         "confidence": 0.92,
+        "last_seen": "2026-06-07",
+        "seen_count": 2
+      },
+      {
+        "name": "Liver pâté on bread (slice)",
+        "serving": "1 slice bread with thick pâté spread (approx 40g bread + 35g pâté)",
+        "weight_g": 75,
+        "kcal": 231,
+        "protein_g": 9.8,
+        "carbs_g": 18.2,
+        "fat_g": 12.6,
+        "confidence": 0.82,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -6174,6 +6186,53 @@
             "carbs_g": 4.1,
             "fat_g": 0.1,
             "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1780851896387,
+        "date": "2026-06-07",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 255,
+          "protein_g": 10.4,
+          "carbs_g": 23.7,
+          "fat_g": 12.7,
+          "fiber_g": 3.3,
+          "sugar_g": 3.8
+        },
+        "items": [
+          {
+            "name": "Liver pâté on bread (slice)",
+            "weight_g": 75,
+            "serving": "1 slice bread with thick pâté spread (approx 40g bread + 35g pâté)",
+            "kcal": 231,
+            "protein_g": 9.8,
+            "carbs_g": 18.2,
+            "fat_g": 12.6,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cucumber slices (fresh, raw)",
+            "weight_g": 20,
+            "serving": "2 thin slices (approx 20g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.92
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 50,
+            "serving": "2 medium sticks (approx 50g)",
+            "kcal": 21,
+            "protein_g": 0.5,
+            "carbs_g": 4.9,
+            "fat_g": 0.1,
+            "confidence": 0.88
           }
         ],
         "overall_confidence": 0.85
