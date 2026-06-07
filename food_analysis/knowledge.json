@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T12:45:20.656Z",
-    "total_analyses": 72,
+    "last_updated": "2026-06-07T14:04:33.592Z",
+    "total_analyses": 73,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2171,6 +2171,18 @@
         "carbs_g": 0.5,
         "fat_g": 0,
         "confidence": 0.65,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Air-dried salami sticks (Edelschimmelgereifte Salami)",
+        "serving": "3 sticks (30g total, 10g per stick)",
+        "weight_g": 30,
+        "kcal": 152,
+        "protein_g": 9.9,
+        "carbs_g": 0.3,
+        "fat_g": 12.3,
+        "confidence": 0.98,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -5930,6 +5942,33 @@
           }
         ],
         "overall_confidence": 0.78
+      },
+      {
+        "id": 1780841073591,
+        "date": "2026-06-07",
+        "meal_type": "snack",
+        "user_note": "3 pieces",
+        "totals": {
+          "kcal": 152,
+          "protein_g": 9.9,
+          "carbs_g": 0.3,
+          "fat_g": 12.3,
+          "fiber_g": 0,
+          "sugar_g": 0.1
+        },
+        "items": [
+          {
+            "name": "Air-dried salami sticks (Edelschimmelgereifte Salami)",
+            "weight_g": 30,
+            "serving": "3 sticks (30g total, 10g per stick)",
+            "kcal": 152,
+            "protein_g": 9.9,
+            "carbs_g": 0.3,
+            "fat_g": 12.3,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
       }
     ]
   }
