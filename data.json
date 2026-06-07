@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 1877,
-    "protein_g": 106.2,
-    "carbs_g": 131.9,
-    "fat_g": 110.1,
+    "calories": 2036,
+    "protein_g": 107.6,
+    "carbs_g": 141.2,
+    "fat_g": 123.6,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -52,6 +52,15 @@
         "fat_g": 12.3,
         "time": "2026-06-07T14:04:40.813Z",
         "_evtId": "evt_1780841080813_v6ntl"
+      },
+      {
+        "name": "Fresh strawberries, Whipped cream (full-fat dairy)",
+        "kcal": 159,
+        "protein_g": 1.4,
+        "carbs_g": 9.3,
+        "fat_g": 13.5,
+        "time": "2026-06-07T14:08:35.549Z",
+        "_evtId": "evt_1780841315550_yjz2f"
       }
     ],
     "exercise": [],
@@ -789,6 +798,17 @@
       "carbs_g": 0.3,
       "fat_g": 12.3,
       "ts": "2026-06-07T14:04:40.814Z"
+    },
+    {
+      "id": "evt_1780841315550_yjz2f",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Fresh strawberries, Whipped cream (full-fat dairy)",
+      "kcal": 159,
+      "protein_g": 1.4,
+      "carbs_g": 9.3,
+      "fat_g": 13.5,
+      "ts": "2026-06-07T14:08:35.551Z"
     }
   ]
 }
