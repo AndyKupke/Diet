@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 755,
-    "protein_g": 38.3,
-    "carbs_g": 41.4,
-    "fat_g": 49.1,
+    "calories": 1205,
+    "protein_g": 71.1,
+    "carbs_g": 79.2,
+    "fat_g": 74.6,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 47.3,
         "time": "2026-06-07T08:38:37.509Z",
         "_evtId": "evt_1780821517509_gwac4"
+      },
+      {
+        "name": "Multigrain seeded bread (Radice brand), Salami (cured pork, sliced), Cooked ham/turkey breast (sliced), Cherry tomatoes (raw), Hard-boiled egg (peeled), Cucumber (raw, sliced), Red bell pepper (raw, sliced)",
+        "kcal": 450,
+        "protein_g": 32.8,
+        "carbs_g": 37.8,
+        "fat_g": 25.5,
+        "time": "2026-06-07T08:50:47.694Z",
+        "_evtId": "evt_1780822247694_vi69u"
       }
     ],
     "exercise": [],
@@ -729,6 +738,17 @@
       "carbs_g": 38.1,
       "fat_g": 47.3,
       "ts": "2026-06-07T08:38:37.510Z"
+    },
+    {
+      "id": "evt_1780822247694_vi69u",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Multigrain seeded bread (Radice brand), Salami (cured pork, sliced), Cooked ham/turkey breast (sliced), Cherry tomatoes (raw), Hard-boiled egg (peeled), Cucumber (raw, sliced), Red bell pepper (raw, sliced)",
+      "kcal": 450,
+      "protein_g": 32.8,
+      "carbs_g": 37.8,
+      "fat_g": 25.5,
+      "ts": "2026-06-07T08:50:47.695Z"
     }
   ]
 }
