@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T08:49:26.750Z",
-    "total_analyses": 69,
+    "last_updated": "2026-06-07T10:13:36.910Z",
+    "total_analyses": 71,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "3 medium sticks (30g)",
-        "weight_g": 30,
-        "kcal": 19,
-        "protein_g": 0.4,
-        "carbs_g": 4.4,
+        "serving": "5 medium sticks (approx 60g)",
+        "weight_g": 60,
+        "kcal": 22,
+        "protein_g": 0.5,
+        "carbs_g": 5.1,
         "fat_g": 0.2,
-        "confidence": 0.83,
+        "confidence": 0.85,
         "last_seen": "2026-06-07",
-        "seen_count": 7
+        "seen_count": 8
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -880,15 +880,15 @@
       },
       {
         "name": "Cucumber slices (raw)",
-        "serving": "3 slices (approx 30g)",
-        "weight_g": 30,
+        "serving": "3 medium slices (approx 18g)",
+        "weight_g": 18,
         "kcal": 4,
         "protein_g": 0.2,
-        "carbs_g": 0.9,
+        "carbs_g": 0.7,
         "fat_g": 0,
-        "confidence": 0.9,
-        "last_seen": "2026-06-04",
-        "seen_count": 2
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 3
       },
       {
         "name": "Dark rye bread with seeds (Vollkornbrot/Schwarzbrot)",
@@ -1984,15 +1984,15 @@
       },
       {
         "name": "Red bell pepper (raw, sliced)",
-        "serving": "1 thick slice (25g)",
-        "weight_g": 25,
-        "kcal": 12,
-        "protein_g": 0.4,
-        "carbs_g": 2.3,
+        "serving": "1 thick slice (approx 22g)",
+        "weight_g": 22,
+        "kcal": 9,
+        "protein_g": 0.3,
+        "carbs_g": 1.8,
         "fat_g": 0.2,
-        "confidence": 0.83,
+        "confidence": 0.84,
         "last_seen": "2026-06-07",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "Hard-boiled egg",
@@ -2008,43 +2008,43 @@
       },
       {
         "name": "Salami (cured pork, sliced)",
-        "serving": "3 thick slices (40g)",
-        "weight_g": 40,
-        "kcal": 168,
-        "protein_g": 7.2,
+        "serving": "3 thick slices (approx 35g)",
+        "weight_g": 35,
+        "kcal": 158,
+        "protein_g": 6.8,
         "carbs_g": 0.4,
-        "fat_g": 15.2,
+        "fat_g": 14.3,
         "confidence": 0.82,
         "last_seen": "2026-06-07",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Cooked ham/turkey breast (sliced)",
-        "serving": "2-3 medium slices (60g)",
-        "weight_g": 60,
-        "kcal": 66,
-        "protein_g": 12.6,
+        "serving": "2-3 medium slices (approx 55g)",
+        "weight_g": 55,
+        "kcal": 64,
+        "protein_g": 12.1,
         "carbs_g": 0.6,
         "fat_g": 1.8,
-        "confidence": 0.78,
+        "confidence": 0.8,
         "last_seen": "2026-06-07",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Cherry tomatoes (raw)",
-        "serving": "2 small tomatoes (20g)",
-        "weight_g": 20,
+        "serving": "2 small tomatoes (approx 18g)",
+        "weight_g": 18,
         "kcal": 4,
         "protein_g": 0.2,
         "carbs_g": 0.8,
         "fat_g": 0,
-        "confidence": 0.85,
+        "confidence": 0.87,
         "last_seen": "2026-06-07",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Hard-boiled egg (peeled)",
-        "serving": "1 medium egg (50g)",
+        "serving": "1 medium egg, peeled (approx 50g)",
         "weight_g": 50,
         "kcal": 72,
         "protein_g": 6.3,
@@ -2052,17 +2052,41 @@
         "fat_g": 5,
         "confidence": 0.92,
         "last_seen": "2026-06-07",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Cucumber (raw, sliced)",
-        "serving": "3 thin slices (20g)",
-        "weight_g": 20,
-        "kcal": 3,
-        "protein_g": 0.1,
-        "carbs_g": 0.7,
+        "serving": "4 thin slices (approx 24g)",
+        "weight_g": 24,
+        "kcal": 4,
+        "protein_g": 0.2,
+        "carbs_g": 0.8,
         "fat_g": 0,
         "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 2
+      },
+      {
+        "name": "Multigrain seeded bread (Radice brand)",
+        "serving": "2 medium slices with sesame, poppy seeds (approx 90g)",
+        "weight_g": 90,
+        "kcal": 216,
+        "protein_g": 8.1,
+        "carbs_g": 33.3,
+        "fat_g": 5.4,
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper strips (raw)",
+        "serving": "3 thick strips (approx 45g)",
+        "weight_g": 45,
+        "kcal": 14,
+        "protein_g": 0.5,
+        "carbs_g": 3,
+        "fat_g": 0.1,
+        "confidence": 0.82,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -5601,6 +5625,140 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1780822226552,
+        "date": "2026-06-07",
+        "meal_type": "brunch",
+        "user_note": "No egg but Radice",
+        "totals": {
+          "kcal": 509,
+          "protein_g": 32.8,
+          "carbs_g": 37.8,
+          "fat_g": 25.5,
+          "fiber_g": 7.1,
+          "sugar_g": 5.3
+        },
+        "items": [
+          {
+            "name": "Multigrain seeded bread (Radice brand)",
+            "weight_g": 90,
+            "serving": "2 medium slices with sesame, poppy seeds (approx 90g)",
+            "kcal": 216,
+            "protein_g": 8.1,
+            "carbs_g": 33.3,
+            "fat_g": 5.4,
+            "confidence": 0.88
+          },
+          {
+            "name": "Salami (cured pork, sliced)",
+            "weight_g": 35,
+            "serving": "3 thick slices (approx 35g)",
+            "kcal": 147,
+            "protein_g": 6.3,
+            "carbs_g": 0.4,
+            "fat_g": 13.3,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cooked ham/turkey breast (sliced)",
+            "weight_g": 55,
+            "serving": "2-3 medium slices (approx 55g)",
+            "kcal": 61,
+            "protein_g": 11.6,
+            "carbs_g": 0.6,
+            "fat_g": 1.7,
+            "confidence": 0.8
+          },
+          {
+            "name": "Cherry tomatoes (raw)",
+            "weight_g": 18,
+            "serving": "2 small tomatoes (approx 18g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.87
+          },
+          {
+            "name": "Hard-boiled egg (peeled)",
+            "weight_g": 50,
+            "serving": "1 medium egg, peeled (approx 50g)",
+            "kcal": 72,
+            "protein_g": 6.3,
+            "carbs_g": 0.6,
+            "fat_g": 5,
+            "confidence": 0.92
+          },
+          {
+            "name": "Cucumber (raw, sliced)",
+            "weight_g": 24,
+            "serving": "4 thin slices (approx 24g)",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 0.9,
+            "fat_g": 0,
+            "confidence": 0.88
+          },
+          {
+            "name": "Red bell pepper (raw, sliced)",
+            "weight_g": 22,
+            "serving": "1 thick slice (approx 22g)",
+            "kcal": 6,
+            "protein_g": 0.2,
+            "carbs_g": 1.3,
+            "fat_g": 0.1,
+            "confidence": 0.84
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1780827216909,
+        "date": "2026-06-07",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 42,
+          "protein_g": 1.2,
+          "carbs_g": 9.3,
+          "fat_g": 0.2,
+          "fiber_g": 2.9,
+          "sugar_g": 5.6
+        },
+        "items": [
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 60,
+            "serving": "5 medium sticks (approx 60g)",
+            "kcal": 25,
+            "protein_g": 0.6,
+            "carbs_g": 5.8,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cucumber slices (raw)",
+            "weight_g": 18,
+            "serving": "3 medium slices (approx 18g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.88
+          },
+          {
+            "name": "Red bell pepper strips (raw)",
+            "weight_g": 45,
+            "serving": "3 thick strips (approx 45g)",
+            "kcal": 14,
+            "protein_g": 0.5,
+            "carbs_g": 3,
+            "fat_g": 0.1,
+            "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
