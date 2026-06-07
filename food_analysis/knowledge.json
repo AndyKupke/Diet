@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-06T17:30:24.108Z",
-    "total_analyses": 66,
+    "last_updated": "2026-06-07T05:32:55.546Z",
+    "total_analyses": 67,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1920,6 +1920,18 @@
         "fat_g": 5,
         "confidence": 0.65,
         "last_seen": "2026-06-06",
+        "seen_count": 1
+      },
+      {
+        "name": "Elinas Natural Yogurt (20% consumed)",
+        "serving": "20% of 150g container (30g consumed)",
+        "weight_g": 30,
+        "kcal": 39,
+        "protein_g": 2.7,
+        "carbs_g": 3.3,
+        "fat_g": 1.8,
+        "confidence": 0.95,
+        "last_seen": "2026-06-07",
         "seen_count": 1
       }
     ]
@@ -5236,6 +5248,33 @@
           }
         ],
         "overall_confidence": 0.78
+      },
+      {
+        "id": 1780810375545,
+        "date": "2026-06-07",
+        "meal_type": "breakfast",
+        "user_note": "I ate 20% from this",
+        "totals": {
+          "kcal": 39,
+          "protein_g": 2.7,
+          "carbs_g": 3.3,
+          "fat_g": 1.8,
+          "fiber_g": 0,
+          "sugar_g": 3.3
+        },
+        "items": [
+          {
+            "name": "Elinas Natural Yogurt (20% consumed)",
+            "weight_g": 30,
+            "serving": "20% of 150g container (30g consumed)",
+            "kcal": 39,
+            "protein_g": 2.7,
+            "carbs_g": 3.3,
+            "fat_g": 1.8,
+            "confidence": 0.95
+          }
+        ],
+        "overall_confidence": 0.95
       }
     ]
   }
