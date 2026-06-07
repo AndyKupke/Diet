@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T05:32:55.546Z",
-    "total_analyses": 67,
+    "last_updated": "2026-06-07T08:38:04.349Z",
+    "total_analyses": 68,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "3 carrot sticks (approx 45g total)",
-        "weight_g": 45,
-        "kcal": 26,
-        "protein_g": 0.6,
-        "carbs_g": 6,
+        "serving": "3 medium sticks (30g)",
+        "weight_g": 30,
+        "kcal": 19,
+        "protein_g": 0.4,
+        "carbs_g": 4.4,
         "fat_g": 0.2,
-        "confidence": 0.8,
-        "last_seen": "2026-06-06",
-        "seen_count": 6
+        "confidence": 0.83,
+        "last_seen": "2026-06-07",
+        "seen_count": 7
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -1552,15 +1552,15 @@
       },
       {
         "name": "Cucumber slices (fresh)",
-        "serving": "3 slices (approx 15g)",
-        "weight_g": 15,
-        "kcal": 2,
-        "protein_g": 0.1,
-        "carbs_g": 0.5,
+        "serving": "4 medium slices (40g)",
+        "weight_g": 40,
+        "kcal": 4,
+        "protein_g": 0.2,
+        "carbs_g": 1,
         "fat_g": 0,
-        "confidence": 0.9,
-        "last_seen": "2026-06-06",
-        "seen_count": 1
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 2
       },
       {
         "name": "Red bell pepper (fresh)",
@@ -1804,15 +1804,15 @@
       },
       {
         "name": "Cherry tomato",
-        "serving": "1 cherry tomato (approx 15g)",
+        "serving": "1 small cherry tomato (15g)",
         "weight_g": 15,
         "kcal": 3,
         "protein_g": 0.1,
         "carbs_g": 0.6,
         "fat_g": 0,
-        "confidence": 0.9,
-        "last_seen": "2026-06-06",
-        "seen_count": 6
+        "confidence": 0.85,
+        "last_seen": "2026-06-07",
+        "seen_count": 7
       },
       {
         "name": "White cheese cube (likely mozzarella or feta)",
@@ -1931,6 +1931,78 @@
         "carbs_g": 3.3,
         "fat_g": 1.8,
         "confidence": 0.95,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Scrambled eggs (cooked with butter/oil)",
+        "serving": "approx 2 large eggs scrambled (110g)",
+        "weight_g": 110,
+        "kcal": 198,
+        "protein_g": 13.2,
+        "carbs_g": 1.1,
+        "fat_g": 15.4,
+        "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Seeded whole grain bread (toasted)",
+        "serving": "1 thick slice with sunflower seeds (60g)",
+        "weight_g": 60,
+        "kcal": 156,
+        "protein_g": 6,
+        "carbs_g": 24.6,
+        "fat_g": 3.6,
+        "confidence": 0.85,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Salami slices (cured pork)",
+        "serving": "approx 8-9 thin slices (45g)",
+        "weight_g": 45,
+        "kcal": 189,
+        "protein_g": 8.1,
+        "carbs_g": 0.5,
+        "fat_g": 17.1,
+        "confidence": 0.78,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Avocado (fresh, sliced)",
+        "serving": "approx 1/4 medium avocado (40g)",
+        "weight_g": 40,
+        "kcal": 64,
+        "protein_g": 0.8,
+        "carbs_g": 3.4,
+        "fat_g": 5.9,
+        "confidence": 0.8,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper (raw, sliced)",
+        "serving": "approx 1/3 medium pepper strips (50g)",
+        "weight_g": 50,
+        "kcal": 16,
+        "protein_g": 0.5,
+        "carbs_g": 3,
+        "fat_g": 0.2,
+        "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Hard-boiled egg",
+        "serving": "1 medium egg, peeled (50g)",
+        "weight_g": 50,
+        "kcal": 72,
+        "protein_g": 6.3,
+        "carbs_g": 0.6,
+        "fat_g": 5,
+        "confidence": 0.9,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -5275,6 +5347,113 @@
           }
         ],
         "overall_confidence": 0.95
+      },
+      {
+        "id": 1780821484348,
+        "date": "2026-06-07",
+        "meal_type": "brunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 716,
+          "protein_g": 35.6,
+          "carbs_g": 38.1,
+          "fat_g": 47.3,
+          "fiber_g": 9.3,
+          "sugar_g": 8.9
+        },
+        "items": [
+          {
+            "name": "Scrambled eggs (cooked with butter/oil)",
+            "weight_g": 110,
+            "serving": "approx 2 large eggs scrambled (110g)",
+            "kcal": 198,
+            "protein_g": 13.2,
+            "carbs_g": 1.1,
+            "fat_g": 15.4,
+            "confidence": 0.82
+          },
+          {
+            "name": "Seeded whole grain bread (toasted)",
+            "weight_g": 60,
+            "serving": "1 thick slice with sunflower seeds (60g)",
+            "kcal": 156,
+            "protein_g": 6,
+            "carbs_g": 24.6,
+            "fat_g": 3.6,
+            "confidence": 0.85
+          },
+          {
+            "name": "Salami slices (cured pork)",
+            "weight_g": 45,
+            "serving": "approx 8-9 thin slices (45g)",
+            "kcal": 189,
+            "protein_g": 8.1,
+            "carbs_g": 0.5,
+            "fat_g": 17.1,
+            "confidence": 0.78
+          },
+          {
+            "name": "Cucumber slices (fresh)",
+            "weight_g": 40,
+            "serving": "4 medium slices (40g)",
+            "kcal": 6,
+            "protein_g": 0.3,
+            "carbs_g": 1.5,
+            "fat_g": 0,
+            "confidence": 0.88
+          },
+          {
+            "name": "Avocado (fresh, sliced)",
+            "weight_g": 40,
+            "serving": "approx 1/4 medium avocado (40g)",
+            "kcal": 64,
+            "protein_g": 0.8,
+            "carbs_g": 3.4,
+            "fat_g": 5.9,
+            "confidence": 0.8
+          },
+          {
+            "name": "Red bell pepper (raw, sliced)",
+            "weight_g": 50,
+            "serving": "approx 1/3 medium pepper strips (50g)",
+            "kcal": 16,
+            "protein_g": 0.5,
+            "carbs_g": 3,
+            "fat_g": 0.2,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cherry tomato",
+            "weight_g": 15,
+            "serving": "1 small cherry tomato (15g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.6,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 30,
+            "serving": "3 medium sticks (30g)",
+            "kcal": 12,
+            "protein_g": 0.3,
+            "carbs_g": 2.8,
+            "fat_g": 0.1,
+            "confidence": 0.83
+          },
+          {
+            "name": "Hard-boiled egg",
+            "weight_g": 50,
+            "serving": "1 medium egg, peeled (50g)",
+            "kcal": 72,
+            "protein_g": 6.3,
+            "carbs_g": 0.6,
+            "fat_g": 5,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.83
       }
     ]
   }
