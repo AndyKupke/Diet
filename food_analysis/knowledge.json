@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T14:04:33.592Z",
-    "total_analyses": 73,
+    "last_updated": "2026-06-07T14:08:23.925Z",
+    "total_analyses": 74,
     "total_corrections": 3
   },
   "calibrations": {
@@ -76,15 +76,15 @@
     "entries": [
       {
         "name": "Fresh strawberries",
-        "serving": "5 medium strawberries (approx 25g)",
-        "weight_g": 25,
-        "kcal": 13,
-        "protein_g": 0.3,
-        "carbs_g": 3,
-        "fat_g": 0.2,
-        "confidence": 0.85,
-        "last_seen": "2026-06-06",
-        "seen_count": 3
+        "serving": "7 medium strawberries (approx 84g)",
+        "weight_g": 84,
+        "kcal": 20,
+        "protein_g": 0.4,
+        "carbs_g": 4.8,
+        "fat_g": 0.3,
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 4
       },
       {
         "name": "Rigatoni pasta (cooked)",
@@ -2183,6 +2183,18 @@
         "carbs_g": 0.3,
         "fat_g": 12.3,
         "confidence": 0.98,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Whipped cream (full-fat dairy)",
+        "serving": "approx 40g (3 tablespoons whipped)",
+        "weight_g": 40,
+        "kcal": 132,
+        "protein_g": 0.8,
+        "carbs_g": 2.8,
+        "fat_g": 13.2,
+        "confidence": 0.82,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -5969,6 +5981,43 @@
           }
         ],
         "overall_confidence": 0.98
+      },
+      {
+        "id": 1780841303924,
+        "date": "2026-06-07",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 159,
+          "protein_g": 1.4,
+          "carbs_g": 9.3,
+          "fat_g": 13.5,
+          "fiber_g": 1.7,
+          "sugar_g": 7
+        },
+        "items": [
+          {
+            "name": "Fresh strawberries",
+            "weight_g": 84,
+            "serving": "7 medium strawberries (approx 84g)",
+            "kcal": 27,
+            "protein_g": 0.6,
+            "carbs_g": 6.5,
+            "fat_g": 0.3,
+            "confidence": 0.88
+          },
+          {
+            "name": "Whipped cream (full-fat dairy)",
+            "weight_g": 40,
+            "serving": "approx 40g (3 tablespoons whipped)",
+            "kcal": 132,
+            "protein_g": 0.8,
+            "carbs_g": 2.8,
+            "fat_g": 13.2,
+            "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
