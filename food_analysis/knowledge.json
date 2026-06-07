@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T10:13:36.910Z",
-    "total_analyses": 71,
+    "last_updated": "2026-06-07T12:45:20.656Z",
+    "total_analyses": 72,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2087,6 +2087,90 @@
         "carbs_g": 3,
         "fat_g": 0.1,
         "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooked white rice",
+        "serving": "approx 150g cooked",
+        "weight_g": 150,
+        "kcal": 195,
+        "protein_g": 3.6,
+        "carbs_g": 42.8,
+        "fat_g": 0.4,
+        "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Ground beef (cooked, lean)",
+        "serving": "approx 60g cooked",
+        "weight_g": 60,
+        "kcal": 135,
+        "protein_g": 13.2,
+        "carbs_g": 0,
+        "fat_g": 9,
+        "confidence": 0.78,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Scrambled egg",
+        "serving": "1 medium egg scrambled (approx 50g cooked)",
+        "weight_g": 50,
+        "kcal": 74,
+        "protein_g": 6.3,
+        "carbs_g": 0.4,
+        "fat_g": 5.3,
+        "confidence": 0.85,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Sweet corn kernels (canned/frozen, cooked)",
+        "serving": "approx 35g",
+        "weight_g": 35,
+        "kcal": 30,
+        "protein_g": 1,
+        "carbs_g": 6.3,
+        "fat_g": 0.4,
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Mixed vegetables (carrot, green beans, possibly peas)",
+        "serving": "approx 30g mixed",
+        "weight_g": 30,
+        "kcal": 12,
+        "protein_g": 0.6,
+        "carbs_g": 2.4,
+        "fat_g": 0.1,
+        "confidence": 0.75,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooking oil (absorbed during frying)",
+        "serving": "approx 8g absorbed in rice/meat/egg",
+        "weight_g": 8,
+        "kcal": 71,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 8,
+        "confidence": 0.7,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Soy sauce / seasoning",
+        "serving": "approx 5ml",
+        "weight_g": 5,
+        "kcal": 3,
+        "protein_g": 0.5,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "confidence": 0.65,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -5759,6 +5843,93 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780836320655,
+        "date": "2026-06-07",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 520,
+          "protein_g": 25.2,
+          "carbs_g": 52.4,
+          "fat_g": 23.2,
+          "fiber_g": 2.9,
+          "sugar_g": 4.4
+        },
+        "items": [
+          {
+            "name": "Cooked white rice",
+            "weight_g": 150,
+            "serving": "approx 150g cooked",
+            "kcal": 195,
+            "protein_g": 3.6,
+            "carbs_g": 42.8,
+            "fat_g": 0.4,
+            "confidence": 0.82
+          },
+          {
+            "name": "Ground beef (cooked, lean)",
+            "weight_g": 60,
+            "serving": "approx 60g cooked",
+            "kcal": 135,
+            "protein_g": 13.2,
+            "carbs_g": 0,
+            "fat_g": 9,
+            "confidence": 0.78
+          },
+          {
+            "name": "Scrambled egg",
+            "weight_g": 50,
+            "serving": "1 medium egg scrambled (approx 50g cooked)",
+            "kcal": 74,
+            "protein_g": 6.3,
+            "carbs_g": 0.4,
+            "fat_g": 5.3,
+            "confidence": 0.85
+          },
+          {
+            "name": "Sweet corn kernels (canned/frozen, cooked)",
+            "weight_g": 35,
+            "serving": "approx 35g",
+            "kcal": 30,
+            "protein_g": 1,
+            "carbs_g": 6.3,
+            "fat_g": 0.4,
+            "confidence": 0.88
+          },
+          {
+            "name": "Mixed vegetables (carrot, green beans, possibly peas)",
+            "weight_g": 30,
+            "serving": "approx 30g mixed",
+            "kcal": 12,
+            "protein_g": 0.6,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.75
+          },
+          {
+            "name": "Cooking oil (absorbed during frying)",
+            "weight_g": 8,
+            "serving": "approx 8g absorbed in rice/meat/egg",
+            "kcal": 71,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 8,
+            "confidence": 0.7
+          },
+          {
+            "name": "Soy sauce / seasoning",
+            "weight_g": 5,
+            "serving": "approx 5ml",
+            "kcal": 3,
+            "protein_g": 0.5,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
