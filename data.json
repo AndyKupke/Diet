@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 39,
-    "protein_g": 2.7,
-    "carbs_g": 3.3,
-    "fat_g": 1.8,
+    "calories": 755,
+    "protein_g": 38.3,
+    "carbs_g": 41.4,
+    "fat_g": 49.1,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -16,6 +16,15 @@
         "fat_g": 1.8,
         "time": "2026-06-07T05:33:04.891Z",
         "_evtId": "evt_1780810384891_4e4qp"
+      },
+      {
+        "name": "Scrambled eggs (cooked with butter/oil), Seeded whole grain bread (toasted), Salami slices (cured pork), Cucumber slices (fresh), Avocado (fresh, sliced), Red bell pepper (raw, sliced), Cherry tomato, Carrot sticks (raw), Hard-boiled egg",
+        "kcal": 716,
+        "protein_g": 35.6,
+        "carbs_g": 38.1,
+        "fat_g": 47.3,
+        "time": "2026-06-07T08:38:37.509Z",
+        "_evtId": "evt_1780821517509_gwac4"
       }
     ],
     "exercise": [],
@@ -709,6 +718,17 @@
       "weight_kg": 73.1,
       "id": "evt_1780813923392_rfi3t",
       "ts": "2026-06-07T06:32:03.392Z"
+    },
+    {
+      "id": "evt_1780821517509_gwac4",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Scrambled eggs (cooked with butter/oil), Seeded whole grain bread (toasted), Salami slices (cured pork), Cucumber slices (fresh), Avocado (fresh, sliced), Red bell pepper (raw, sliced), Cherry tomato, Carrot sticks (raw), Hard-boiled egg",
+      "kcal": 716,
+      "protein_g": 35.6,
+      "carbs_g": 38.1,
+      "fat_g": 47.3,
+      "ts": "2026-06-07T08:38:37.510Z"
     }
   ]
 }
