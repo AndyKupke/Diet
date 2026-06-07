@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 2036,
-    "protein_g": 107.6,
-    "carbs_g": 141.2,
-    "fat_g": 123.6,
+    "calories": 2636,
+    "protein_g": 129.4,
+    "carbs_g": 186.6,
+    "fat_g": 160.6,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -61,6 +61,15 @@
         "fat_g": 13.5,
         "time": "2026-06-07T14:08:35.549Z",
         "_evtId": "evt_1780841315550_yjz2f"
+      },
+      {
+        "name": "Whole grain dark bread (slice), Tête de Moine cheese, Pan-fried potato hash with bacon, bell peppers, mushrooms, Olive oil (absorbed in potato hash), Bacon (cooked, crispy pieces), Cucumber slices (fresh, raw), Carrot sticks (raw)",
+        "kcal": 600,
+        "protein_g": 21.8,
+        "carbs_g": 45.4,
+        "fat_g": 37,
+        "time": "2026-06-07T17:02:11.983Z",
+        "_evtId": "evt_1780851731983_madjo"
       }
     ],
     "exercise": [],
@@ -809,6 +818,17 @@
       "carbs_g": 9.3,
       "fat_g": 13.5,
       "ts": "2026-06-07T14:08:35.551Z"
+    },
+    {
+      "id": "evt_1780851731983_madjo",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Whole grain dark bread (slice), Tête de Moine cheese, Pan-fried potato hash with bacon, bell peppers, mushrooms, Olive oil (absorbed in potato hash), Bacon (cooked, crispy pieces), Cucumber slices (fresh, raw), Carrot sticks (raw)",
+      "kcal": 600,
+      "protein_g": 21.8,
+      "carbs_g": 45.4,
+      "fat_g": 37,
+      "ts": "2026-06-07T17:02:11.984Z"
     }
   ]
 }
