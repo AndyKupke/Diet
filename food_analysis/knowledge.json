@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T14:08:23.925Z",
-    "total_analyses": 74,
+    "last_updated": "2026-06-07T17:01:53.830Z",
+    "total_analyses": 75,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "5 medium sticks (approx 60g)",
-        "weight_g": 60,
-        "kcal": 22,
+        "serving": "3 sticks (approx 45g)",
+        "weight_g": 45,
+        "kcal": 20,
         "protein_g": 0.5,
-        "carbs_g": 5.1,
+        "carbs_g": 4.6,
         "fat_g": 0.2,
-        "confidence": 0.85,
+        "confidence": 0.9,
         "last_seen": "2026-06-07",
-        "seen_count": 8
+        "seen_count": 9
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -2195,6 +2195,78 @@
         "carbs_g": 2.8,
         "fat_g": 13.2,
         "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Whole grain dark bread (slice)",
+        "serving": "1 slice (approx 35g)",
+        "weight_g": 35,
+        "kcal": 82,
+        "protein_g": 3.2,
+        "carbs_g": 15.4,
+        "fat_g": 0.9,
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Tête de Moine cheese",
+        "serving": "Shaved rosette (approx 20g)",
+        "weight_g": 20,
+        "kcal": 78,
+        "protein_g": 5.2,
+        "carbs_g": 0.2,
+        "fat_g": 6.2,
+        "confidence": 0.92,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Pan-fried potato hash with bacon, bell peppers, mushrooms",
+        "serving": "Mixed hash (approx 180g total)",
+        "weight_g": 180,
+        "kcal": 248,
+        "protein_g": 8.4,
+        "carbs_g": 24.6,
+        "fat_g": 12.8,
+        "confidence": 0.8,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Olive oil (absorbed in potato hash)",
+        "serving": "Cooking oil absorbed (approx 10g)",
+        "weight_g": 10,
+        "kcal": 88,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 10,
+        "confidence": 0.75,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Bacon (cooked, crispy pieces)",
+        "serving": "2 small pieces (approx 15g cooked)",
+        "weight_g": 15,
+        "kcal": 81,
+        "protein_g": 4.4,
+        "carbs_g": 0.2,
+        "fat_g": 6.9,
+        "confidence": 0.85,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber slices (fresh, raw)",
+        "serving": "3 slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 5,
+        "protein_g": 0.2,
+        "carbs_g": 0.9,
+        "fat_g": 0.1,
+        "confidence": 0.92,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -6015,6 +6087,93 @@
             "carbs_g": 2.8,
             "fat_g": 13.2,
             "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1780851713829,
+        "date": "2026-06-07",
+        "meal_type": "dinner",
+        "user_note": "Tete de Moine cheese, Olive oil in the potatoes",
+        "totals": {
+          "kcal": 600,
+          "protein_g": 21.8,
+          "carbs_g": 45.4,
+          "fat_g": 37,
+          "fiber_g": 7.6,
+          "sugar_g": 6.5
+        },
+        "items": [
+          {
+            "name": "Whole grain dark bread (slice)",
+            "weight_g": 35,
+            "serving": "1 slice (approx 35g)",
+            "kcal": 82,
+            "protein_g": 3.2,
+            "carbs_g": 15.4,
+            "fat_g": 0.9,
+            "confidence": 0.88
+          },
+          {
+            "name": "Tête de Moine cheese",
+            "weight_g": 20,
+            "serving": "Shaved rosette (approx 20g)",
+            "kcal": 78,
+            "protein_g": 5.2,
+            "carbs_g": 0.2,
+            "fat_g": 6.2,
+            "confidence": 0.92
+          },
+          {
+            "name": "Pan-fried potato hash with bacon, bell peppers, mushrooms",
+            "weight_g": 180,
+            "serving": "Mixed hash (approx 180g total)",
+            "kcal": 248,
+            "protein_g": 8.4,
+            "carbs_g": 24.6,
+            "fat_g": 12.8,
+            "confidence": 0.8
+          },
+          {
+            "name": "Olive oil (absorbed in potato hash)",
+            "weight_g": 10,
+            "serving": "Cooking oil absorbed (approx 10g)",
+            "kcal": 88,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 10,
+            "confidence": 0.75
+          },
+          {
+            "name": "Bacon (cooked, crispy pieces)",
+            "weight_g": 15,
+            "serving": "2 small pieces (approx 15g cooked)",
+            "kcal": 81,
+            "protein_g": 4.4,
+            "carbs_g": 0.2,
+            "fat_g": 6.9,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cucumber slices (fresh, raw)",
+            "weight_g": 30,
+            "serving": "3 slices (approx 30g)",
+            "kcal": 5,
+            "protein_g": 0.2,
+            "carbs_g": 0.9,
+            "fat_g": 0.1,
+            "confidence": 0.92
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 45,
+            "serving": "3 sticks (approx 45g)",
+            "kcal": 18,
+            "protein_g": 0.4,
+            "carbs_g": 4.1,
+            "fat_g": 0.1,
+            "confidence": 0.9
           }
         ],
         "overall_confidence": 0.85
