@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T08:38:04.349Z",
-    "total_analyses": 68,
+    "last_updated": "2026-06-07T08:49:26.750Z",
+    "total_analyses": 69,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1948,15 +1948,15 @@
       },
       {
         "name": "Seeded whole grain bread (toasted)",
-        "serving": "1 thick slice with sunflower seeds (60g)",
-        "weight_g": 60,
-        "kcal": 156,
-        "protein_g": 6,
-        "carbs_g": 24.6,
-        "fat_g": 3.6,
-        "confidence": 0.85,
+        "serving": "2 thick slices with sesame and seeds (120g)",
+        "weight_g": 120,
+        "kcal": 234,
+        "protein_g": 9,
+        "carbs_g": 36.9,
+        "fat_g": 5.4,
+        "confidence": 0.87,
         "last_seen": "2026-06-07",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Salami slices (cured pork)",
@@ -1984,15 +1984,15 @@
       },
       {
         "name": "Red bell pepper (raw, sliced)",
-        "serving": "approx 1/3 medium pepper strips (50g)",
-        "weight_g": 50,
-        "kcal": 16,
-        "protein_g": 0.5,
-        "carbs_g": 3,
+        "serving": "1 thick slice (25g)",
+        "weight_g": 25,
+        "kcal": 12,
+        "protein_g": 0.4,
+        "carbs_g": 2.3,
         "fat_g": 0.2,
-        "confidence": 0.82,
+        "confidence": 0.83,
         "last_seen": "2026-06-07",
-        "seen_count": 1
+        "seen_count": 2
       },
       {
         "name": "Hard-boiled egg",
@@ -2003,6 +2003,66 @@
         "carbs_g": 0.6,
         "fat_g": 5,
         "confidence": 0.9,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Salami (cured pork, sliced)",
+        "serving": "3 thick slices (40g)",
+        "weight_g": 40,
+        "kcal": 168,
+        "protein_g": 7.2,
+        "carbs_g": 0.4,
+        "fat_g": 15.2,
+        "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooked ham/turkey breast (sliced)",
+        "serving": "2-3 medium slices (60g)",
+        "weight_g": 60,
+        "kcal": 66,
+        "protein_g": 12.6,
+        "carbs_g": 0.6,
+        "fat_g": 1.8,
+        "confidence": 0.78,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Cherry tomatoes (raw)",
+        "serving": "2 small tomatoes (20g)",
+        "weight_g": 20,
+        "kcal": 4,
+        "protein_g": 0.2,
+        "carbs_g": 0.8,
+        "fat_g": 0,
+        "confidence": 0.85,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Hard-boiled egg (peeled)",
+        "serving": "1 medium egg (50g)",
+        "weight_g": 50,
+        "kcal": 72,
+        "protein_g": 6.3,
+        "carbs_g": 0.6,
+        "fat_g": 5,
+        "confidence": 0.92,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber (raw, sliced)",
+        "serving": "3 thin slices (20g)",
+        "weight_g": 20,
+        "kcal": 3,
+        "protein_g": 0.1,
+        "carbs_g": 0.7,
+        "fat_g": 0,
+        "confidence": 0.88,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -5454,6 +5514,93 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1780822166748,
+        "date": "2026-06-07",
+        "meal_type": "brunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 633,
+          "protein_g": 38.7,
+          "carbs_g": 53.8,
+          "fat_g": 29.3,
+          "fiber_g": 9.4,
+          "sugar_g": 6.7
+        },
+        "items": [
+          {
+            "name": "Seeded whole grain bread (toasted)",
+            "weight_g": 120,
+            "serving": "2 thick slices with sesame and seeds (120g)",
+            "kcal": 312,
+            "protein_g": 12,
+            "carbs_g": 49.2,
+            "fat_g": 7.2,
+            "confidence": 0.87
+          },
+          {
+            "name": "Salami (cured pork, sliced)",
+            "weight_g": 40,
+            "serving": "3 thick slices (40g)",
+            "kcal": 168,
+            "protein_g": 7.2,
+            "carbs_g": 0.4,
+            "fat_g": 15.2,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cooked ham/turkey breast (sliced)",
+            "weight_g": 60,
+            "serving": "2-3 medium slices (60g)",
+            "kcal": 66,
+            "protein_g": 12.6,
+            "carbs_g": 0.6,
+            "fat_g": 1.8,
+            "confidence": 0.78
+          },
+          {
+            "name": "Cherry tomatoes (raw)",
+            "weight_g": 20,
+            "serving": "2 small tomatoes (20g)",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 0.8,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "Hard-boiled egg (peeled)",
+            "weight_g": 50,
+            "serving": "1 medium egg (50g)",
+            "kcal": 72,
+            "protein_g": 6.3,
+            "carbs_g": 0.6,
+            "fat_g": 5,
+            "confidence": 0.92
+          },
+          {
+            "name": "Cucumber (raw, sliced)",
+            "weight_g": 20,
+            "serving": "3 thin slices (20g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.88
+          },
+          {
+            "name": "Red bell pepper (raw, sliced)",
+            "weight_g": 25,
+            "serving": "1 thick slice (25g)",
+            "kcal": 8,
+            "protein_g": 0.3,
+            "carbs_g": 1.5,
+            "fat_g": 0.1,
+            "confidence": 0.83
+          }
+        ],
+        "overall_confidence": 0.84
       }
     ]
   }
