@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T17:04:56.388Z",
-    "total_analyses": 76,
+    "last_updated": "2026-06-07T17:10:33.521Z",
+    "total_analyses": 77,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2279,6 +2279,66 @@
         "carbs_g": 18.2,
         "fat_g": 12.6,
         "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Dark rye/whole grain bread",
+        "serving": "2 slices (approx 70g total)",
+        "weight_g": 70,
+        "kcal": 164,
+        "protein_g": 6.4,
+        "carbs_g": 30.8,
+        "fat_g": 1.8,
+        "confidence": 0.88,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Egg salad/egg mayonnaise spread",
+        "serving": "1 generous dollop (approx 40g)",
+        "weight_g": 40,
+        "kcal": 72,
+        "protein_g": 4.8,
+        "carbs_g": 0.8,
+        "fat_g": 5.6,
+        "confidence": 0.82,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Semi-hard cheese (likely Gouda/Emmental)",
+        "serving": "4 slices (approx 60g total)",
+        "weight_g": 60,
+        "kcal": 234,
+        "protein_g": 15.6,
+        "carbs_g": 0.6,
+        "fat_g": 18.6,
+        "confidence": 0.85,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Raw carrot sticks",
+        "serving": "3 medium sticks (approx 50g)",
+        "weight_g": 50,
+        "kcal": 21,
+        "protein_g": 0.5,
+        "carbs_g": 4.9,
+        "fat_g": 0.1,
+        "confidence": 0.9,
+        "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Butter on knife",
+        "serving": "Small amount on knife (approx 3g)",
+        "weight_g": 3,
+        "kcal": 22,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 2.5,
+        "confidence": 0.75,
         "last_seen": "2026-06-07",
         "seen_count": 1
       }
@@ -6233,6 +6293,73 @@
             "carbs_g": 4.9,
             "fat_g": 0.1,
             "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1780852233520,
+        "date": "2026-06-07",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 513,
+          "protein_g": 27.3,
+          "carbs_g": 37.1,
+          "fat_g": 28.6,
+          "fiber_g": 7,
+          "sugar_g": 4.5
+        },
+        "items": [
+          {
+            "name": "Dark rye/whole grain bread",
+            "weight_g": 70,
+            "serving": "2 slices (approx 70g total)",
+            "kcal": 164,
+            "protein_g": 6.4,
+            "carbs_g": 30.8,
+            "fat_g": 1.8,
+            "confidence": 0.88
+          },
+          {
+            "name": "Egg salad/egg mayonnaise spread",
+            "weight_g": 40,
+            "serving": "1 generous dollop (approx 40g)",
+            "kcal": 72,
+            "protein_g": 4.8,
+            "carbs_g": 0.8,
+            "fat_g": 5.6,
+            "confidence": 0.82
+          },
+          {
+            "name": "Semi-hard cheese (likely Gouda/Emmental)",
+            "weight_g": 60,
+            "serving": "4 slices (approx 60g total)",
+            "kcal": 234,
+            "protein_g": 15.6,
+            "carbs_g": 0.6,
+            "fat_g": 18.6,
+            "confidence": 0.85
+          },
+          {
+            "name": "Raw carrot sticks",
+            "weight_g": 50,
+            "serving": "3 medium sticks (approx 50g)",
+            "kcal": 21,
+            "protein_g": 0.5,
+            "carbs_g": 4.9,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Butter on knife",
+            "weight_g": 3,
+            "serving": "Small amount on knife (approx 3g)",
+            "kcal": 22,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 2.5,
+            "confidence": 0.75
           }
         ],
         "overall_confidence": 0.85
