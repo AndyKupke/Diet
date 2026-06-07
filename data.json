@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 2636,
-    "protein_g": 129.4,
-    "carbs_g": 186.6,
-    "fat_g": 160.6,
+    "calories": 3149,
+    "protein_g": 156.7,
+    "carbs_g": 223.7,
+    "fat_g": 189.2,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -70,6 +70,15 @@
         "fat_g": 37,
         "time": "2026-06-07T17:02:11.983Z",
         "_evtId": "evt_1780851731983_madjo"
+      },
+      {
+        "name": "Dark rye/whole grain bread, Egg salad/egg mayonnaise spread, Semi-hard cheese (likely Gouda/Emmental), Raw carrot sticks, Butter on knife",
+        "kcal": 513,
+        "protein_g": 27.3,
+        "carbs_g": 37.1,
+        "fat_g": 28.6,
+        "time": "2026-06-07T17:10:47.241Z",
+        "_evtId": "evt_1780852247242_t9wkp"
       }
     ],
     "exercise": [],
@@ -829,6 +838,17 @@
       "carbs_g": 45.4,
       "fat_g": 37,
       "ts": "2026-06-07T17:02:11.984Z"
+    },
+    {
+      "id": "evt_1780852247242_t9wkp",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Dark rye/whole grain bread, Egg salad/egg mayonnaise spread, Semi-hard cheese (likely Gouda/Emmental), Raw carrot sticks, Butter on knife",
+      "kcal": 513,
+      "protein_g": 27.3,
+      "carbs_g": 37.1,
+      "fat_g": 28.6,
+      "ts": "2026-06-07T17:10:47.242Z"
     }
   ]
 }
