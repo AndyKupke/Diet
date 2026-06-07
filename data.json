@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 1205,
-    "protein_g": 71.1,
-    "carbs_g": 79.2,
-    "fat_g": 74.6,
+    "calories": 1725,
+    "protein_g": 96.3,
+    "carbs_g": 131.6,
+    "fat_g": 97.8,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -34,6 +34,15 @@
         "fat_g": 25.5,
         "time": "2026-06-07T08:50:47.694Z",
         "_evtId": "evt_1780822247694_vi69u"
+      },
+      {
+        "name": "Cooked white rice, Ground beef (cooked, lean), Scrambled egg, Sweet corn kernels (canned/frozen, cooked), Mixed vegetables (carrot, green beans, possibly peas), Cooking oil (absorbed during frying), Soy sauce / seasoning",
+        "kcal": 520,
+        "protein_g": 25.2,
+        "carbs_g": 52.4,
+        "fat_g": 23.2,
+        "time": "2026-06-07T12:45:28.012Z",
+        "_evtId": "evt_1780836328012_jt1ot"
       }
     ],
     "exercise": [],
@@ -749,6 +758,17 @@
       "carbs_g": 37.8,
       "fat_g": 25.5,
       "ts": "2026-06-07T08:50:47.695Z"
+    },
+    {
+      "id": "evt_1780836328012_jt1ot",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Cooked white rice, Ground beef (cooked, lean), Scrambled egg, Sweet corn kernels (canned/frozen, cooked), Mixed vegetables (carrot, green beans, possibly peas), Cooking oil (absorbed during frying), Soy sauce / seasoning",
+      "kcal": 520,
+      "protein_g": 25.2,
+      "carbs_g": 52.4,
+      "fat_g": 23.2,
+      "ts": "2026-06-07T12:45:28.012Z"
     }
   ]
 }
