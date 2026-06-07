@@ -6,7 +6,7 @@
     "carbs_g": 3.3,
     "fat_g": 1.8,
     "water_ml": 0,
-    "weight_kg": null,
+    "weight_kg": 73.1,
     "meals": [
       {
         "name": "Elinas Natural Yogurt (20% consumed)",
@@ -702,6 +702,13 @@
       "carbs_g": 3.3,
       "fat_g": 1.8,
       "ts": "2026-06-07T05:33:04.892Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-07",
+      "weight_kg": 73.1,
+      "id": "evt_1780813923392_rfi3t",
+      "ts": "2026-06-07T06:32:03.392Z"
     }
   ]
 }
