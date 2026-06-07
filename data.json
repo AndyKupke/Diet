@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-07",
-    "calories": 1725,
-    "protein_g": 96.3,
-    "carbs_g": 131.6,
-    "fat_g": 97.8,
+    "calories": 1877,
+    "protein_g": 106.2,
+    "carbs_g": 131.9,
+    "fat_g": 110.1,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -43,6 +43,15 @@
         "fat_g": 23.2,
         "time": "2026-06-07T12:45:28.012Z",
         "_evtId": "evt_1780836328012_jt1ot"
+      },
+      {
+        "name": "Air-dried salami sticks (Edelschimmelgereifte Salami)",
+        "kcal": 152,
+        "protein_g": 9.9,
+        "carbs_g": 0.3,
+        "fat_g": 12.3,
+        "time": "2026-06-07T14:04:40.813Z",
+        "_evtId": "evt_1780841080813_v6ntl"
       }
     ],
     "exercise": [],
@@ -769,6 +778,17 @@
       "carbs_g": 52.4,
       "fat_g": 23.2,
       "ts": "2026-06-07T12:45:28.012Z"
+    },
+    {
+      "id": "evt_1780841080813_v6ntl",
+      "type": "meal",
+      "date": "2026-06-07",
+      "name": "Air-dried salami sticks (Edelschimmelgereifte Salami)",
+      "kcal": 152,
+      "protein_g": 9.9,
+      "carbs_g": 0.3,
+      "fat_g": 12.3,
+      "ts": "2026-06-07T14:04:40.814Z"
     }
   ]
 }
