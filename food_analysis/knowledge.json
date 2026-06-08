@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-07T17:10:33.521Z",
-    "total_analyses": 77,
+    "last_updated": "2026-06-08T05:04:38.909Z",
+    "total_analyses": 78,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2340,6 +2340,18 @@
         "fat_g": 2.5,
         "confidence": 0.75,
         "last_seen": "2026-06-07",
+        "seen_count": 1
+      },
+      {
+        "name": "Protein powder (whey-based supplement)",
+        "serving": "1 portion = 30g powder (2 measuring spoons) as per label",
+        "weight_g": 30,
+        "kcal": 111,
+        "protein_g": 22.8,
+        "carbs_g": 1.38,
+        "fat_g": 1.41,
+        "confidence": 0.98,
+        "last_seen": "2026-06-08",
         "seen_count": 1
       }
     ]
@@ -6363,6 +6375,33 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780895078908,
+        "date": "2026-06-08",
+        "meal_type": "breakfast",
+        "user_note": "One portion",
+        "totals": {
+          "kcal": 111,
+          "protein_g": 22.8,
+          "carbs_g": 1.38,
+          "fat_g": 1.41,
+          "fiber_g": 0.81,
+          "sugar_g": 0.78
+        },
+        "items": [
+          {
+            "name": "Protein powder (whey-based supplement)",
+            "weight_g": 30,
+            "serving": "1 portion = 30g powder (2 measuring spoons) as per label",
+            "kcal": 111,
+            "protein_g": 22.8,
+            "carbs_g": 1.38,
+            "fat_g": 1.41,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
       }
     ]
   }
