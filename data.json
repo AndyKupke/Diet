@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-08",
-    "calories": 1715,
-    "protein_g": 131.7,
+    "calories": 1833,
+    "protein_g": 144.5,
     "carbs_g": 132.6,
-    "fat_g": 72.9,
+    "fat_g": 80.4,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -61,6 +61,15 @@
         "fat_g": 0.7,
         "time": "2026-06-08T17:52:00.727Z",
         "_evtId": "evt_1780941120727_zk258"
+      },
+      {
+        "name": "Prosciutto (dry-cured ham)",
+        "kcal": 118,
+        "protein_g": 12.8,
+        "carbs_g": 0,
+        "fat_g": 7.5,
+        "time": "2026-06-08T18:51:33.431Z",
+        "_evtId": "evt_1780944693431_igmio"
       }
     ],
     "exercise": [],
@@ -913,6 +922,17 @@
       "carbs_g": 17.4,
       "fat_g": 0.7,
       "ts": "2026-06-08T17:52:00.728Z"
+    },
+    {
+      "id": "evt_1780944693431_igmio",
+      "type": "meal",
+      "date": "2026-06-08",
+      "name": "Prosciutto (dry-cured ham)",
+      "kcal": 118,
+      "protein_g": 12.8,
+      "carbs_g": 0,
+      "fat_g": 7.5,
+      "ts": "2026-06-08T18:51:33.432Z"
     }
   ]
 }
