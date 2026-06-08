@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T16:29:44.717Z",
-    "total_analyses": 85,
+    "last_updated": "2026-06-08T16:30:48.559Z",
+    "total_analyses": 86,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2567,6 +2567,18 @@
         "carbs_g": 1.9,
         "fat_g": 0.1,
         "confidence": 0.75,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "White bread slices (likely sandwich bread or toast)",
+        "serving": "2 slices (approx 60g total)",
+        "weight_g": 60,
+        "kcal": 159,
+        "protein_g": 5.1,
+        "carbs_g": 30.6,
+        "fat_g": 1.8,
+        "confidence": 0.82,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -6997,6 +7009,33 @@
           }
         ],
         "overall_confidence": 0.8
+      },
+      {
+        "id": 1780936248559,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 159,
+          "protein_g": 5.1,
+          "carbs_g": 30.6,
+          "fat_g": 1.8,
+          "fiber_g": 1.8,
+          "sugar_g": 3
+        },
+        "items": [
+          {
+            "name": "White bread slices (likely sandwich bread or toast)",
+            "weight_g": 60,
+            "serving": "2 slices (approx 60g total)",
+            "kcal": 159,
+            "protein_g": 5.1,
+            "carbs_g": 30.6,
+            "fat_g": 1.8,
+            "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
