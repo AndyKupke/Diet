@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-08",
-    "calories": 1425,
-    "protein_g": 110.8,
-    "carbs_g": 84.6,
-    "fat_g": 70.4,
+    "calories": 1584,
+    "protein_g": 115.9,
+    "carbs_g": 115.2,
+    "fat_g": 72.2,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -43,6 +43,15 @@
         "fat_g": 30.4,
         "time": "2026-06-08T16:18:25.525Z",
         "_evtId": "evt_1780935505525_eltjq"
+      },
+      {
+        "name": "White bread slices (likely sandwich bread or toast)",
+        "kcal": 159,
+        "protein_g": 5.1,
+        "carbs_g": 30.6,
+        "fat_g": 1.8,
+        "time": "2026-06-08T16:31:07.108Z",
+        "_evtId": "evt_1780936267108_66gl8"
       }
     ],
     "exercise": [],
@@ -873,6 +882,17 @@
       "carbs_g": 35.5,
       "fat_g": 30.4,
       "ts": "2026-06-08T16:18:25.526Z"
+    },
+    {
+      "id": "evt_1780936267108_66gl8",
+      "type": "meal",
+      "date": "2026-06-08",
+      "name": "White bread slices (likely sandwich bread or toast)",
+      "kcal": 159,
+      "protein_g": 5.1,
+      "carbs_g": 30.6,
+      "fat_g": 1.8,
+      "ts": "2026-06-08T16:31:07.109Z"
     }
   ]
 }
