@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-08",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 204,
+    "protein_g": 29.6,
+    "carbs_g": 10.4,
+    "fat_g": 4.4,
     "water_ml": 0,
     "weight_kg": 73.1,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Protein powder (whey-based supplement) mixed in low-fat milk",
+        "kcal": 204,
+        "protein_g": 29.6,
+        "carbs_g": 10.4,
+        "fat_g": 4.4,
+        "time": "2026-06-08T05:15:39.489Z",
+        "_evtId": "evt_1780895739489_z7ilh"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -792,6 +802,17 @@
       "weight_kg": 73.1,
       "id": "evt_1780894717176_i1ggm",
       "ts": "2026-06-08T04:58:37.177Z"
+    },
+    {
+      "id": "evt_1780895739489_z7ilh",
+      "type": "meal",
+      "date": "2026-06-08",
+      "name": "Protein powder (whey-based supplement) mixed in low-fat milk",
+      "kcal": 204,
+      "protein_g": 29.6,
+      "carbs_g": 10.4,
+      "fat_g": 4.4,
+      "ts": "2026-06-08T05:15:39.490Z"
     }
   ]
 }
