@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-08",
-    "calories": 579,
-    "protein_g": 46.8,
-    "carbs_g": 45.4,
-    "fat_g": 22.4,
+    "calories": 811,
+    "protein_g": 61.9,
+    "carbs_g": 49.1,
+    "fat_g": 40,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -25,6 +25,15 @@
         "fat_g": 18,
         "time": "2026-06-08T12:33:18.456Z",
         "_evtId": "evt_1780921998456_tnhjf"
+      },
+      {
+        "name": "Omelette (eggs, milk, butter), Fresh tomato slices, Fresh chives (garnish)",
+        "kcal": 232,
+        "protein_g": 15.1,
+        "carbs_g": 3.7,
+        "fat_g": 17.6,
+        "time": "2026-06-08T12:38:30.482Z",
+        "_evtId": "evt_1780922310482_2vwzk"
       }
     ],
     "exercise": [],
@@ -833,6 +842,17 @@
       "carbs_g": 35,
       "fat_g": 18,
       "ts": "2026-06-08T12:33:18.457Z"
+    },
+    {
+      "id": "evt_1780922310482_2vwzk",
+      "type": "meal",
+      "date": "2026-06-08",
+      "name": "Omelette (eggs, milk, butter), Fresh tomato slices, Fresh chives (garnish)",
+      "kcal": 232,
+      "protein_g": 15.1,
+      "carbs_g": 3.7,
+      "fat_g": 17.6,
+      "ts": "2026-06-08T12:38:30.483Z"
     }
   ]
 }
