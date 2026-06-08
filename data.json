@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-08",
-    "calories": 1584,
-    "protein_g": 115.9,
-    "carbs_g": 115.2,
-    "fat_g": 72.2,
+    "calories": 1715,
+    "protein_g": 131.7,
+    "carbs_g": 132.6,
+    "fat_g": 72.9,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -52,6 +52,15 @@
         "fat_g": 1.8,
         "time": "2026-06-08T16:31:07.108Z",
         "_evtId": "evt_1780936267108_66gl8"
+      },
+      {
+        "name": "Skyr (Icelandic-style yogurt), Fresh raspberries, Fresh blueberries",
+        "kcal": 131,
+        "protein_g": 15.8,
+        "carbs_g": 17.4,
+        "fat_g": 0.7,
+        "time": "2026-06-08T17:52:00.727Z",
+        "_evtId": "evt_1780941120727_zk258"
       }
     ],
     "exercise": [],
@@ -893,6 +902,17 @@
       "carbs_g": 30.6,
       "fat_g": 1.8,
       "ts": "2026-06-08T16:31:07.109Z"
+    },
+    {
+      "id": "evt_1780941120727_zk258",
+      "type": "meal",
+      "date": "2026-06-08",
+      "name": "Skyr (Icelandic-style yogurt), Fresh raspberries, Fresh blueberries",
+      "kcal": 131,
+      "protein_g": 15.8,
+      "carbs_g": 17.4,
+      "fat_g": 0.7,
+      "ts": "2026-06-08T17:52:00.728Z"
     }
   ]
 }
