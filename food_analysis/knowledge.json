@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T17:51:36.608Z",
-    "total_analyses": 87,
+    "last_updated": "2026-06-08T18:51:28.500Z",
+    "total_analyses": 88,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2591,6 +2591,18 @@
         "carbs_g": 4.8,
         "fat_g": 0.3,
         "confidence": 0.85,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Prosciutto (dry-cured ham)",
+        "serving": "5 thin slices (approx 50g)",
+        "weight_g": 50,
+        "kcal": 118,
+        "protein_g": 12.8,
+        "carbs_g": 0,
+        "fat_g": 7.5,
+        "confidence": 0.88,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -7095,6 +7107,33 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780944688499,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 118,
+          "protein_g": 12.8,
+          "carbs_g": 0,
+          "fat_g": 7.5,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Prosciutto (dry-cured ham)",
+            "weight_g": 50,
+            "serving": "5 thin slices (approx 50g)",
+            "kcal": 118,
+            "protein_g": 12.8,
+            "carbs_g": 0,
+            "fat_g": 7.5,
+            "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.88
       }
     ]
   }
