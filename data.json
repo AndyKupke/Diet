@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-08",
-    "calories": 204,
-    "protein_g": 29.6,
-    "carbs_g": 10.4,
-    "fat_g": 4.4,
+    "calories": 579,
+    "protein_g": 46.8,
+    "carbs_g": 45.4,
+    "fat_g": 22.4,
     "water_ml": 0,
     "weight_kg": 73.1,
     "meals": [
@@ -16,6 +16,15 @@
         "fat_g": 4.4,
         "time": "2026-06-08T05:15:39.489Z",
         "_evtId": "evt_1780895739489_z7ilh"
+      },
+      {
+        "name": "Whole grain/seeded bread (multigrain roll), Herb cream cheese spread (top slice), Semi-hard cheese (likely Gouda/Emmental), Cucumber slices, Lettuce leaf (frilly lettuce/lollo rosso)",
+        "kcal": 375,
+        "protein_g": 17.2,
+        "carbs_g": 35,
+        "fat_g": 18,
+        "time": "2026-06-08T12:33:18.456Z",
+        "_evtId": "evt_1780921998456_tnhjf"
       }
     ],
     "exercise": [],
@@ -813,6 +822,17 @@
       "carbs_g": 10.4,
       "fat_g": 4.4,
       "ts": "2026-06-08T05:15:39.490Z"
+    },
+    {
+      "id": "evt_1780921998456_tnhjf",
+      "type": "meal",
+      "date": "2026-06-08",
+      "name": "Whole grain/seeded bread (multigrain roll), Herb cream cheese spread (top slice), Semi-hard cheese (likely Gouda/Emmental), Cucumber slices, Lettuce leaf (frilly lettuce/lollo rosso)",
+      "kcal": 375,
+      "protein_g": 17.2,
+      "carbs_g": 35,
+      "fat_g": 18,
+      "ts": "2026-06-08T12:33:18.457Z"
     }
   ]
 }
