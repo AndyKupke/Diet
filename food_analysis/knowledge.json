@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T05:10:50.236Z",
-    "total_analyses": 79,
+    "last_updated": "2026-06-08T12:33:11.959Z",
+    "total_analyses": 80,
     "total_corrections": 3
   },
   "calibrations": {
@@ -652,15 +652,15 @@
       },
       {
         "name": "Cucumber slices",
-        "serving": "2-3 slices (approx 15g)",
-        "weight_g": 15,
-        "kcal": 2,
+        "serving": "2 medium slices (approx 20g)",
+        "weight_g": 20,
+        "kcal": 3,
         "protein_g": 0.1,
-        "carbs_g": 0.5,
+        "carbs_g": 0.6,
         "fat_g": 0,
-        "confidence": 0.7,
-        "last_seen": "2026-06-02",
-        "seen_count": 1
+        "confidence": 0.92,
+        "last_seen": "2026-06-08",
+        "seen_count": 2
       },
       {
         "name": "Yoghurt dressing (full-fat)",
@@ -2308,15 +2308,15 @@
       },
       {
         "name": "Semi-hard cheese (likely Gouda/Emmental)",
-        "serving": "4 slices (approx 60g total)",
-        "weight_g": 60,
-        "kcal": 234,
-        "protein_g": 15.6,
-        "carbs_g": 0.6,
-        "fat_g": 18.6,
-        "confidence": 0.85,
-        "last_seen": "2026-06-07",
-        "seen_count": 1
+        "serving": "1 thick slice (approx 30g)",
+        "weight_g": 30,
+        "kcal": 176,
+        "protein_g": 11.7,
+        "carbs_g": 0.4,
+        "fat_g": 14,
+        "confidence": 0.86,
+        "last_seen": "2026-06-08",
+        "seen_count": 2
       },
       {
         "name": "Raw carrot sticks",
@@ -2363,6 +2363,42 @@
         "carbs_g": 11.4,
         "fat_g": 5.4,
         "confidence": 0.98,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Whole grain/seeded bread (multigrain roll)",
+        "serving": "2 slices from 1 roll (approx 80g total)",
+        "weight_g": 80,
+        "kcal": 192,
+        "protein_g": 7.2,
+        "carbs_g": 32.8,
+        "fat_g": 3.2,
+        "confidence": 0.87,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Herb cream cheese spread (top slice)",
+        "serving": "thick layer (approx 25g)",
+        "weight_g": 25,
+        "kcal": 62,
+        "protein_g": 2,
+        "carbs_g": 1,
+        "fat_g": 5.5,
+        "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Lettuce leaf (frilly lettuce/lollo rosso)",
+        "serving": "1 small leaf (approx 5g)",
+        "weight_g": 5,
+        "kcal": 1,
+        "protein_g": 0.1,
+        "carbs_g": 0.2,
+        "fat_g": 0,
+        "confidence": 0.9,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -6441,6 +6477,73 @@
           }
         ],
         "overall_confidence": 0.98
+      },
+      {
+        "id": 1780921991957,
+        "date": "2026-06-08",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 375,
+          "protein_g": 17.2,
+          "carbs_g": 35,
+          "fat_g": 18,
+          "fiber_g": 6,
+          "sugar_g": 4
+        },
+        "items": [
+          {
+            "name": "Whole grain/seeded bread (multigrain roll)",
+            "weight_g": 80,
+            "serving": "2 slices from 1 roll (approx 80g total)",
+            "kcal": 192,
+            "protein_g": 7.2,
+            "carbs_g": 32.8,
+            "fat_g": 3.2,
+            "confidence": 0.87
+          },
+          {
+            "name": "Herb cream cheese spread (top slice)",
+            "weight_g": 25,
+            "serving": "thick layer (approx 25g)",
+            "kcal": 62,
+            "protein_g": 2,
+            "carbs_g": 1,
+            "fat_g": 5.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Semi-hard cheese (likely Gouda/Emmental)",
+            "weight_g": 30,
+            "serving": "1 thick slice (approx 30g)",
+            "kcal": 117,
+            "protein_g": 7.8,
+            "carbs_g": 0.3,
+            "fat_g": 9.3,
+            "confidence": 0.86
+          },
+          {
+            "name": "Cucumber slices",
+            "weight_g": 20,
+            "serving": "2 medium slices (approx 20g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.92
+          },
+          {
+            "name": "Lettuce leaf (frilly lettuce/lollo rosso)",
+            "weight_g": 5,
+            "serving": "1 small leaf (approx 5g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.2,
+            "fat_g": 0,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.86
       }
     ]
   }
