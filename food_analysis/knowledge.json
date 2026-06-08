@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T12:38:25.060Z",
-    "total_analyses": 81,
+    "last_updated": "2026-06-08T16:18:07.254Z",
+    "total_analyses": 82,
     "total_corrections": 3
   },
   "calibrations": {
@@ -652,15 +652,15 @@
       },
       {
         "name": "Cucumber slices",
-        "serving": "2 medium slices (approx 20g)",
-        "weight_g": 20,
-        "kcal": 3,
-        "protein_g": 0.1,
-        "carbs_g": 0.6,
-        "fat_g": 0,
-        "confidence": 0.92,
+        "serving": "3 thick slices (approx 45g)",
+        "weight_g": 45,
+        "kcal": 5,
+        "protein_g": 0.2,
+        "carbs_g": 1.1,
+        "fat_g": 0.1,
+        "confidence": 0.9,
         "last_seen": "2026-06-08",
-        "seen_count": 2
+        "seen_count": 3
       },
       {
         "name": "Yoghurt dressing (full-fat)",
@@ -1576,15 +1576,15 @@
       },
       {
         "name": "Carrot stick",
-        "serving": "1 piece (approx 20g)",
-        "weight_g": 20,
-        "kcal": 8,
-        "protein_g": 0.2,
-        "carbs_g": 1.9,
+        "serving": "1 whole peeled carrot stick (approx 50g)",
+        "weight_g": 50,
+        "kcal": 15,
+        "protein_g": 0.3,
+        "carbs_g": 3.3,
         "fat_g": 0.1,
-        "confidence": 0.85,
-        "last_seen": "2026-06-06",
-        "seen_count": 1
+        "confidence": 0.87,
+        "last_seen": "2026-06-08",
+        "seen_count": 2
       },
       {
         "name": "White baguette/sub roll",
@@ -2423,6 +2423,66 @@
         "carbs_g": 0.1,
         "fat_g": 0,
         "confidence": 0.85,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Smoked mackerel fillet",
+        "serving": "1 whole fillet (approx 85g)",
+        "weight_g": 85,
+        "kcal": 204,
+        "protein_g": 19.1,
+        "carbs_g": 0,
+        "fat_g": 14.5,
+        "confidence": 0.88,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Whole grain dark rye bread",
+        "serving": "2 slices (approx 70g total)",
+        "weight_g": 70,
+        "kcal": 161,
+        "protein_g": 5.5,
+        "carbs_g": 28.7,
+        "fat_g": 1.8,
+        "confidence": 0.85,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced roast beef (rare/medium-rare)",
+        "serving": "3 thin slices (approx 35g)",
+        "weight_g": 35,
+        "kcal": 59,
+        "protein_g": 10.2,
+        "carbs_g": 0,
+        "fat_g": 2.1,
+        "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Prosciutto/cured ham",
+        "serving": "2-3 thin slices (approx 25g)",
+        "weight_g": 25,
+        "kcal": 62,
+        "protein_g": 6,
+        "carbs_g": 0.3,
+        "fat_g": 4,
+        "confidence": 0.8,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Emmental/Swiss cheese",
+        "serving": "1 slice (approx 25g)",
+        "weight_g": 25,
+        "kcal": 100,
+        "protein_g": 7.3,
+        "carbs_g": 0.1,
+        "fat_g": 7.8,
+        "confidence": 0.83,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -6615,6 +6675,93 @@
           }
         ],
         "overall_confidence": 0.88
+      },
+      {
+        "id": 1780935487252,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 614,
+          "protein_g": 48.9,
+          "carbs_g": 35.5,
+          "fat_g": 30.4,
+          "fiber_g": 9.4,
+          "sugar_g": 4.6
+        },
+        "items": [
+          {
+            "name": "Smoked mackerel fillet",
+            "weight_g": 85,
+            "serving": "1 whole fillet (approx 85g)",
+            "kcal": 204,
+            "protein_g": 19.1,
+            "carbs_g": 0,
+            "fat_g": 14.5,
+            "confidence": 0.88
+          },
+          {
+            "name": "Whole grain dark rye bread",
+            "weight_g": 70,
+            "serving": "2 slices (approx 70g total)",
+            "kcal": 161,
+            "protein_g": 5.5,
+            "carbs_g": 28.7,
+            "fat_g": 1.8,
+            "confidence": 0.85
+          },
+          {
+            "name": "Sliced roast beef (rare/medium-rare)",
+            "weight_g": 35,
+            "serving": "3 thin slices (approx 35g)",
+            "kcal": 59,
+            "protein_g": 10.2,
+            "carbs_g": 0,
+            "fat_g": 2.1,
+            "confidence": 0.82
+          },
+          {
+            "name": "Prosciutto/cured ham",
+            "weight_g": 25,
+            "serving": "2-3 thin slices (approx 25g)",
+            "kcal": 62,
+            "protein_g": 6,
+            "carbs_g": 0.3,
+            "fat_g": 4,
+            "confidence": 0.8
+          },
+          {
+            "name": "Emmental/Swiss cheese",
+            "weight_g": 25,
+            "serving": "1 slice (approx 25g)",
+            "kcal": 100,
+            "protein_g": 7.3,
+            "carbs_g": 0.1,
+            "fat_g": 7.8,
+            "confidence": 0.83
+          },
+          {
+            "name": "Cucumber slices",
+            "weight_g": 45,
+            "serving": "3 thick slices (approx 45g)",
+            "kcal": 7,
+            "protein_g": 0.3,
+            "carbs_g": 1.6,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Carrot stick",
+            "weight_g": 50,
+            "serving": "1 whole peeled carrot stick (approx 50g)",
+            "kcal": 21,
+            "protein_g": 0.5,
+            "carbs_g": 4.8,
+            "fat_g": 0.1,
+            "confidence": 0.87
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
