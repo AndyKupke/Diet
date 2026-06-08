@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T05:04:38.909Z",
-    "total_analyses": 78,
+    "last_updated": "2026-06-08T05:10:50.236Z",
+    "total_analyses": 79,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2350,6 +2350,18 @@
         "protein_g": 22.8,
         "carbs_g": 1.38,
         "fat_g": 1.41,
+        "confidence": 0.98,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Protein powder (whey-based supplement) mixed in low-fat milk",
+        "serving": "1 portion = 30g powder (2 measuring spoons) + 200ml low-fat milk (1.5% fat)",
+        "weight_g": 230,
+        "kcal": 315,
+        "protein_g": 45.6,
+        "carbs_g": 11.4,
+        "fat_g": 5.4,
         "confidence": 0.98,
         "last_seen": "2026-06-08",
         "seen_count": 1
@@ -6398,6 +6410,33 @@
             "protein_g": 22.8,
             "carbs_g": 1.38,
             "fat_g": 1.41,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
+      },
+      {
+        "id": 1780895450235,
+        "date": "2026-06-08",
+        "meal_type": "breakfast",
+        "user_note": "One portion of, so two cups",
+        "totals": {
+          "kcal": 204,
+          "protein_g": 29.6,
+          "carbs_g": 10.4,
+          "fat_g": 4.4,
+          "fiber_g": 0.8,
+          "sugar_g": 10.4
+        },
+        "items": [
+          {
+            "name": "Protein powder (whey-based supplement) mixed in low-fat milk",
+            "weight_g": 230,
+            "serving": "1 portion = 30g powder (2 measuring spoons) + 200ml low-fat milk (1.5% fat)",
+            "kcal": 315,
+            "protein_g": 45.6,
+            "carbs_g": 11.4,
+            "fat_g": 5.4,
             "confidence": 0.98
           }
         ],
