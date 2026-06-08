@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T16:27:42.549Z",
-    "total_analyses": 83,
+    "last_updated": "2026-06-08T16:29:44.717Z",
+    "total_analyses": 85,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2507,6 +2507,66 @@
         "carbs_g": 9.8,
         "fat_g": 6.3,
         "confidence": 0.78,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Deep-fried pretzel croissant (Laugencroissant) - piece 1",
+        "serving": "1 whole deep-fried pretzel croissant (approx 70g)",
+        "weight_g": 70,
+        "kcal": 263,
+        "protein_g": 4.2,
+        "carbs_g": 26,
+        "fat_g": 15.5,
+        "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 2
+      },
+      {
+        "name": "Deep-fried pretzel croissant (Laugencroissant) - piece 2",
+        "serving": "1 whole deep-fried pretzel croissant (approx 70g)",
+        "weight_g": 70,
+        "kcal": 263,
+        "protein_g": 4.2,
+        "carbs_g": 26,
+        "fat_g": 15.5,
+        "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 2
+      },
+      {
+        "name": "Deep-fried breaded item (likely cheese stick or croquette)",
+        "serving": "1 rectangular piece (approx 35g)",
+        "weight_g": 35,
+        "kcal": 112,
+        "protein_g": 4.2,
+        "carbs_g": 9.8,
+        "fat_g": 6.3,
+        "confidence": 0.78,
+        "last_seen": "2026-06-08",
+        "seen_count": 2
+      },
+      {
+        "name": "Fresh carrot stick (raw)",
+        "serving": "1 small carrot stick (approx 30g)",
+        "weight_g": 30,
+        "kcal": 12,
+        "protein_g": 0.3,
+        "carbs_g": 2.8,
+        "fat_g": 0.1,
+        "confidence": 0.75,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh carrot piece (raw)",
+        "serving": "1 small carrot piece (approx 20g)",
+        "weight_g": 20,
+        "kcal": 8,
+        "protein_g": 0.2,
+        "carbs_g": 1.9,
+        "fat_g": 0.1,
+        "confidence": 0.75,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -6820,6 +6880,120 @@
             "carbs_g": 9.8,
             "fat_g": 6.3,
             "confidence": 0.78
+          }
+        ],
+        "overall_confidence": 0.8
+      },
+      {
+        "id": 1780936119484,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "Laugengebäck und karotte",
+        "totals": {
+          "kcal": 650,
+          "protein_g": 12.9,
+          "carbs_g": 64.6,
+          "fat_g": 37.4,
+          "fiber_g": 3.7,
+          "sugar_g": 6.4
+        },
+        "items": [
+          {
+            "name": "Deep-fried pretzel croissant (Laugencroissant) - piece 1",
+            "weight_g": 70,
+            "serving": "1 whole deep-fried croissant (approx 70g)",
+            "kcal": 263,
+            "protein_g": 4.2,
+            "carbs_g": 26,
+            "fat_g": 15.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Deep-fried pretzel croissant (Laugencroissant) - piece 2",
+            "weight_g": 70,
+            "serving": "1 whole deep-fried croissant (approx 70g)",
+            "kcal": 263,
+            "protein_g": 4.2,
+            "carbs_g": 26,
+            "fat_g": 15.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Deep-fried breaded item (likely cheese stick or croquette)",
+            "weight_g": 35,
+            "serving": "1 rectangular piece (approx 35g)",
+            "kcal": 112,
+            "protein_g": 4.2,
+            "carbs_g": 9.8,
+            "fat_g": 6.3,
+            "confidence": 0.78
+          },
+          {
+            "name": "Fresh carrot stick (raw)",
+            "weight_g": 30,
+            "serving": "1 small carrot stick (approx 30g)",
+            "kcal": 12,
+            "protein_g": 0.3,
+            "carbs_g": 2.8,
+            "fat_g": 0.1,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.8
+      },
+      {
+        "id": 1780936184716,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "Laugenstange und ein Stück karotte",
+        "totals": {
+          "kcal": 646,
+          "protein_g": 12.8,
+          "carbs_g": 63.7,
+          "fat_g": 37.4,
+          "fiber_g": 3.4,
+          "sugar_g": 4.7
+        },
+        "items": [
+          {
+            "name": "Deep-fried pretzel croissant (Laugencroissant) - piece 1",
+            "weight_g": 70,
+            "serving": "1 whole deep-fried pretzel croissant (approx 70g)",
+            "kcal": 263,
+            "protein_g": 4.2,
+            "carbs_g": 26,
+            "fat_g": 15.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Deep-fried pretzel croissant (Laugencroissant) - piece 2",
+            "weight_g": 70,
+            "serving": "1 whole deep-fried pretzel croissant (approx 70g)",
+            "kcal": 263,
+            "protein_g": 4.2,
+            "carbs_g": 26,
+            "fat_g": 15.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Deep-fried breaded item (likely cheese stick or croquette)",
+            "weight_g": 35,
+            "serving": "1 rectangular piece (approx 35g)",
+            "kcal": 112,
+            "protein_g": 4.2,
+            "carbs_g": 9.8,
+            "fat_g": 6.3,
+            "confidence": 0.78
+          },
+          {
+            "name": "Fresh carrot piece (raw)",
+            "weight_g": 20,
+            "serving": "1 small carrot piece (approx 20g)",
+            "kcal": 8,
+            "protein_g": 0.2,
+            "carbs_g": 1.9,
+            "fat_g": 0.1,
+            "confidence": 0.75
           }
         ],
         "overall_confidence": 0.8
