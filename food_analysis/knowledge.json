@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T12:33:11.959Z",
-    "total_analyses": 80,
+    "last_updated": "2026-06-08T12:38:25.060Z",
+    "total_analyses": 81,
     "total_corrections": 3
   },
   "calibrations": {
@@ -604,15 +604,15 @@
       },
       {
         "name": "Fresh tomato slices",
-        "serving": "3 slices (approx 60g)",
+        "serving": "3 medium slices (approx 60g total)",
         "weight_g": 60,
-        "kcal": 10,
+        "kcal": 11,
         "protein_g": 0.5,
-        "carbs_g": 2.1,
+        "carbs_g": 2.3,
         "fat_g": 0.1,
         "confidence": 0.9,
-        "last_seen": "2026-06-04",
-        "seen_count": 3
+        "last_seen": "2026-06-08",
+        "seen_count": 4
       },
       {
         "name": "Red onion rings",
@@ -2399,6 +2399,30 @@
         "carbs_g": 0.2,
         "fat_g": 0,
         "confidence": 0.9,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Omelette (eggs, milk, butter)",
+        "serving": "1 medium folded omelette (approx 2 eggs + 20ml milk + 5g butter for cooking)",
+        "weight_g": 125,
+        "kcal": 220,
+        "protein_g": 14.5,
+        "carbs_g": 1.2,
+        "fat_g": 17.5,
+        "confidence": 0.88,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh chives (garnish)",
+        "serving": "small amount scattered on top (approx 2g)",
+        "weight_g": 2,
+        "kcal": 1,
+        "protein_g": 0.1,
+        "carbs_g": 0.1,
+        "fat_g": 0,
+        "confidence": 0.85,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -6544,6 +6568,53 @@
           }
         ],
         "overall_confidence": 0.86
+      },
+      {
+        "id": 1780922305058,
+        "date": "2026-06-08",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 232,
+          "protein_g": 15.1,
+          "carbs_g": 3.7,
+          "fat_g": 17.6,
+          "fiber_g": 0.8,
+          "sugar_g": 2.6
+        },
+        "items": [
+          {
+            "name": "Omelette (eggs, milk, butter)",
+            "weight_g": 125,
+            "serving": "1 medium folded omelette (approx 2 eggs + 20ml milk + 5g butter for cooking)",
+            "kcal": 220,
+            "protein_g": 14.5,
+            "carbs_g": 1.2,
+            "fat_g": 17.5,
+            "confidence": 0.88
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 60,
+            "serving": "3 medium slices (approx 60g total)",
+            "kcal": 11,
+            "protein_g": 0.5,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh chives (garnish)",
+            "weight_g": 2,
+            "serving": "small amount scattered on top (approx 2g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.88
       }
     ]
   }
