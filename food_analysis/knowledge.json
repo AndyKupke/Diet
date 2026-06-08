@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T16:30:48.559Z",
-    "total_analyses": 86,
+    "last_updated": "2026-06-08T17:51:36.608Z",
+    "total_analyses": 87,
     "total_corrections": 3
   },
   "calibrations": {
@@ -148,15 +148,15 @@
       },
       {
         "name": "Fresh blueberries",
-        "serving": "approx 10 blueberries (15g)",
-        "weight_g": 15,
-        "kcal": 13,
-        "protein_g": 0.2,
-        "carbs_g": 3.3,
+        "serving": "approximately 25-30 blueberries, approx 35g",
+        "weight_g": 35,
+        "kcal": 17,
+        "protein_g": 0.3,
+        "carbs_g": 4.2,
         "fat_g": 0.1,
-        "confidence": 0.85,
-        "last_seen": "2026-06-06",
-        "seen_count": 5
+        "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 6
       },
       {
         "name": "Cherry tomatoes",
@@ -916,15 +916,15 @@
       },
       {
         "name": "Skyr (Icelandic-style yogurt)",
-        "serving": "base layer (approx 250g)",
-        "weight_g": 250,
-        "kcal": 127,
-        "protein_g": 21.1,
-        "carbs_g": 7.7,
-        "fat_g": 0.4,
-        "confidence": 0.85,
-        "last_seen": "2026-06-04",
-        "seen_count": 3
+        "serving": "1 serving, approx 150g",
+        "weight_g": 150,
+        "kcal": 109,
+        "protein_g": 18.1,
+        "carbs_g": 7.6,
+        "fat_g": 0.3,
+        "confidence": 0.88,
+        "last_seen": "2026-06-08",
+        "seen_count": 4
       },
       {
         "name": "Pastrami / Smoked beef slices",
@@ -2579,6 +2579,18 @@
         "carbs_g": 30.6,
         "fat_g": 1.8,
         "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh raspberries",
+        "serving": "8-9 raspberries, approx 40g",
+        "weight_g": 40,
+        "kcal": 21,
+        "protein_g": 0.5,
+        "carbs_g": 4.8,
+        "fat_g": 0.3,
+        "confidence": 0.85,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -7036,6 +7048,53 @@
           }
         ],
         "overall_confidence": 0.82
+      },
+      {
+        "id": 1780941096607,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "Skyr beneath fruits",
+        "totals": {
+          "kcal": 131,
+          "protein_g": 15.8,
+          "carbs_g": 17.4,
+          "fat_g": 0.7,
+          "fiber_g": 3.6,
+          "sugar_g": 12.6
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic-style yogurt)",
+            "weight_g": 150,
+            "serving": "1 serving, approx 150g",
+            "kcal": 90,
+            "protein_g": 15,
+            "carbs_g": 7.5,
+            "fat_g": 0.3,
+            "confidence": 0.88
+          },
+          {
+            "name": "Fresh raspberries",
+            "weight_g": 40,
+            "serving": "8-9 raspberries, approx 40g",
+            "kcal": 21,
+            "protein_g": 0.5,
+            "carbs_g": 4.8,
+            "fat_g": 0.3,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh blueberries",
+            "weight_g": 35,
+            "serving": "approximately 25-30 blueberries, approx 35g",
+            "kcal": 20,
+            "protein_g": 0.3,
+            "carbs_g": 5.1,
+            "fat_g": 0.1,
+            "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
