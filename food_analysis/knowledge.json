@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T16:18:07.254Z",
-    "total_analyses": 82,
+    "last_updated": "2026-06-08T16:27:42.549Z",
+    "total_analyses": 83,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2483,6 +2483,30 @@
         "carbs_g": 0.1,
         "fat_g": 7.8,
         "confidence": 0.83,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Deep-fried croissant (likely filled/stuffed)",
+        "serving": "2 whole pieces (approx 140g total)",
+        "weight_g": 140,
+        "kcal": 525,
+        "protein_g": 8.4,
+        "carbs_g": 52,
+        "fat_g": 31,
+        "confidence": 0.82,
+        "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Deep-fried/breaded cheese stick or croquette",
+        "serving": "1 rectangular piece (approx 35g)",
+        "weight_g": 35,
+        "kcal": 112,
+        "protein_g": 4.2,
+        "carbs_g": 9.8,
+        "fat_g": 6.3,
+        "confidence": 0.78,
         "last_seen": "2026-06-08",
         "seen_count": 1
       }
@@ -6762,6 +6786,43 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1780936062548,
+        "date": "2026-06-08",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 637,
+          "protein_g": 12.6,
+          "carbs_g": 61.8,
+          "fat_g": 37.3,
+          "fiber_g": 2.5,
+          "sugar_g": 8.5
+        },
+        "items": [
+          {
+            "name": "Deep-fried croissant (likely filled/stuffed)",
+            "weight_g": 140,
+            "serving": "2 whole pieces (approx 140g total)",
+            "kcal": 525,
+            "protein_g": 8.4,
+            "carbs_g": 52,
+            "fat_g": 31,
+            "confidence": 0.82
+          },
+          {
+            "name": "Deep-fried/breaded cheese stick or croquette",
+            "weight_g": 35,
+            "serving": "1 rectangular piece (approx 35g)",
+            "kcal": 112,
+            "protein_g": 4.2,
+            "carbs_g": 9.8,
+            "fat_g": 6.3,
+            "confidence": 0.78
+          }
+        ],
+        "overall_confidence": 0.8
       }
     ]
   }
