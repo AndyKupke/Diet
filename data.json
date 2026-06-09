@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-09",
-    "calories": 1490,
-    "protein_g": 75.4,
-    "carbs_g": 144.2,
-    "fat_g": 68,
+    "calories": 1579,
+    "protein_g": 78.6,
+    "carbs_g": 161.4,
+    "fat_g": 68.7,
     "water_ml": 0,
     "weight_kg": 74,
     "meals": [
@@ -34,6 +34,15 @@
         "fat_g": 5.3,
         "time": "2026-06-09T17:22:10.274Z",
         "_evtId": "evt_1781025730274_y73q0"
+      },
+      {
+        "name": "Artisan sourdough or country-style bread slice",
+        "kcal": 89,
+        "protein_g": 3.2,
+        "carbs_g": 17.2,
+        "fat_g": 0.7,
+        "time": "2026-06-09T17:28:36.241Z",
+        "_evtId": "evt_1781026116241_8c9ud"
       }
     ],
     "exercise": [],
@@ -946,6 +955,17 @@
       "carbs_g": 26.7,
       "fat_g": 5.3,
       "ts": "2026-06-09T17:22:10.275Z"
+    },
+    {
+      "id": "evt_1781026116241_8c9ud",
+      "type": "meal",
+      "date": "2026-06-09",
+      "name": "Artisan sourdough or country-style bread slice",
+      "kcal": 89,
+      "protein_g": 3.2,
+      "carbs_g": 17.2,
+      "fat_g": 0.7,
+      "ts": "2026-06-09T17:28:36.242Z"
     }
   ]
 }
