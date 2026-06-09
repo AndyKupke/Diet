@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-09T08:07:59.313Z",
-    "total_analyses": 89,
+    "last_updated": "2026-06-09T13:54:50.811Z",
+    "total_analyses": 90,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2615,6 +2615,54 @@
         "carbs_g": 62,
         "fat_g": 36,
         "confidence": 0.81,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Baguette (white wheat bread)",
+        "serving": "1 section of baguette, approx 80g",
+        "weight_g": 80,
+        "kcal": 212,
+        "protein_g": 7.2,
+        "carbs_g": 42.4,
+        "fat_g": 1.6,
+        "confidence": 0.85,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Breaded and fried meat cutlet (likely pork or chicken schnitzel)",
+        "serving": "1 medium cutlet, breaded and pan-fried, approx 95g",
+        "weight_g": 95,
+        "kcal": 247,
+        "protein_g": 18.5,
+        "carbs_g": 12.4,
+        "fat_g": 13.3,
+        "confidence": 0.8,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Mayonnaise (spread)",
+        "serving": "approx 15g (1 tablespoon equivalent)",
+        "weight_g": 15,
+        "kcal": 107,
+        "protein_g": 0.2,
+        "carbs_g": 0.2,
+        "fat_g": 11.8,
+        "confidence": 0.75,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Lettuce (iceberg or romaine)",
+        "serving": "2-3 small leaves, approx 15g",
+        "weight_g": 15,
+        "kcal": 2,
+        "protein_g": 0.2,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "confidence": 0.82,
         "last_seen": "2026-06-09",
         "seen_count": 1
       }
@@ -7170,6 +7218,63 @@
             "carbs_g": 62,
             "fat_g": 36,
             "confidence": 0.81
+          }
+        ],
+        "overall_confidence": 0.81
+      },
+      {
+        "id": 1781013290809,
+        "date": "2026-06-09",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 568,
+          "protein_g": 26.1,
+          "carbs_g": 55.5,
+          "fat_g": 26.7,
+          "fiber_g": 3.2,
+          "sugar_g": 3.4
+        },
+        "items": [
+          {
+            "name": "Baguette (white wheat bread)",
+            "weight_g": 80,
+            "serving": "1 section of baguette, approx 80g",
+            "kcal": 212,
+            "protein_g": 7.2,
+            "carbs_g": 42.4,
+            "fat_g": 1.6,
+            "confidence": 0.85
+          },
+          {
+            "name": "Breaded and fried meat cutlet (likely pork or chicken schnitzel)",
+            "weight_g": 95,
+            "serving": "1 medium cutlet, breaded and pan-fried, approx 95g",
+            "kcal": 247,
+            "protein_g": 18.5,
+            "carbs_g": 12.4,
+            "fat_g": 13.3,
+            "confidence": 0.8
+          },
+          {
+            "name": "Mayonnaise (spread)",
+            "weight_g": 15,
+            "serving": "approx 15g (1 tablespoon equivalent)",
+            "kcal": 107,
+            "protein_g": 0.2,
+            "carbs_g": 0.2,
+            "fat_g": 11.8,
+            "confidence": 0.75
+          },
+          {
+            "name": "Lettuce (iceberg or romaine)",
+            "weight_g": 15,
+            "serving": "2-3 small leaves, approx 15g",
+            "kcal": 2,
+            "protein_g": 0.2,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.82
           }
         ],
         "overall_confidence": 0.81
