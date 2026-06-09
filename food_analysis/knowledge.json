@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-09T13:54:50.811Z",
-    "total_analyses": 90,
+    "last_updated": "2026-06-09T17:21:06.247Z",
+    "total_analyses": 91,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "2 medium sticks (approx 50g)",
-        "weight_g": 50,
-        "kcal": 21,
-        "protein_g": 0.5,
-        "carbs_g": 4.8,
+        "serving": "2 medium carrot sticks, approx 60g total",
+        "weight_g": 60,
+        "kcal": 23,
+        "protein_g": 0.6,
+        "carbs_g": 5.3,
         "fat_g": 0.2,
         "confidence": 0.88,
-        "last_seen": "2026-06-07",
-        "seen_count": 10
+        "last_seen": "2026-06-09",
+        "seen_count": 11
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -880,15 +880,15 @@
       },
       {
         "name": "Cucumber slices (raw)",
-        "serving": "3 medium slices (approx 18g)",
-        "weight_g": 18,
+        "serving": "2 round slices, approx 20g total",
+        "weight_g": 20,
         "kcal": 4,
         "protein_g": 0.2,
         "carbs_g": 0.7,
         "fat_g": 0,
-        "confidence": 0.88,
-        "last_seen": "2026-06-07",
-        "seen_count": 3
+        "confidence": 0.9,
+        "last_seen": "2026-06-09",
+        "seen_count": 4
       },
       {
         "name": "Dark rye bread with seeds (Vollkornbrot/Schwarzbrot)",
@@ -2663,6 +2663,42 @@
         "carbs_g": 0.5,
         "fat_g": 0,
         "confidence": 0.82,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Grilled whole fish (likely sea bream or similar)",
+        "serving": "1 whole fish, grilled, approx 180g edible portion (gutted, cooked weight with bones)",
+        "weight_g": 180,
+        "kcal": 194,
+        "protein_g": 38.2,
+        "carbs_g": 0,
+        "fat_g": 4.3,
+        "confidence": 0.82,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Rye or whole grain bread slice",
+        "serving": "1 round slice, approx 40g",
+        "weight_g": 40,
+        "kcal": 92,
+        "protein_g": 3.2,
+        "carbs_g": 17.2,
+        "fat_g": 0.8,
+        "confidence": 0.78,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper sticks (raw)",
+        "serving": "2 medium pepper strips, approx 40g total",
+        "weight_g": 40,
+        "kcal": 13,
+        "protein_g": 0.4,
+        "carbs_g": 3,
+        "fat_g": 0.1,
+        "confidence": 0.85,
         "last_seen": "2026-06-09",
         "seen_count": 1
       }
@@ -7278,6 +7314,73 @@
           }
         ],
         "overall_confidence": 0.81
+      },
+      {
+        "id": 1781025666246,
+        "date": "2026-06-09",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 327,
+          "protein_g": 42.5,
+          "carbs_g": 26.7,
+          "fat_g": 5.3,
+          "fiber_g": 5.4,
+          "sugar_g": 5.8
+        },
+        "items": [
+          {
+            "name": "Grilled whole fish (likely sea bream or similar)",
+            "weight_g": 180,
+            "serving": "1 whole fish, grilled, approx 180g edible portion (gutted, cooked weight with bones)",
+            "kcal": 194,
+            "protein_g": 38.2,
+            "carbs_g": 0,
+            "fat_g": 4.3,
+            "confidence": 0.82
+          },
+          {
+            "name": "Rye or whole grain bread slice",
+            "weight_g": 40,
+            "serving": "1 round slice, approx 40g",
+            "kcal": 92,
+            "protein_g": 3.2,
+            "carbs_g": 17.2,
+            "fat_g": 0.8,
+            "confidence": 0.78
+          },
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 60,
+            "serving": "2 medium carrot sticks, approx 60g total",
+            "kcal": 25,
+            "protein_g": 0.6,
+            "carbs_g": 5.8,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Red bell pepper sticks (raw)",
+            "weight_g": 40,
+            "serving": "2 medium pepper strips, approx 40g total",
+            "kcal": 13,
+            "protein_g": 0.4,
+            "carbs_g": 3,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cucumber slices (raw)",
+            "weight_g": 20,
+            "serving": "2 round slices, approx 20g total",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.84
       }
     ]
   }
