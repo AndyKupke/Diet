@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-09T17:34:08.979Z",
-    "total_analyses": 93,
+    "last_updated": "2026-06-09T20:47:54.622Z",
+    "total_analyses": 94,
     "total_corrections": 3
   },
   "calibrations": {
@@ -268,15 +268,15 @@
       },
       {
         "name": "White bread roll (Brötchen/Semmel)",
-        "serving": "1 small roll, half visible (approx 35g)",
-        "weight_g": 35,
-        "kcal": 169,
-        "protein_g": 5.4,
-        "carbs_g": 33.1,
-        "fat_g": 1.4,
-        "confidence": 0.8,
-        "last_seen": "2026-06-03",
-        "seen_count": 2
+        "serving": "1 small-medium roll, approximately 50g",
+        "weight_g": 50,
+        "kcal": 151,
+        "protein_g": 5,
+        "carbs_g": 29.8,
+        "fat_g": 1.2,
+        "confidence": 0.82,
+        "last_seen": "2026-06-09",
+        "seen_count": 3
       },
       {
         "name": "Sliced Gouda/Emmental-style cheese",
@@ -2032,15 +2032,15 @@
       },
       {
         "name": "Cherry tomatoes (raw)",
-        "serving": "4 small cherry tomatoes, approx 50g",
-        "weight_g": 50,
-        "kcal": 7,
+        "serving": "2 small cherry tomatoes, approximately 20g total",
+        "weight_g": 20,
+        "kcal": 6,
         "protein_g": 0.3,
-        "carbs_g": 1.4,
+        "carbs_g": 1.1,
         "fat_g": 0.1,
         "confidence": 0.85,
         "last_seen": "2026-06-09",
-        "seen_count": 3
+        "seen_count": 4
       },
       {
         "name": "Hard-boiled egg (peeled)",
@@ -2735,6 +2735,18 @@
         "carbs_g": 31.8,
         "fat_g": 1.2,
         "confidence": 0.83,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced ham (processed deli meat)",
+        "serving": "1 large slice, approximately 50g",
+        "weight_g": 50,
+        "kcal": 73,
+        "protein_g": 9.5,
+        "carbs_g": 0.5,
+        "fat_g": 3.8,
+        "confidence": 0.8,
         "last_seen": "2026-06-09",
         "seen_count": 1
       }
@@ -7501,6 +7513,53 @@
           }
         ],
         "overall_confidence": 0.86
+      },
+      {
+        "id": 1781038074621,
+        "date": "2026-06-09",
+        "meal_type": "late snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 210,
+          "protein_g": 14.2,
+          "carbs_g": 27.8,
+          "fat_g": 4.8,
+          "fiber_g": 1.4,
+          "sugar_g": 2.5
+        },
+        "items": [
+          {
+            "name": "Sliced ham (processed deli meat)",
+            "weight_g": 50,
+            "serving": "1 large slice, approximately 50g",
+            "kcal": 73,
+            "protein_g": 9.5,
+            "carbs_g": 0.5,
+            "fat_g": 3.8,
+            "confidence": 0.8
+          },
+          {
+            "name": "White bread roll (Brötchen/Semmel)",
+            "weight_g": 50,
+            "serving": "1 small-medium roll, approximately 50g",
+            "kcal": 133,
+            "protein_g": 4.5,
+            "carbs_g": 26.5,
+            "fat_g": 1,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cherry tomatoes (raw)",
+            "weight_g": 20,
+            "serving": "2 small cherry tomatoes, approximately 20g total",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 0.8,
+            "fat_g": 0,
+            "confidence": 0.85
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
