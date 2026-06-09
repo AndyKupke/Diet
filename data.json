@@ -1,77 +1,13 @@
 {
   "today": {
-    "date": "2026-06-08",
-    "calories": 1833,
-    "protein_g": 144.5,
-    "carbs_g": 132.6,
-    "fat_g": 80.4,
+    "date": "2026-06-09",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": 73.1,
-    "meals": [
-      {
-        "name": "Protein powder (whey-based supplement) mixed in low-fat milk",
-        "kcal": 204,
-        "protein_g": 29.6,
-        "carbs_g": 10.4,
-        "fat_g": 4.4,
-        "time": "2026-06-08T05:15:39.489Z",
-        "_evtId": "evt_1780895739489_z7ilh"
-      },
-      {
-        "name": "Whole grain/seeded bread (multigrain roll), Herb cream cheese spread (top slice), Semi-hard cheese (likely Gouda/Emmental), Cucumber slices, Lettuce leaf (frilly lettuce/lollo rosso)",
-        "kcal": 375,
-        "protein_g": 17.2,
-        "carbs_g": 35,
-        "fat_g": 18,
-        "time": "2026-06-08T12:33:18.456Z",
-        "_evtId": "evt_1780921998456_tnhjf"
-      },
-      {
-        "name": "Omelette (eggs, milk, butter), Fresh tomato slices, Fresh chives (garnish)",
-        "kcal": 232,
-        "protein_g": 15.1,
-        "carbs_g": 3.7,
-        "fat_g": 17.6,
-        "time": "2026-06-08T12:38:30.482Z",
-        "_evtId": "evt_1780922310482_2vwzk"
-      },
-      {
-        "name": "Smoked mackerel fillet, Whole grain dark rye bread, Sliced roast beef (rare/medium-rare), Prosciutto/cured ham, Emmental/Swiss cheese, Cucumber slices, Carrot stick",
-        "kcal": 614,
-        "protein_g": 48.9,
-        "carbs_g": 35.5,
-        "fat_g": 30.4,
-        "time": "2026-06-08T16:18:25.525Z",
-        "_evtId": "evt_1780935505525_eltjq"
-      },
-      {
-        "name": "White bread slices (likely sandwich bread or toast)",
-        "kcal": 159,
-        "protein_g": 5.1,
-        "carbs_g": 30.6,
-        "fat_g": 1.8,
-        "time": "2026-06-08T16:31:07.108Z",
-        "_evtId": "evt_1780936267108_66gl8"
-      },
-      {
-        "name": "Skyr (Icelandic-style yogurt), Fresh raspberries, Fresh blueberries",
-        "kcal": 131,
-        "protein_g": 15.8,
-        "carbs_g": 17.4,
-        "fat_g": 0.7,
-        "time": "2026-06-08T17:52:00.727Z",
-        "_evtId": "evt_1780941120727_zk258"
-      },
-      {
-        "name": "Prosciutto (dry-cured ham)",
-        "kcal": 118,
-        "protein_g": 12.8,
-        "carbs_g": 0,
-        "fat_g": 7.5,
-        "time": "2026-06-08T18:51:33.431Z",
-        "_evtId": "evt_1780944693431_igmio"
-      }
-    ],
+    "weight_kg": 74,
+    "meals": [],
     "exercise": [],
     "notes": ""
   },
@@ -145,6 +81,15 @@
       "protein_g": 156.7,
       "carbs_g": 223.7,
       "fat_g": 189.2,
+      "water_ml": 0,
+      "weight_kg": 73.1
+    },
+    {
+      "date": "2026-06-08",
+      "calories": 1833,
+      "protein_g": 144.5,
+      "carbs_g": 132.6,
+      "fat_g": 80.4,
       "water_ml": 0,
       "weight_kg": 73.1
     }
@@ -933,6 +878,13 @@
       "carbs_g": 0,
       "fat_g": 7.5,
       "ts": "2026-06-08T18:51:33.432Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-09",
+      "weight_kg": 74,
+      "id": "evt_1780980254239_zkl6l",
+      "ts": "2026-06-09T04:44:14.239Z"
     }
   ]
 }
