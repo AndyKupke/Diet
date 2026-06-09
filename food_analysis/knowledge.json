@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-09T17:28:19.322Z",
-    "total_analyses": 92,
+    "last_updated": "2026-06-09T17:34:08.979Z",
+    "total_analyses": 93,
     "total_corrections": 3
   },
   "calibrations": {
@@ -832,15 +832,15 @@
       },
       {
         "name": "Carrot sticks (raw)",
-        "serving": "2 medium carrot sticks, approx 60g total",
+        "serving": "2 medium sticks, approx 60g",
         "weight_g": 60,
-        "kcal": 23,
+        "kcal": 24,
         "protein_g": 0.6,
-        "carbs_g": 5.3,
+        "carbs_g": 5.5,
         "fat_g": 0.2,
         "confidence": 0.88,
         "last_seen": "2026-06-09",
-        "seen_count": 11
+        "seen_count": 12
       },
       {
         "name": "Red bell pepper (raw slices)",
@@ -2032,15 +2032,15 @@
       },
       {
         "name": "Cherry tomatoes (raw)",
-        "serving": "2 small tomatoes (approx 18g)",
-        "weight_g": 18,
-        "kcal": 4,
-        "protein_g": 0.2,
-        "carbs_g": 0.8,
-        "fat_g": 0,
-        "confidence": 0.87,
-        "last_seen": "2026-06-07",
-        "seen_count": 2
+        "serving": "4 small cherry tomatoes, approx 50g",
+        "weight_g": 50,
+        "kcal": 7,
+        "protein_g": 0.3,
+        "carbs_g": 1.4,
+        "fat_g": 0.1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-09",
+        "seen_count": 3
       },
       {
         "name": "Hard-boiled egg (peeled)",
@@ -2710,6 +2710,30 @@
         "protein_g": 3.2,
         "carbs_g": 17.2,
         "fat_g": 0.7,
+        "confidence": 0.83,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber slice (raw)",
+        "serving": "1 thick slice, approx 15g",
+        "weight_g": 15,
+        "kcal": 2,
+        "protein_g": 0.1,
+        "carbs_g": 0.5,
+        "fat_g": 0,
+        "confidence": 0.87,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "White wheat bread roll (Brötchen/Semmel)",
+        "serving": "1 medium roll, approx 60g",
+        "weight_g": 60,
+        "kcal": 159,
+        "protein_g": 5.4,
+        "carbs_g": 31.8,
+        "fat_g": 1.2,
         "confidence": 0.83,
         "last_seen": "2026-06-09",
         "seen_count": 1
@@ -7420,6 +7444,63 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1781026448978,
+        "date": "2026-06-09",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 195,
+          "protein_g": 6.5,
+          "carbs_g": 40,
+          "fat_g": 1.4,
+          "fiber_g": 3.8,
+          "sugar_g": 6.3
+        },
+        "items": [
+          {
+            "name": "Carrot sticks (raw)",
+            "weight_g": 60,
+            "serving": "2 medium sticks, approx 60g",
+            "kcal": 25,
+            "protein_g": 0.6,
+            "carbs_g": 5.8,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Cherry tomatoes (raw)",
+            "weight_g": 50,
+            "serving": "4 small cherry tomatoes, approx 50g",
+            "kcal": 9,
+            "protein_g": 0.4,
+            "carbs_g": 1.9,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cucumber slice (raw)",
+            "weight_g": 15,
+            "serving": "1 thick slice, approx 15g",
+            "kcal": 2,
+            "protein_g": 0.1,
+            "carbs_g": 0.5,
+            "fat_g": 0,
+            "confidence": 0.87
+          },
+          {
+            "name": "White wheat bread roll (Brötchen/Semmel)",
+            "weight_g": 60,
+            "serving": "1 medium roll, approx 60g",
+            "kcal": 159,
+            "protein_g": 5.4,
+            "carbs_g": 31.8,
+            "fat_g": 1.2,
+            "confidence": 0.83
+          }
+        ],
+        "overall_confidence": 0.86
       }
     ]
   }
