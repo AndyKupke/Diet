@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-09",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 595,
+    "protein_g": 6.8,
+    "carbs_g": 62,
+    "fat_g": 36,
     "water_ml": 0,
     "weight_kg": 74,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Chocolate pecan pie slice (homemade style)",
+        "kcal": 595,
+        "protein_g": 6.8,
+        "carbs_g": 62,
+        "fat_g": 36,
+        "time": "2026-06-09T08:08:08.402Z",
+        "_evtId": "evt_1780992488402_fk4u7"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -885,6 +895,17 @@
       "weight_kg": 74,
       "id": "evt_1780980254239_zkl6l",
       "ts": "2026-06-09T04:44:14.239Z"
+    },
+    {
+      "id": "evt_1780992488402_fk4u7",
+      "type": "meal",
+      "date": "2026-06-09",
+      "name": "Chocolate pecan pie slice (homemade style)",
+      "kcal": 595,
+      "protein_g": 6.8,
+      "carbs_g": 62,
+      "fat_g": 36,
+      "ts": "2026-06-09T08:08:08.403Z"
     }
   ]
 }
