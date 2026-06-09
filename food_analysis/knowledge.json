@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-08T18:51:28.500Z",
-    "total_analyses": 88,
+    "last_updated": "2026-06-09T08:07:59.313Z",
+    "total_analyses": 89,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2604,6 +2604,18 @@
         "fat_g": 7.5,
         "confidence": 0.88,
         "last_seen": "2026-06-08",
+        "seen_count": 1
+      },
+      {
+        "name": "Chocolate pecan pie slice (homemade style)",
+        "serving": "1 large slice (approx 140g total: 45g pastry crust, 95g filling)",
+        "weight_g": 140,
+        "kcal": 595,
+        "protein_g": 6.8,
+        "carbs_g": 62,
+        "fat_g": 36,
+        "confidence": 0.81,
+        "last_seen": "2026-06-09",
         "seen_count": 1
       }
     ]
@@ -7134,6 +7146,33 @@
           }
         ],
         "overall_confidence": 0.88
+      },
+      {
+        "id": 1780992479312,
+        "date": "2026-06-09",
+        "meal_type": "brunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 595,
+          "protein_g": 6.8,
+          "carbs_g": 62,
+          "fat_g": 36,
+          "fiber_g": 3.2,
+          "sugar_g": 42
+        },
+        "items": [
+          {
+            "name": "Chocolate pecan pie slice (homemade style)",
+            "weight_g": 140,
+            "serving": "1 large slice (approx 140g total: 45g pastry crust, 95g filling)",
+            "kcal": 595,
+            "protein_g": 6.8,
+            "carbs_g": 62,
+            "fat_g": 36,
+            "confidence": 0.81
+          }
+        ],
+        "overall_confidence": 0.81
       }
     ]
   }
