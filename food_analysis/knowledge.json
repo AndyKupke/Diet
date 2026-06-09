@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-09T17:21:06.247Z",
-    "total_analyses": 91,
+    "last_updated": "2026-06-09T17:28:19.322Z",
+    "total_analyses": 92,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2699,6 +2699,18 @@
         "carbs_g": 3,
         "fat_g": 0.1,
         "confidence": 0.85,
+        "last_seen": "2026-06-09",
+        "seen_count": 1
+      },
+      {
+        "name": "Artisan sourdough or country-style bread slice",
+        "serving": "1 thick slice, approx 35g",
+        "weight_g": 35,
+        "kcal": 89,
+        "protein_g": 3.2,
+        "carbs_g": 17.2,
+        "fat_g": 0.7,
+        "confidence": 0.83,
         "last_seen": "2026-06-09",
         "seen_count": 1
       }
@@ -7381,6 +7393,33 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1781026099322,
+        "date": "2026-06-09",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 89,
+          "protein_g": 3.2,
+          "carbs_g": 17.2,
+          "fat_g": 0.7,
+          "fiber_g": 1.4,
+          "sugar_g": 0.9
+        },
+        "items": [
+          {
+            "name": "Artisan sourdough or country-style bread slice",
+            "weight_g": 35,
+            "serving": "1 thick slice, approx 35g",
+            "kcal": 89,
+            "protein_g": 3.2,
+            "carbs_g": 17.2,
+            "fat_g": 0.7,
+            "confidence": 0.83
+          }
+        ],
+        "overall_confidence": 0.83
       }
     ]
   }
