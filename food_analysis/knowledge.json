@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-10T16:04:19.397Z",
-    "total_analyses": 96,
+    "last_updated": "2026-06-10T16:14:11.635Z",
+    "total_analyses": 97,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2855,6 +2855,18 @@
         "carbs_g": 0.5,
         "fat_g": 0,
         "confidence": 0.87,
+        "last_seen": "2026-06-10",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced beef steak (medium-rare to medium)",
+        "serving": "7 slices, approximately 140g cooked weight",
+        "weight_g": 140,
+        "kcal": 252,
+        "protein_g": 42,
+        "carbs_g": 0,
+        "fat_g": 8.4,
+        "confidence": 0.83,
         "last_seen": "2026-06-10",
         "seen_count": 1
       }
@@ -7812,6 +7824,33 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1781108051634,
+        "date": "2026-06-10",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 252,
+          "protein_g": 42,
+          "carbs_g": 0,
+          "fat_g": 8.4,
+          "fiber_g": 0,
+          "sugar_g": 0
+        },
+        "items": [
+          {
+            "name": "Sliced beef steak (medium-rare to medium)",
+            "weight_g": 140,
+            "serving": "7 slices, approximately 140g cooked weight",
+            "kcal": 252,
+            "protein_g": 42,
+            "carbs_g": 0,
+            "fat_g": 8.4,
+            "confidence": 0.83
+          }
+        ],
+        "overall_confidence": 0.83
       }
     ]
   }
