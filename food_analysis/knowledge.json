@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-10T16:22:58.894Z",
-    "total_analyses": 98,
+    "last_updated": "2026-06-10T18:28:06.703Z",
+    "total_analyses": 99,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2891,6 +2891,18 @@
         "carbs_g": 0,
         "fat_g": 5.6,
         "confidence": 0.86,
+        "last_seen": "2026-06-10",
+        "seen_count": 1
+      },
+      {
+        "name": "Elinas Greek-style yogurt (0.7% fat)",
+        "serving": "1 single-serve cup (approx 150g)",
+        "weight_g": 150,
+        "kcal": 75,
+        "protein_g": 10.5,
+        "carbs_g": 7.5,
+        "fat_g": 1.05,
+        "confidence": 0.92,
         "last_seen": "2026-06-10",
         "seen_count": 1
       }
@@ -7912,6 +7924,33 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1781116086703,
+        "date": "2026-06-10",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 75,
+          "protein_g": 10.5,
+          "carbs_g": 7.5,
+          "fat_g": 1.05,
+          "fiber_g": 0,
+          "sugar_g": 7.5
+        },
+        "items": [
+          {
+            "name": "Elinas Greek-style yogurt (0.7% fat)",
+            "weight_g": 150,
+            "serving": "1 single-serve cup (approx 150g)",
+            "kcal": 75,
+            "protein_g": 10.5,
+            "carbs_g": 7.5,
+            "fat_g": 1.05,
+            "confidence": 0.92
+          }
+        ],
+        "overall_confidence": 0.92
       }
     ]
   }
