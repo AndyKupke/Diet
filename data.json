@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-10",
-    "calories": 1789,
-    "protein_g": 156.3,
-    "carbs_g": 155.1,
-    "fat_g": 49.1,
+    "calories": 2137,
+    "protein_g": 181.3,
+    "carbs_g": 199,
+    "fat_g": 57.1,
     "water_ml": 0,
     "weight_kg": 74.2,
     "meals": [
@@ -43,6 +43,24 @@
         "fat_g": 8.4,
         "time": "2026-06-10T16:14:23.087Z",
         "_evtId": "evt_1781108063088_lfzrn"
+      },
+      {
+        "name": "Pretzel bread roll (Laugenbrötchen), Prosciutto crudo (Italian dry-cured ham)",
+        "kcal": 273,
+        "protein_g": 14.5,
+        "carbs_g": 36.4,
+        "fat_g": 7,
+        "time": "2026-06-10T16:23:12.039Z",
+        "_evtId": "evt_1781108592039_v7mge"
+      },
+      {
+        "name": "Elinas Greek-style yogurt (0.7% fat)",
+        "kcal": 75,
+        "protein_g": 10.5,
+        "carbs_g": 7.5,
+        "fat_g": 1.05,
+        "time": "2026-06-10T18:28:24.675Z",
+        "_evtId": "evt_1781116104675_g7vei"
       }
     ],
     "exercise": [],
@@ -1048,6 +1066,28 @@
       "carbs_g": 0,
       "fat_g": 8.4,
       "ts": "2026-06-10T16:14:23.088Z"
+    },
+    {
+      "id": "evt_1781108592039_v7mge",
+      "type": "meal",
+      "date": "2026-06-10",
+      "name": "Pretzel bread roll (Laugenbrötchen), Prosciutto crudo (Italian dry-cured ham)",
+      "kcal": 273,
+      "protein_g": 14.5,
+      "carbs_g": 36.4,
+      "fat_g": 7,
+      "ts": "2026-06-10T16:23:12.040Z"
+    },
+    {
+      "id": "evt_1781116104675_g7vei",
+      "type": "meal",
+      "date": "2026-06-10",
+      "name": "Elinas Greek-style yogurt (0.7% fat)",
+      "kcal": 75,
+      "protein_g": 10.5,
+      "carbs_g": 7.5,
+      "fat_g": 1.05,
+      "ts": "2026-06-10T18:28:24.676Z"
     }
   ]
 }
