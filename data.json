@@ -1,66 +1,21 @@
 {
   "today": {
-    "date": "2026-06-09",
-    "calories": 1984,
-    "protein_g": 99.3,
-    "carbs_g": 229.2,
-    "fat_g": 74.9,
+    "date": "2026-06-10",
+    "calories": 204,
+    "protein_g": 30,
+    "carbs_g": 0,
+    "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": 74,
+    "weight_kg": 74.2,
     "meals": [
       {
-        "name": "Chocolate pecan pie slice (homemade style)",
-        "kcal": 595,
-        "protein_g": 6.8,
-        "carbs_g": 62,
-        "fat_g": 36,
-        "time": "2026-06-09T08:08:08.402Z",
-        "_evtId": "evt_1780992488402_fk4u7"
-      },
-      {
-        "name": "Baguette (white wheat bread), Breaded and fried meat cutlet (likely pork or chicken schnitzel), Mayonnaise (spread), Lettuce (iceberg or romaine)",
-        "kcal": 568,
-        "protein_g": 26.1,
-        "carbs_g": 55.5,
-        "fat_g": 26.7,
-        "time": "2026-06-09T13:55:00.534Z",
-        "_evtId": "evt_1781013300534_fyhcr"
-      },
-      {
-        "name": "Grilled whole fish (likely sea bream or similar), Rye or whole grain bread slice, Carrot sticks (raw), Red bell pepper sticks (raw), Cucumber slices (raw)",
-        "kcal": 327,
-        "protein_g": 42.5,
-        "carbs_g": 26.7,
-        "fat_g": 5.3,
-        "time": "2026-06-09T17:22:10.274Z",
-        "_evtId": "evt_1781025730274_y73q0"
-      },
-      {
-        "name": "Artisan sourdough or country-style bread slice",
-        "kcal": 89,
-        "protein_g": 3.2,
-        "carbs_g": 17.2,
-        "fat_g": 0.7,
-        "time": "2026-06-09T17:28:36.241Z",
-        "_evtId": "evt_1781026116241_8c9ud"
-      },
-      {
-        "name": "Carrot sticks (raw), Cherry tomatoes (raw), Cucumber slice (raw), White wheat bread roll (Brötchen/Semmel)",
-        "kcal": 195,
-        "protein_g": 6.5,
-        "carbs_g": 40,
-        "fat_g": 1.4,
-        "time": "2026-06-09T17:34:19.586Z",
-        "_evtId": "evt_1781026459586_xy631"
-      },
-      {
-        "name": "Sliced ham (processed deli meat), White bread roll (Brötchen/Semmel), Cherry tomatoes (raw)",
-        "kcal": 210,
-        "protein_g": 14.2,
-        "carbs_g": 27.8,
-        "fat_g": 4.8,
-        "time": "2026-06-09T20:48:01.888Z",
-        "_evtId": "evt_1781038081888_wnc51"
+        "name": "Shake",
+        "kcal": 204,
+        "protein_g": 30,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "time": "2026-06-10T10:36:02.348Z",
+        "_evtId": "evt_1781087762348_ia8to"
       }
     ],
     "exercise": [],
@@ -147,6 +102,15 @@
       "fat_g": 80.4,
       "water_ml": 0,
       "weight_kg": 73.1
+    },
+    {
+      "date": "2026-06-09",
+      "calories": 1984,
+      "protein_g": 99.3,
+      "carbs_g": 229.2,
+      "fat_g": 74.9,
+      "water_ml": 0,
+      "weight_kg": 74
     }
   ],
   "events": [
@@ -1006,6 +970,24 @@
       "carbs_g": 27.8,
       "fat_g": 4.8,
       "ts": "2026-06-09T20:48:01.889Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-10",
+      "weight_kg": 74.2,
+      "id": "evt_1781067081738_bsffi",
+      "ts": "2026-06-10T04:51:21.738Z"
+    },
+    {
+      "id": "evt_1781087762348_ia8to",
+      "type": "meal",
+      "date": "2026-06-10",
+      "name": "Shake",
+      "kcal": 204,
+      "protein_g": 30,
+      "carbs_g": 0,
+      "fat_g": 0,
+      "ts": "2026-06-10T10:36:02.348Z"
     }
   ]
 }
