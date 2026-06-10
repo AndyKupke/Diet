@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-10T16:14:11.635Z",
-    "total_analyses": 97,
+    "last_updated": "2026-06-10T16:22:58.894Z",
+    "total_analyses": 98,
     "total_corrections": 3
   },
   "calibrations": {
@@ -2867,6 +2867,30 @@
         "carbs_g": 0,
         "fat_g": 8.4,
         "confidence": 0.83,
+        "last_seen": "2026-06-10",
+        "seen_count": 1
+      },
+      {
+        "name": "Pretzel bread roll (Laugenbrötchen)",
+        "serving": "1 roll, approximately 70g",
+        "weight_g": 70,
+        "kcal": 189,
+        "protein_g": 6.3,
+        "carbs_g": 36.4,
+        "fat_g": 1.4,
+        "confidence": 0.83,
+        "last_seen": "2026-06-10",
+        "seen_count": 1
+      },
+      {
+        "name": "Prosciutto crudo (Italian dry-cured ham)",
+        "serving": "3 thin slices, approximately 35g total",
+        "weight_g": 35,
+        "kcal": 84,
+        "protein_g": 8.2,
+        "carbs_g": 0,
+        "fat_g": 5.6,
+        "confidence": 0.86,
         "last_seen": "2026-06-10",
         "seen_count": 1
       }
@@ -7851,6 +7875,43 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1781108578890,
+        "date": "2026-06-10",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 273,
+          "protein_g": 14.5,
+          "carbs_g": 36.4,
+          "fat_g": 7,
+          "fiber_g": 1.8,
+          "sugar_g": 1.2
+        },
+        "items": [
+          {
+            "name": "Pretzel bread roll (Laugenbrötchen)",
+            "weight_g": 70,
+            "serving": "1 roll, approximately 70g",
+            "kcal": 189,
+            "protein_g": 6.3,
+            "carbs_g": 36.4,
+            "fat_g": 1.4,
+            "confidence": 0.83
+          },
+          {
+            "name": "Prosciutto crudo (Italian dry-cured ham)",
+            "weight_g": 35,
+            "serving": "3 thin slices, approximately 35g total",
+            "kcal": 84,
+            "protein_g": 8.2,
+            "carbs_g": 0,
+            "fat_g": 5.6,
+            "confidence": 0.86
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
