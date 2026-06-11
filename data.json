@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-11",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 736,
+    "protein_g": 48.1,
+    "carbs_g": 63,
+    "fat_g": 31,
     "water_ml": 0,
     "weight_kg": 73.5,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Fettuccine pasta (cooked), Creamy white sauce (likely Alfredo-style with cream, butter, cheese), Chicken breast (grilled, sliced), Squid/calamari (cooked), Red bell pepper (sliced), Onion (sliced, appears lightly cooked), Fresh basil (garnish), Fresh parsley (garnish), Lemon wedge (garnish), Butter/oil in sauce preparation",
+        "kcal": 736,
+        "protein_g": 48.1,
+        "carbs_g": 63,
+        "fat_g": 31,
+        "time": "2026-06-11T13:21:24.822Z",
+        "_evtId": "evt_1781184084822_npipe"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -1049,6 +1059,17 @@
       "weight_kg": 73.5,
       "id": "evt_1781153530968_kqpyq",
       "ts": "2026-06-11T04:52:10.968Z"
+    },
+    {
+      "id": "evt_1781184084822_npipe",
+      "type": "meal",
+      "date": "2026-06-11",
+      "name": "Fettuccine pasta (cooked), Creamy white sauce (likely Alfredo-style with cream, butter, cheese), Chicken breast (grilled, sliced), Squid/calamari (cooked), Red bell pepper (sliced), Onion (sliced, appears lightly cooked), Fresh basil (garnish), Fresh parsley (garnish), Lemon wedge (garnish), Butter/oil in sauce preparation",
+      "kcal": 736,
+      "protein_g": 48.1,
+      "carbs_g": 63,
+      "fat_g": 31,
+      "ts": "2026-06-11T13:21:24.824Z"
     }
   ]
 }
