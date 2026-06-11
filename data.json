@@ -1,68 +1,13 @@
 {
   "today": {
-    "date": "2026-06-10",
-    "calories": 2137,
-    "protein_g": 181.3,
-    "carbs_g": 199,
-    "fat_g": 57.1,
+    "date": "2026-06-11",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": 74.2,
-    "meals": [
-      {
-        "name": "Shake",
-        "kcal": 204,
-        "protein_g": 30,
-        "carbs_g": 0,
-        "fat_g": 0,
-        "time": "2026-06-10T10:36:02.348Z",
-        "_evtId": "evt_1781087762348_ia8to"
-      },
-      {
-        "name": "Stuffed bell pepper (meat filling), Boiled potatoes (peeled), Yellow rice (likely turmeric or saffron-flavored), Tomato-based sauce/gravy",
-        "kcal": 648,
-        "protein_g": 27.5,
-        "carbs_g": 101.5,
-        "fat_g": 14.2,
-        "time": "2026-06-10T11:29:23.896Z",
-        "_evtId": "evt_1781090963896_wt8dr"
-      },
-      {
-        "name": "Sliced roast beef (lean, cooked), Processed deli meat (likely ham or turkey breast), Artisan/whole grain bread, Hard cheese (likely Gouda or Emmental), Cherry tomatoes, Cucumber slice, Carrot stick",
-        "kcal": 685,
-        "protein_g": 56.8,
-        "carbs_g": 53.6,
-        "fat_g": 26.5,
-        "time": "2026-06-10T16:04:38.696Z",
-        "_evtId": "evt_1781107478697_nmpwx"
-      },
-      {
-        "name": "Sliced beef steak (medium-rare to medium)",
-        "kcal": 252,
-        "protein_g": 42,
-        "carbs_g": 0,
-        "fat_g": 8.4,
-        "time": "2026-06-10T16:14:23.087Z",
-        "_evtId": "evt_1781108063088_lfzrn"
-      },
-      {
-        "name": "Pretzel bread roll (Laugenbrötchen), Prosciutto crudo (Italian dry-cured ham)",
-        "kcal": 273,
-        "protein_g": 14.5,
-        "carbs_g": 36.4,
-        "fat_g": 7,
-        "time": "2026-06-10T16:23:12.039Z",
-        "_evtId": "evt_1781108592039_v7mge"
-      },
-      {
-        "name": "Elinas Greek-style yogurt (0.7% fat)",
-        "kcal": 75,
-        "protein_g": 10.5,
-        "carbs_g": 7.5,
-        "fat_g": 1.05,
-        "time": "2026-06-10T18:28:24.675Z",
-        "_evtId": "evt_1781116104675_g7vei"
-      }
-    ],
+    "weight_kg": 73.5,
+    "meals": [],
     "exercise": [],
     "notes": ""
   },
@@ -156,6 +101,15 @@
       "fat_g": 74.9,
       "water_ml": 0,
       "weight_kg": 74
+    },
+    {
+      "date": "2026-06-10",
+      "calories": 2137,
+      "protein_g": 181.3,
+      "carbs_g": 199,
+      "fat_g": 57.1,
+      "water_ml": 0,
+      "weight_kg": 74.2
     }
   ],
   "events": [
@@ -1088,6 +1042,13 @@
       "carbs_g": 7.5,
       "fat_g": 1.05,
       "ts": "2026-06-10T18:28:24.676Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-11",
+      "weight_kg": 73.5,
+      "id": "evt_1781153530968_kqpyq",
+      "ts": "2026-06-11T04:52:10.968Z"
     }
   ]
 }
