@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-10T18:28:06.703Z",
-    "total_analyses": 99,
+    "last_updated": "2026-06-11T13:21:14.483Z",
+    "total_analyses": 100,
     "total_corrections": 3
   },
   "calibrations": {
@@ -472,15 +472,15 @@
       },
       {
         "name": "Fresh parsley (garnish)",
-        "serving": "approx 2g chopped",
+        "serving": "sprinkled, approximately 2g",
         "weight_g": 2,
         "kcal": 1,
         "protein_g": 0.1,
         "carbs_g": 0.1,
         "fat_g": 0,
-        "confidence": 0.9,
-        "last_seen": "2026-06-05",
-        "seen_count": 4
+        "confidence": 0.88,
+        "last_seen": "2026-06-11",
+        "seen_count": 5
       },
       {
         "name": "Lemon wedge",
@@ -2904,6 +2904,114 @@
         "fat_g": 1.05,
         "confidence": 0.92,
         "last_seen": "2026-06-10",
+        "seen_count": 1
+      },
+      {
+        "name": "Fettuccine pasta (cooked)",
+        "serving": "approximately 200g cooked weight",
+        "weight_g": 200,
+        "kcal": 262,
+        "protein_g": 8.8,
+        "carbs_g": 51.2,
+        "fat_g": 1.6,
+        "confidence": 0.82,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Creamy white sauce (likely Alfredo-style with cream, butter, cheese)",
+        "serving": "approximately 80ml heavy coating",
+        "weight_g": 80,
+        "kcal": 264,
+        "protein_g": 3.2,
+        "carbs_g": 4.8,
+        "fat_g": 25.6,
+        "confidence": 0.76,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Chicken breast (grilled, sliced)",
+        "serving": "approximately 80g cooked weight, 4-5 slices",
+        "weight_g": 80,
+        "kcal": 132,
+        "protein_g": 24.8,
+        "carbs_g": 0,
+        "fat_g": 2.9,
+        "confidence": 0.84,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Squid/calamari (cooked)",
+        "serving": "approximately 60g cooked rings and tentacles",
+        "weight_g": 60,
+        "kcal": 56,
+        "protein_g": 11.5,
+        "carbs_g": 1.9,
+        "fat_g": 0.8,
+        "confidence": 0.79,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Red bell pepper (sliced)",
+        "serving": "approximately 30g raw weight, 3-4 strips",
+        "weight_g": 30,
+        "kcal": 9,
+        "protein_g": 0.3,
+        "carbs_g": 1.8,
+        "fat_g": 0.1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Onion (sliced, appears lightly cooked)",
+        "serving": "approximately 20g",
+        "weight_g": 20,
+        "kcal": 8,
+        "protein_g": 0.2,
+        "carbs_g": 1.9,
+        "fat_g": 0,
+        "confidence": 0.81,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh basil (garnish)",
+        "serving": "1-2 small leaves",
+        "weight_g": 1,
+        "kcal": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Lemon wedge (garnish)",
+        "serving": "1 wedge, approximately 15g",
+        "weight_g": 15,
+        "kcal": 4,
+        "protein_g": 0.2,
+        "carbs_g": 1.3,
+        "fat_g": 0,
+        "confidence": 0.92,
+        "last_seen": "2026-06-11",
+        "seen_count": 1
+      },
+      {
+        "name": "Butter/oil in sauce preparation",
+        "serving": "approximately 10g (included in cream sauce calculation)",
+        "weight_g": 0,
+        "kcal": 0,
+        "protein_g": 0,
+        "carbs_g": 0,
+        "fat_g": 0,
+        "confidence": 0.7,
+        "last_seen": "2026-06-11",
         "seen_count": 1
       }
     ]
@@ -7951,6 +8059,123 @@
           }
         ],
         "overall_confidence": 0.92
+      },
+      {
+        "id": 1781184074479,
+        "date": "2026-06-11",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 736,
+          "protein_g": 48.1,
+          "carbs_g": 63,
+          "fat_g": 31,
+          "fiber_g": 3.8,
+          "sugar_g": 7.9
+        },
+        "items": [
+          {
+            "name": "Fettuccine pasta (cooked)",
+            "weight_g": 200,
+            "serving": "approximately 200g cooked weight",
+            "kcal": 262,
+            "protein_g": 8.8,
+            "carbs_g": 51.2,
+            "fat_g": 1.6,
+            "confidence": 0.82
+          },
+          {
+            "name": "Creamy white sauce (likely Alfredo-style with cream, butter, cheese)",
+            "weight_g": 80,
+            "serving": "approximately 80ml heavy coating",
+            "kcal": 264,
+            "protein_g": 3.2,
+            "carbs_g": 4.8,
+            "fat_g": 25.6,
+            "confidence": 0.76
+          },
+          {
+            "name": "Chicken breast (grilled, sliced)",
+            "weight_g": 80,
+            "serving": "approximately 80g cooked weight, 4-5 slices",
+            "kcal": 132,
+            "protein_g": 24.8,
+            "carbs_g": 0,
+            "fat_g": 2.9,
+            "confidence": 0.84
+          },
+          {
+            "name": "Squid/calamari (cooked)",
+            "weight_g": 60,
+            "serving": "approximately 60g cooked rings and tentacles",
+            "kcal": 56,
+            "protein_g": 11.5,
+            "carbs_g": 1.9,
+            "fat_g": 0.8,
+            "confidence": 0.79
+          },
+          {
+            "name": "Red bell pepper (sliced)",
+            "weight_g": 30,
+            "serving": "approximately 30g raw weight, 3-4 strips",
+            "kcal": 9,
+            "protein_g": 0.3,
+            "carbs_g": 1.8,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Onion (sliced, appears lightly cooked)",
+            "weight_g": 20,
+            "serving": "approximately 20g",
+            "kcal": 8,
+            "protein_g": 0.2,
+            "carbs_g": 1.9,
+            "fat_g": 0,
+            "confidence": 0.81
+          },
+          {
+            "name": "Fresh basil (garnish)",
+            "weight_g": 1,
+            "serving": "1-2 small leaves",
+            "kcal": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh parsley (garnish)",
+            "weight_g": 2,
+            "serving": "sprinkled, approximately 2g",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.88
+          },
+          {
+            "name": "Lemon wedge (garnish)",
+            "weight_g": 15,
+            "serving": "1 wedge, approximately 15g",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 1.3,
+            "fat_g": 0,
+            "confidence": 0.92
+          },
+          {
+            "name": "Butter/oil in sauce preparation",
+            "weight_g": 0,
+            "serving": "approximately 10g (included in cream sauce calculation)",
+            "kcal": 0,
+            "protein_g": 0,
+            "carbs_g": 0,
+            "fat_g": 0,
+            "confidence": 0.7
+          }
+        ],
+        "overall_confidence": 0.81
       }
     ]
   }
