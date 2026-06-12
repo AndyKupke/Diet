@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-12T05:08:30.542Z",
-    "total_analyses": 102,
+    "last_updated": "2026-06-12T05:52:40.693Z",
+    "total_analyses": 103,
     "total_corrections": 3
   },
   "calibrations": {
@@ -604,15 +604,15 @@
       },
       {
         "name": "Fresh tomato slices",
-        "serving": "3 medium slices (approx 60g total)",
-        "weight_g": 60,
-        "kcal": 11,
-        "protein_g": 0.5,
-        "carbs_g": 2.3,
+        "serving": "2 slices (approx 30g)",
+        "weight_g": 30,
+        "kcal": 8,
+        "protein_g": 0.4,
+        "carbs_g": 1.7,
         "fat_g": 0.1,
-        "confidence": 0.9,
-        "last_seen": "2026-06-08",
-        "seen_count": 4
+        "confidence": 0.89,
+        "last_seen": "2026-06-12",
+        "seen_count": 5
       },
       {
         "name": "Red onion rings",
@@ -3109,6 +3109,66 @@
         "confidence": 0.78,
         "last_seen": "2026-06-12",
         "seen_count": 1
+      },
+      {
+        "name": "White wheat bread (ciabatta-style roll)",
+        "serving": "1 large roll, split (approx 110g)",
+        "weight_g": 110,
+        "kcal": 290,
+        "protein_g": 9.2,
+        "carbs_g": 56.1,
+        "fat_g": 2.4,
+        "confidence": 0.86,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Cooked pork cutlet (Schnitzel-style, breaded)",
+        "serving": "2 slices/cutlets (approx 60g cooked)",
+        "weight_g": 60,
+        "kcal": 156,
+        "protein_g": 12.6,
+        "carbs_g": 4.2,
+        "fat_g": 9.6,
+        "confidence": 0.82,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Iceberg/loose-leaf lettuce",
+        "serving": "generous handful (approx 30g)",
+        "weight_g": 30,
+        "kcal": 4,
+        "protein_g": 0.3,
+        "carbs_g": 0.8,
+        "fat_g": 0.1,
+        "confidence": 0.88,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh cucumber slices",
+        "serving": "2 slices (approx 20g)",
+        "weight_g": 20,
+        "kcal": 3,
+        "protein_g": 0.1,
+        "carbs_g": 0.7,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Coffee with milk",
+        "serving": "1 small cup (approx 120ml total: 100ml coffee + 20ml whole milk)",
+        "weight_g": 120,
+        "kcal": 13,
+        "protein_g": 0.7,
+        "carbs_g": 1,
+        "fat_g": 0.7,
+        "confidence": 0.83,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
       }
     ]
   },
@@ -3163,33 +3223,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780309358262,
-        "date": "2026-06-01",
-        "meal_type": "lunch",
-        "user_note": "",
-        "totals": {
-          "kcal": 1,
-          "protein_g": 0,
-          "carbs_g": 0,
-          "fat_g": 0,
-          "fiber_g": 0,
-          "sugar_g": 0
-        },
-        "items": [
-          {
-            "name": "Fritz-Kola Zero (sugar-free cola)",
-            "weight_g": 330,
-            "serving": "1 bottle (330ml)",
-            "kcal": 1,
-            "protein_g": 0,
-            "carbs_g": 0,
-            "fat_g": 0,
-            "confidence": 0.98
-          }
-        ],
-        "overall_confidence": 0.98
-      },
       {
         "id": 1780309425518,
         "date": "2026-06-01",
@@ -8309,6 +8342,83 @@
             "carbs_g": 11,
             "fat_g": 0.1,
             "confidence": 0.78
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1781243560692,
+        "date": "2026-06-12",
+        "meal_type": "breakfast",
+        "user_note": "",
+        "totals": {
+          "kcal": 471,
+          "protein_g": 23.2,
+          "carbs_g": 63.9,
+          "fat_g": 12.9,
+          "fiber_g": 3.8,
+          "sugar_g": 5.7
+        },
+        "items": [
+          {
+            "name": "White wheat bread (ciabatta-style roll)",
+            "weight_g": 110,
+            "serving": "1 large roll, split (approx 110g)",
+            "kcal": 290,
+            "protein_g": 9.2,
+            "carbs_g": 56.1,
+            "fat_g": 2.4,
+            "confidence": 0.86
+          },
+          {
+            "name": "Cooked pork cutlet (Schnitzel-style, breaded)",
+            "weight_g": 60,
+            "serving": "2 slices/cutlets (approx 60g cooked)",
+            "kcal": 156,
+            "protein_g": 12.6,
+            "carbs_g": 4.2,
+            "fat_g": 9.6,
+            "confidence": 0.82
+          },
+          {
+            "name": "Iceberg/loose-leaf lettuce",
+            "weight_g": 30,
+            "serving": "generous handful (approx 30g)",
+            "kcal": 4,
+            "protein_g": 0.3,
+            "carbs_g": 0.8,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Fresh cucumber slices",
+            "weight_g": 20,
+            "serving": "2 slices (approx 20g)",
+            "kcal": 3,
+            "protein_g": 0.1,
+            "carbs_g": 0.7,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 30,
+            "serving": "2 slices (approx 30g)",
+            "kcal": 5,
+            "protein_g": 0.3,
+            "carbs_g": 1.1,
+            "fat_g": 0.1,
+            "confidence": 0.89
+          },
+          {
+            "name": "Coffee with milk",
+            "weight_g": 120,
+            "serving": "1 small cup (approx 120ml total: 100ml coffee + 20ml whole milk)",
+            "kcal": 13,
+            "protein_g": 0.7,
+            "carbs_g": 1,
+            "fat_g": 0.7,
+            "confidence": 0.83
           }
         ],
         "overall_confidence": 0.85
