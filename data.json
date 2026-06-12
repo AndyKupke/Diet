@@ -1076,6 +1076,17 @@
       "weight_kg": 73.7,
       "id": "evt_1781239997442_na03w",
       "ts": "2026-06-12T04:53:17.442Z"
+    },
+    {
+      "id": "evt_1781240707684_wl641",
+      "type": "meal",
+      "date": "2026-06-11",
+      "name": "Whole grain/rye bread, Sliced cheese (appears to be Gouda or similar semi-hard cheese), Roast beef (cold cut), Prosciutto/Parma ham (cold cut), Yellow bell pepper, Carrot stick",
+      "kcal": 487,
+      "protein_g": 32,
+      "carbs_g": 44.8,
+      "fat_g": 19.9,
+      "ts": "2026-06-11T12:00:00Z"
     }
   ]
 }
