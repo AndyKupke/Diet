@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-11T13:21:14.483Z",
-    "total_analyses": 100,
+    "last_updated": "2026-06-12T04:54:17.511Z",
+    "total_analyses": 101,
     "total_corrections": 3
   },
   "calibrations": {
@@ -1576,15 +1576,15 @@
       },
       {
         "name": "Carrot stick",
-        "serving": "1 medium stick, approx 20g",
-        "weight_g": 20,
+        "serving": "1 large stick (approx 30g)",
+        "weight_g": 30,
         "kcal": 12,
         "protein_g": 0.3,
-        "carbs_g": 2.6,
+        "carbs_g": 2.7,
         "fat_g": 0.1,
-        "confidence": 0.85,
-        "last_seen": "2026-06-10",
-        "seen_count": 3
+        "confidence": 0.86,
+        "last_seen": "2026-06-12",
+        "seen_count": 4
       },
       {
         "name": "White baguette/sub roll",
@@ -3013,6 +3013,66 @@
         "confidence": 0.7,
         "last_seen": "2026-06-11",
         "seen_count": 1
+      },
+      {
+        "name": "Whole grain/rye bread",
+        "serving": "3 slices (approx 90g total)",
+        "weight_g": 90,
+        "kcal": 207,
+        "protein_g": 6.8,
+        "carbs_g": 38.7,
+        "fat_g": 2.7,
+        "confidence": 0.87,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Sliced cheese (appears to be Gouda or similar semi-hard cheese)",
+        "serving": "2 slices (approx 40g total)",
+        "weight_g": 40,
+        "kcal": 144,
+        "protein_g": 10,
+        "carbs_g": 0.5,
+        "fat_g": 11.2,
+        "confidence": 0.83,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Roast beef (cold cut)",
+        "serving": "2-3 slices (approx 35g)",
+        "weight_g": 35,
+        "kcal": 52,
+        "protein_g": 8.1,
+        "carbs_g": 0.4,
+        "fat_g": 2,
+        "confidence": 0.81,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Prosciutto/Parma ham (cold cut)",
+        "serving": "2-3 slices (approx 25g)",
+        "weight_g": 25,
+        "kcal": 61,
+        "protein_g": 6.4,
+        "carbs_g": 0,
+        "fat_g": 3.8,
+        "confidence": 0.84,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Yellow bell pepper",
+        "serving": "3-4 strips (approx 40g)",
+        "weight_g": 40,
+        "kcal": 11,
+        "protein_g": 0.4,
+        "carbs_g": 2.4,
+        "fat_g": 0.1,
+        "confidence": 0.88,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
       }
     ]
   },
@@ -3067,33 +3127,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780304349436,
-        "date": "2026-06-01",
-        "meal_type": "brunch",
-        "user_note": "two and a half strawberries please make sure that you understand correctly the size of the strawberries",
-        "totals": {
-          "kcal": 14,
-          "protein_g": 0.3,
-          "carbs_g": 3.5,
-          "fat_g": 0.1,
-          "fiber_g": 0.9,
-          "sugar_g": 2.2
-        },
-        "items": [
-          {
-            "name": "Fresh strawberries",
-            "weight_g": 45,
-            "serving": "2.5 medium strawberries (approx 45g total)",
-            "kcal": 14,
-            "protein_g": 0.3,
-            "carbs_g": 3.5,
-            "fat_g": 0.1,
-            "confidence": 0.75
-          }
-        ],
-        "overall_confidence": 0.75
-      },
       {
         "id": 1780309195799,
         "date": "2026-06-01",
@@ -8176,6 +8209,83 @@
           }
         ],
         "overall_confidence": 0.81
+      },
+      {
+        "id": 1781240057510,
+        "date": "2026-06-12",
+        "meal_type": "breakfast",
+        "user_note": "",
+        "totals": {
+          "kcal": 487,
+          "protein_g": 32,
+          "carbs_g": 44.8,
+          "fat_g": 19.9,
+          "fiber_g": 7,
+          "sugar_g": 6.3
+        },
+        "items": [
+          {
+            "name": "Whole grain/rye bread",
+            "weight_g": 90,
+            "serving": "3 slices (approx 90g total)",
+            "kcal": 207,
+            "protein_g": 6.8,
+            "carbs_g": 38.7,
+            "fat_g": 2.7,
+            "confidence": 0.87
+          },
+          {
+            "name": "Sliced cheese (appears to be Gouda or similar semi-hard cheese)",
+            "weight_g": 40,
+            "serving": "2 slices (approx 40g total)",
+            "kcal": 144,
+            "protein_g": 10,
+            "carbs_g": 0.5,
+            "fat_g": 11.2,
+            "confidence": 0.83
+          },
+          {
+            "name": "Roast beef (cold cut)",
+            "weight_g": 35,
+            "serving": "2-3 slices (approx 35g)",
+            "kcal": 52,
+            "protein_g": 8.1,
+            "carbs_g": 0.4,
+            "fat_g": 2,
+            "confidence": 0.81
+          },
+          {
+            "name": "Prosciutto/Parma ham (cold cut)",
+            "weight_g": 25,
+            "serving": "2-3 slices (approx 25g)",
+            "kcal": 61,
+            "protein_g": 6.4,
+            "carbs_g": 0,
+            "fat_g": 3.8,
+            "confidence": 0.84
+          },
+          {
+            "name": "Yellow bell pepper",
+            "weight_g": 40,
+            "serving": "3-4 strips (approx 40g)",
+            "kcal": 11,
+            "protein_g": 0.4,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Carrot stick",
+            "weight_g": 30,
+            "serving": "1 large stick (approx 30g)",
+            "kcal": 12,
+            "protein_g": 0.3,
+            "carbs_g": 2.8,
+            "fat_g": 0.1,
+            "confidence": 0.86
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
