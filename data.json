@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-12",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 471,
+    "protein_g": 23.2,
+    "carbs_g": 63.9,
+    "fat_g": 12.9,
     "water_ml": 0,
     "weight_kg": 73.7,
-    "meals": [],
+    "meals": [
+      {
+        "name": "White wheat bread (ciabatta-style roll), Cooked pork cutlet (Schnitzel-style, breaded), Iceberg/loose-leaf lettuce, Fresh cucumber slices, Fresh tomato slices, Coffee with milk",
+        "kcal": 471,
+        "protein_g": 23.2,
+        "carbs_g": 63.9,
+        "fat_g": 12.9,
+        "time": "2026-06-12T05:53:16.083Z",
+        "_evtId": "evt_1781243596083_qtlvt"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -1098,6 +1108,17 @@
       "carbs_g": 33,
       "fat_g": 3.9,
       "ts": "2026-06-11T12:00:00Z"
+    },
+    {
+      "id": "evt_1781243596083_qtlvt",
+      "type": "meal",
+      "date": "2026-06-12",
+      "name": "White wheat bread (ciabatta-style roll), Cooked pork cutlet (Schnitzel-style, breaded), Iceberg/loose-leaf lettuce, Fresh cucumber slices, Fresh tomato slices, Coffee with milk",
+      "kcal": 471,
+      "protein_g": 23.2,
+      "carbs_g": 63.9,
+      "fat_g": 12.9,
+      "ts": "2026-06-12T05:53:16.083Z"
     }
   ]
 }
