@@ -24,37 +24,37 @@
   "history": [
     {
       "date": "2026-05-31",
-      "calories": 43,
-      "protein_g": 2,
-      "carbs_g": 9.1,
-      "fat_g": 0.4,
-      "water_ml": 910,
-      "weight_kg": 75.3
+      "calories": 427,
+      "protein_g": 20.1,
+      "carbs_g": 43.9,
+      "fat_g": 19.5,
+      "water_ml": 0,
+      "weight_kg": 71
     },
     {
       "date": "2026-06-01",
-      "calories": 790,
-      "protein_g": 48.3,
-      "carbs_g": 78.3,
-      "fat_g": 33.1,
+      "calories": 1490,
+      "protein_g": 104,
+      "carbs_g": 166.7,
+      "fat_g": 47.4,
       "water_ml": 500,
       "weight_kg": 76
     },
     {
       "date": "2026-06-02",
-      "calories": 1423,
-      "protein_g": 53,
-      "carbs_g": 89.2,
-      "fat_g": 93.6,
+      "calories": 1834,
+      "protein_g": 79.9,
+      "carbs_g": 142.6,
+      "fat_g": 104.3,
       "water_ml": 0,
       "weight_kg": 75.5
     },
     {
       "date": "2026-06-03",
-      "calories": 1625,
-      "protein_g": 115.9,
-      "carbs_g": 121.9,
-      "fat_g": 73.4,
+      "calories": 2012,
+      "protein_g": 146.1,
+      "carbs_g": 164.2,
+      "fat_g": 83.3,
       "water_ml": 0,
       "weight_kg": 74.7
     },
