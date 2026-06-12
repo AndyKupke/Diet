@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-12T04:54:17.511Z",
-    "total_analyses": 101,
+    "last_updated": "2026-06-12T05:08:30.542Z",
+    "total_analyses": 102,
     "total_corrections": 3
   },
   "calibrations": {
@@ -3073,6 +3073,42 @@
         "confidence": 0.88,
         "last_seen": "2026-06-12",
         "seen_count": 1
+      },
+      {
+        "name": "Exquisa Skyr natural (plain)",
+        "serving": "1 container (approx 150g)",
+        "weight_g": 150,
+        "kcal": 90,
+        "protein_g": 15,
+        "carbs_g": 6,
+        "fat_g": 0.3,
+        "confidence": 0.95,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Granola/muesli cereal",
+        "serving": "approx 25g (2 tablespoons)",
+        "weight_g": 25,
+        "kcal": 110,
+        "protein_g": 2.5,
+        "carbs_g": 16,
+        "fat_g": 3.5,
+        "confidence": 0.82,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Dried fruit (appears to be raisins or dried blueberries)",
+        "serving": "approx 15g (1 tablespoon)",
+        "weight_g": 15,
+        "kcal": 45,
+        "protein_g": 0.5,
+        "carbs_g": 11,
+        "fat_g": 0.1,
+        "confidence": 0.78,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
       }
     ]
   },
@@ -3127,63 +3163,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780309195799,
-        "date": "2026-06-01",
-        "meal_type": "lunch",
-        "user_note": "There is pasta below the salad",
-        "totals": {
-          "kcal": 578,
-          "protein_g": 22.2,
-          "carbs_g": 64,
-          "fat_g": 26.6,
-          "fiber_g": 6,
-          "sugar_g": 6.8
-        },
-        "items": [
-          {
-            "name": "Rigatoni pasta (cooked)",
-            "weight_g": 180,
-            "serving": "approximately 180g cooked pasta",
-            "kcal": 252,
-            "protein_g": 9,
-            "carbs_g": 52,
-            "fat_g": 1.4,
-            "confidence": 0.8
-          },
-          {
-            "name": "Bolognese/meat ragù sauce",
-            "weight_g": 150,
-            "serving": "approximately 150g sauce with ground meat",
-            "kcal": 188,
-            "protein_g": 12,
-            "carbs_g": 10,
-            "fat_g": 11,
-            "confidence": 0.75
-          },
-          {
-            "name": "Mixed leaf salad (undressed)",
-            "weight_g": 60,
-            "serving": "approximately 60g mixed leaves",
-            "kcal": 14,
-            "protein_g": 1.2,
-            "carbs_g": 2,
-            "fat_g": 0.2,
-            "confidence": 0.85
-          },
-          {
-            "name": "Olive oil (in sauce/cooking)",
-            "weight_g": 14,
-            "serving": "approximately 1 tablespoon",
-            "kcal": 124,
-            "protein_g": 0,
-            "carbs_g": 0,
-            "fat_g": 14,
-            "confidence": 0.6
-          }
-        ],
-        "overall_confidence": 0.78
-      },
       {
         "id": 1780309358262,
         "date": "2026-06-01",
@@ -8283,6 +8262,53 @@
             "carbs_g": 2.8,
             "fat_g": 0.1,
             "confidence": 0.86
+          }
+        ],
+        "overall_confidence": 0.85
+      },
+      {
+        "id": 1781240910541,
+        "date": "2026-06-12",
+        "meal_type": "breakfast",
+        "user_note": "Skyr with berries and cereals",
+        "totals": {
+          "kcal": 245,
+          "protein_g": 18,
+          "carbs_g": 33,
+          "fat_g": 3.9,
+          "fiber_g": 2.5,
+          "sugar_g": 20
+        },
+        "items": [
+          {
+            "name": "Exquisa Skyr natural (plain)",
+            "weight_g": 150,
+            "serving": "1 container (approx 150g)",
+            "kcal": 90,
+            "protein_g": 15,
+            "carbs_g": 6,
+            "fat_g": 0.3,
+            "confidence": 0.95
+          },
+          {
+            "name": "Granola/muesli cereal",
+            "weight_g": 25,
+            "serving": "approx 25g (2 tablespoons)",
+            "kcal": 110,
+            "protein_g": 2.5,
+            "carbs_g": 16,
+            "fat_g": 3.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Dried fruit (appears to be raisins or dried blueberries)",
+            "weight_g": 15,
+            "serving": "approx 15g (1 tablespoon)",
+            "kcal": 45,
+            "protein_g": 0.5,
+            "carbs_g": 11,
+            "fat_g": 0.1,
+            "confidence": 0.78
           }
         ],
         "overall_confidence": 0.85
