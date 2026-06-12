@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-12",
-    "calories": 651,
-    "protein_g": 27.2,
-    "carbs_g": 88.9,
-    "fat_g": 18.9,
+    "calories": 1508,
+    "protein_g": 91.2,
+    "carbs_g": 187,
+    "fat_g": 40,
     "water_ml": 0,
     "weight_kg": 73.7,
     "meals": [
@@ -25,6 +25,24 @@
         "fat_g": 6,
         "time": "2026-06-12T12:13:49.756Z",
         "_evtId": "evt_1781266429756_8aaso"
+      },
+      {
+        "name": "Basmati rice with herbs (cooked), Chicken breast in curry sauce, Mixed salad (lettuce, tomato, carrot, corn, red onion)",
+        "kcal": 570,
+        "protein_g": 44.3,
+        "carbs_g": 64,
+        "fat_g": 13.4,
+        "time": "2026-06-12T12:14:59.743Z",
+        "_evtId": "evt_1781266499743_txwgg"
+      },
+      {
+        "name": "Skyr (Icelandic-style yogurt, plain or low-sugar), Granola (oat-based, likely with honey/syrup and nuts), Fresh blueberries, Fresh raspberries",
+        "kcal": 287,
+        "protein_g": 19.7,
+        "carbs_g": 34.1,
+        "fat_g": 7.7,
+        "time": "2026-06-12T14:44:10.126Z",
+        "_evtId": "evt_1781275450126_k5i8m"
       }
     ],
     "exercise": [],
@@ -1146,6 +1164,28 @@
       "carbs_g": 25,
       "fat_g": 6,
       "ts": "2026-06-12T12:13:49.758Z"
+    },
+    {
+      "id": "evt_1781266499743_txwgg",
+      "type": "meal",
+      "date": "2026-06-12",
+      "name": "Basmati rice with herbs (cooked), Chicken breast in curry sauce, Mixed salad (lettuce, tomato, carrot, corn, red onion)",
+      "kcal": 570,
+      "protein_g": 44.3,
+      "carbs_g": 64,
+      "fat_g": 13.4,
+      "ts": "2026-06-12T12:14:59.744Z"
+    },
+    {
+      "id": "evt_1781275450126_k5i8m",
+      "type": "meal",
+      "date": "2026-06-12",
+      "name": "Skyr (Icelandic-style yogurt, plain or low-sugar), Granola (oat-based, likely with honey/syrup and nuts), Fresh blueberries, Fresh raspberries",
+      "kcal": 287,
+      "protein_g": 19.7,
+      "carbs_g": 34.1,
+      "fat_g": 7.7,
+      "ts": "2026-06-12T14:44:10.126Z"
     }
   ]
 }
