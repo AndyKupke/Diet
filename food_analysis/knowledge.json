@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-12T14:43:58.065Z",
-    "total_analyses": 107,
+    "last_updated": "2026-06-12T15:59:58.526Z",
+    "total_analyses": 108,
     "total_corrections": 3
   },
   "calibrations": {
@@ -160,15 +160,15 @@
       },
       {
         "name": "Cherry tomatoes",
-        "serving": "3 small tomatoes, approx 30g total",
+        "serving": "3 whole tomatoes (approx 10g each)",
         "weight_g": 30,
         "kcal": 6,
         "protein_g": 0.3,
-        "carbs_g": 1.3,
+        "carbs_g": 1.2,
         "fat_g": 0.1,
-        "confidence": 0.88,
-        "last_seen": "2026-06-10",
-        "seen_count": 7
+        "confidence": 0.9,
+        "last_seen": "2026-06-12",
+        "seen_count": 8
       },
       {
         "name": "Frankfurter/Vienna sausage",
@@ -652,15 +652,15 @@
       },
       {
         "name": "Cucumber slices",
-        "serving": "3 thick slices (approx 45g)",
-        "weight_g": 45,
+        "serving": "4 slices (approx 8g each)",
+        "weight_g": 32,
         "kcal": 5,
         "protein_g": 0.2,
         "carbs_g": 1.1,
         "fat_g": 0.1,
-        "confidence": 0.9,
-        "last_seen": "2026-06-08",
-        "seen_count": 3
+        "confidence": 0.88,
+        "last_seen": "2026-06-12",
+        "seen_count": 4
       },
       {
         "name": "Yoghurt dressing (full-fat)",
@@ -3253,6 +3253,18 @@
         "confidence": 0.8,
         "last_seen": "2026-06-12",
         "seen_count": 1
+      },
+      {
+        "name": "Pan-fried potatoes with onions",
+        "serving": "approx 200g cooked (potato ~170g, onion ~30g)",
+        "weight_g": 200,
+        "kcal": 252,
+        "protein_g": 3.4,
+        "carbs_g": 34,
+        "fat_g": 11,
+        "confidence": 0.82,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
       }
     ]
   },
@@ -3307,33 +3319,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780332563575,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 161,
-          "protein_g": 5.8,
-          "carbs_g": 26,
-          "fat_g": 3.4,
-          "fiber_g": 0.5,
-          "sugar_g": 6.5
-        },
-        "items": [
-          {
-            "name": "Tuna Onigiri (Reiszubereitung mit Thunfisch)",
-            "weight_g": 100,
-            "serving": "1 portion (100g as per packaging)",
-            "kcal": 161,
-            "protein_g": 5.8,
-            "carbs_g": 26,
-            "fat_g": 3.4,
-            "confidence": 0.98
-          }
-        ],
-        "overall_confidence": 0.98
-      },
       {
         "id": 1780332796041,
         "date": "2026-06-01",
@@ -8486,6 +8471,53 @@
           }
         ],
         "overall_confidence": 0.83
+      },
+      {
+        "id": 1781279998524,
+        "date": "2026-06-12",
+        "meal_type": "dinner",
+        "user_note": "",
+        "totals": {
+          "kcal": 262,
+          "protein_g": 3.9,
+          "carbs_g": 36.3,
+          "fat_g": 11.1,
+          "fiber_g": 4.4,
+          "sugar_g": 4.1
+        },
+        "items": [
+          {
+            "name": "Pan-fried potatoes with onions",
+            "weight_g": 200,
+            "serving": "approx 200g cooked (potato ~170g, onion ~30g)",
+            "kcal": 252,
+            "protein_g": 3.4,
+            "carbs_g": 34,
+            "fat_g": 11,
+            "confidence": 0.82
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 30,
+            "serving": "3 whole tomatoes (approx 10g each)",
+            "kcal": 5,
+            "protein_g": 0.3,
+            "carbs_g": 1.1,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Cucumber slices",
+            "weight_g": 32,
+            "serving": "4 slices (approx 8g each)",
+            "kcal": 5,
+            "protein_g": 0.2,
+            "carbs_g": 1.2,
+            "fat_g": 0,
+            "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.84
       }
     ]
   }
