@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-12T12:14:25.487Z",
-    "total_analyses": 106,
+    "last_updated": "2026-06-12T14:43:58.065Z",
+    "total_analyses": 107,
     "total_corrections": 3
   },
   "calibrations": {
@@ -148,15 +148,15 @@
       },
       {
         "name": "Fresh blueberries",
-        "serving": "approximately 25-30 blueberries, approx 35g",
-        "weight_g": 35,
-        "kcal": 17,
-        "protein_g": 0.3,
-        "carbs_g": 4.2,
+        "serving": "approx 12 berries (20g)",
+        "weight_g": 20,
+        "kcal": 14,
+        "protein_g": 0.2,
+        "carbs_g": 3.5,
         "fat_g": 0.1,
-        "confidence": 0.82,
-        "last_seen": "2026-06-08",
-        "seen_count": 6
+        "confidence": 0.85,
+        "last_seen": "2026-06-12",
+        "seen_count": 7
       },
       {
         "name": "Cherry tomatoes",
@@ -2584,15 +2584,15 @@
       },
       {
         "name": "Fresh raspberries",
-        "serving": "8-9 raspberries, approx 40g",
-        "weight_g": 40,
-        "kcal": 21,
-        "protein_g": 0.5,
-        "carbs_g": 4.8,
-        "fat_g": 0.3,
-        "confidence": 0.85,
-        "last_seen": "2026-06-08",
-        "seen_count": 1
+        "serving": "approx 3 berries (12g)",
+        "weight_g": 12,
+        "kcal": 14,
+        "protein_g": 0.3,
+        "carbs_g": 3.1,
+        "fat_g": 0.2,
+        "confidence": 0.87,
+        "last_seen": "2026-06-12",
+        "seen_count": 2
       },
       {
         "name": "Prosciutto (dry-cured ham)",
@@ -3229,6 +3229,30 @@
         "confidence": 0.87,
         "last_seen": "2026-06-12",
         "seen_count": 1
+      },
+      {
+        "name": "Skyr (Icelandic-style yogurt, plain or low-sugar)",
+        "serving": "approx 150g (base layer in bowl)",
+        "weight_g": 150,
+        "kcal": 90,
+        "protein_g": 15,
+        "carbs_g": 6,
+        "fat_g": 0.3,
+        "confidence": 0.82,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Granola (oat-based, likely with honey/syrup and nuts)",
+        "serving": "approx 40g (generous topping layer)",
+        "weight_g": 40,
+        "kcal": 180,
+        "protein_g": 4.4,
+        "carbs_g": 24,
+        "fat_g": 7.2,
+        "confidence": 0.8,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
       }
     ]
   },
@@ -3283,53 +3307,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780332503630,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 212,
-          "protein_g": 13.5,
-          "carbs_g": 22.7,
-          "fat_g": 7.6,
-          "fiber_g": 4.7,
-          "sugar_g": 3.3
-        },
-        "items": [
-          {
-            "name": "Whole grain seeded bread",
-            "weight_g": 55,
-            "serving": "1 slice (approx 55g)",
-            "kcal": 132,
-            "protein_g": 5.5,
-            "carbs_g": 20,
-            "fat_g": 3.3,
-            "confidence": 0.85
-          },
-          {
-            "name": "Prosciutto/dry-cured ham",
-            "weight_g": 30,
-            "serving": "2 thin slices (approx 30g)",
-            "kcal": 69,
-            "protein_g": 7.5,
-            "carbs_g": 0.3,
-            "fat_g": 4.2,
-            "confidence": 0.82
-          },
-          {
-            "name": "Cherry tomatoes",
-            "weight_g": 60,
-            "serving": "5 cherry tomatoes (approx 60g)",
-            "kcal": 11,
-            "protein_g": 0.5,
-            "carbs_g": 2.4,
-            "fat_g": 0.1,
-            "confidence": 0.9
-          }
-        ],
-        "overall_confidence": 0.85
-      },
       {
         "id": 1780332563575,
         "date": "2026-06-01",
@@ -8452,6 +8429,63 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1781275438064,
+        "date": "2026-06-12",
+        "meal_type": "snack",
+        "user_note": "Beneath is some skyr",
+        "totals": {
+          "kcal": 287,
+          "protein_g": 19.7,
+          "carbs_g": 34.1,
+          "fat_g": 7.7,
+          "fiber_g": 4.5,
+          "sugar_g": 16.5
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic-style yogurt, plain or low-sugar)",
+            "weight_g": 150,
+            "serving": "approx 150g (base layer in bowl)",
+            "kcal": 90,
+            "protein_g": 15,
+            "carbs_g": 6,
+            "fat_g": 0.3,
+            "confidence": 0.82
+          },
+          {
+            "name": "Granola (oat-based, likely with honey/syrup and nuts)",
+            "weight_g": 40,
+            "serving": "approx 40g (generous topping layer)",
+            "kcal": 180,
+            "protein_g": 4.4,
+            "carbs_g": 24,
+            "fat_g": 7.2,
+            "confidence": 0.8
+          },
+          {
+            "name": "Fresh blueberries",
+            "weight_g": 20,
+            "serving": "approx 12 berries (20g)",
+            "kcal": 11,
+            "protein_g": 0.1,
+            "carbs_g": 2.7,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh raspberries",
+            "weight_g": 12,
+            "serving": "approx 3 berries (12g)",
+            "kcal": 6,
+            "protein_g": 0.2,
+            "carbs_g": 1.4,
+            "fat_g": 0.1,
+            "confidence": 0.87
+          }
+        ],
+        "overall_confidence": 0.83
       }
     ]
   }
