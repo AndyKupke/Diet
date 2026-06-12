@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-12",
-    "calories": 1508,
-    "protein_g": 91.2,
-    "carbs_g": 187,
-    "fat_g": 40,
+    "calories": 1770,
+    "protein_g": 95.1,
+    "carbs_g": 223.3,
+    "fat_g": 51.1,
     "water_ml": 0,
     "weight_kg": 73.7,
     "meals": [
@@ -43,6 +43,15 @@
         "fat_g": 7.7,
         "time": "2026-06-12T14:44:10.126Z",
         "_evtId": "evt_1781275450126_k5i8m"
+      },
+      {
+        "name": "Pan-fried potatoes with onions, Cherry tomatoes, Cucumber slices",
+        "kcal": 262,
+        "protein_g": 3.9,
+        "carbs_g": 36.3,
+        "fat_g": 11.1,
+        "time": "2026-06-12T16:00:22.384Z",
+        "_evtId": "evt_1781280022384_fclh2"
       }
     ],
     "exercise": [],
@@ -1186,6 +1195,17 @@
       "carbs_g": 34.1,
       "fat_g": 7.7,
       "ts": "2026-06-12T14:44:10.126Z"
+    },
+    {
+      "id": "evt_1781280022384_fclh2",
+      "type": "meal",
+      "date": "2026-06-12",
+      "name": "Pan-fried potatoes with onions, Cherry tomatoes, Cucumber slices",
+      "kcal": 262,
+      "protein_g": 3.9,
+      "carbs_g": 36.3,
+      "fat_g": 11.1,
+      "ts": "2026-06-12T16:00:22.384Z"
     }
   ]
 }
