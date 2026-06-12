@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-12T05:52:40.693Z",
-    "total_analyses": 103,
+    "last_updated": "2026-06-12T12:12:54.634Z",
+    "total_analyses": 104,
     "total_corrections": 3
   },
   "calibrations": {
@@ -3169,6 +3169,18 @@
         "confidence": 0.83,
         "last_seen": "2026-06-12",
         "seen_count": 1
+      },
+      {
+        "name": "Tomato soup (likely creamed/pureed)",
+        "serving": "1 bowl (approx 250ml)",
+        "weight_g": 250,
+        "kcal": 90,
+        "protein_g": 2,
+        "carbs_g": 12.5,
+        "fat_g": 3,
+        "confidence": 0.78,
+        "last_seen": "2026-06-12",
+        "seen_count": 1
       }
     ]
   },
@@ -3223,33 +3235,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780309425518,
-        "date": "2026-06-01",
-        "meal_type": "lunch",
-        "user_note": "",
-        "totals": {
-          "kcal": 1,
-          "protein_g": 0,
-          "carbs_g": 0,
-          "fat_g": 0,
-          "fiber_g": 0,
-          "sugar_g": 0
-        },
-        "items": [
-          {
-            "name": "Fritz-Kola Zero (sugar-free cola)",
-            "weight_g": 330,
-            "serving": "1 bottle (330ml)",
-            "kcal": 1,
-            "protein_g": 0,
-            "carbs_g": 0,
-            "fat_g": 0,
-            "confidence": 0.98
-          }
-        ],
-        "overall_confidence": 0.98
-      },
       {
         "id": 1780320664925,
         "date": "2026-06-01",
@@ -8422,6 +8407,33 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1781266374633,
+        "date": "2026-06-12",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 90,
+          "protein_g": 2,
+          "carbs_g": 12.5,
+          "fat_g": 3,
+          "fiber_g": 2,
+          "sugar_g": 8
+        },
+        "items": [
+          {
+            "name": "Tomato soup (likely creamed/pureed)",
+            "weight_g": 250,
+            "serving": "1 bowl (approx 250ml)",
+            "kcal": 90,
+            "protein_g": 2,
+            "carbs_g": 12.5,
+            "fat_g": 3,
+            "confidence": 0.78
+          }
+        ],
+        "overall_confidence": 0.78
       }
     ]
   }
