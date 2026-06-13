@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-12T15:59:58.526Z",
-    "total_analyses": 108,
+    "last_updated": "2026-06-13T07:17:14.033Z",
+    "total_analyses": 109,
     "total_corrections": 3
   },
   "calibrations": {
@@ -196,15 +196,15 @@
       },
       {
         "name": "Fresh strawberries (halved)",
-        "serving": "approx 10-12 halves (approx 80g)",
-        "weight_g": 80,
-        "kcal": 20,
-        "protein_g": 0.4,
-        "carbs_g": 4.8,
+        "serving": "approx 35g (2 medium strawberries, halved)",
+        "weight_g": 35,
+        "kcal": 16,
+        "protein_g": 0.3,
+        "carbs_g": 3.8,
         "fat_g": 0.2,
-        "confidence": 0.8,
-        "last_seen": "2026-06-04",
-        "seen_count": 2
+        "confidence": 0.85,
+        "last_seen": "2026-06-13",
+        "seen_count": 3
       },
       {
         "name": "Whole grain seeded bread",
@@ -3232,15 +3232,15 @@
       },
       {
         "name": "Skyr (Icelandic-style yogurt, plain or low-sugar)",
-        "serving": "approx 150g (base layer in bowl)",
-        "weight_g": 150,
-        "kcal": 90,
-        "protein_g": 15,
-        "carbs_g": 6,
+        "serving": "approx 180g (generous base layer)",
+        "weight_g": 180,
+        "kcal": 99,
+        "protein_g": 16.5,
+        "carbs_g": 6.6,
         "fat_g": 0.3,
-        "confidence": 0.82,
-        "last_seen": "2026-06-12",
-        "seen_count": 1
+        "confidence": 0.88,
+        "last_seen": "2026-06-13",
+        "seen_count": 2
       },
       {
         "name": "Granola (oat-based, likely with honey/syrup and nuts)",
@@ -3264,6 +3264,30 @@
         "fat_g": 11,
         "confidence": 0.82,
         "last_seen": "2026-06-12",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh watermelon (cubed)",
+        "serving": "approx 120g (6-7 medium cubes)",
+        "weight_g": 120,
+        "kcal": 36,
+        "protein_g": 0.7,
+        "carbs_g": 9.1,
+        "fat_g": 0.2,
+        "confidence": 0.83,
+        "last_seen": "2026-06-13",
+        "seen_count": 1
+      },
+      {
+        "name": "Granola (oat-based with honey/nuts)",
+        "serving": "approx 35g (scattered clusters)",
+        "weight_g": 35,
+        "kcal": 158,
+        "protein_g": 3.9,
+        "carbs_g": 21,
+        "fat_g": 6.3,
+        "confidence": 0.79,
+        "last_seen": "2026-06-13",
         "seen_count": 1
       }
     ]
@@ -3319,53 +3343,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780332796041,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 409,
-          "protein_g": 13,
-          "carbs_g": 46.1,
-          "fat_g": 19.1,
-          "fiber_g": 2.4,
-          "sugar_g": 4.4
-        },
-        "items": [
-          {
-            "name": "White bread baguette slices",
-            "weight_g": 80,
-            "serving": "2 halves of a small baguette (approx 80g total)",
-            "kcal": 216,
-            "protein_g": 7.2,
-            "carbs_g": 42.4,
-            "fat_g": 1.6,
-            "confidence": 0.82
-          },
-          {
-            "name": "Fleischsalat (German meat salad with mayonnaise)",
-            "weight_g": 70,
-            "serving": "generous spread on both slices (approx 70g)",
-            "kcal": 189,
-            "protein_g": 5.6,
-            "carbs_g": 2.8,
-            "fat_g": 17.5,
-            "confidence": 0.78
-          },
-          {
-            "name": "Cherry tomatoes",
-            "weight_g": 24,
-            "serving": "2 cherry tomatoes (approx 24g)",
-            "kcal": 4,
-            "protein_g": 0.2,
-            "carbs_g": 0.9,
-            "fat_g": 0,
-            "confidence": 0.92
-          }
-        ],
-        "overall_confidence": 0.8
-      },
       {
         "id": 1780332927990,
         "date": "2026-06-01",
@@ -8515,6 +8492,63 @@
             "carbs_g": 1.2,
             "fat_g": 0,
             "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.84
+      },
+      {
+        "id": 1781335034032,
+        "date": "2026-06-13",
+        "meal_type": "breakfast",
+        "user_note": "Lots of skyr",
+        "totals": {
+          "kcal": 313,
+          "protein_g": 22.8,
+          "carbs_g": 40,
+          "fat_g": 7,
+          "fiber_g": 4,
+          "sugar_g": 20.8
+        },
+        "items": [
+          {
+            "name": "Skyr (Icelandic-style yogurt, plain or low-sugar)",
+            "weight_g": 180,
+            "serving": "approx 180g (generous base layer)",
+            "kcal": 108,
+            "protein_g": 18,
+            "carbs_g": 7.2,
+            "fat_g": 0.4,
+            "confidence": 0.88
+          },
+          {
+            "name": "Fresh watermelon (cubed)",
+            "weight_g": 120,
+            "serving": "approx 120g (6-7 medium cubes)",
+            "kcal": 36,
+            "protein_g": 0.7,
+            "carbs_g": 9.1,
+            "fat_g": 0.2,
+            "confidence": 0.83
+          },
+          {
+            "name": "Fresh strawberries (halved)",
+            "weight_g": 35,
+            "serving": "approx 35g (2 medium strawberries, halved)",
+            "kcal": 11,
+            "protein_g": 0.2,
+            "carbs_g": 2.7,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Granola (oat-based with honey/nuts)",
+            "weight_g": 35,
+            "serving": "approx 35g (scattered clusters)",
+            "kcal": 158,
+            "protein_g": 3.9,
+            "carbs_g": 21,
+            "fat_g": 6.3,
+            "confidence": 0.79
           }
         ],
         "overall_confidence": 0.84
