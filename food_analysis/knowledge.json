@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-13T07:17:14.033Z",
-    "total_analyses": 109,
+    "last_updated": "2026-06-13T07:25:18.230Z",
+    "total_analyses": 110,
     "total_corrections": 3
   },
   "calibrations": {
@@ -3289,6 +3289,30 @@
         "confidence": 0.79,
         "last_seen": "2026-06-13",
         "seen_count": 1
+      },
+      {
+        "name": "White bread roll/baguette section",
+        "serving": "1 piece (approx 45g)",
+        "weight_g": 45,
+        "kcal": 120,
+        "protein_g": 3.8,
+        "carbs_g": 23.4,
+        "fat_g": 1.1,
+        "confidence": 0.84,
+        "last_seen": "2026-06-13",
+        "seen_count": 1
+      },
+      {
+        "name": "Salami slices (cured meat)",
+        "serving": "3 slices (approx 24g total)",
+        "weight_g": 24,
+        "kcal": 107,
+        "protein_g": 5.5,
+        "carbs_g": 0.5,
+        "fat_g": 9.1,
+        "confidence": 0.88,
+        "last_seen": "2026-06-13",
+        "seen_count": 1
       }
     ]
   },
@@ -3343,53 +3367,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780332927990,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 513,
-          "protein_g": 21.5,
-          "carbs_g": 48.3,
-          "fat_g": 25.6,
-          "fiber_g": 2.3,
-          "sugar_g": 3
-        },
-        "items": [
-          {
-            "name": "White bread roll (Brötchen/Semmel)",
-            "weight_g": 90,
-            "serving": "2 halves of bread rolls (approx 90g total)",
-            "kcal": 243,
-            "protein_g": 7.6,
-            "carbs_g": 47.7,
-            "fat_g": 1.8,
-            "confidence": 0.82
-          },
-          {
-            "name": "Sliced Gouda/Emmental-style cheese",
-            "weight_g": 55,
-            "serving": "6-7 thin slices (approx 55g total)",
-            "kcal": 198,
-            "protein_g": 13.8,
-            "carbs_g": 0.6,
-            "fat_g": 15.7,
-            "confidence": 0.8
-          },
-          {
-            "name": "Butter (spread on bread)",
-            "weight_g": 10,
-            "serving": "Light spread on rolls (approx 10g)",
-            "kcal": 72,
-            "protein_g": 0.1,
-            "carbs_g": 0,
-            "fat_g": 8.1,
-            "confidence": 0.65
-          }
-        ],
-        "overall_confidence": 0.78
-      },
       {
         "id": 1780333022398,
         "date": "2026-06-01",
@@ -8552,6 +8529,43 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1781335518229,
+        "date": "2026-06-13",
+        "meal_type": "breakfast",
+        "user_note": "",
+        "totals": {
+          "kcal": 227,
+          "protein_g": 9.3,
+          "carbs_g": 23.9,
+          "fat_g": 10.2,
+          "fiber_g": 1.1,
+          "sugar_g": 2
+        },
+        "items": [
+          {
+            "name": "White bread roll/baguette section",
+            "weight_g": 45,
+            "serving": "1 piece (approx 45g)",
+            "kcal": 120,
+            "protein_g": 3.8,
+            "carbs_g": 23.4,
+            "fat_g": 1.1,
+            "confidence": 0.84
+          },
+          {
+            "name": "Salami slices (cured meat)",
+            "weight_g": 24,
+            "serving": "3 slices (approx 24g total)",
+            "kcal": 107,
+            "protein_g": 5.5,
+            "carbs_g": 0.5,
+            "fat_g": 9.1,
+            "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.86
       }
     ]
   }
