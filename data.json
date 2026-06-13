@@ -1,10 +1,10 @@
 {
   "today": {
     "date": "2026-06-13",
-    "calories": 963,
-    "protein_g": 48.5,
-    "carbs_g": 97.3,
-    "fat_g": 41.8,
+    "calories": 1195,
+    "protein_g": 59.2,
+    "carbs_g": 115.9,
+    "fat_g": 54.4,
     "water_ml": 0,
     "weight_kg": null,
     "meals": [
@@ -34,6 +34,15 @@
         "fat_g": 24.6,
         "time": "2026-06-13T09:57:20.507Z",
         "_evtId": "evt_1781344640507_qih9u"
+      },
+      {
+        "name": "Whole grain bread (dark/rye), Salami (cured meat), Cherry tomatoes",
+        "kcal": 232,
+        "protein_g": 10.7,
+        "carbs_g": 18.6,
+        "fat_g": 12.6,
+        "time": "2026-06-13T12:51:40.828Z",
+        "_evtId": "evt_1781355100829_xwuv0"
       }
     ],
     "exercise": [],
@@ -1230,6 +1239,17 @@
       "carbs_g": 33.4,
       "fat_g": 24.6,
       "ts": "2026-06-13T09:57:20.507Z"
+    },
+    {
+      "id": "evt_1781355100829_xwuv0",
+      "type": "meal",
+      "date": "2026-06-13",
+      "name": "Whole grain bread (dark/rye), Salami (cured meat), Cherry tomatoes",
+      "kcal": 232,
+      "protein_g": 10.7,
+      "carbs_g": 18.6,
+      "fat_g": 12.6,
+      "ts": "2026-06-13T12:51:40.829Z"
     }
   ]
 }
