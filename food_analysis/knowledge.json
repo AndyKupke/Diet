@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-13T07:25:18.230Z",
-    "total_analyses": 110,
+    "last_updated": "2026-06-13T09:56:55.708Z",
+    "total_analyses": 111,
     "total_corrections": 3
   },
   "calibrations": {
@@ -3256,15 +3256,15 @@
       },
       {
         "name": "Pan-fried potatoes with onions",
-        "serving": "approx 200g cooked (potato ~170g, onion ~30g)",
-        "weight_g": 200,
-        "kcal": 252,
-        "protein_g": 3.4,
-        "carbs_g": 34,
-        "fat_g": 11,
-        "confidence": 0.82,
-        "last_seen": "2026-06-12",
-        "seen_count": 1
+        "serving": "approx 180g cooked (potato ~155g, onion ~25g)",
+        "weight_g": 180,
+        "kcal": 240,
+        "protein_g": 3.3,
+        "carbs_g": 32.3,
+        "fat_g": 10.4,
+        "confidence": 0.81,
+        "last_seen": "2026-06-13",
+        "seen_count": 2
       },
       {
         "name": "Fresh watermelon (cubed)",
@@ -3311,6 +3311,18 @@
         "carbs_g": 0.5,
         "fat_g": 9.1,
         "confidence": 0.88,
+        "last_seen": "2026-06-13",
+        "seen_count": 1
+      },
+      {
+        "name": "Meatballs (beef/pork blend, fried/baked)",
+        "serving": "2 medium meatballs (approx 35g each, 70g total)",
+        "weight_g": 70,
+        "kcal": 196,
+        "protein_g": 13.3,
+        "carbs_g": 2.8,
+        "fat_g": 14.7,
+        "confidence": 0.84,
         "last_seen": "2026-06-13",
         "seen_count": 1
       }
@@ -3367,43 +3379,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780333022398,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 303,
-          "protein_g": 11.7,
-          "carbs_g": 20,
-          "fat_g": 19.4,
-          "fiber_g": 2.8,
-          "sugar_g": 1.5
-        },
-        "items": [
-          {
-            "name": "Rustic bread slice with hummus spread",
-            "weight_g": 55,
-            "serving": "1 small slice with generous hummus topping (bread ~30g, hummus ~25g)",
-            "kcal": 143,
-            "protein_g": 5.2,
-            "carbs_g": 18.5,
-            "fat_g": 5.4,
-            "confidence": 0.75
-          },
-          {
-            "name": "Pâté / Liver mousse (French-style)",
-            "weight_g": 50,
-            "serving": "1 thick slice (approx 50g)",
-            "kcal": 160,
-            "protein_g": 6.5,
-            "carbs_g": 1.5,
-            "fat_g": 14,
-            "confidence": 0.72
-          }
-        ],
-        "overall_confidence": 0.73
-      },
       {
         "id": 1780333220163,
         "date": "2026-06-01",
@@ -8566,6 +8541,43 @@
           }
         ],
         "overall_confidence": 0.86
+      },
+      {
+        "id": 1781344615707,
+        "date": "2026-06-13",
+        "meal_type": "brunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 423,
+          "protein_g": 16.4,
+          "carbs_g": 33.4,
+          "fat_g": 24.6,
+          "fiber_g": 3.4,
+          "sugar_g": 2.4
+        },
+        "items": [
+          {
+            "name": "Pan-fried potatoes with onions",
+            "weight_g": 180,
+            "serving": "approx 180g cooked (potato ~155g, onion ~25g)",
+            "kcal": 227,
+            "protein_g": 3.1,
+            "carbs_g": 30.6,
+            "fat_g": 9.9,
+            "confidence": 0.81
+          },
+          {
+            "name": "Meatballs (beef/pork blend, fried/baked)",
+            "weight_g": 70,
+            "serving": "2 medium meatballs (approx 35g each, 70g total)",
+            "kcal": 196,
+            "protein_g": 13.3,
+            "carbs_g": 2.8,
+            "fat_g": 14.7,
+            "confidence": 0.84
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
