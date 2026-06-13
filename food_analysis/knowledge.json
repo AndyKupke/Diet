@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-13T09:56:55.708Z",
-    "total_analyses": 111,
+    "last_updated": "2026-06-13T12:49:49.260Z",
+    "total_analyses": 112,
     "total_corrections": 3
   },
   "calibrations": {
@@ -160,15 +160,15 @@
       },
       {
         "name": "Cherry tomatoes",
-        "serving": "3 whole tomatoes (approx 10g each)",
-        "weight_g": 30,
-        "kcal": 6,
+        "serving": "2 small tomatoes (approx 20g total)",
+        "weight_g": 20,
+        "kcal": 5,
         "protein_g": 0.3,
-        "carbs_g": 1.2,
+        "carbs_g": 1,
         "fat_g": 0.1,
-        "confidence": 0.9,
-        "last_seen": "2026-06-12",
-        "seen_count": 8
+        "confidence": 0.82,
+        "last_seen": "2026-06-13",
+        "seen_count": 9
       },
       {
         "name": "Frankfurter/Vienna sausage",
@@ -3325,6 +3325,30 @@
         "confidence": 0.84,
         "last_seen": "2026-06-13",
         "seen_count": 1
+      },
+      {
+        "name": "Whole grain bread (dark/rye)",
+        "serving": "1 slice (approx 40g)",
+        "weight_g": 40,
+        "kcal": 94,
+        "protein_g": 3.6,
+        "carbs_g": 17.2,
+        "fat_g": 1.2,
+        "confidence": 0.84,
+        "last_seen": "2026-06-13",
+        "seen_count": 1
+      },
+      {
+        "name": "Salami (cured meat)",
+        "serving": "3 slices (approx 30g total)",
+        "weight_g": 30,
+        "kcal": 134,
+        "protein_g": 6.9,
+        "carbs_g": 0.6,
+        "fat_g": 11.4,
+        "confidence": 0.85,
+        "last_seen": "2026-06-13",
+        "seen_count": 1
       }
     ]
   },
@@ -3379,43 +3403,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780333220163,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 352,
-          "protein_g": 11.4,
-          "carbs_g": 2.1,
-          "fat_g": 33.9,
-          "fiber_g": 0,
-          "sugar_g": 0.8
-        },
-        "items": [
-          {
-            "name": "Leberkäse/Fleischkäse (German meat loaf slice)",
-            "weight_g": 80,
-            "serving": "1 thick round slice (approx 80g)",
-            "kcal": 248,
-            "protein_g": 11.2,
-            "carbs_g": 1.6,
-            "fat_g": 22.4,
-            "confidence": 0.75
-          },
-          {
-            "name": "Mayonnaise/Remoulade topping",
-            "weight_g": 15,
-            "serving": "generous dollop (approx 15g)",
-            "kcal": 104,
-            "protein_g": 0.2,
-            "carbs_g": 0.5,
-            "fat_g": 11.5,
-            "confidence": 0.7
-          }
-        ],
-        "overall_confidence": 0.73
-      },
       {
         "id": 1780333557608,
         "date": "2026-06-01",
@@ -8578,6 +8565,53 @@
           }
         ],
         "overall_confidence": 0.82
+      },
+      {
+        "id": 1781354989259,
+        "date": "2026-06-13",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 232,
+          "protein_g": 10.7,
+          "carbs_g": 18.6,
+          "fat_g": 12.6,
+          "fiber_g": 3.4,
+          "sugar_g": 1.8
+        },
+        "items": [
+          {
+            "name": "Whole grain bread (dark/rye)",
+            "weight_g": 40,
+            "serving": "1 slice (approx 40g)",
+            "kcal": 94,
+            "protein_g": 3.6,
+            "carbs_g": 17.2,
+            "fat_g": 1.2,
+            "confidence": 0.84
+          },
+          {
+            "name": "Salami (cured meat)",
+            "weight_g": 30,
+            "serving": "3 slices (approx 30g total)",
+            "kcal": 134,
+            "protein_g": 6.9,
+            "carbs_g": 0.6,
+            "fat_g": 11.4,
+            "confidence": 0.85
+          },
+          {
+            "name": "Cherry tomatoes",
+            "weight_g": 20,
+            "serving": "2 small tomatoes (approx 20g total)",
+            "kcal": 4,
+            "protein_g": 0.2,
+            "carbs_g": 0.8,
+            "fat_g": 0,
+            "confidence": 0.82
+          }
+        ],
+        "overall_confidence": 0.84
       }
     ]
   }
