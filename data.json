@@ -1,50 +1,13 @@
 {
   "today": {
-    "date": "2026-06-13",
-    "calories": 1195,
-    "protein_g": 59.2,
-    "carbs_g": 115.9,
-    "fat_g": 54.4,
+    "date": "2026-06-15",
+    "calories": 0,
+    "protein_g": 0,
+    "carbs_g": 0,
+    "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": null,
-    "meals": [
-      {
-        "name": "Skyr (Icelandic-style yogurt, plain or low-sugar), Fresh watermelon (cubed), Fresh strawberries (halved), Granola (oat-based with honey/nuts)",
-        "kcal": 313,
-        "protein_g": 22.8,
-        "carbs_g": 40,
-        "fat_g": 7,
-        "time": "2026-06-13T07:17:26.154Z",
-        "_evtId": "evt_1781335046154_403gd"
-      },
-      {
-        "name": "White bread roll/baguette section, Salami slices (cured meat)",
-        "kcal": 227,
-        "protein_g": 9.3,
-        "carbs_g": 23.9,
-        "fat_g": 10.2,
-        "time": "2026-06-13T07:25:33.688Z",
-        "_evtId": "evt_1781335533688_kuxkp"
-      },
-      {
-        "name": "Pan-fried potatoes with onions, Meatballs (beef/pork blend, fried/baked)",
-        "kcal": 423,
-        "protein_g": 16.4,
-        "carbs_g": 33.4,
-        "fat_g": 24.6,
-        "time": "2026-06-13T09:57:20.507Z",
-        "_evtId": "evt_1781344640507_qih9u"
-      },
-      {
-        "name": "Whole grain bread (dark/rye), Salami (cured meat), Cherry tomatoes",
-        "kcal": 232,
-        "protein_g": 10.7,
-        "carbs_g": 18.6,
-        "fat_g": 12.6,
-        "time": "2026-06-13T12:51:40.828Z",
-        "_evtId": "evt_1781355100829_xwuv0"
-      }
-    ],
+    "weight_kg": 74.5,
+    "meals": [],
     "exercise": [],
     "notes": ""
   },
@@ -165,6 +128,15 @@
       "fat_g": 51.1,
       "water_ml": 0,
       "weight_kg": 73.7
+    },
+    {
+      "date": "2026-06-13",
+      "calories": 1195,
+      "protein_g": 59.2,
+      "carbs_g": 115.9,
+      "fat_g": 54.4,
+      "water_ml": 0,
+      "weight_kg": null
     }
   ],
   "events": [
@@ -1250,6 +1222,13 @@
       "carbs_g": 18.6,
       "fat_g": 12.6,
       "ts": "2026-06-13T12:51:40.829Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-15",
+      "weight_kg": 74.5,
+      "id": "evt_1781501076868_tft73",
+      "ts": "2026-06-15T05:24:36.868Z"
     }
   ]
 }
