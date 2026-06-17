@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-17T12:06:39.253Z",
-    "total_analyses": 123,
+    "last_updated": "2026-06-17T12:08:23.454Z",
+    "total_analyses": 125,
     "total_corrections": 3
   },
   "calibrations": {
@@ -604,15 +604,15 @@
       },
       {
         "name": "Fresh tomato slices",
-        "serving": "3 medium slices, approx 60g",
-        "weight_g": 60,
-        "kcal": 10,
+        "serving": "3 medium slices (approx 45g total)",
+        "weight_g": 45,
+        "kcal": 9,
         "protein_g": 0.5,
-        "carbs_g": 2,
+        "carbs_g": 1.9,
         "fat_g": 0.1,
-        "confidence": 0.85,
+        "confidence": 0.88,
         "last_seen": "2026-06-17",
-        "seen_count": 6
+        "seen_count": 7
       },
       {
         "name": "Red onion rings",
@@ -2416,15 +2416,15 @@
       },
       {
         "name": "Fresh chives (garnish)",
-        "serving": "small amount scattered on top (approx 2g)",
+        "serving": "chopped, scattered (approx 2g)",
         "weight_g": 2,
         "kcal": 1,
         "protein_g": 0.1,
         "carbs_g": 0.1,
         "fat_g": 0,
-        "confidence": 0.85,
-        "last_seen": "2026-06-08",
-        "seen_count": 1
+        "confidence": 0.92,
+        "last_seen": "2026-06-17",
+        "seen_count": 2
       },
       {
         "name": "Smoked mackerel fillet",
@@ -3805,6 +3805,54 @@
         "confidence": 0.85,
         "last_seen": "2026-06-17",
         "seen_count": 1
+      },
+      {
+        "name": "Omelette (eggs)",
+        "serving": "2-egg omelette, cooked thin (approx 100g)",
+        "weight_g": 100,
+        "kcal": 155,
+        "protein_g": 12.6,
+        "carbs_g": 0.7,
+        "fat_g": 11.5,
+        "confidence": 0.87,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Filling - likely tapenade or savory spread (dark, appears olive-based)",
+        "serving": "thin layer spread inside omelette (approx 20g)",
+        "weight_g": 20,
+        "kcal": 44,
+        "protein_g": 0.4,
+        "carbs_g": 1.2,
+        "fat_g": 4.2,
+        "confidence": 0.72,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Chili flakes or dried herbs",
+        "serving": "light sprinkle (approx 0.3g)",
+        "weight_g": 0.3,
+        "kcal": 1,
+        "protein_g": 0,
+        "carbs_g": 0.2,
+        "fat_g": 0,
+        "confidence": 0.75,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Protein powder (whey or similar, mixed in low-fat milk 1.5%)",
+        "serving": "1 portion = 30g powder in 200ml low-fat milk (1.5% fat)",
+        "weight_g": 230,
+        "kcal": 204,
+        "protein_g": 29.6,
+        "carbs_g": 11,
+        "fat_g": 4.4,
+        "confidence": 0.98,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
       }
     ]
   },
@@ -3859,130 +3907,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780398615683,
-        "date": "2026-06-02",
-        "meal_type": "lunch",
-        "user_note": "Do not take into account the sauce",
-        "totals": {
-          "kcal": 391,
-          "protein_g": 7.8,
-          "carbs_g": 35.1,
-          "fat_g": 25,
-          "fiber_g": 3,
-          "sugar_g": 2.6
-        },
-        "items": [
-          {
-            "name": "Bratkartoffeln (German fried potatoes)",
-            "weight_g": 180,
-            "serving": "Medium portion (approx 180g cooked)",
-            "kcal": 270,
-            "protein_g": 3.6,
-            "carbs_g": 32.4,
-            "fat_g": 14.4,
-            "confidence": 0.82
-          },
-          {
-            "name": "Speck/Bacon pieces (cured pork belly)",
-            "weight_g": 25,
-            "serving": "Small scattered pieces (approx 25g)",
-            "kcal": 108,
-            "protein_g": 3.8,
-            "carbs_g": 0.2,
-            "fat_g": 10.3,
-            "confidence": 0.78
-          },
-          {
-            "name": "Onion (caramelized/fried)",
-            "weight_g": 15,
-            "serving": "Small amount mixed in (approx 20g raw weight)",
-            "kcal": 12,
-            "protein_g": 0.3,
-            "carbs_g": 2.4,
-            "fat_g": 0.3,
-            "confidence": 0.72
-          },
-          {
-            "name": "Fresh parsley (garnish)",
-            "weight_g": 2,
-            "serving": "Light sprinkle (approx 2g)",
-            "kcal": 1,
-            "protein_g": 0.1,
-            "carbs_g": 0.1,
-            "fat_g": 0,
-            "confidence": 0.85
-          }
-        ],
-        "overall_confidence": 0.8
-      },
-      {
-        "id": 1780429475800,
-        "date": "2026-06-02",
-        "meal_type": "late snack",
-        "user_note": "",
-        "totals": {
-          "kcal": 296,
-          "protein_g": 23.5,
-          "carbs_g": 35.6,
-          "fat_g": 6.9,
-          "fiber_g": 4.9,
-          "sugar_g": 5.6
-        },
-        "items": [
-          {
-            "name": "Whole grain bread roll (Vollkornbrötchen)",
-            "weight_g": 70,
-            "serving": "1 roll cut in half (approx 70g total)",
-            "kcal": 168,
-            "protein_g": 6.3,
-            "carbs_g": 30.8,
-            "fat_g": 2.1,
-            "confidence": 0.85
-          },
-          {
-            "name": "Cottage cheese (full-fat)",
-            "weight_g": 60,
-            "serving": "Generous spread on both halves (approx 60g total)",
-            "kcal": 62,
-            "protein_g": 7.2,
-            "carbs_g": 2,
-            "fat_g": 2.9,
-            "confidence": 0.82
-          },
-          {
-            "name": "Cherry tomatoes",
-            "weight_g": 60,
-            "serving": "4 medium tomatoes (approx 60g total)",
-            "kcal": 11,
-            "protein_g": 0.5,
-            "carbs_g": 2.3,
-            "fat_g": 0.1,
-            "confidence": 0.88
-          },
-          {
-            "name": "Sliced cooked ham (Kochschinken)",
-            "weight_g": 50,
-            "serving": "2 thin slices (approx 50g total)",
-            "kcal": 55,
-            "protein_g": 9.5,
-            "carbs_g": 0.5,
-            "fat_g": 1.8,
-            "confidence": 0.84
-          },
-          {
-            "name": "Water",
-            "weight_g": 250,
-            "serving": "1 glass (approx 250ml)",
-            "kcal": 0,
-            "protein_g": 0,
-            "carbs_g": 0,
-            "fat_g": 0,
-            "confidence": 0.95
-          }
-        ],
-        "overall_confidence": 0.85
-      },
       {
         "id": 1780430350758,
         "date": "2026-06-02",
@@ -9348,6 +9272,100 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1781698044207,
+        "date": "2026-06-17",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 209,
+          "protein_g": 13.5,
+          "carbs_g": 4,
+          "fat_g": 15.8,
+          "fiber_g": 1.3,
+          "sugar_g": 2.3
+        },
+        "items": [
+          {
+            "name": "Omelette (eggs)",
+            "weight_g": 100,
+            "serving": "2-egg omelette, cooked thin (approx 100g)",
+            "kcal": 155,
+            "protein_g": 12.6,
+            "carbs_g": 0.7,
+            "fat_g": 11.5,
+            "confidence": 0.87
+          },
+          {
+            "name": "Filling - likely tapenade or savory spread (dark, appears olive-based)",
+            "weight_g": 20,
+            "serving": "thin layer spread inside omelette (approx 20g)",
+            "kcal": 44,
+            "protein_g": 0.4,
+            "carbs_g": 1.2,
+            "fat_g": 4.2,
+            "confidence": 0.72
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 45,
+            "serving": "3 medium slices (approx 45g total)",
+            "kcal": 8,
+            "protein_g": 0.4,
+            "carbs_g": 1.8,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Fresh chives (garnish)",
+            "weight_g": 2,
+            "serving": "chopped, scattered (approx 2g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.92
+          },
+          {
+            "name": "Chili flakes or dried herbs",
+            "weight_g": 0.3,
+            "serving": "light sprinkle (approx 0.3g)",
+            "kcal": 1,
+            "protein_g": 0,
+            "carbs_g": 0.2,
+            "fat_g": 0,
+            "confidence": 0.75
+          }
+        ],
+        "overall_confidence": 0.82
+      },
+      {
+        "id": 1781698103454,
+        "date": "2026-06-17",
+        "meal_type": "snack",
+        "user_note": "One portion",
+        "totals": {
+          "kcal": 204,
+          "protein_g": 29.6,
+          "carbs_g": 11,
+          "fat_g": 4.4,
+          "fiber_g": 0.8,
+          "sugar_g": 10.4
+        },
+        "items": [
+          {
+            "name": "Protein powder (whey or similar, mixed in low-fat milk 1.5%)",
+            "weight_g": 230,
+            "serving": "1 portion = 30g powder in 200ml low-fat milk (1.5% fat)",
+            "kcal": 204,
+            "protein_g": 29.6,
+            "carbs_g": 11,
+            "fat_g": 4.4,
+            "confidence": 0.98
+          }
+        ],
+        "overall_confidence": 0.98
       }
     ]
   }
