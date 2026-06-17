@@ -1388,6 +1388,28 @@
       "carbs_g": 34.9,
       "fat_g": 5.6,
       "ts": "2026-06-15T12:00:00Z"
+    },
+    {
+      "id": "evt_1781698006626_guw0e",
+      "type": "meal",
+      "date": "2026-06-15",
+      "name": "Whole grain sourdough bread, Sliced cheese (semi-hard, likely Gouda or similar), Salami (Italian-style cured meat)",
+      "kcal": 403,
+      "protein_g": 20.8,
+      "carbs_g": 31,
+      "fat_g": 21.4,
+      "ts": "2026-06-15T12:00:00Z"
+    },
+    {
+      "id": "evt_1781698067907_ct4iy",
+      "type": "meal",
+      "date": "2026-06-15",
+      "name": "Omelette (eggs), Filling - likely tapenade or savory spread (dark, appears olive-based), Fresh tomato slices, Fresh chives (garnish), Chili flakes or dried herbs",
+      "kcal": 209,
+      "protein_g": 13.5,
+      "carbs_g": 4,
+      "fat_g": 15.8,
+      "ts": "2026-06-15T12:00:00Z"
     }
   ]
 }
