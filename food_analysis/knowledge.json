@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-17T11:58:50.972Z",
-    "total_analyses": 115,
+    "last_updated": "2026-06-17T12:00:45.872Z",
+    "total_analyses": 116,
     "total_corrections": 3
   },
   "calibrations": {
@@ -280,15 +280,15 @@
       },
       {
         "name": "Sliced Gouda/Emmental-style cheese",
-        "serving": "2 slices stacked (approx 40g)",
+        "serving": "2 slices, approx 40g",
         "weight_g": 40,
-        "kcal": 171,
-        "protein_g": 11.9,
-        "carbs_g": 0.7,
-        "fat_g": 13.6,
+        "kcal": 160,
+        "protein_g": 11.2,
+        "carbs_g": 0.6,
+        "fat_g": 12.6,
         "confidence": 0.85,
-        "last_seen": "2026-06-03",
-        "seen_count": 2
+        "last_seen": "2026-06-17",
+        "seen_count": 3
       },
       {
         "name": "Butter (spread on bread)",
@@ -1984,15 +1984,15 @@
       },
       {
         "name": "Red bell pepper (raw, sliced)",
-        "serving": "1 thick slice (approx 22g)",
-        "weight_g": 22,
+        "serving": "3 strips, approx 30g",
+        "weight_g": 30,
         "kcal": 9,
         "protein_g": 0.3,
         "carbs_g": 1.8,
         "fat_g": 0.2,
-        "confidence": 0.84,
-        "last_seen": "2026-06-07",
-        "seen_count": 3
+        "confidence": 0.88,
+        "last_seen": "2026-06-17",
+        "seen_count": 4
       },
       {
         "name": "Hard-boiled egg",
@@ -3481,6 +3481,54 @@
         "confidence": 0.88,
         "last_seen": "2026-06-17",
         "seen_count": 1
+      },
+      {
+        "name": "White bread roll (Brötchen/Semmel), half",
+        "serving": "1/2 roll, approx 40g",
+        "weight_g": 40,
+        "kcal": 106,
+        "protein_g": 3.4,
+        "carbs_g": 20.4,
+        "fat_g": 1.2,
+        "confidence": 0.82,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Roast beef (cold cuts, medium-rare)",
+        "serving": "2 thin slices, approx 30g",
+        "weight_g": 30,
+        "kcal": 42,
+        "protein_g": 7.5,
+        "carbs_g": 0,
+        "fat_g": 1.2,
+        "confidence": 0.78,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Carrot sticks (raw, peeled)",
+        "serving": "2 sticks, approx 40g",
+        "weight_g": 40,
+        "kcal": 16,
+        "protein_g": 0.4,
+        "carbs_g": 3.8,
+        "fat_g": 0.1,
+        "confidence": 0.9,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Cucumber stick (raw, peeled)",
+        "serving": "1 stick, approx 35g",
+        "weight_g": 35,
+        "kcal": 5,
+        "protein_g": 0.2,
+        "carbs_g": 1.2,
+        "fat_g": 0,
+        "confidence": 0.88,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
       }
     ]
   },
@@ -3535,33 +3583,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780389551070,
-        "date": "2026-06-02",
-        "meal_type": "brunch",
-        "user_note": "",
-        "totals": {
-          "kcal": 519,
-          "protein_g": 6,
-          "carbs_g": 70,
-          "fat_g": 23,
-          "fiber_g": 4.1,
-          "sugar_g": 4.1
-        },
-        "items": [
-          {
-            "name": "Chio Tortilla Chips (Cheese flavour)",
-            "weight_g": 105,
-            "serving": "Full pack containing approx 3.5 servings (105g total)",
-            "kcal": 519,
-            "protein_g": 6,
-            "carbs_g": 70,
-            "fat_g": 23,
-            "confidence": 0.95
-          }
-        ],
-        "overall_confidence": 0.95
-      },
       {
         "id": 1780389637775,
         "date": "2026-06-02",
@@ -8824,6 +8845,83 @@
           }
         ],
         "overall_confidence": 0.82
+      },
+      {
+        "id": 1781697645872,
+        "date": "2026-06-17",
+        "meal_type": "snack",
+        "user_note": "",
+        "totals": {
+          "kcal": 326,
+          "protein_g": 22.2,
+          "carbs_g": 27.6,
+          "fat_g": 14.2,
+          "fiber_g": 3.1,
+          "sugar_g": 5.9
+        },
+        "items": [
+          {
+            "name": "White bread roll (Brötchen/Semmel), half",
+            "weight_g": 40,
+            "serving": "1/2 roll, approx 40g",
+            "kcal": 106,
+            "protein_g": 3.4,
+            "carbs_g": 20.4,
+            "fat_g": 1.2,
+            "confidence": 0.82
+          },
+          {
+            "name": "Roast beef (cold cuts, medium-rare)",
+            "weight_g": 30,
+            "serving": "2 thin slices, approx 30g",
+            "kcal": 42,
+            "protein_g": 7.5,
+            "carbs_g": 0,
+            "fat_g": 1.2,
+            "confidence": 0.78
+          },
+          {
+            "name": "Sliced Gouda/Emmental-style cheese",
+            "weight_g": 40,
+            "serving": "2 slices, approx 40g",
+            "kcal": 148,
+            "protein_g": 10.4,
+            "carbs_g": 0.4,
+            "fat_g": 11.6,
+            "confidence": 0.85
+          },
+          {
+            "name": "Red bell pepper (raw, sliced)",
+            "weight_g": 30,
+            "serving": "3 strips, approx 30g",
+            "kcal": 9,
+            "protein_g": 0.3,
+            "carbs_g": 1.8,
+            "fat_g": 0.1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Carrot sticks (raw, peeled)",
+            "weight_g": 40,
+            "serving": "2 sticks, approx 40g",
+            "kcal": 16,
+            "protein_g": 0.4,
+            "carbs_g": 3.8,
+            "fat_g": 0.1,
+            "confidence": 0.9
+          },
+          {
+            "name": "Cucumber stick (raw, peeled)",
+            "weight_g": 35,
+            "serving": "1 stick, approx 35g",
+            "kcal": 5,
+            "protein_g": 0.2,
+            "carbs_g": 1.2,
+            "fat_g": 0,
+            "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.85
       }
     ]
   }
