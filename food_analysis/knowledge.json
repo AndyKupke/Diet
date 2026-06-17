@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-17T12:00:45.872Z",
-    "total_analyses": 116,
+    "last_updated": "2026-06-17T12:01:50.173Z",
+    "total_analyses": 117,
     "total_corrections": 3
   },
   "calibrations": {
@@ -3529,6 +3529,42 @@
         "confidence": 0.88,
         "last_seen": "2026-06-17",
         "seen_count": 1
+      },
+      {
+        "name": "Raw minced meat (Rohes Hack - likely pork or mixed)",
+        "serving": "approximately 60g",
+        "weight_g": 60,
+        "kcal": 138,
+        "protein_g": 10.8,
+        "carbs_g": 0,
+        "fat_g": 10.2,
+        "confidence": 0.8,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Whole grain/rye bread (Vollkornbrot)",
+        "serving": "1 slice, approximately 45g",
+        "weight_g": 45,
+        "kcal": 103,
+        "protein_g": 3.2,
+        "carbs_g": 19.8,
+        "fat_g": 0.9,
+        "confidence": 0.85,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh chives (garnish on raw meat)",
+        "serving": "light sprinkle, approximately 1g",
+        "weight_g": 1,
+        "kcal": 0.5,
+        "protein_g": 0.05,
+        "carbs_g": 0.05,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
       }
     ]
   },
@@ -3583,33 +3619,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780389637775,
-        "date": "2026-06-02",
-        "meal_type": "brunch",
-        "user_note": "I ate 30grams",
-        "totals": {
-          "kcal": 148,
-          "protein_g": 1.7,
-          "carbs_g": 20,
-          "fat_g": 6.5,
-          "fiber_g": 1.2,
-          "sugar_g": 1.2
-        },
-        "items": [
-          {
-            "name": "Chio Tortilla Chips (Cheese flavour)",
-            "weight_g": 30,
-            "serving": "1 serving as stated by user (30g)",
-            "kcal": 148,
-            "protein_g": 1.7,
-            "carbs_g": 20,
-            "fat_g": 6.5,
-            "confidence": 0.98
-          }
-        ],
-        "overall_confidence": 0.98
-      },
       {
         "id": 1780394337155,
         "date": "2026-06-02",
@@ -8922,6 +8931,53 @@
           }
         ],
         "overall_confidence": 0.85
+      },
+      {
+        "id": 1781697710173,
+        "date": "2026-06-17",
+        "meal_type": "snack",
+        "user_note": "Rohes Hack",
+        "totals": {
+          "kcal": 241.5,
+          "protein_g": 14.05,
+          "carbs_g": 19.85,
+          "fat_g": 11.1,
+          "fiber_g": 4.54,
+          "sugar_g": 1.42
+        },
+        "items": [
+          {
+            "name": "Raw minced meat (Rohes Hack - likely pork or mixed)",
+            "weight_g": 60,
+            "serving": "approximately 60g",
+            "kcal": 138,
+            "protein_g": 10.8,
+            "carbs_g": 0,
+            "fat_g": 10.2,
+            "confidence": 0.8
+          },
+          {
+            "name": "Whole grain/rye bread (Vollkornbrot)",
+            "weight_g": 45,
+            "serving": "1 slice, approximately 45g",
+            "kcal": 103,
+            "protein_g": 3.2,
+            "carbs_g": 19.8,
+            "fat_g": 0.9,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh chives (garnish on raw meat)",
+            "weight_g": 1,
+            "serving": "light sprinkle, approximately 1g",
+            "kcal": 0.5,
+            "protein_g": 0.05,
+            "carbs_g": 0.05,
+            "fat_g": 0,
+            "confidence": 0.9
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
