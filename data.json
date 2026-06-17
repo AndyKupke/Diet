@@ -1,13 +1,23 @@
 {
   "today": {
     "date": "2026-06-17",
-    "calories": 0,
-    "protein_g": 0,
-    "carbs_g": 0,
-    "fat_g": 0,
+    "calories": 187,
+    "protein_g": 13.9,
+    "carbs_g": 24.9,
+    "fat_g": 3.6,
     "water_ml": 0,
     "weight_kg": 73.8,
-    "meals": [],
+    "meals": [
+      {
+        "name": "Vietnamese spring roll (rice paper, cooked chicken/pork strips, julienned vegetables, fresh herbs), Julienned vegetables (carrot, cucumber, white radish/daikon), Fresh cilantro/coriander leaves (garnish), Sesame seeds (black/white mixed, garnish), Black pepper (cracked, seasoning), Dipping sauce (likely nuoc cham/fish sauce based, stored under tray — not consumed yet)",
+        "kcal": 187,
+        "protein_g": 13.9,
+        "carbs_g": 24.9,
+        "fat_g": 3.6,
+        "time": "2026-06-17T11:56:59.779Z",
+        "_evtId": "evt_1781697419780_s1zjb"
+      }
+    ],
     "exercise": [],
     "notes": ""
   },
@@ -1261,6 +1271,17 @@
       "weight_kg": 73.8,
       "id": "evt_1781671884210_af7yy",
       "ts": "2026-06-17T04:51:24.210Z"
+    },
+    {
+      "id": "evt_1781697419780_s1zjb",
+      "type": "meal",
+      "date": "2026-06-17",
+      "name": "Vietnamese spring roll (rice paper, cooked chicken/pork strips, julienned vegetables, fresh herbs), Julienned vegetables (carrot, cucumber, white radish/daikon), Fresh cilantro/coriander leaves (garnish), Sesame seeds (black/white mixed, garnish), Black pepper (cracked, seasoning), Dipping sauce (likely nuoc cham/fish sauce based, stored under tray — not consumed yet)",
+      "kcal": 187,
+      "protein_g": 13.9,
+      "carbs_g": 24.9,
+      "fat_g": 3.6,
+      "ts": "2026-06-17T11:56:59.780Z"
     }
   ]
 }
