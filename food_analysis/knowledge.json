@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-13T12:49:49.260Z",
-    "total_analyses": 112,
+    "last_updated": "2026-06-17T11:56:54.386Z",
+    "total_analyses": 113,
     "total_corrections": 3
   },
   "calibrations": {
@@ -3349,6 +3349,78 @@
         "confidence": 0.85,
         "last_seen": "2026-06-13",
         "seen_count": 1
+      },
+      {
+        "name": "Vietnamese spring roll (rice paper, cooked chicken/pork strips, julienned vegetables, fresh herbs)",
+        "serving": "1 whole spring roll in container (approx 110g)",
+        "weight_g": 110,
+        "kcal": 145,
+        "protein_g": 12.5,
+        "carbs_g": 18,
+        "fat_g": 2.5,
+        "confidence": 0.82,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Julienned vegetables (carrot, cucumber, white radish/daikon)",
+        "serving": "Mixed julienne garnish inside roll (~40g)",
+        "weight_g": 40,
+        "kcal": 14,
+        "protein_g": 0.5,
+        "carbs_g": 3,
+        "fat_g": 0.1,
+        "confidence": 0.85,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh cilantro/coriander leaves (garnish)",
+        "serving": "2 sprigs (~5g)",
+        "weight_g": 5,
+        "kcal": 1,
+        "protein_g": 0.1,
+        "carbs_g": 0.2,
+        "fat_g": 0,
+        "confidence": 0.9,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Sesame seeds (black/white mixed, garnish)",
+        "serving": "Sprinkled on top (~2g)",
+        "weight_g": 2,
+        "kcal": 11,
+        "protein_g": 0.4,
+        "carbs_g": 0.5,
+        "fat_g": 1,
+        "confidence": 0.88,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Black pepper (cracked, seasoning)",
+        "serving": "Light sprinkle (~0.3g)",
+        "weight_g": 0.3,
+        "kcal": 1,
+        "protein_g": 0,
+        "carbs_g": 0.2,
+        "fat_g": 0,
+        "confidence": 0.85,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Dipping sauce (likely nuoc cham/fish sauce based, stored under tray — not consumed yet)",
+        "serving": "Estimated 20ml in compartment below",
+        "weight_g": 20,
+        "kcal": 15,
+        "protein_g": 0.5,
+        "carbs_g": 3,
+        "fat_g": 0,
+        "confidence": 0.65,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
       }
     ]
   },
@@ -3403,33 +3475,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780333557608,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 125,
-          "protein_g": 5,
-          "carbs_g": 20,
-          "fat_g": 2.5,
-          "fiber_g": 3,
-          "sugar_g": 1.5
-        },
-        "items": [
-          {
-            "name": "Multi-seed/grain bread slice",
-            "weight_g": 45,
-            "serving": "1 thick slice (approx 45g)",
-            "kcal": 125,
-            "protein_g": 5,
-            "carbs_g": 20,
-            "fat_g": 2.5,
-            "confidence": 0.82
-          }
-        ],
-        "overall_confidence": 0.82
-      },
       {
         "id": 1780333810104,
         "date": "2026-06-01",
@@ -8612,6 +8657,83 @@
           }
         ],
         "overall_confidence": 0.84
+      },
+      {
+        "id": 1781697414384,
+        "date": "2026-06-17",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 187,
+          "protein_g": 13.9,
+          "carbs_g": 24.9,
+          "fat_g": 3.6,
+          "fiber_g": 3.6,
+          "sugar_g": 7
+        },
+        "items": [
+          {
+            "name": "Vietnamese spring roll (rice paper, cooked chicken/pork strips, julienned vegetables, fresh herbs)",
+            "weight_g": 110,
+            "serving": "1 whole spring roll in container (approx 110g)",
+            "kcal": 145,
+            "protein_g": 12.5,
+            "carbs_g": 18,
+            "fat_g": 2.5,
+            "confidence": 0.82
+          },
+          {
+            "name": "Julienned vegetables (carrot, cucumber, white radish/daikon)",
+            "weight_g": 40,
+            "serving": "Mixed julienne garnish inside roll (~40g)",
+            "kcal": 14,
+            "protein_g": 0.5,
+            "carbs_g": 3,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh cilantro/coriander leaves (garnish)",
+            "weight_g": 5,
+            "serving": "2 sprigs (~5g)",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.2,
+            "fat_g": 0,
+            "confidence": 0.9
+          },
+          {
+            "name": "Sesame seeds (black/white mixed, garnish)",
+            "weight_g": 2,
+            "serving": "Sprinkled on top (~2g)",
+            "kcal": 11,
+            "protein_g": 0.4,
+            "carbs_g": 0.5,
+            "fat_g": 1,
+            "confidence": 0.88
+          },
+          {
+            "name": "Black pepper (cracked, seasoning)",
+            "weight_g": 0.3,
+            "serving": "Light sprinkle (~0.3g)",
+            "kcal": 1,
+            "protein_g": 0,
+            "carbs_g": 0.2,
+            "fat_g": 0,
+            "confidence": 0.85
+          },
+          {
+            "name": "Dipping sauce (likely nuoc cham/fish sauce based, stored under tray — not consumed yet)",
+            "weight_g": 20,
+            "serving": "Estimated 20ml in compartment below",
+            "kcal": 15,
+            "protein_g": 0.5,
+            "carbs_g": 3,
+            "fat_g": 0,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.81
       }
     ]
   }
