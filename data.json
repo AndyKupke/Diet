@@ -1,12 +1,12 @@
 {
   "today": {
-    "date": "2026-06-16",
+    "date": "2026-06-17",
     "calories": 0,
     "protein_g": 0,
     "carbs_g": 0,
     "fat_g": 0,
     "water_ml": 0,
-    "weight_kg": 75,
+    "weight_kg": 73.8,
     "meals": [],
     "exercise": [],
     "notes": ""
@@ -146,6 +146,15 @@
       "fat_g": 0,
       "water_ml": 0,
       "weight_kg": 74.5
+    },
+    {
+      "date": "2026-06-16",
+      "calories": 0,
+      "protein_g": 0,
+      "carbs_g": 0,
+      "fat_g": 0,
+      "water_ml": 0,
+      "weight_kg": 75
     }
   ],
   "events": [
@@ -1245,6 +1254,13 @@
       "weight_kg": 75,
       "id": "evt_1781584359028_1zfm2",
       "ts": "2026-06-16T04:32:39.028Z"
+    },
+    {
+      "type": "weight",
+      "date": "2026-06-17",
+      "weight_kg": 73.8,
+      "id": "evt_1781671884210_af7yy",
+      "ts": "2026-06-17T04:51:24.210Z"
     }
   ]
 }
