@@ -1322,6 +1322,17 @@
       "carbs_g": 25.7,
       "fat_g": 15.1,
       "ts": "2026-06-17T12:00:01.549Z"
+    },
+    {
+      "id": "evt_1781697669492_4y63i",
+      "type": "meal",
+      "date": "2026-06-16",
+      "name": "White bread roll (Brötchen/Semmel), half, Roast beef (cold cuts, medium-rare), Sliced Gouda/Emmental-style cheese, Red bell pepper (raw, sliced), Carrot sticks (raw, peeled), Cucumber stick (raw, peeled)",
+      "kcal": 326,
+      "protein_g": 22.2,
+      "carbs_g": 27.6,
+      "fat_g": 14.2,
+      "ts": "2026-06-16T12:00:00Z"
     }
   ]
 }
