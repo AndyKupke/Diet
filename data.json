@@ -1333,6 +1333,28 @@
       "carbs_g": 27.6,
       "fat_g": 14.2,
       "ts": "2026-06-16T12:00:00Z"
+    },
+    {
+      "id": "evt_1781697715926_et4lu",
+      "type": "meal",
+      "date": "2026-06-16",
+      "name": "Raw minced meat (Rohes Hack - likely pork or mixed), Whole grain/rye bread (Vollkornbrot), Fresh chives (garnish on raw meat)",
+      "kcal": 241.5,
+      "protein_g": 14.05,
+      "carbs_g": 19.85,
+      "fat_g": 11.1,
+      "ts": "2026-06-16T12:00:00Z"
+    },
+    {
+      "id": "evt_1781697776506_wy10s",
+      "type": "meal",
+      "date": "2026-06-16",
+      "name": "Whole grain/rye bread (Vollkornbrot), Hard cheese (likely Gouda or similar yellow cheese), Roast beef (cold cuts), Cherry tomatoes (roasted/grilled), Fresh mozzarella or burrata (white soft cheese), Red bell pepper (raw), Carrot sticks (raw, peeled), Cucumber stick (raw, peeled), Beverage (appears to be low-calorie or zero-calorie drink based on blue can design)",
+      "kcal": 407,
+      "protein_g": 27.6,
+      "carbs_g": 28.1,
+      "fat_g": 20.5,
+      "ts": "2026-06-16T12:00:00Z"
     }
   ]
 }
