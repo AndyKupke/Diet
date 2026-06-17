@@ -2,8 +2,8 @@
   "_meta": {
     "version": 1,
     "description": "Food analysis knowledge base Ã¢ÂÂ grows with every analysed meal",
-    "last_updated": "2026-06-17T11:56:54.386Z",
-    "total_analyses": 113,
+    "last_updated": "2026-06-17T11:58:50.972Z",
+    "total_analyses": 115,
     "total_corrections": 3
   },
   "calibrations": {
@@ -604,15 +604,15 @@
       },
       {
         "name": "Fresh tomato slices",
-        "serving": "2 slices (approx 30g)",
-        "weight_g": 30,
-        "kcal": 8,
-        "protein_g": 0.4,
-        "carbs_g": 1.7,
+        "serving": "3 medium slices, approx 60g",
+        "weight_g": 60,
+        "kcal": 10,
+        "protein_g": 0.5,
+        "carbs_g": 2,
         "fat_g": 0.1,
-        "confidence": 0.89,
-        "last_seen": "2026-06-12",
-        "seen_count": 5
+        "confidence": 0.85,
+        "last_seen": "2026-06-17",
+        "seen_count": 6
       },
       {
         "name": "Red onion rings",
@@ -3421,6 +3421,66 @@
         "confidence": 0.65,
         "last_seen": "2026-06-17",
         "seen_count": 1
+      },
+      {
+        "name": "Battered deep-fried fish or chicken pieces",
+        "serving": "approximately 5–6 pieces (total ~140g)",
+        "weight_g": 140,
+        "kcal": 336,
+        "protein_g": 18.2,
+        "carbs_g": 22.4,
+        "fat_g": 18.2,
+        "confidence": 0.78,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "White rice (cooked, likely under the fried items)",
+        "serving": "approximately 1 cup cooked (~150g)",
+        "weight_g": 150,
+        "kcal": 195,
+        "protein_g": 3.6,
+        "carbs_g": 42.8,
+        "fat_g": 0.3,
+        "confidence": 0.65,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Dark rye bread (pumpernickel or vollkornbrot)",
+        "serving": "1 slice, approx 50g",
+        "weight_g": 50,
+        "kcal": 115,
+        "protein_g": 3.5,
+        "carbs_g": 22,
+        "fat_g": 1,
+        "confidence": 0.82,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Plain omelette (folded, cooked in minimal oil)",
+        "serving": "2-egg omelette, approx 110g",
+        "weight_g": 110,
+        "kcal": 185,
+        "protein_g": 13.2,
+        "carbs_g": 1.2,
+        "fat_g": 14,
+        "confidence": 0.8,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
+      },
+      {
+        "name": "Fresh chives (chopped, garnish)",
+        "serving": "Light sprinkle, approx 2g",
+        "weight_g": 2,
+        "kcal": 1,
+        "protein_g": 0.1,
+        "carbs_g": 0.1,
+        "fat_g": 0,
+        "confidence": 0.88,
+        "last_seen": "2026-06-17",
+        "seen_count": 1
       }
     ]
   },
@@ -3475,70 +3535,6 @@
   "analyses": {
     "description": "Log of all past analyses (last 100 kept for context injection)",
     "entries": [
-      {
-        "id": 1780333810104,
-        "date": "2026-06-01",
-        "meal_type": "dinner",
-        "user_note": "",
-        "totals": {
-          "kcal": 153,
-          "protein_g": 13.2,
-          "carbs_g": 18.2,
-          "fat_g": 2.7,
-          "fiber_g": 2.5,
-          "sugar_g": 1.4
-        },
-        "items": [
-          {
-            "name": "Multi-seed/grain bread slice",
-            "weight_g": 40,
-            "serving": "1 thick slice (approx 40g)",
-            "kcal": 111,
-            "protein_g": 4.4,
-            "carbs_g": 17.8,
-            "fat_g": 2.2,
-            "confidence": 0.8
-          },
-          {
-            "name": "Sliced turkey breast (deli meat)",
-            "weight_g": 40,
-            "serving": "2 thin slices (approx 40g total)",
-            "kcal": 42,
-            "protein_g": 8.8,
-            "carbs_g": 0.4,
-            "fat_g": 0.5,
-            "confidence": 0.78
-          }
-        ],
-        "overall_confidence": 0.78
-      },
-      {
-        "id": 1780388645894,
-        "date": "2026-06-02",
-        "meal_type": "brunch",
-        "user_note": "",
-        "totals": {
-          "kcal": 148,
-          "protein_g": 1.7,
-          "carbs_g": 20,
-          "fat_g": 6.5,
-          "fiber_g": 1.2,
-          "sugar_g": 1.2
-        },
-        "items": [
-          {
-            "name": "Chio Tortilla Chips (Cheese flavour)",
-            "weight_g": 30,
-            "serving": "1 serving from pack (approx 30g)",
-            "kcal": 148,
-            "protein_g": 1.7,
-            "carbs_g": 20,
-            "fat_g": 6.5,
-            "confidence": 0.95
-          }
-        ],
-        "overall_confidence": 0.95
-      },
       {
         "id": 1780389551070,
         "date": "2026-06-02",
@@ -8734,6 +8730,100 @@
           }
         ],
         "overall_confidence": 0.81
+      },
+      {
+        "id": 1781697453762,
+        "date": "2026-06-17",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 531,
+          "protein_g": 21.8,
+          "carbs_g": 65.2,
+          "fat_g": 18.5,
+          "fiber_g": 1.2,
+          "sugar_g": 0.6
+        },
+        "items": [
+          {
+            "name": "Battered deep-fried fish or chicken pieces",
+            "weight_g": 140,
+            "serving": "approximately 5–6 pieces (total ~140g)",
+            "kcal": 336,
+            "protein_g": 18.2,
+            "carbs_g": 22.4,
+            "fat_g": 18.2,
+            "confidence": 0.78
+          },
+          {
+            "name": "White rice (cooked, likely under the fried items)",
+            "weight_g": 150,
+            "serving": "approximately 1 cup cooked (~150g)",
+            "kcal": 195,
+            "protein_g": 3.6,
+            "carbs_g": 42.8,
+            "fat_g": 0.3,
+            "confidence": 0.65
+          }
+        ],
+        "overall_confidence": 0.72
+      },
+      {
+        "id": 1781697530972,
+        "date": "2026-06-17",
+        "meal_type": "lunch",
+        "user_note": "",
+        "totals": {
+          "kcal": 312,
+          "protein_g": 17.3,
+          "carbs_g": 25.7,
+          "fat_g": 15.1,
+          "fiber_g": 5.3,
+          "sugar_g": 3.9
+        },
+        "items": [
+          {
+            "name": "Dark rye bread (pumpernickel or vollkornbrot)",
+            "weight_g": 50,
+            "serving": "1 slice, approx 50g",
+            "kcal": 115,
+            "protein_g": 3.5,
+            "carbs_g": 22,
+            "fat_g": 1,
+            "confidence": 0.82
+          },
+          {
+            "name": "Plain omelette (folded, cooked in minimal oil)",
+            "weight_g": 110,
+            "serving": "2-egg omelette, approx 110g",
+            "kcal": 185,
+            "protein_g": 13.2,
+            "carbs_g": 1.2,
+            "fat_g": 14,
+            "confidence": 0.8
+          },
+          {
+            "name": "Fresh tomato slices",
+            "weight_g": 60,
+            "serving": "3 medium slices, approx 60g",
+            "kcal": 11,
+            "protein_g": 0.5,
+            "carbs_g": 2.4,
+            "fat_g": 0.1,
+            "confidence": 0.85
+          },
+          {
+            "name": "Fresh chives (chopped, garnish)",
+            "weight_g": 2,
+            "serving": "Light sprinkle, approx 2g",
+            "kcal": 1,
+            "protein_g": 0.1,
+            "carbs_g": 0.1,
+            "fat_g": 0,
+            "confidence": 0.88
+          }
+        ],
+        "overall_confidence": 0.82
       }
     ]
   }
