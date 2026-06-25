@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-25T20:09:09Z",
+  "updated": "2026-06-25T22:24:15Z",
   "today": {
     "date": "2026-06-25",
     "readiness": {
@@ -412,7 +412,7 @@
         "timing": null
       },
       "activity": {
-        "score": 74,
+        "score": 81,
         "active_calories": 770,
         "total_calories": 2911,
         "steps": 6421,
