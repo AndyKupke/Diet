@@ -1,41 +1,10 @@
 {
-  "updated": "2026-07-05T22:06:07Z",
+  "updated": "2026-07-06T00:12:30Z",
   "today": {
-    "date": "2026-07-05",
+    "date": "2026-07-06",
     "workouts": []
   },
   "history": [
-    {
-      "date": "2026-06-22",
-      "readiness": {
-        "score": 78,
-        "resting_hr": 100,
-        "hrv": 66,
-        "recovery": 74,
-        "temperature": 100
-      },
-      "sleep": {
-        "score": 73,
-        "total_sleep_s": 67,
-        "deep_sleep_s": 96,
-        "rem_sleep_s": 40,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
-      "activity": {
-        "score": 70,
-        "active_calories": 491,
-        "total_calories": 2598,
-        "steps": 6023,
-        "equivalent_walking_distance": 8747,
-        "meters_to_target": -700,
-        "high_activity": 1800,
-        "medium_activity": 1680,
-        "low_activity": 12060,
-        "sedentary": 43140
-      }
-    },
     {
       "date": "2026-06-23",
       "readiness": {
