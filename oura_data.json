@@ -1,7 +1,23 @@
 {
-  "updated": "2026-07-31T07:53:46Z",
+  "updated": "2026-07-31T10:44:22Z",
   "today": {
     "date": "2026-07-31",
+    "readiness": {
+      "score": 81,
+      "resting_hr": 67,
+      "hrv": 85,
+      "recovery": 75,
+      "temperature": 78
+    },
+    "sleep": {
+      "score": 83,
+      "total_sleep_s": 89,
+      "deep_sleep_s": 74,
+      "rem_sleep_s": 42,
+      "efficiency": null,
+      "latency": null,
+      "timing": null
+    },
     "workouts": []
   },
   "history": [
@@ -380,7 +396,7 @@
     {
       "date": "2026-07-30",
       "readiness": {
-        "score": 76,
+        "score": 75,
         "resting_hr": 75,
         "hrv": 90,
         "recovery": 81,
