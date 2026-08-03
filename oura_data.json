@@ -1,7 +1,23 @@
 {
-  "updated": "2026-08-03T03:30:29Z",
+  "updated": "2026-08-03T07:33:21Z",
   "today": {
     "date": "2026-08-03",
+    "readiness": {
+      "score": 78,
+      "resting_hr": 83,
+      "hrv": 86,
+      "recovery": 39,
+      "temperature": 100
+    },
+    "sleep": {
+      "score": 78,
+      "total_sleep_s": 77,
+      "deep_sleep_s": 83,
+      "rem_sleep_s": 80,
+      "efficiency": null,
+      "latency": null,
+      "timing": null
+    },
     "workouts": []
   },
   "history": [
@@ -334,16 +350,16 @@
         "timing": null
       },
       "activity": {
-        "score": 90,
-        "active_calories": 799,
-        "total_calories": 2872,
-        "steps": 13089,
-        "equivalent_walking_distance": 14047,
-        "meters_to_target": -6700,
+        "score": 89,
+        "active_calories": 803,
+        "total_calories": 2893,
+        "steps": 13121,
+        "equivalent_walking_distance": 14113,
+        "meters_to_target": -6800,
         "high_activity": 2880,
         "medium_activity": 960,
-        "low_activity": 17640,
-        "sedentary": 28680
+        "low_activity": 17940,
+        "sedentary": 32640
       }
     },
     {
@@ -366,15 +382,15 @@
       },
       "activity": {
         "score": 86,
-        "active_calories": 553,
-        "total_calories": 2695,
+        "active_calories": 773,
+        "total_calories": 2917,
         "steps": 11172,
-        "equivalent_walking_distance": 10435,
-        "meters_to_target": -1900,
+        "equivalent_walking_distance": 14247,
+        "meters_to_target": -4200,
         "high_activity": 60,
-        "medium_activity": 4140,
-        "low_activity": 19020,
-        "sedentary": 34980
+        "medium_activity": 7260,
+        "low_activity": 16020,
+        "sedentary": 34800
       }
     },
     {
@@ -396,16 +412,16 @@
         "timing": null
       },
       "activity": {
-        "score": 83,
-        "active_calories": 64,
-        "total_calories": 1883,
-        "steps": 1226,
-        "equivalent_walking_distance": 1156,
-        "meters_to_target": 7600,
+        "score": 80,
+        "active_calories": 211,
+        "total_calories": 2296,
+        "steps": 4076,
+        "equivalent_walking_distance": 3763,
+        "meters_to_target": 4700,
         "high_activity": 0,
-        "medium_activity": 540,
-        "low_activity": 2280,
-        "sedentary": 9720
+        "medium_activity": 1080,
+        "low_activity": 10200,
+        "sedentary": 48000
       }
     }
   ]
