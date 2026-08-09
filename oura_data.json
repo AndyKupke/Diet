@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-09T05:49:27Z",
+  "updated": "2026-08-09T07:03:26Z",
   "today": {
     "date": "2026-08-09",
     "workouts": []
@@ -396,16 +396,16 @@
         "timing": null
       },
       "activity": {
-        "score": 94,
-        "active_calories": 753,
-        "total_calories": 2823,
-        "steps": 5360,
-        "equivalent_walking_distance": 12985,
+        "score": 93,
+        "active_calories": 754,
+        "total_calories": 2834,
+        "steps": 6348,
+        "equivalent_walking_distance": 12989,
         "meters_to_target": -3800,
         "high_activity": 3600,
         "medium_activity": 960,
-        "low_activity": 17220,
-        "sedentary": 25560
+        "low_activity": 17340,
+        "sedentary": 27720
       }
     }
   ]
