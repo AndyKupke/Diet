@@ -1,7 +1,23 @@
 {
-  "updated": "2026-08-15T05:29:23Z",
+  "updated": "2026-08-15T06:47:03Z",
   "today": {
     "date": "2026-08-15",
+    "readiness": {
+      "score": 75,
+      "resting_hr": 95,
+      "hrv": 66,
+      "recovery": 82,
+      "temperature": 87
+    },
+    "sleep": {
+      "score": 75,
+      "total_sleep_s": 65,
+      "deep_sleep_s": 96,
+      "rem_sleep_s": 44,
+      "efficiency": null,
+      "latency": null,
+      "timing": null
+    },
     "workouts": []
   },
   "history": [
