@@ -1,7 +1,23 @@
 {
-  "updated": "2026-08-18T05:34:11Z",
+  "updated": "2026-08-18T06:52:10Z",
   "today": {
     "date": "2026-08-18",
+    "readiness": {
+      "score": 62,
+      "resting_hr": 49,
+      "hrv": 63,
+      "recovery": 69,
+      "temperature": 99
+    },
+    "sleep": {
+      "score": 69,
+      "total_sleep_s": 60,
+      "deep_sleep_s": 67,
+      "rem_sleep_s": 26,
+      "efficiency": null,
+      "latency": null,
+      "timing": null
+    },
     "workouts": []
   },
   "history": [
@@ -396,16 +412,16 @@
         "timing": null
       },
       "activity": {
-        "score": 86,
-        "active_calories": 974,
-        "total_calories": 3029,
-        "steps": 8505,
-        "equivalent_walking_distance": 18050,
-        "meters_to_target": -10100,
-        "high_activity": 3600,
-        "medium_activity": 3960,
-        "low_activity": 13200,
-        "sedentary": 19980
+        "score": 84,
+        "active_calories": 1078,
+        "total_calories": 3256,
+        "steps": 10635,
+        "equivalent_walking_distance": 19861,
+        "meters_to_target": -12100,
+        "high_activity": 3660,
+        "medium_activity": 5160,
+        "low_activity": 15540,
+        "sedentary": 39060
       }
     }
   ]
