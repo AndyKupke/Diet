@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-23T11:25:04Z",
+  "updated": "2026-08-23T12:49:47Z",
   "today": {
     "date": "2026-08-23",
     "readiness": {
@@ -8,15 +8,6 @@
       "hrv": 69,
       "recovery": 100,
       "temperature": 91
-    },
-    "sleep": {
-      "score": 66,
-      "total_sleep_s": 79,
-      "deep_sleep_s": 63,
-      "rem_sleep_s": 44,
-      "efficiency": null,
-      "latency": null,
-      "timing": null
     },
     "workouts": []
   },
@@ -29,15 +20,6 @@
         "hrv": 82,
         "recovery": 46,
         "temperature": 97
-      },
-      "sleep": {
-        "score": 69,
-        "total_sleep_s": 64,
-        "deep_sleep_s": 65,
-        "rem_sleep_s": 21,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 84,
@@ -61,15 +43,6 @@
         "recovery": 100,
         "temperature": 100
       },
-      "sleep": {
-        "score": 64,
-        "total_sleep_s": 54,
-        "deep_sleep_s": 78,
-        "rem_sleep_s": 53,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
       "activity": {
         "score": 90,
         "active_calories": 198,
@@ -91,15 +64,6 @@
         "hrv": 84,
         "recovery": 27,
         "temperature": 93
-      },
-      "sleep": {
-        "score": 72,
-        "total_sleep_s": 62,
-        "deep_sleep_s": 74,
-        "rem_sleep_s": 54,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 90,
@@ -123,15 +87,6 @@
         "recovery": 29,
         "temperature": 100
       },
-      "sleep": {
-        "score": 66,
-        "total_sleep_s": 64,
-        "deep_sleep_s": 67,
-        "rem_sleep_s": 23,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
       "activity": {
         "score": 92,
         "active_calories": 494,
@@ -153,15 +108,6 @@
         "hrv": 83,
         "recovery": 93,
         "temperature": 100
-      },
-      "sleep": {
-        "score": 71,
-        "total_sleep_s": 56,
-        "deep_sleep_s": 96,
-        "rem_sleep_s": 37,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 92,
@@ -185,15 +131,6 @@
         "recovery": 82,
         "temperature": 87
       },
-      "sleep": {
-        "score": 75,
-        "total_sleep_s": 65,
-        "deep_sleep_s": 96,
-        "rem_sleep_s": 44,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
       "activity": {
         "score": 89,
         "active_calories": 362,
@@ -215,15 +152,6 @@
         "hrv": 71,
         "recovery": 46,
         "temperature": 100
-      },
-      "sleep": {
-        "score": 79,
-        "total_sleep_s": 73,
-        "deep_sleep_s": 82,
-        "rem_sleep_s": 49,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 86,
@@ -247,15 +175,6 @@
         "recovery": 100,
         "temperature": 100
       },
-      "sleep": {
-        "score": 79,
-        "total_sleep_s": 65,
-        "deep_sleep_s": 91,
-        "rem_sleep_s": 78,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
       "activity": {
         "score": 84,
         "active_calories": 1078,
@@ -277,15 +196,6 @@
         "hrv": 63,
         "recovery": 69,
         "temperature": 99
-      },
-      "sleep": {
-        "score": 69,
-        "total_sleep_s": 60,
-        "deep_sleep_s": 67,
-        "rem_sleep_s": 26,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 86,
@@ -309,15 +219,6 @@
         "recovery": 77,
         "temperature": 88
       },
-      "sleep": {
-        "score": 86,
-        "total_sleep_s": 83,
-        "deep_sleep_s": 96,
-        "rem_sleep_s": 84,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
       "activity": {
         "score": 88,
         "active_calories": 316,
@@ -339,15 +240,6 @@
         "hrv": 73,
         "recovery": 84,
         "temperature": 97
-      },
-      "sleep": {
-        "score": 79,
-        "total_sleep_s": 73,
-        "deep_sleep_s": 86,
-        "rem_sleep_s": 66,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 79,
@@ -371,15 +263,6 @@
         "recovery": 42,
         "temperature": 93
       },
-      "sleep": {
-        "score": 79,
-        "total_sleep_s": 70,
-        "deep_sleep_s": 96,
-        "rem_sleep_s": 52,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
       "activity": {
         "score": 82,
         "active_calories": 846,
@@ -401,15 +284,6 @@
         "hrv": 72,
         "recovery": 29,
         "temperature": 98
-      },
-      "sleep": {
-        "score": 65,
-        "total_sleep_s": 59,
-        "deep_sleep_s": 69,
-        "rem_sleep_s": 58,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
       },
       "activity": {
         "score": 90,
