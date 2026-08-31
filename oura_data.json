@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-31T08:27:31Z",
+  "updated": "2026-08-31T16:56:12Z",
   "today": {
     "date": "2026-08-31",
     "workouts": []
@@ -334,16 +334,16 @@
         "timing": null
       },
       "activity": {
-        "score": 84,
-        "active_calories": 565,
-        "total_calories": 2543,
-        "steps": 1623,
-        "equivalent_walking_distance": 9340,
-        "meters_to_target": -2100,
+        "score": 83,
+        "active_calories": 674,
+        "total_calories": 2823,
+        "steps": 3828,
+        "equivalent_walking_distance": 11178,
+        "meters_to_target": -4200,
         "high_activity": 3600,
-        "medium_activity": 60,
-        "low_activity": 6120,
-        "sedentary": 21960
+        "medium_activity": 180,
+        "low_activity": 13800,
+        "sedentary": 42300
       }
     },
     {
@@ -366,15 +366,15 @@
       },
       "activity": {
         "score": 78,
-        "active_calories": 248,
-        "total_calories": 2321,
+        "active_calories": 259,
+        "total_calories": 2332,
         "steps": 5665,
-        "equivalent_walking_distance": 4421,
-        "meters_to_target": 4000,
+        "equivalent_walking_distance": 4754,
+        "meters_to_target": 3800,
         "high_activity": 0,
         "medium_activity": 420,
-        "low_activity": 14940,
-        "sedentary": 33720
+        "low_activity": 15000,
+        "sedentary": 33660
       }
     },
     {
@@ -396,16 +396,16 @@
         "timing": null
       },
       "activity": {
-        "score": 80,
-        "active_calories": 376,
-        "total_calories": 2360,
-        "steps": 5914,
-        "equivalent_walking_distance": 6172,
-        "meters_to_target": 1500,
-        "high_activity": 960,
-        "medium_activity": 600,
-        "low_activity": 11520,
-        "sedentary": 21060
+        "score": 83,
+        "active_calories": 491,
+        "total_calories": 2615,
+        "steps": 6829,
+        "equivalent_walking_distance": 8164,
+        "meters_to_target": -700,
+        "high_activity": 1080,
+        "medium_activity": 780,
+        "low_activity": 17460,
+        "sedentary": 41340
       }
     }
   ]
