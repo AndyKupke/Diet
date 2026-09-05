@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-05T00:46:16Z",
+  "updated": "2026-09-05T05:28:12Z",
   "today": {
     "date": "2026-09-05",
     "workouts": []
@@ -398,14 +398,14 @@
       "activity": {
         "score": 76,
         "active_calories": 391,
-        "total_calories": 2533,
+        "total_calories": 2534,
         "steps": 6744,
         "equivalent_walking_distance": 7010,
         "meters_to_target": 1200,
         "high_activity": 60,
         "medium_activity": 2460,
         "low_activity": 16500,
-        "sedentary": 39240
+        "sedentary": 39840
       }
     }
   ]
