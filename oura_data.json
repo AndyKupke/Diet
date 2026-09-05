@@ -1,9 +1,9 @@
 {
-  "updated": "2026-09-05T13:47:17Z",
+  "updated": "2026-09-05T16:41:14Z",
   "today": {
     "date": "2026-09-05",
     "readiness": {
-      "score": 83,
+      "score": 82,
       "resting_hr": 99,
       "hrv": 61,
       "recovery": 56,
@@ -381,13 +381,13 @@
         "timing": null
       },
       "activity": {
-        "score": 83,
-        "active_calories": 172,
-        "total_calories": 2277,
+        "score": 88,
+        "active_calories": 647,
+        "total_calories": 2774,
         "steps": 3736,
-        "equivalent_walking_distance": 2524,
-        "meters_to_target": 5500,
-        "high_activity": 120,
+        "equivalent_walking_distance": 10504,
+        "meters_to_target": -3700,
+        "high_activity": 3720,
         "medium_activity": 420,
         "low_activity": 10500,
         "sedentary": 39840
@@ -396,7 +396,7 @@
     {
       "date": "2026-09-04",
       "readiness": {
-        "score": 73,
+        "score": 69,
         "resting_hr": 52,
         "hrv": 55,
         "recovery": 47,
@@ -412,16 +412,16 @@
         "timing": null
       },
       "activity": {
-        "score": 76,
-        "active_calories": 391,
-        "total_calories": 2534,
+        "score": 89,
+        "active_calories": 481,
+        "total_calories": 2625,
         "steps": 6744,
-        "equivalent_walking_distance": 7010,
-        "meters_to_target": 1200,
+        "equivalent_walking_distance": 8528,
+        "meters_to_target": -3400,
         "high_activity": 60,
-        "medium_activity": 2460,
-        "low_activity": 16500,
-        "sedentary": 39840
+        "medium_activity": 3840,
+        "low_activity": 15180,
+        "sedentary": 39780
       }
     }
   ]
