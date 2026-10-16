@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-16T06:54:37Z",
+  "updated": "2026-10-16T12:12:11Z",
   "today": {
     "date": "2026-10-16",
     "readiness": {
@@ -365,7 +365,7 @@
     {
       "date": "2026-10-14",
       "readiness": {
-        "score": 81,
+        "score": 80,
         "resting_hr": 81,
         "hrv": 83,
         "recovery": 88,
