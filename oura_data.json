@@ -1,18 +1,18 @@
 {
-  "updated": "2026-10-17T12:49:43Z",
+  "updated": "2026-10-17T16:14:26Z",
   "today": {
     "date": "2026-10-17",
     "readiness": {
-      "score": 63,
+      "score": 65,
       "resting_hr": 19,
       "hrv": 87,
-      "recovery": 51,
+      "recovery": 62,
       "temperature": 89
     },
     "sleep": {
-      "score": 62,
-      "total_sleep_s": 56,
-      "deep_sleep_s": 95,
+      "score": 64,
+      "total_sleep_s": 62,
+      "deep_sleep_s": 96,
       "rem_sleep_s": 22,
       "efficiency": null,
       "latency": null,
