@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-10T03:19:11Z",
+  "updated": "2026-11-10T12:21:35Z",
   "today": {
     "date": "2026-11-10",
     "readiness": {
@@ -421,7 +421,7 @@
         "high_activity": 0,
         "medium_activity": 1620,
         "low_activity": 19560,
-        "sedentary": 35400
+        "sedentary": 36360
       }
     }
   ]
