@@ -1,57 +1,10 @@
 {
-  "updated": "2026-11-16T20:09:54Z",
+  "updated": "2026-11-17T03:33:50Z",
   "today": {
-    "date": "2026-11-16",
-    "readiness": {
-      "score": 79,
-      "resting_hr": 62,
-      "hrv": 82,
-      "recovery": 90,
-      "temperature": 92
-    },
-    "sleep": {
-      "score": 71,
-      "total_sleep_s": 56,
-      "deep_sleep_s": 82,
-      "rem_sleep_s": 32,
-      "efficiency": null,
-      "latency": null,
-      "timing": null
-    },
+    "date": "2026-11-17",
     "workouts": []
   },
   "history": [
-    {
-      "date": "2026-11-03",
-      "readiness": {
-        "score": 93,
-        "resting_hr": 100,
-        "hrv": 93,
-        "recovery": 98,
-        "temperature": 100
-      },
-      "sleep": {
-        "score": 82,
-        "total_sleep_s": 79,
-        "deep_sleep_s": 95,
-        "rem_sleep_s": 48,
-        "efficiency": null,
-        "latency": null,
-        "timing": null
-      },
-      "activity": {
-        "score": 78,
-        "active_calories": 396,
-        "total_calories": 2537,
-        "steps": 9337,
-        "equivalent_walking_distance": 7173,
-        "meters_to_target": 4000,
-        "high_activity": 0,
-        "medium_activity": 2400,
-        "low_activity": 18720,
-        "sedentary": 37920
-      }
-    },
     {
       "date": "2026-11-04",
       "readiness": {
@@ -406,6 +359,37 @@
         "medium_activity": 0,
         "low_activity": 1740,
         "sedentary": 6060
+      }
+    },
+    {
+      "date": "2026-11-16",
+      "readiness": {
+        "score": 79,
+        "resting_hr": 62,
+        "hrv": 82,
+        "recovery": 90,
+        "temperature": 92
+      },
+      "sleep": {
+        "score": 71,
+        "total_sleep_s": 56,
+        "deep_sleep_s": 82,
+        "rem_sleep_s": 32,
+        "efficiency": null,
+        "latency": null,
+        "timing": null
+      },
+      "activity": {
+        "score": 83,
+        "active_calories": 952,
+        "total_calories": 3121,
+        "steps": 5990,
+        "equivalent_walking_distance": 17055,
+        "meters_to_target": -9700,
+        "high_activity": 3600,
+        "medium_activity": 1380,
+        "low_activity": 24960,
+        "sedentary": 27060
       }
     }
   ]
