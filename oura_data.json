@@ -1,7 +1,23 @@
 {
-  "updated": "2026-11-22T02:57:23Z",
+  "updated": "2026-11-22T11:02:44Z",
   "today": {
     "date": "2026-11-22",
+    "readiness": {
+      "score": 72,
+      "resting_hr": 100,
+      "hrv": 54,
+      "recovery": 45,
+      "temperature": 97
+    },
+    "sleep": {
+      "score": 77,
+      "total_sleep_s": 65,
+      "deep_sleep_s": 79,
+      "rem_sleep_s": 83,
+      "efficiency": null,
+      "latency": null,
+      "timing": null
+    },
     "workouts": []
   },
   "history": [
@@ -342,7 +358,7 @@
         "high_activity": 0,
         "medium_activity": 0,
         "low_activity": 0,
-        "sedentary": 1020
+        "sedentary": 1200
       }
     }
   ]
